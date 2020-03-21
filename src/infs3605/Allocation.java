@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg3605Test;
+package infs3605;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
