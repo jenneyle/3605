@@ -34,7 +34,7 @@ public class Infs3605 extends Application {
         launch(args);
         
         System.out.println("Hey");
-        System.out.println("Shilan");
+        System.out.println("Shilan hahhaha");
         System.out.println("Jenney");
     }
     
