@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.LoginController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="infs3605.LoginController">
+   <children>
+      <TextField fx:id="username" layoutX="200.0" layoutY="232.0" />
+      <PasswordField fx:id="password" layoutX="200.0" layoutY="281.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../什么鬼/桌图/亲亲/猴子亲亲.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="126.0" layoutY="237.0" text="Username:" />
+      <Label layoutX="127.0" layoutY="286.0" text="Password:" />
+      <Button fx:id="loginButton" layoutX="212.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleloginButton" text="Login" />
+      <Button fx:id="signupButton" layoutX="300.0" layoutY="337.0" mnemonicParsing="false" text="Sign Up" />
+      <Label fx:id="incorrectMessage" layoutX="184.0" layoutY="174.0" text="Incorrect username or password" />
+   </children>
 </AnchorPane>
