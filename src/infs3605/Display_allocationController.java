@@ -31,47 +31,46 @@ import javafx.stage.Stage;
  * @author Mashilan
  */
 public class Display_allocationController implements Initializable {
-    
-    
-    Database database =new Database();
-    
+
+    Database database = new Database();
+
     @FXML
     private TableView<Allocation> allocationlist;
     @FXML
-    private TableColumn<Allocation,Integer> year;
+    private TableColumn<Allocation, Integer> year;
     @FXML
-    private TableColumn<Allocation,String> term;
+    private TableColumn<Allocation, String> term;
     @FXML
-    private TableColumn<Allocation,String> course_id;
+    private TableColumn<Allocation, String> course_id;
     @FXML
-    private TableColumn<Allocation,String> staff_id;
+    private TableColumn<Allocation, String> staff_id;
     @FXML
-    private TableColumn<Allocation,Double> weight;
+    private TableColumn<Allocation, Double> weight;
     @FXML
-    private TableColumn<Allocation,String> allocateStaffCol;
-   
-    
+    private TableColumn<Allocation, String> allocateStaffCol;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        year.setCellValueFactory(new PropertyValueFactory<Allocation,Integer>("Year"));
-        term.setCellValueFactory(new PropertyValueFactory<Allocation,String>("Term"));
-        course_id.setCellValueFactory(new PropertyValueFactory<Allocation,String>("Course_id"));
-        staff_id.setCellValueFactory(new PropertyValueFactory<Allocation,String>("Staff_id"));
-        weight.setCellValueFactory(new PropertyValueFactory<Allocation,Double>("Weight"));
-        
+        year.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Year"));
+        term.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Term"));
+        course_id.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Course_id"));
+        staff_id.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_id"));
+        weight.setCellValueFactory(new PropertyValueFactory<Allocation, Double>("Weight"));
+
         allocateStaffCol = new TableColumn("Action");
-        allocateStaffCol.setCellValueFactory(new PropertyValueFactory<Allocation,String>("button"));
+        allocateStaffCol.setCellValueFactory(new PropertyValueFactory<Allocation, String>("button"));
         allocationlist.setItems(this.getAllocationListData());
     }
+
     private ObservableList<Allocation> getAllocationListData() {
         List<Allocation> allocationListToReturn = new ArrayList<>();
         try {
-            ResultSet rs = database.getResultSet("SELECT year,term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n" +
-"inner join Course_Weight on Allocation.allocation_id=Course_Weight.allocation_id\n" +
-"GROUP by Allocation.allocation_id");
-            while(rs.next()) {
+            ResultSet rs = database.getResultSet("SELECT year,term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n"
+                    + "inner join Course_Weight on Allocation.allocation_id=Course_Weight.allocation_id\n"
+                    + "GROUP by Allocation.allocation_id");
+            while (rs.next()) {
                 allocationListToReturn.add(
-                        new Allocation(rs.getInt("year"),rs.getString("term"),rs.getString("course_id"),rs.getString("staff_id"),rs.getDouble("weight"))
+                        new Allocation(rs.getInt("year"), rs.getString("term"), rs.getString("course_id"), rs.getString("staff_id"), rs.getDouble("weight"))
                 );
                 //System.out.println(rs.getDouble("weight"));
             }
@@ -80,10 +79,10 @@ public class Display_allocationController implements Initializable {
         }
         System.out.println(allocationListToReturn);
         //System.out.println(allocationListToReturn.get(0).getWeight());
-       return FXCollections.observableArrayList(allocationListToReturn);
+        return FXCollections.observableArrayList(allocationListToReturn);
     }
-    
-         @FXML
+
+    @FXML
     public void handleAllocateBtn(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -98,6 +97,4 @@ public class Display_allocationController implements Initializable {
         }
     }
 
-   
-    
 }
