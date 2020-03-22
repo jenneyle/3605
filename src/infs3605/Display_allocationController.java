@@ -5,6 +5,7 @@
  */
 package infs3605;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,11 +16,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  *
@@ -27,7 +32,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class Display_allocationController implements Initializable {
 
-    //  PageSwitcherHelper pageSwitcher = new PageSwitcherHelper();
     Database database = new Database();
 
     @FXML
@@ -45,7 +49,6 @@ public class Display_allocationController implements Initializable {
     @FXML
     private TableColumn<Allocation, String> allocateStaffCol;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         year.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Year"));
@@ -62,12 +65,12 @@ public class Display_allocationController implements Initializable {
     private ObservableList<Allocation> getAllocationListData() {
         List<Allocation> allocationListToReturn = new ArrayList<>();
         try {
-            ResultSet rs = database.getResultSet("SELECT year,term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n"
-                    + "inner join Course_Weight on Allocation.allocation_id=Course_Weight.allocation_id\n"
+            ResultSet rs = database.getResultSet("SELECT allocation_year,allocation_term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n"
+                    + "inner join Weighting on Allocation.allocation_id=Weighting.allocation_id\n"
                     + "GROUP by Allocation.allocation_id");
             while (rs.next()) {
                 allocationListToReturn.add(
-                        new Allocation(rs.getInt("year"), rs.getString("term"), rs.getString("course_id"), rs.getString("staff_id"), rs.getDouble("weight"))
+                        new Allocation(rs.getInt("allocation_year"), rs.getString("allocation_term"), rs.getString("course_id"), rs.getString("staff_id"), rs.getDouble("weight"))
                 );
                 //System.out.println(rs.getDouble("weight"));
             }
@@ -78,4 +81,20 @@ public class Display_allocationController implements Initializable {
         //System.out.println(allocationListToReturn.get(0).getWeight());
         return FXCollections.observableArrayList(allocationListToReturn);
     }
+
+    @FXML
+    public void handleAllocateBtn(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("AllocatePopUp.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 410, 300);
+            Stage stage = new Stage();
+            stage.setTitle(" Allocation Pop Up");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+}
