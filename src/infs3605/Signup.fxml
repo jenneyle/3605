@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
+   <children>
+      <Label layoutX="164.0" layoutY="183.0" text="Username:" />
+      <Label layoutX="164.0" layoutY="218.0" text="Password:" />
+      <Label layoutX="115.0" layoutY="255.0" text="Confirm Password:" />
+      <TextField fx:id="username" layoutX="253.0" layoutY="178.0" />
+      <PasswordField fx:id="p1" layoutX="253.0" layoutY="213.0" />
+      <PasswordField fx:id="p2" layoutX="253.0" layoutY="250.0" />
+      <Button fx:id="signupButton" layoutX="307.0" layoutY="315.0" mnemonicParsing="false" text="Sign up" />
+   </children>
 </AnchorPane>

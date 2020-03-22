@@ -5,9 +5,22 @@
  */
 package infs3605;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -19,9 +32,53 @@ public class LoginController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    Database database= new Database();
+    PageSwitchHelper pageswticher=new PageSwitchHelper();
+    @FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button signupButton;
+    @FXML
+    private Label incorrectMessage;
+    @FXML
+    private ImageView logoimage;
+    @FXML
+    private void handleloginButton(ActionEvent event) throws IOException, SQLException {
+        String user = username.getText();
+        String correctPassword = password.getText();
+        try {
+            String loginQuery = "SELECT * FROM USERS WHERE username ='" + user + "' AND PASSWORD = '" + correctPassword + "';";
+            System.out.println(loginQuery);
+            ResultSet loginRS=database.getResultSet(loginQuery);
+            if (loginRS.next()) {
+            } else {
+                username.clear();
+                password.clear();
+                incorrectMessage.setVisible(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handlesignupButton(ActionEvent event){
+        try {
+            pageswticher.switcher(event, "Signup.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        incorrectMessage.setVisible(false);
+        Image image=new Image("/resources/logo.png");
+        logoimage.setImage(image);
+    }
     
 }
