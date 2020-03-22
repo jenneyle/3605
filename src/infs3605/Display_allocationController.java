@@ -65,12 +65,12 @@ public class Display_allocationController implements Initializable {
     private ObservableList<Allocation> getAllocationListData() {
         List<Allocation> allocationListToReturn = new ArrayList<>();
         try {
-            ResultSet rs = database.getResultSet("SELECT year,term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n"
-                    + "inner join Course_Weight on Allocation.allocation_id=Course_Weight.allocation_id\n"
+            ResultSet rs = database.getResultSet("SELECT allocation_year,allocation_term,course_id,staff_id,sum(percentage*value) as weight FROM Allocation \n"
+                    + "inner join Weighting on Allocation.allocation_id=Weighting.allocation_id\n"
                     + "GROUP by Allocation.allocation_id");
             while (rs.next()) {
                 allocationListToReturn.add(
-                        new Allocation(rs.getInt("year"), rs.getString("term"), rs.getString("course_id"), rs.getString("staff_id"), rs.getDouble("weight"))
+                        new Allocation(rs.getInt("allocation_year"), rs.getString("allocation_term"), rs.getString("course_id"), rs.getString("staff_id"), rs.getDouble("weight"))
                 );
                 //System.out.println(rs.getDouble("weight"));
             }
