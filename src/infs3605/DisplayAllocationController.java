@@ -30,10 +30,12 @@ import javafx.stage.Stage;
  *
  * @author Mashilan
  */
-public class Display_allocationController implements Initializable {
+public class DisplayAllocationController implements Initializable {
 
     //  PageSwitcherHelper pageSwitcher = new PageSwitcherHelper();
     Database database = new Database();
+    
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     @FXML
     private TableView<Allocation> allocationlist;
@@ -85,17 +87,8 @@ public class Display_allocationController implements Initializable {
 
     @FXML
     public void handleAllocateBtn(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AllocatePopUp.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 410, 300);
-            Stage stage = new Stage();
-            stage.setTitle(" Allocation Pop Up");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        pageSwitcher.switcher(event, "StaffAllocation.fxml");
+
     }
 
 }
