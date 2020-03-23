@@ -8,6 +8,7 @@ package infs3605;
 import java.util.*;
 
 import static infs3605.Database.conn;
+import static infs3605.LoginController.loggedInUser;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -35,7 +36,7 @@ import javafx.scene.text.Text;
  */
 public class StaffAllocationController implements Initializable {
 
-   PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     @FXML
     Button submit;
 
@@ -46,18 +47,23 @@ public class StaffAllocationController implements Initializable {
     private ComboBox<String> staffComboBox;
 
     @FXML
+    private ComboBox<String> termComboBox;
+    @FXML
+    private ComboBox<Integer> yearComboBox;
+    @FXML
     private ComboBox<String> courseComboBox;
-String staffID;
+    String staffID;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        courseComboBox.setPromptText("Please select a course code");
-        staffComboBox.setPromptText("Please select a staff member");
 
         courseName = new Text();
 
         ObservableList<String> courseList = FXCollections.observableArrayList();
         ObservableList<String> staffList = FXCollections.observableArrayList();
+        ObservableList<Integer> yearList = FXCollections.observableArrayList();
+        ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
+        termComboBox.setItems(termList);
 
         try {
             Database.openConnection();
@@ -73,8 +79,13 @@ String staffID;
                 staffList.add(rs2.getString(2) + " " + rs2.getString(3));
                 staffComboBox.setItems(staffList);
                 staffID = rs2.getString(1);
+                
 
             }
+            //later edition -- dont need current year in table as we can get current date from SQL. (Select CURRENT_YEAR;)
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT current_year FROM Users WHERE username = '" + loggedInUser +"'");
+            yearList.addAll(rs3.getInt(1), rs3.getInt(1)+1, rs3.getInt(1)+2, rs3.getInt(1)+3, rs3.getInt(1)+4);
+            yearComboBox.setItems(yearList);
         } catch (Exception e) {
 
         }
@@ -83,16 +94,15 @@ String staffID;
     //TODO: autofill coursename
     public void handleSubmitBtn(ActionEvent event) throws IOException, SQLException {
 
-       // String staffName = staffComboBox.getValue();
         String courseCode = courseComboBox.getValue();
+        String term = termComboBox.getValue();
+        int year = yearComboBox.getValue();
 
         Statement st = conn.createStatement();
         try {
-            String insertData = ("INSERT INTO ALLOCATION (ALLOCATION_YEAR, ALLOCATION_TERM, COURSE_ID, STAFF_ID)" + " VALUES ('2020','T1','" + courseCode + "','"
-                    + staffID + "')");
+            String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)" + 
+                    " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
             st.execute(insertData);
-            
-             
 
         } catch (Exception ex) {
             ex.printStackTrace();

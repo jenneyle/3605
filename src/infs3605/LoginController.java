@@ -34,6 +34,7 @@ public class LoginController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public static String loggedInUser;
     Database database= new Database();
     PageSwitchHelper pageswticher=new PageSwitchHelper();
     @FXML
@@ -59,6 +60,7 @@ public class LoginController implements Initializable {
             ResultSet loginRS=database.getResultSet(loginQuery);
             if (loginRS.next()) {
                 pageswticher.switcher(event, "DisplayAllocation.fxml");
+                loggedInUser = user;
             } else {
                 username.clear();
                 password.clear();
