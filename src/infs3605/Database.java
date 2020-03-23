@@ -35,7 +35,18 @@ public class Database {
         openConnection();
         java.sql.Statement statement = conn.createStatement();
         ResultSet RS = statement.executeQuery(sqlstatement);
-        
         return RS;
+        
+    }
+    public void insertStatement(String insert_query) throws SQLException {
+        java.sql.Statement stmt = null;
+        openConnection();
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(insert_query);
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
     }
 }

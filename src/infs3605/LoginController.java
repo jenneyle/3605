@@ -21,6 +21,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.apache.commons.codec.digest.DigestUtils;
+import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
  * FXML Controller class
@@ -51,10 +53,12 @@ public class LoginController implements Initializable {
         String user = username.getText();
         String correctPassword = password.getText();
         try {
-            String loginQuery = "SELECT * FROM USERS WHERE username ='" + user + "' AND PASSWORD = '" + correctPassword + "';";
-            System.out.println(loginQuery);
+            String hashpw = new DigestUtils(SHA_256).digestAsHex(correctPassword);
+            String loginQuery = "SELECT * FROM USERS WHERE username ='" + user + "' AND PASSWORD = '" + hashpw + "';";
+            
             ResultSet loginRS=database.getResultSet(loginQuery);
             if (loginRS.next()) {
+                pageswticher.switcher(event, "Display_allocation.fxml");
             } else {
                 username.clear();
                 password.clear();

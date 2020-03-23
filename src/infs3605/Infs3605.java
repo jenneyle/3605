@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.commons.codec.digest.DigestUtils;
+import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA3_256;
+import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
  *
@@ -19,7 +22,7 @@ public class Infs3605 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Display_allocation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -33,9 +36,6 @@ public class Infs3605 extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        System.out.println("Hey");
-        System.out.println("Shilan hahhaha");
-        System.out.println("Jenney");
     }
     
 }
