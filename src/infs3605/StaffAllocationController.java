@@ -83,7 +83,7 @@ public class StaffAllocationController implements Initializable {
 
             }
             //later edition -- dont need current year in table as we can get current date from SQL. (Select CURRENT_YEAR;)
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT current_year FROM Users WHERE username = '" + loggedInUser +"'");
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
             yearList.addAll(rs3.getInt(1), rs3.getInt(1)+1, rs3.getInt(1)+2, rs3.getInt(1)+3, rs3.getInt(1)+4);
             yearComboBox.setItems(yearList);
         } catch (Exception e) {
@@ -107,7 +107,7 @@ public class StaffAllocationController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        pageSwitcher.switcher(event, "Display_allocation.fxml");
+        pageSwitcher.switcher(event, "DisplayAllocation.fxml");
     }
 
 }

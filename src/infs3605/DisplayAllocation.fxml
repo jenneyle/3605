@@ -27,5 +27,6 @@
             </AnchorPane>
         </content>
       </ScrollPane>
+      <Button layoutX="454.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleCourseInfoBtn" text="Course Info" />
    </children>
 </AnchorPane>
