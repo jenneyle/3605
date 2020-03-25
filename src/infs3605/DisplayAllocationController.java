@@ -80,18 +80,18 @@ public class DisplayAllocationController implements Initializable {
 
                 String courseId = allocationlist.getSelectionModel().getSelectedItem().getCourse_id();
                 String courseName = "";
-                int t1 = 0;
-                int t2 = 0;
-                int t3 = 0;
-                int s = 0;
+                String t1 = "";
+                String t2 = "";
+                String t3 = "";
+                String s = "";
 
                 try {
                     ResultSet rs = database.getResultSet("SELECT * FROM Courses WHERE course_id = '" + courseId + "'");
                     courseName = rs.getString(2);
-                    t1 = rs.getInt(3);
-                    t2 = rs.getInt(4);
-                    t3 = rs.getInt(5);
-                    s = rs.getInt(6);
+                    t1 = rs.getString(3);
+                    t2 = rs.getString(4);
+                    t3 = rs.getString(5);
+                    s = rs.getString(6);
 
                 } catch (SQLException e) {
                     e.printStackTrace();
