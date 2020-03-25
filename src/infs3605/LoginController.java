@@ -83,7 +83,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         incorrectMessage.setVisible(false);
-        Image image=new Image("/resources/logo.png");
+        Image image=new Image("/resources/LecticLogo.png");
         logoimage.setImage(image);
     }
     
