@@ -46,20 +46,20 @@ public class CourseInfoController {
         stage.close();
     }
 
-    public void setData(String iCourseId, String iCourseName, String t1, String t2, String t3, String ts) {
+    public void setData(String iCourseId, String iCourseName, int t1, int t2, int t3, int ts) {
         courseCode.setText(iCourseId);
         courseName.setText(iCourseName);
-        if (t1.equals(true)) {
+        if (t1 == 1) {
             t1Offer.setVisible(true);
             System.out.println("hey");
         }
-        if (t2.equals(true)) {
+        if (t2 == 1) {
             t2Offer.setVisible(true);
         }
-        if (t3.equals(true)) {
-            t3Offer.setVisible(true);
+        if (t3 == 1) {
+            t3Offer.setVisible(false);
         }
-        if (ts.equals(true)) {
+        if (ts == 1) {
             tsOffer.setVisible(true);
         }
     }

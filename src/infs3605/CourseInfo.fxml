@@ -31,7 +31,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1:" wrappingWidth="54.0" />
-                  <ImageView fx:id="t1Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="t1Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Capture.JPG" />
                      </image>
