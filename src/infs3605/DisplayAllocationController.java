@@ -112,6 +112,7 @@ public class DisplayAllocationController implements Initializable {
     private ObservableList<Allocation> getAllocationListData() {
         List<Allocation> allocationListToReturn = new ArrayList<>();
         try {
+            //TODO: Rani to change
             ResultSet rs1 = database.getResultSet("SELECT allocation_year,allocation_term,Allocation.course_id,staff_id,(weighting_term+face_time+prep_dev) as weight FROM Allocation\n"
                     + "inner join Weighting on Allocation.course_id=Weighting.course_id and allocation_year=year and allocation_term=term\n"
                     + "GROUP by Allocation.course_id");
