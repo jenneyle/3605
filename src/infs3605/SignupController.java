@@ -19,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA3_256;
@@ -37,6 +39,8 @@ public class SignupController implements Initializable {
      */
     Database database=new Database();
     PageSwitchHelper pageswitcher=new PageSwitchHelper();
+    @FXML
+    private ImageView logoimage;
     @FXML
     private TextField username;
     @FXML
@@ -99,7 +103,7 @@ public class SignupController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+       
     }    
     
 }
