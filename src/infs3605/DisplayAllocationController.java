@@ -67,6 +67,7 @@ public class DisplayAllocationController implements Initializable {
         allocateStaffCol.setCellValueFactory(new PropertyValueFactory<Allocation, String>("button"));
         allocationlist.setItems(this.getAllocationListData());
 
+        //Click on a particular row and it takes you to course info page
         allocationlist.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -109,10 +110,12 @@ public class DisplayAllocationController implements Initializable {
         });
     }
 
+    //To Display Table
     private ObservableList<Allocation> getAllocationListData() {
         List<Allocation> allocationListToReturn = new ArrayList<>();
         try {
             //TODO: Rani to change
+//            ResultSet rs1 = database.getResultSet("SELECT * FROM ALLOCATION");
             ResultSet rs1 = database.getResultSet("SELECT allocation_year,allocation_term,Allocation.course_id,staff_id,(weighting_term+face_time+prep_dev) as weight FROM Allocation\n"
                     + "inner join Weighting on Allocation.course_id=Weighting.course_id and allocation_year=year and allocation_term=term\n"
                     + "GROUP by Allocation.course_id");
@@ -130,25 +133,11 @@ public class DisplayAllocationController implements Initializable {
         return FXCollections.observableArrayList(allocationListToReturn);
     }
 
+    //button to allocate staff to course
     @FXML
     public void handleAllocateBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
 
     }
 
-    @FXML
-    public void handleCourseInfoBtn(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("CourseInfo.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 410, 300);
-            Stage stage = new Stage();
-            stage.setTitle(" Course Info Page");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 }

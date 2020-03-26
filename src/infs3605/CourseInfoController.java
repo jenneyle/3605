@@ -49,9 +49,9 @@ public class CourseInfoController {
     public void setData(String iCourseId, String iCourseName, int t1, int t2, int t3, int ts) {
         courseCode.setText(iCourseId);
         courseName.setText(iCourseName);
+        //If course is availble in aterm show the green tick
         if (t1 == 1) {
             t1Offer.setVisible(true);
-            System.out.println("hey");
         }
         if (t2 == 1) {
             t2Offer.setVisible(true);
