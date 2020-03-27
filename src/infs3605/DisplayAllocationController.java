@@ -139,5 +139,11 @@ public class DisplayAllocationController implements Initializable {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
 
     }
+    //button to update course weightings
+    @FXML
+    public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "UpdateWeightings.fxml");
+
+    }
 
 }
