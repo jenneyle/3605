@@ -12,26 +12,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="317.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#268265" />
-      <Label alignment="CENTER" layoutX="92.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Information" textAlignment="CENTER" />
-      <VBox layoutX="52.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0">
+      <Button fx:id="back" layoutX="317.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Label alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Information" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <VBox layoutX="78.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="131.13671875">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="131.13671875" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="131.13671875">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="131.13671875">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </HBox>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" wrappingWidth="131.13671875" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1:" wrappingWidth="54.0" />
-                  <ImageView fx:id="t1Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="t1Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Capture.JPG" />
                      </image>
