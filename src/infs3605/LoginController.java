@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
             
             ResultSet loginRS=database.getResultSet(loginQuery);
             if (loginRS.next()) {
-                pageswticher.switcher(event, "DisplayAllocation.fxml");
+                pageswticher.switcher(event, "AllocationTable.fxml");
                 loggedInUser = user;
             } else {
                 username.clear();

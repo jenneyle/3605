@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="infs3605.AllocationTableController">
+   <children>
+      <VBox layoutX="43.0" layoutY="43.0" prefHeight="323.0" prefWidth="509.0">
+         <children>
+            <TableView fx:id="allocationTable" prefHeight="326.0" prefWidth="509.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
+

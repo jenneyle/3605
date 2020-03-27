@@ -23,28 +23,37 @@ public class Allocation {
     private StringProperty course_id;
     private StringProperty staff_id;
     private DoubleProperty weight;
-    private Button button;
-    
-    public Allocation(){
-        this(0,"","","",0.0);
-    }
+    private Button editButton;
+        
+//    public Allocation(){
+//        this(0,"","","",0.0);
+//    }
    
 
-    public Allocation(int year, String term,String course_id, String staff_id,double weight) {
-        this.year=new SimpleIntegerProperty(year);
-        this.term=new SimpleStringProperty(term);
-        this.course_id =new SimpleStringProperty(course_id);
+//    public Allocation(int year, String term,String course_id, String staff_id,double weight) {
+//        this.year=new SimpleIntegerProperty(year);
+//        this.term=new SimpleStringProperty(term);
+//        this.course_id =new SimpleStringProperty(course_id);
+//        this.staff_id = new SimpleStringProperty(staff_id);
+//        this.weight=new SimpleDoubleProperty(weight);
+//        this.button = new Button("Allocate");
+//    }
+
+    public Allocation(int year, String term, String course_id, String staff_id) {
+        this.year = new SimpleIntegerProperty(year);
+        this.term = new SimpleStringProperty(term);
+        this.course_id = new SimpleStringProperty(course_id);
         this.staff_id = new SimpleStringProperty(staff_id);
-        this.weight=new SimpleDoubleProperty(weight);
-        this.button = new Button("Allocate");
+        this.editButton = new Button("Edit");
     }
 
+
     public Button getButton() {
-        return button;
+        return editButton;
     }
 
     public void setButton(Button button) {
-        this.button = button;
+        this.editButton = button;
     }
 
     public String getCourse_id() {
