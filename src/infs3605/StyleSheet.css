@@ -14,3 +14,22 @@ and open the template in the editor.
 .textbox{
     -fx-border-color: #d5e2ea;
 }
+
+
+.leftBackground{
+
+    -fx-background-color: #dbe4ed;
+}
+.rightBackground{
+    -fx-background-color: #e7e7e7;
+
+}
+
+
+.sideButton:hover {
+    -fx-background-color: #a3bad2; 
+}
+
+//#6495ED
+
+//00BFFF

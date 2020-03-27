@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="infs3605.AllocationTableController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
-      <VBox layoutX="43.0" layoutY="43.0" prefHeight="323.0" prefWidth="509.0">
+      <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <TableView fx:id="allocationTable" prefHeight="326.0" prefWidth="509.0" />
+            <HBox layoutX="40.0" layoutY="145.0" prefHeight="33.0" prefWidth="123.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Courses " textAlignment="CENTER" wrappingWidth="129.587890625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="36.0" layoutY="110.0" prefHeight="33.0" prefWidth="123.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Allocate" textAlignment="CENTER" wrappingWidth="133.587890625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="36.0" layoutY="180.0" prefHeight="33.0" prefWidth="123.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="blah" textAlignment="CENTER" wrappingWidth="133.587890625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <ImageView fitHeight="33.0" fitWidth="134.0" layoutX="61.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/LecticLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="201.0" layoutY="98.0" prefHeight="304.0" prefWidth="461.0">
+         <children>
+            <TableView fx:id="allocationTable" prefHeight="299.0" prefWidth="430.0" />
          </children>
       </VBox>
    </children>
 </AnchorPane>
-
