@@ -22,12 +22,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,6 +42,7 @@ import javafx.scene.text.Text;
 public class StaffAllocationController implements Initializable {
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    public static Boolean knowledgewarning=false;
     @FXML
     Button submit;
 
@@ -97,17 +103,29 @@ public class StaffAllocationController implements Initializable {
         String courseCode = courseComboBox.getValue();
         String term = termComboBox.getValue();
         int year = yearComboBox.getValue();
-
-        Statement st = conn.createStatement();
+        ConstraintsCheck rulecheck=new ConstraintsCheck();
+        rulecheck.check(courseCode, staffComboBox.getValue(), year, term);
+        ArrayList<String> warning = ConstraintsCheck.warning;
+        if(warning.isEmpty() || knowledgewarning==true){
+            Statement st = conn.createStatement();
         try {
             String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)" + 
                     " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
             st.execute(insertData);
+            knowledgewarning=false;
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        pageSwitcher.switcher(event, "DisplayAllocation.fxml");
+        //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
+        }else{
+            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage=new Stage();
+            stage.setScene(scene);
+            stage.show();
+        }
+        
     }
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="infs3605.WarningController">
+   <children>
+      <TableView fx:id="table" layoutX="102.0" layoutY="44.0" prefHeight="280.0" prefWidth="384.0">
+        <columns>
+          <TableColumn fx:id="warnings" prefWidth="383.0" text="Warning Messages!" />
+        </columns>
+      </TableView>
+      <Button fx:id="con" layoutX="172.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleConBtn" text="continue" />
+      <Button fx:id="cancel" layoutX="336.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleCancelBtn" text="cancel" />
+   </children>
+</AnchorPane>

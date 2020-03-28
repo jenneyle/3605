@@ -33,8 +33,7 @@ public class Database {
    
     public ResultSet getResultSet(String sqlstatement) throws SQLException {
         openConnection();
-        java.sql.Statement statement = conn.createStatement();
-        ResultSet RS = statement.executeQuery(sqlstatement);
+        ResultSet RS = conn.createStatement().executeQuery(sqlstatement);
         return RS;
         
     }
