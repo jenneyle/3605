@@ -99,16 +99,13 @@ public class StaffAllocationController implements Initializable {
 
     //TODO: autofill coursename
     public void handleSubmitBtn(ActionEvent event) throws IOException, SQLException {
-
+        ConstraintsCheck.warning.clear();
         String courseCode = courseComboBox.getValue();
         String term = termComboBox.getValue();
         int year = yearComboBox.getValue();
         ConstraintsCheck rulecheck=new ConstraintsCheck();
         rulecheck.check(courseCode, staffID, year, term);
         ArrayList<String> warning = ConstraintsCheck.warning;
-        for(String i:warning){
-            System.out.println(i);
-        }
         if(warning.isEmpty() || knowledgewarning==true){
             Statement st = conn.createStatement();
         try {

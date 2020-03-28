@@ -7,7 +7,9 @@ package infs3605;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -35,15 +38,14 @@ public class WarningController implements Initializable {
     @FXML
     Button cancel;
     @FXML
-    TableColumn<ArrayList,String> warnings;
+    TableColumn<String,String> warnings;
     @FXML
-    TableView table;
+    TableView<String> table;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> data = FXCollections.observableArrayList();
-        for(String i:ConstraintsCheck.warning){
-            data.add(i);
-        }
+        Collection<String> list = ConstraintsCheck.warning;
+        warnings.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+        ObservableList<String> data = FXCollections.observableArrayList(list);
         table.setItems(data);
     }
     public void handleConBtn(ActionEvent event){
