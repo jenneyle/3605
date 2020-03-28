@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/Infs3605.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/AllocationTable.fxml</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/DisplayAllocationController.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/Allocation.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/LoginController.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/AllocationTableController.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/StaffAllocationController.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/ConstraintsCheck.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/Database.java</file>
-            <file>file:/C:/Users/freey/Desktop/3605/src/infs3605/SignupController.java</file>
+            <file>file:/Users/Mashilan/Desktop/3605/src/infs3605/ConstraintsCheck.java</file>
+            <file>file:/Users/Mashilan/Desktop/3605/src/infs3605/Infs3605.java</file>
+            <file>file:/Users/Mashilan/Desktop/3605/src/infs3605/WarningController.java</file>
+            <file>file:/Users/Mashilan/Desktop/3605/src/infs3605/StaffAllocationController.java</file>
         </group>
     </open-files>
 </project-private>
