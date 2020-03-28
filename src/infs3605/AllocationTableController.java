@@ -6,6 +6,7 @@
 package infs3605;
 
 import com.sun.prism.impl.Disposer.Record;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
@@ -35,7 +37,8 @@ public class AllocationTableController implements Initializable {
     TableView allocationTable;
 
     Database database = new Database();
-
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -49,6 +52,7 @@ public class AllocationTableController implements Initializable {
 
         ObservableList<Allocation> data = FXCollections.observableArrayList();
 
+        //TODO: Rani to edit
         try {
             ResultSet rs = database.getResultSet("SELECT * FROM Allocation ORDER BY allocation_year, allocation_term");
             while (rs.next()) {
@@ -82,6 +86,12 @@ public class AllocationTableController implements Initializable {
         });
         allocationTable.setItems(data);
 
+    }
+    
+      //button to allocate staff to course
+    @FXML
+    public void handleAllocateBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
 }
 
