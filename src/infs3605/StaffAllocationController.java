@@ -104,8 +104,11 @@ public class StaffAllocationController implements Initializable {
         String term = termComboBox.getValue();
         int year = yearComboBox.getValue();
         ConstraintsCheck rulecheck=new ConstraintsCheck();
-        rulecheck.check(courseCode, staffComboBox.getValue(), year, term);
+        rulecheck.check(courseCode, staffID, year, term);
         ArrayList<String> warning = ConstraintsCheck.warning;
+        for(String i:warning){
+            System.out.println(i);
+        }
         if(warning.isEmpty() || knowledgewarning==true){
             Statement st = conn.createStatement();
         try {
@@ -113,6 +116,7 @@ public class StaffAllocationController implements Initializable {
                     " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
             st.execute(insertData);
             knowledgewarning=false;
+            System.out.println("insert success");
 
         } catch (Exception ex) {
             ex.printStackTrace();
