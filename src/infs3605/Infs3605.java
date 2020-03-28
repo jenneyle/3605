@@ -22,7 +22,7 @@ public class Infs3605 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("StaffAllocation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AllocationTable.fxml"));
         Scene scene = new Scene(root);
       
         stage.setScene(scene);

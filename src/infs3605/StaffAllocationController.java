@@ -42,7 +42,7 @@ import javafx.stage.Stage;
 public class StaffAllocationController implements Initializable {
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    public static Boolean knowledgewarning=false;
+    public static Boolean knowledgewarning = false;
     @FXML
     Button submit;
 
@@ -59,6 +59,7 @@ public class StaffAllocationController implements Initializable {
     @FXML
     private ComboBox<String> courseComboBox;
     String staffID;
+    String staffFname;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,13 +85,11 @@ public class StaffAllocationController implements Initializable {
             while (rs2.next()) {
                 staffList.add(rs2.getString(2) + " " + rs2.getString(3));
                 staffComboBox.setItems(staffList);
-                staffID = rs2.getString(1);
-                
+                // staffID = rs2.getString(1);
 
             }
-            //later edition -- dont need current year in table as we can get current date from SQL. (Select CURRENT_YEAR;)
             ResultSet rs3 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
-            yearList.addAll(rs3.getInt(1), rs3.getInt(1)+1, rs3.getInt(1)+2, rs3.getInt(1)+3, rs3.getInt(1)+4);
+            yearList.addAll(rs3.getInt(1), rs3.getInt(1) + 1, rs3.getInt(1) + 2, rs3.getInt(1) + 3, rs3.getInt(1) + 4);
             yearComboBox.setItems(yearList);
         } catch (Exception e) {
 
@@ -102,31 +101,45 @@ public class StaffAllocationController implements Initializable {
         ConstraintsCheck.warning.clear();
         String courseCode = courseComboBox.getValue();
         String term = termComboBox.getValue();
+        String staffName = staffComboBox.getValue();
+
+        //getting first name of the staff
+        staffName = staffName.substring(0, staffName.indexOf(" "));
+
+        //getting the staff ID from the staff name
+        try {
+            Database.openConnection();
+            ResultSet rs = conn.createStatement().executeQuery("Select staff_id FROM Staff WHERE Fname = '" + staffName + "'");
+            staffID = rs.getString(1);
+        } catch (Exception e) {
+        }
+
         int year = yearComboBox.getValue();
-        ConstraintsCheck rulecheck=new ConstraintsCheck();
+        ConstraintsCheck rulecheck = new ConstraintsCheck();
         rulecheck.check(courseCode, staffID, year, term);
         ArrayList<String> warning = ConstraintsCheck.warning;
-        if(warning.isEmpty() || knowledgewarning==true){
-            Statement st = conn.createStatement();
-        try {
-            String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)" + 
-                    " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
-            st.execute(insertData);
-            knowledgewarning=false;
-            System.out.println("insert success");
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
-        }else{
+        if (warning.isEmpty() || knowledgewarning == true) {
+            Statement st = conn.createStatement();
+            try {
+                String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)"
+                        + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
+                st.execute(insertData);
+                knowledgewarning = false;
+                System.out.println("insert success");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
+        } else {
             Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
             Scene scene = new Scene(root);
-            Stage stage=new Stage();
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
         }
-        
+
     }
 
 }
