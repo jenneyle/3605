@@ -16,26 +16,27 @@ import javafx.scene.control.TableCell;
  * @author freey
  */
 public class ButtonCell extends TableCell<Record, Boolean> {
+
     Button cellButton = new Button("Edit");
-    ButtonCell(){
-            
-        	//Action when the button is pressed
-            cellButton.setOnAction(new EventHandler<ActionEvent>(){
 
-                @Override
-                public void handle(ActionEvent t) {
-                   
-                }
-            });
-        }
+    ButtonCell() {
 
-        //Display button if the row is not empty
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if(!empty){
-                setGraphic(cellButton);
+        //Action when the button is pressed
+        cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+
             }
-        }
-}
+        });
+    }
 
+    //Display button if the row is not empty
+    @Override
+    protected void updateItem(Boolean t, boolean empty) {
+        super.updateItem(t, empty);
+        if (!empty) {
+            setGraphic(cellButton);
+        }
+    }
+}
