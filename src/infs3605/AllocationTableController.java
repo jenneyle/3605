@@ -34,14 +34,18 @@ import javafx.util.Callback;
 public class AllocationTableController implements Initializable {
 
     @FXML
-    TableView allocationTable;
-
+    public TableView allocationTable;
+    
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
+    
+    ObservableList<Allocation> data = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        TableColumn allocationID = new TableColumn("ID");
         TableColumn year = new TableColumn("YEAR");
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
@@ -50,18 +54,18 @@ public class AllocationTableController implements Initializable {
 
         allocationTable.getColumns().addAll(year, term, courseId, staffId, editAllocation);
 
-        ObservableList<Allocation> data = FXCollections.observableArrayList();
-
         //TODO: Rani to edit
         try {
             ResultSet rs = database.getResultSet("SELECT * FROM Allocation ORDER BY allocation_year, allocation_term");
             while (rs.next()) {
-                data.add(new Allocation(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                data.add(new Allocation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
+        allocationID.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("allocation_id"));
+        allocationID.setVisible(false);
         year.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Year"));
         term.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Term"));
         courseId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Course_id"));
