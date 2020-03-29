@@ -95,6 +95,7 @@ public class UpdateWeightingsController implements Initializable {
         int intUpdatePrepDevHrs = Integer.parseInt(updateFaceHrs);
         Statement st = conn.createStatement();
         try {
+            //working on SQL statement for update
         //    String updateData = ("UPDATE Weighting SET course_id = '" + courseCode + "', Year = '" + year + "', Term = '" + term + '", ");
             //SET column1 = value1, column2 = value2,
             //WHERE course_id = course code
