@@ -93,5 +93,10 @@ public class AllocationTableController implements Initializable {
     public void handleAllocateBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
+    //button to view course weightings
+    @FXML
+    public void handleWeightingBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Weighting.fxml");
+    }
 }
 

@@ -6,6 +6,7 @@
 package infs3605;
 
 import com.sun.prism.impl.Disposer;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
@@ -75,5 +77,11 @@ public class WeightingController implements Initializable {
         weightingTable.setItems(weighting);
     
     }
+    @FXML
+    public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "UpdateWeightings.fxml");
+
+    }
+    
 
 }
