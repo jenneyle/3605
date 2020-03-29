@@ -29,7 +29,6 @@ import javafx.util.Callback;
  *
  * @author jenneyle
  */
-
 //To dispay Weighting table
 public class WeightingController implements Initializable {
 
@@ -56,17 +55,17 @@ public class WeightingController implements Initializable {
         weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
-        
-       try {
+
+        try {
             ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
             while (rs.next()) {
-                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
+                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-       
+
         weightingCourse.setCellValueFactory(new PropertyValueFactory<Weighting, String>("course_id"));
         weightingYear.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("Year"));
         weightingTerm.setCellValueFactory(new PropertyValueFactory<Weighting, String>("Term"));
@@ -75,13 +74,13 @@ public class WeightingController implements Initializable {
         weightingPrepHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("prep_dev"));
         weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("weighting_term"));
         weightingTable.setItems(weighting);
-    
+
     }
+
     @FXML
     public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "UpdateWeightings.fxml");
 
     }
-    
 
 }
