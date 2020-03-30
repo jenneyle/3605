@@ -30,12 +30,13 @@ public class Allocation {
     private Button editButton;
 
     // ObservableList<Allocation> allocations = AllocationTableController.allocationTable.getSelectionModel().getSelectedItems();
-    public Allocation(int id, int year, String term, String course_id, String staff_id) {
+    public Allocation(int id, String course_id, int year, String term, double weight, String staff_id) {
         this.id = new SimpleIntegerProperty(id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
         this.course_id = new SimpleStringProperty(course_id);
         this.staff_id = new SimpleStringProperty(staff_id);
+        this.weight = new SimpleDoubleProperty(weight);
         this.editButton = new Button("Edit");
 
 //        editButton.setOnAction(e -> {
