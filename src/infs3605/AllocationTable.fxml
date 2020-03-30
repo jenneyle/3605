@@ -53,9 +53,10 @@
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
             <TableView fx:id="allocationTable" layoutX="21.0" layoutY="54.0" prefHeight="299.0" prefWidth="467.0" />
-            <ComboBox fx:id="courseSelectionCB" layoutX="210.0" layoutY="25.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="117.0" promptText="Course" />
+            <ComboBox fx:id="courseSelectionCB" layoutX="210.0" layoutY="25.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" />
             <ComboBox fx:id="termSelectionCB" layoutX="113.0" layoutY="25.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" />
             <ComboBox fx:id="yearSelectionCB" layoutX="19.0" layoutY="25.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" />
+            <Button fx:id="clearFilterBtn" layoutX="312.0" layoutY="25.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
          </children>
       </AnchorPane>
    </children>
