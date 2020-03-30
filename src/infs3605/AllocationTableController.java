@@ -38,22 +38,22 @@ public class AllocationTableController implements Initializable {
     
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    
-    
+   
     ObservableList<Allocation> data = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        //Initialise the columns
         TableColumn allocationID = new TableColumn("ID");
         TableColumn year = new TableColumn("YEAR");
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
         TableColumn staffId = new TableColumn("STAFF ID");
         TableColumn editAllocation = new TableColumn("EDIT");
-
+        //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, staffId, editAllocation);
-
+        
         //TODO: Rani to edit
         try {
             ResultSet rs = database.getResultSet("SELECT * FROM Allocation ORDER BY allocation_year, allocation_term");
@@ -63,7 +63,8 @@ public class AllocationTableController implements Initializable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
+        
+        //Based on Allocation.class, populate the cells of the table
         allocationID.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("allocation_id"));
         allocationID.setVisible(false);
         year.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Year"));
@@ -71,7 +72,8 @@ public class AllocationTableController implements Initializable {
         courseId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Course_id"));
         staffId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_id"));
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
-
+        
+        // Edit Button
         editAllocation.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
@@ -88,6 +90,8 @@ public class AllocationTableController implements Initializable {
             }
 
         });
+        
+        //Populate the Table
         allocationTable.setItems(data);
 
     }
