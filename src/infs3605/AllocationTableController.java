@@ -157,26 +157,82 @@ public class AllocationTableController implements Initializable {
     @FXML
     public void selectYearComboBox(ActionEvent event) {        
         data.removeAll(data);
-        termSelectionCB.setValue(termSelectionCB.getPromptText());
-        courseSelectionCB.setValue(courseSelectionCB.getPromptText());
+        boolean termSelected = (termSelectionCB.getValue() != null) 
+                && (termSelectionCB.getValue() != termSelectionCB.getPromptText());
+        boolean courseSelected = (courseSelectionCB.getValue() != null) 
+                && (courseSelectionCB.getValue() != courseSelectionCB.getPromptText());
         
-        //Get Complete Rows from Database
-        try {
-            ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
-                                                + ", a.allocation_term, w.weighting_term, a.staff_id"
-                                                + " FROM Allocation a" 
-                                                + " LEFT OUTER JOIN Weighting w" 
-                                                + " ON a.course_id = w.course_id" 
-                                                + " AND a.allocation_year = w.Year" 
-                                                + " AND a.allocation_term = w.Term"
-                                                + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
-                                                );
-            while (rs.next()) {
-                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+        
+        if (termSelected == false && courseSelected == false) {
+            termSelectionCB.setValue(termSelectionCB.getPromptText());
+            courseSelectionCB.setValue(courseSelectionCB.getPromptText());
+            
+            //Get Complete Rows from Database
+            try {
+                ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
+                                                    + ", a.allocation_term, w.weighting_term, a.staff_id"
+                                                    + " FROM Allocation a" 
+                                                    + " LEFT OUTER JOIN Weighting w" 
+                                                    + " ON a.course_id = w.course_id" 
+                                                    + " AND a.allocation_year = w.Year" 
+                                                    + " AND a.allocation_term = w.Term"
+                                                    + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
+                                                    );
+                while (rs.next()) {
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            
+        } else if (termSelected == true && courseSelected == false) {
+            courseSelectionCB.setValue(courseSelectionCB.getPromptText());
+            
+            //Get Complete Rows from Database
+            try {
+                ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
+                                                    + ", a.allocation_term, w.weighting_term, a.staff_id"
+                                                    + " FROM Allocation a" 
+                                                    + " LEFT OUTER JOIN Weighting w" 
+                                                    + " ON a.course_id = w.course_id" 
+                                                    + " AND a.allocation_year = w.Year" 
+                                                    + " AND a.allocation_term = w.Term"
+                                                    + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
+                                                    + " AND a.allocation_term = '" + termSelectionCB.getValue() + "'"
+                                                    );
+                while (rs.next()) {
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
+        } else if (termSelected == false && courseSelected == true){
+            termSelectionCB.setValue(termSelectionCB.getPromptText());
+            
+            //Get Complete Rows from Database
+            try {
+                ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
+                                                    + ", a.allocation_term, w.weighting_term, a.staff_id"
+                                                    + " FROM Allocation a" 
+                                                    + " LEFT OUTER JOIN Weighting w" 
+                                                    + " ON a.course_id = w.course_id" 
+                                                    + " AND a.allocation_year = w.Year" 
+                                                    + " AND a.allocation_term = w.Term"
+                                                    + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
+                                                    + " AND course_id = '" + courseSelectionCB.getValue() + "'"
+                                                    );
+                while (rs.next()) {
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
+        
+        
+        
+        
         
         //Populate the Table
         allocationTable.setItems(data);
