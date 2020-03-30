@@ -151,6 +151,8 @@ public class AllocationTableController implements Initializable {
     @FXML
     public void selectYearComboBox(ActionEvent event) {        
         data.removeAll(data);
+        termSelectionCB.setValue(termSelectionCB.getPromptText());
+        courseSelectionCB.setValue(courseSelectionCB.getPromptText());
         
         //Get Complete Rows from Database
         try {
@@ -177,6 +179,8 @@ public class AllocationTableController implements Initializable {
     @FXML
     public void selectTermComboBox(ActionEvent event) {        
         data.removeAll(data);
+        yearSelectionCB.setValue(yearSelectionCB.getPromptText());
+        courseSelectionCB.setValue(courseSelectionCB.getPromptText());
         
         //Get Complete Rows from Database
         try {
@@ -203,6 +207,8 @@ public class AllocationTableController implements Initializable {
     @FXML
     public void selectCourseComboBox(ActionEvent event) {        
         data.removeAll(data);
+        termSelectionCB.setValue(termSelectionCB.getPromptText());
+        yearSelectionCB.setValue(courseSelectionCB.getPromptText());
         
         //Get Complete Rows from Database
         try {
