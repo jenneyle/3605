@@ -8,10 +8,9 @@ package infs3605;
 import com.sun.prism.impl.Disposer.Record;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,11 +35,14 @@ public class AllocationTableController implements Initializable {
 
     @FXML
     public TableView allocationTable;
+    @FXML
+    public ComboBox yearSelectionCB;
     
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
    
     ObservableList<Allocation> data = FXCollections.observableArrayList();
+    ObservableList<String> years = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,7 +58,20 @@ public class AllocationTableController implements Initializable {
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, staffId, weighting, editAllocation);
         
-        //TODO: Rani to edit
+        //Get Complete Rows from Database
+        try {
+            ResultSet yearRS = database.getResultSet("SELECT DISTINCT allocation_year FROM Allocation");
+            while (yearRS.next()) {
+                years.add(yearRS.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        //Populate Combo Box
+        yearSelectionCB.setItems(years);
+        
+        //Get Complete Rows from Database
         try {
             ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
                                                 + ", a.allocation_term, w.weighting_term, a.staff_id"
@@ -114,6 +130,34 @@ public class AllocationTableController implements Initializable {
     @FXML
     public void handleWeightingBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+    
+    @FXML
+    public void selectYearComboBox(ActionEvent event) {
+        System.out.print("Being called COMBOBOX." + yearSelectionCB.getValue());
+        
+        data.removeAll(data);
+        
+        //Get Complete Rows from Database
+        try {
+            ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
+                                                + ", a.allocation_term, w.weighting_term, a.staff_id"
+                                                + " FROM Allocation a" 
+                                                + " LEFT OUTER JOIN Weighting w" 
+                                                + " ON a.course_id = w.course_id" 
+                                                + " AND a.allocation_year = w.Year" 
+                                                + " AND a.allocation_term = w.Term"
+                                                + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
+                                                );
+            while (rs.next()) {
+                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        //Populate the Table
+        allocationTable.setItems(data);
     }
 }
 
