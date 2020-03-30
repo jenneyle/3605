@@ -62,11 +62,11 @@ public class AllocationTableController implements Initializable {
         TableColumn year = new TableColumn("YEAR");
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
-        TableColumn staffId = new TableColumn("STAFF ID");
         TableColumn weighting = new TableColumn("WEIGHTING");
+        TableColumn staffId = new TableColumn("STAFF ID");        
         editAllocation = new TableColumn("EDIT");
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, staffId, weighting, editAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffId, editAllocation);
         
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -110,6 +110,7 @@ public class AllocationTableController implements Initializable {
 
     }
     
+    //Fetch Rows from Database and set Table
     public void setAllTable() {
         //Get Complete Rows from Database
         try {
