@@ -50,15 +50,23 @@ public class AllocationTableController implements Initializable {
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
         TableColumn staffId = new TableColumn("STAFF ID");
+        TableColumn weighting = new TableColumn("WEIGHTING");
         TableColumn editAllocation = new TableColumn("EDIT");
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, staffId, editAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, staffId, weighting, editAllocation);
         
         //TODO: Rani to edit
         try {
-            ResultSet rs = database.getResultSet("SELECT * FROM Allocation ORDER BY allocation_year, allocation_term");
+            ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
+                                                + ", a.allocation_term, w.weighting_term, a.staff_id"
+                                                + " FROM Allocation a" 
+                                                + " LEFT OUTER JOIN Weighting w" 
+                                                + " ON a.course_id = w.course_id" 
+                                                + " AND a.allocation_year = w.Year" 
+                                                + " AND a.allocation_term = w.Term"
+                                                );
             while (rs.next()) {
-                data.add(new Allocation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -70,6 +78,7 @@ public class AllocationTableController implements Initializable {
         year.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Year"));
         term.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Term"));
         courseId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Course_id"));
+        weighting.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Weight"));
         staffId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_id"));
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
         
