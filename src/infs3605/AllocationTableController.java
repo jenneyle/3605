@@ -35,6 +35,7 @@ public class AllocationTableController implements Initializable {
 
     @FXML
     public TableView allocationTable;
+    TableColumn editAllocation;
     @FXML
     public ComboBox yearSelectionCB;
     @FXML
@@ -60,7 +61,7 @@ public class AllocationTableController implements Initializable {
         TableColumn courseId = new TableColumn("COURSE ID");
         TableColumn staffId = new TableColumn("STAFF ID");
         TableColumn weighting = new TableColumn("WEIGHTING");
-        TableColumn editAllocation = new TableColumn("EDIT");
+        editAllocation = new TableColumn("EDIT");
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, staffId, weighting, editAllocation);
         
@@ -114,6 +115,14 @@ public class AllocationTableController implements Initializable {
         staffId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_id"));
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
         
+        setEditButtons();
+        
+        //Populate the Table
+        allocationTable.setItems(data);
+
+    }
+    
+    public void setEditButtons() {
         // Edit Button
         editAllocation.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
@@ -132,9 +141,6 @@ public class AllocationTableController implements Initializable {
 
         });
         
-        //Populate the Table
-        allocationTable.setItems(data);
-
     }
     
       //button to allocate staff to course
@@ -174,6 +180,7 @@ public class AllocationTableController implements Initializable {
         
         //Populate the Table
         allocationTable.setItems(data);
+        setEditButtons();
     }
     
     @FXML
@@ -202,6 +209,7 @@ public class AllocationTableController implements Initializable {
         
         //Populate the Table
         allocationTable.setItems(data);
+        setEditButtons();
     }
     
     @FXML
@@ -230,6 +238,7 @@ public class AllocationTableController implements Initializable {
         
         //Populate the Table
         allocationTable.setItems(data);
+        setEditButtons();
     }
 }
 
