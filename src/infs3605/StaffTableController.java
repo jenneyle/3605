@@ -31,7 +31,7 @@ import javafx.util.Callback;
  *
  * @author Rjian
  */
-public class StaffInfoController implements Initializable {
+public class StaffTableController implements Initializable {
     
     @FXML
     public TableView staffTable;
