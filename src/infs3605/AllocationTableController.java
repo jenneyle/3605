@@ -151,7 +151,7 @@ public class AllocationTableController implements Initializable {
         
     }
     
-      //button to allocate staff to course
+    //button to allocate staff to course
     @FXML
     public void handleAllocateBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");

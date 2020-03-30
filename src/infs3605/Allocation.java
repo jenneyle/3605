@@ -21,7 +21,6 @@ import javafx.scene.control.Button;
 public class Allocation {
 
     private IntegerProperty id;
-
     private IntegerProperty year;
     private StringProperty term;
     private StringProperty course_id;
