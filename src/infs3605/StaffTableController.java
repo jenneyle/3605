@@ -35,7 +35,7 @@ public class StaffTableController implements Initializable {
     
     @FXML
     public TableView staffTable;
-    TableColumn editAllocation;
+    TableColumn editStaff;
     @FXML
     public ComboBox staffTypeSelectionCB;
     @FXML
@@ -59,9 +59,9 @@ public class StaffTableController implements Initializable {
         TableColumn lName = new TableColumn("LAST NAME");
         TableColumn type = new TableColumn("STAFF TYPE");
         TableColumn capacity = new TableColumn("TEACHING CAPACITY");
-        editAllocation = new TableColumn("EDIT");
+        editStaff = new TableColumn("EDIT");
         //Add columns to tableview
-        staffTable.getColumns().addAll(id, fName, lName, type, capacity, editAllocation);
+        staffTable.getColumns().addAll(id, fName, lName, type, capacity, editStaff);
         
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -78,14 +78,14 @@ public class StaffTableController implements Initializable {
         
         setAllTable();
         
-        //Based on Allocation.class, populate the cells of the table
-        id.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("staffId"));
+        //Based on Staff.class, populate the cells of the table
+        id.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("staffId"));
         id.setVisible(false);
-        fName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("firstName"));
-        lName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("lastName"));
-        type.setCellValueFactory(new PropertyValueFactory<Allocation, String>("staffType"));
-        capacity.setCellValueFactory(new PropertyValueFactory<Allocation, Double>("staffCapacity"));
-        editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
+        fName.setCellValueFactory(new PropertyValueFactory<Staff, String>("firstName"));
+        lName.setCellValueFactory(new PropertyValueFactory<Staff, String>("lastName"));
+        type.setCellValueFactory(new PropertyValueFactory<Staff, String>("staffType"));
+        capacity.setCellValueFactory(new PropertyValueFactory<Staff, Double>("staffCapacity"));
+        editStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("editButton"));
         
         setEditButtons();
         
@@ -134,14 +134,14 @@ public class StaffTableController implements Initializable {
     
     public void setEditButtons() {
         // Edit Button
-        editAllocation.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+        editStaff.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
         });
 
-        editAllocation.setCellFactory(
+        editStaff.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
 
             @Override

@@ -24,6 +24,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 /**
@@ -35,7 +36,7 @@ public class CourseTableController implements Initializable {
 
     @FXML
     public TableView courseTable;
-    TableColumn editAllocation;
+    TableColumn editCourse;
     @FXML
     public ComboBox courseSelectionCB;
     @FXML
@@ -59,9 +60,9 @@ public class CourseTableController implements Initializable {
         TableColumn t1Col = new TableColumn("T1");
         TableColumn t2Col = new TableColumn("T2");
         TableColumn t3Col = new TableColumn("T3");
-        editAllocation = new TableColumn("EDIT");
+        editCourse = new TableColumn("EDIT");
         //Add columns to tableview
-        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, editAllocation);
+        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, editCourse);
         
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -79,12 +80,27 @@ public class CourseTableController implements Initializable {
         setAllTable();
         
         //Based on Course, populate the cells of the table
-        idCol.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("course_id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<Allocation, String>("courseName"));
-        t1Col.setCellValueFactory(new PropertyValueFactory<Allocation, String>("t1Offer"));
-        t2Col.setCellValueFactory(new PropertyValueFactory<Allocation, String>("t2Offer"));
-        t3Col.setCellValueFactory(new PropertyValueFactory<Allocation, Double>("t3Offer"));
-        editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
+        idCol.setCellValueFactory(new PropertyValueFactory<Course, Integer>("course_id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<Course, String>("courseName"));
+        t1Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t1Offer"));
+        
+        //https://code.makery.ch/blog/javafx-8-tableview-cell-renderer/
+//        t1Col.setCellFactory(column -> {
+//            return new TableCell<Course, String>() {
+//                @Override
+//                protected void updateItem(String item, boolean empty) {
+//                    super.updateItem(item, empty);
+//                    if (item.equals("1")) {
+//                        setStyle("-fx-background-color: green");
+//                    } else {
+//                        setStyle("-fx-background-color: red");
+//                    }
+//                }
+//            };
+//        });
+        t2Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t2Offer"));
+        t3Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t3Offer"));
+        editCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("editButton"));
         
         setEditButtons();
         
@@ -133,14 +149,14 @@ public class CourseTableController implements Initializable {
     
     public void setEditButtons() {
         // Edit Button
-        editAllocation.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+        editCourse.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
         });
 
-        editAllocation.setCellFactory(
+        editCourse.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
 
             @Override
