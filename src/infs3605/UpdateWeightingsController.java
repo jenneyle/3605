@@ -96,11 +96,18 @@ public class UpdateWeightingsController implements Initializable {
         Statement st = conn.createStatement();
         try {
             //working on SQL statement for update
-        //    String updateData = ("UPDATE Weighting SET course_id = '" + courseCode + "', Year = '" + year + "', Term = '" + term + '", ");
-            //SET column1 = value1, column2 = value2,
-            //WHERE course_id = course code
-            // SET course_id = 'courseCode', Term = 'term',
-           // st.execute(updateData);
+            String updateData = ("UPDATE Weighting SET course_id = '" + courseCode
+                    + ", ' Year = '" + year
+                    + ", ' Term = '" + term
+                    + ", ' students_enrolled = '" + intUpdateStudents
+                    + ", ' face_time = '" + intUpdateFaceHrs
+                    + ", ' prep_dev = '" + intUpdatePrepDevHrs + 
+                    "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';"); 
+//SET column1 = value1, column2 = value2,
+                    //"UPDATE User SET GOALSTEPS = '" + intNewStepGoal + "' WHERE USERNAME = '" + loggedInUser + "';" //WHERE course_id = course code
+                    // SET course_id = 'courseCode', Term = 'term',
+            st.execute(updateData);
+            
 
         } catch (Exception ex) {
             ex.printStackTrace();
