@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -55,6 +56,9 @@ public class UpdateWeightingsController implements Initializable {
 
     @FXML
     private TextField updateWeightingPrep;
+
+    @FXML
+    private Label updateMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,23 +96,22 @@ public class UpdateWeightingsController implements Initializable {
         String updateFaceHrs = updateWeightingFaceHrs.getText();
         int intUpdateFaceHrs = Integer.parseInt(updateFaceHrs);
         String updatePrepDevHrs = updateWeightingPrep.getText();
-        int intUpdatePrepDevHrs = Integer.parseInt(updateFaceHrs);
+        int intUpdatePrepDevHrs = Integer.parseInt(updatePrepDevHrs);
+
         Statement st = conn.createStatement();
         try {
-            //working on SQL statement for update
-            String updateData = ("UPDATE Weighting SET course_id = '" + courseCode
-                    + ", ' Year = '" + year
-                    + ", ' Term = '" + term
-                    + ", ' students_enrolled = '" + intUpdateStudents
-                    + ", ' face_time = '" + intUpdateFaceHrs
-                    + ", ' prep_dev = '" + intUpdatePrepDevHrs + 
-                    "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';"); 
-//SET column1 = value1, column2 = value2,
-                    //"UPDATE User SET GOALSTEPS = '" + intNewStepGoal + "' WHERE USERNAME = '" + loggedInUser + "';" //WHERE course_id = course code
-                    // SET course_id = 'courseCode', Term = 'term',
-            st.execute(updateData);
-            
-
+            String updateDatabase = ("UPDATE Weighting SET course_id = '" + courseCode
+                    + "', Year = '" + year
+                    + "', Term = '" + term
+                    + "',  students_enrolled = '" + intUpdateStudents
+                    + "',  face_time = '" + intUpdateFaceHrs
+                    + "',  prep_dev = '" + intUpdatePrepDevHrs
+                    + "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';");
+            st.execute(updateDatabase);
+            // "UPDATE User SET BODYFAT = '" + tNewBodyFat + "' WHERE USERNAME = '" + loggedInUser + "';"
+//            updateMsg.setText("Successfully submitted");
+//            updateMsg.setVisible(true);
+            System.out.println("Submitted");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
