@@ -38,7 +38,7 @@ public class UpdateWeightingsController implements Initializable {
 
     @FXML
     Button updateWeightingSubmit;
-    
+
     @FXML
     Button updateWeightingBack;
 
@@ -66,7 +66,6 @@ public class UpdateWeightingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //courseName = new Text();
         ObservableList<String> updateCourseList = FXCollections.observableArrayList();
         ObservableList<Integer> updateYearList = FXCollections.observableArrayList();
         ObservableList<String> updateTermList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
@@ -88,41 +87,42 @@ public class UpdateWeightingsController implements Initializable {
         }
     }
 
+    //Submit updates to the Weighting table
     public void handleSubmitBtn(ActionEvent event) throws IOException, SQLException {
 
         String courseCode = updateCourseComboBox.getValue();
         String term = updateTermComboBox.getValue();
         int year = updateYearComboBox.getValue();
+
         String updateStudents = updateWeightingStudents.getText();
-        int intUpdateStudents = Integer.parseInt(updateStudents);
+        int intUpdateStudents = Integer.valueOf(updateStudents);
 
         String updateFaceHrs = updateWeightingFaceHrs.getText();
-        int intUpdateFaceHrs = Integer.parseInt(updateFaceHrs);
+        int intUpdateFaceHrs = Integer.valueOf(updateFaceHrs);
+
         String updatePrepDevHrs = updateWeightingPrep.getText();
-        int intUpdatePrepDevHrs = Integer.parseInt(updatePrepDevHrs);
+        int intUpdatePrepDevHrs = Integer.valueOf(updatePrepDevHrs);
 
         Statement st = conn.createStatement();
         try {
             String updateDatabase = ("UPDATE Weighting SET course_id = '" + courseCode
-                    + "', Year = '" + year
-                    + "', Term = '" + term
-                    + "',  students_enrolled = '" + intUpdateStudents
-                    + "',  face_time = '" + intUpdateFaceHrs
-                    + "',  prep_dev = '" + intUpdatePrepDevHrs
+                    + "' , Year = '" + year
+                    + "' , Term = '" + term
+                    + "' ,  students_enrolled = '" + intUpdateStudents
+                    + "' ,  face_time = '" + intUpdateFaceHrs
+                    + "' ,  prep_dev = '" + intUpdatePrepDevHrs
                     + "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';");
             st.execute(updateDatabase);
-            // "UPDATE User SET BODYFAT = '" + tNewBodyFat + "' WHERE USERNAME = '" + loggedInUser + "';"
-//            updateMsg.setText("Successfully submitted");
-//            updateMsg.setVisible(true);
             System.out.println("Submitted");
+            updateMsg.setText("Successfully submitted");
+            updateMsg.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        pageSwitcher.switcher(event, "Weighting.fxml");
     }
 
+    //Back button to Weighting page
     public void handleBackBtn(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "UpdateWeightings.fxml");
-        System.out.println("Switching to Allocation Table");
+        pageSwitcher.switcher(event, "Weighting.fxml");
     }
 }
