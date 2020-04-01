@@ -38,6 +38,9 @@ public class UpdateWeightingsController implements Initializable {
 
     @FXML
     Button updateWeightingSubmit;
+    
+    @FXML
+    Button updateWeightingBack;
 
     @FXML
     ComboBox<String> updateCourseComboBox;
@@ -116,5 +119,10 @@ public class UpdateWeightingsController implements Initializable {
             ex.printStackTrace();
         }
         pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+
+    public void handleBackBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "UpdateWeightings.fxml");
+        System.out.println("Switching to Allocation Table");
     }
 }

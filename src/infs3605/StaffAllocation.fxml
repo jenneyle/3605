@@ -42,5 +42,6 @@
             <Font name="Candara" size="25.0" />
          </font>
       </Label>
+      <Button fx:id="back" layoutX="196.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="15.0" prefWidth="59.0" text="Back" />
    </children>
 </AnchorPane>

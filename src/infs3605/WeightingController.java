@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,6 +32,9 @@ import javafx.util.Callback;
  */
 //To dispay Weighting table
 public class WeightingController implements Initializable {
+
+    @FXML
+    Button back;
 
     @FXML
     TableView weightingTable;
@@ -81,6 +85,11 @@ public class WeightingController implements Initializable {
     public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "UpdateWeightings.fxml");
 
+    }
+
+    public void handleBackBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+        System.out.println("Switching to Allocation Table");
     }
 
 }

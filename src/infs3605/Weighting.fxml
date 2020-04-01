@@ -37,5 +37,6 @@
             <Font name="Candara" size="25.0" />
          </font>
       </Label>
+      <Button fx:id="back" layoutX="194.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleBackBtn" text="Back" />
    </children>
 </AnchorPane>

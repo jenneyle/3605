@@ -11,10 +11,11 @@
       <ComboBox fx:id="updateCourseComboBox" layoutX="52.0" layoutY="80.0" prefHeight="27.0" prefWidth="201.0" promptText="Course Code" />
       <ComboBox fx:id="updateYearComboBox" layoutX="52.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Year" />
       <ComboBox fx:id="updateTermComboBox" layoutX="162.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Term" />
-      <Button fx:id="updateWeightingSubmit" layoutX="321.0" layoutY="322.0" mnemonicParsing="false" text="Submit" />
+      <Button fx:id="updateWeightingSubmit" layoutX="321.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
       <TextField fx:id="updateWeightingStudents" layoutX="52.0" layoutY="165.0" prefHeight="27.0" prefWidth="201.0" text="Enter no. of students enrolled" />
       <TextField fx:id="updateWeightingFaceHrsupdateWeightingFaceHrs" layoutX="52.0" layoutY="200.0" prefHeight="27.0" prefWidth="201.0" text="Enter no. face to face hours" />
       <TextField fx:id="updateWeightingPrep" layoutX="52.0" layoutY="235.0" prefHeight="27.0" prefWidth="201.0" text="Enter prep and dev hours" />
       <Label fx:id="updateMsg" layoutX="401.0" layoutY="327.0" text="Label" />
+      <Button fx:id="updateWeightingBack" layoutX="52.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackBtn" text="Back" />
    </children>
 </AnchorPane>

@@ -42,9 +42,13 @@ import javafx.stage.Stage;
 public class StaffAllocationController implements Initializable {
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+
     public static Boolean knowledgewarning = false;
     @FXML
     Button submit;
+
+    @FXML
+    Button back;
 
     @FXML
     Text courseName;
@@ -142,4 +146,8 @@ public class StaffAllocationController implements Initializable {
 
     }
 
+    public void handleBackBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+        System.out.println("Switching to Allocation Table");
+    }
 }
