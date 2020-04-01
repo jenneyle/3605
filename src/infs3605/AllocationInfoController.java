@@ -49,7 +49,7 @@ public class AllocationInfoController {
         courseName.setText(iCourseName);
         staffId.setText(iStaffId);
         staffName.setText(iStaffName);
-        yearTerm.setText("In: " + iYearTerm);
+        yearTerm.setText(iYearTerm);
 
     }
 }

@@ -6,64 +6,58 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="364.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationInfoController">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="316.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
-      <Label alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Allocation Information" textAlignment="CENTER">
+      <Button fx:id="back" layoutX="277.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Label alignment="CENTER" layoutX="82.0" layoutY="35.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Allocation Information" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <VBox layoutX="78.0" layoutY="55.0" prefHeight="200.0" prefWidth="100.0">
+      <Button fx:id="back1" layoutX="141.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Edit" textFill="#414446" />
+      <Button fx:id="back11" layoutX="209.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Delete" textFill="#414446" />
+      <HBox layoutX="45.0" layoutY="90.0" prefHeight="28.0" prefWidth="282.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="95.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="131.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="has been allocated to:" wrappingWidth="227.13671875">
+            <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="147.13671875">
                <font>
-                  <Font size="15.0" />
+                  <Font size="22.0" />
                </font>
             </Text>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="127.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="staffName" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name" wrappingWidth="116.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-            <Text fx:id="yearTerm" strokeType="OUTSIDE" strokeWidth="0.0" text="Year + Term" wrappingWidth="244.13671875">
+            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" wrappingWidth="162.13671875">
                <font>
-                  <Font size="15.0" />
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox layoutX="60.0" layoutY="157.0" prefHeight="88.0" prefWidth="162.0">
+         <children>
+            <Text fx:id="staffName" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name" wrappingWidth="147.13671579770744">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Pane prefHeight="10.0" prefWidth="163.0" />
+            <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="127.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Pane prefHeight="10.0" prefWidth="163.0" />
+            <Text fx:id="yearTerm" strokeType="OUTSIDE" strokeWidth="0.0" text="Year + Term" wrappingWidth="162.1367155611515">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Text>
          </children>
       </VBox>
-      <Button fx:id="back1" layoutX="263.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Edit" textFill="#414446" />
-      <Button fx:id="back11" layoutX="196.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Delete" textFill="#414446" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
