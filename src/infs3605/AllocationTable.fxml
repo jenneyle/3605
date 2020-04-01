@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -8,22 +9,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutX="36.0" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="130.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutX="-4.0" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="130.0" text="Allocate Courses" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutX="40.0" layoutY="145.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="130.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="145.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="130.0" text="Course Weighting" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="Course Weighting" />
                </children>
             </HBox>
-            <ImageView fitHeight="33.0" fitWidth="134.0" layoutX="63.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="65.0" layoutX="54.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/LecticLogo.png" />
                </image>
@@ -32,11 +34,20 @@
       </AnchorPane>
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
-            <TableView fx:id="allocationTable" layoutX="24.0" layoutY="125.0" prefHeight="299.0" prefWidth="467.0" />
-            <ComboBox fx:id="courseSelectionCB" layoutX="210.0" layoutY="84.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" styleClass="button" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="termSelectionCB" layoutX="116.0" layoutY="84.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" styleClass="button" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="yearSelectionCB" layoutX="24.0" layoutY="84.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" styleClass="button" stylesheets="@StyleSheet.css" />
-            <Button fx:id="clearFilterBtn" layoutX="312.0" layoutY="84.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
+            <TableView fx:id="allocationTable" layoutX="18.0" layoutY="139.0" prefHeight="300.0" prefWidth="489.0" />
+            <ComboBox fx:id="courseSelectionCB" layoutX="206.0" layoutY="98.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" styleClass="button" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="termSelectionCB" layoutX="112.0" layoutY="98.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" styleClass="button" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="yearSelectionCB" layoutX="18.0" layoutY="98.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" stylesheets="@StyleSheet.css">
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="title" />
+               </styleClass></ComboBox>
+            <Button fx:id="clearFilterBtn" layoutX="308.0" layoutY="98.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
+            <Label layoutX="18.0" layoutY="34.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Allocate Courses">
+               <font>
+                  <Font name="Candara" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

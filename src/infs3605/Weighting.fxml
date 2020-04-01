@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingController">
    <children>
@@ -14,14 +15,14 @@
       <Button layoutX="607.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleUpdateWeightingBtn" stylesheets="@StyleSheet.css" text="Update" />
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutX="36.0" layoutY="110.0" prefHeight="40.0" prefWidth="130.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutX="-4.0" layoutY="110.0" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="130.0" text="Allocate Courses" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="172.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutX="40.0" layoutY="145.0" prefHeight="40.0" prefWidth="130.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="145.0" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="130.0" text="Course Weighting" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Course Weighting" />
                </children>
             </HBox>
             <ImageView fitHeight="33.0" fitWidth="134.0" layoutX="63.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
@@ -31,5 +32,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Label layoutX="206.0" layoutY="39.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Course Weightings">
+         <font>
+            <Font name="Candara" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
