@@ -43,9 +43,9 @@
                   <String fx:value="title" />
                </styleClass></ComboBox>
             <Button fx:id="clearFilterBtn" layoutX="308.0" layoutY="98.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
-            <Label layoutX="18.0" layoutY="34.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Allocate Courses">
+            <Label layoutX="19.0" layoutY="37.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Title?">
                <font>
-                  <Font name="Candara" size="20.0" />
+                  <Font name="Candara" size="25.0" />
                </font>
             </Label>
          </children>
