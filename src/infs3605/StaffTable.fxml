@@ -10,8 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="infs3605.StaffTableController">
+      <children>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <HBox layoutX="40.0" layoutY="145.0" prefHeight="33.0" prefWidth="123.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
@@ -52,11 +52,9 @@
       </AnchorPane>
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
-            <TableView fx:id="allocationTable" layoutX="21.0" layoutY="54.0" prefHeight="299.0" prefWidth="467.0" />
-            <ComboBox fx:id="courseSelectionCB" layoutX="210.0" layoutY="25.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" />
-            <ComboBox fx:id="termSelectionCB" layoutX="113.0" layoutY="25.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" />
-            <ComboBox fx:id="yearSelectionCB" layoutX="19.0" layoutY="25.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" />
-            <Button fx:id="clearFilterBtn" layoutX="312.0" layoutY="25.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
+            <TableView fx:id="staffTable" layoutX="21.0" layoutY="54.0" prefHeight="299.0" prefWidth="467.0" />
+            <ComboBox fx:id="staffTypeSelectionCB" layoutX="19.0" layoutY="25.0" onAction="#selectStaffType" prefHeight="25.0" prefWidth="86.0" promptText="Type" />
+            <Button fx:id="clearFilterBtn" layoutX="113.0" layoutY="25.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
          </children>
       </AnchorPane>
    </children>
