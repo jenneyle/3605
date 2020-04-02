@@ -18,7 +18,7 @@
       <Text fx:id="courseName" layoutX="390.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <ComboBox fx:id="yearComboBox" layoutX="196.0" layoutY="216.0" prefWidth="150.0" promptText="Year" />
       <ComboBox fx:id="termComboBox" layoutX="371.0" layoutY="216.0" prefWidth="150.0" promptText="Term" />
-      <Label layoutX="196.0" layoutY="29.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Allocate Courses">
+      <Label layoutX="196.0" layoutY="29.0" prefHeight="40.0" prefWidth="299.0" stylesheets="@StyleSheet.css" text="Allocate Courses">
          <font>
             <Font name="Candara" size="25.0" />
          </font>

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateWeightingsController">
    <children>
@@ -17,5 +18,10 @@
       <TextField fx:id="updateWeightingPrep" layoutX="52.0" layoutY="235.0" prefHeight="27.0" prefWidth="201.0" text="Enter prep and dev hours" />
       <Label fx:id="updateMsg" layoutX="401.0" layoutY="327.0" text="Label" />
       <Button fx:id="updateWeightingBack" layoutX="52.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackBtn" text="Back" />
+      <Label alignment="CENTER" layoutX="14.0" layoutY="26.0" prefHeight="35.0" prefWidth="363.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Update Course Weightings" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

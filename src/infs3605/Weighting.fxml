@@ -13,7 +13,7 @@
    <children>
       <TableView fx:id="weightingTable" layoutX="194.0" layoutY="101.0" prefHeight="298.0" prefWidth="476.0" />
       <Button layoutX="607.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleUpdateWeightingBtn" stylesheets="@StyleSheet.css" text="Update" />
-      <Label layoutX="206.0" layoutY="39.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Course Weightings">
+      <Label layoutX="206.0" layoutY="39.0" prefHeight="40.0" prefWidth="326.0" stylesheets="@StyleSheet.css" text="Course Weightings">
          <font>
             <Font name="Candara" size="25.0" />
          </font>

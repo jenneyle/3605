@@ -58,7 +58,7 @@
                   <String fx:value="title" />
                </styleClass></ComboBox>
             <Button fx:id="clearFilterBtn" layoutX="308.0" layoutY="98.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
-            <Label layoutX="19.0" layoutY="37.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Current Allocations">
+            <Label layoutX="19.0" layoutY="37.0" prefHeight="40.0" prefWidth="331.0" stylesheets="@StyleSheet.css" text="Current Allocations">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
