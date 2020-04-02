@@ -24,6 +24,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 /**
@@ -165,13 +166,30 @@ public class StaffTableController implements Initializable {
     }
     
     //button to allocate staff to course
-    @FXML
-    public void handleAllocateBtn(ActionEvent event) throws IOException {
+      @FXML
+    public void handleAllocateBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
+
     //button to view course weightings
     @FXML
-    public void handleWeightingBtn(ActionEvent event) throws IOException {
+    public void handleWeightingBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+
+    //button to view staff details
+    @FXML
+    public void handleStaffBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffTable.fxml");
+    }
+
+    @FXML
+    public void handleCourseBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "CourseTable.fxml");
+    }
+    
+    @FXML
+    public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
 }

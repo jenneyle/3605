@@ -156,4 +156,21 @@ public class StaffAllocationController implements Initializable {
     public void handleWeightingBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Weighting.fxml");
     }
+    
+
+    //button to view staff details
+    @FXML
+    public void handleStaffBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffTable.fxml");
+    }
+
+    @FXML
+    public void handleCourseBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "CourseTable.fxml");
+    }
+    
+    @FXML
+    public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+    }
 }

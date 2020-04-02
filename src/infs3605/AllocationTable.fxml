@@ -15,12 +15,12 @@
    <children>
       <AnchorPane layoutX="1.0" prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutX="-4.0" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutY="190.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutY="145.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="150.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="Course Weighting" />
                </children>
@@ -30,8 +30,21 @@
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
-            <Button layoutX="41.0" layoutY="223.0" mnemonicParsing="false" text="View Staff" />
-            <Button layoutX="52.0" layoutY="185.0" mnemonicParsing="false" text="View Courses" />
+            <HBox layoutY="230.0" onMouseClicked="#handleCourseBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Courses" />
+               </children>
+            </HBox>
+            <HBox layoutY="270.0" onMouseClicked="#handleStaffBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Staff" />
+               </children>
+            </HBox>
+            <HBox fx:id="allocateCourseButton1" layoutY="110.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Current Allocations" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">

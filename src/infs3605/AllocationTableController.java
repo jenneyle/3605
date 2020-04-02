@@ -174,6 +174,11 @@ public class AllocationTableController implements Initializable {
     public void handleCourseBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "CourseTable.fxml");
     }
+    
+    @FXML
+    public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+    }
 
     @FXML
     public void selectYearComboBox(ActionEvent event) {
