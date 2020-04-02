@@ -102,5 +102,5 @@ public class Weighting {
     public void setWeighting_term(double weighting_term) {
         this.weighting_term.set(weighting_term);
     }
-
+    
 }

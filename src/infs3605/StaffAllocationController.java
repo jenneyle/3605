@@ -30,6 +30,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -149,5 +150,10 @@ public class StaffAllocationController implements Initializable {
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
         System.out.println("Switching to Allocation Table");
+    }
+    
+        @FXML
+    public void handleWeightingBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Weighting.fxml");
     }
 }

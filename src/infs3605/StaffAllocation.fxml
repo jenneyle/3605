@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.StaffAllocationController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.StaffAllocationController">
    <children>
       <ComboBox fx:id="courseComboBox" layoutX="196.0" layoutY="119.0" prefHeight="27.0" prefWidth="143.0" promptText="Course Code" />
       <ComboBox fx:id="staffComboBox" layoutX="196.0" layoutY="166.0" prefHeight="25.0" prefWidth="316.0" promptText="Staff Member" />
@@ -27,7 +27,7 @@
             </HBox>
             <HBox layoutY="145.0" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="166.0" text="Course Weighting" />
+                  <Label alignment="CENTER" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="166.0" text="Course Weighting" />
                </children>
             </HBox>
             <ImageView fitHeight="33.0" fitWidth="134.0" layoutX="63.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">

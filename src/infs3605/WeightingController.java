@@ -23,6 +23,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 /**
@@ -90,6 +91,12 @@ public class WeightingController implements Initializable {
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
         System.out.println("Switching to Allocation Table");
+    }
+    
+    //button to allocate staff to course
+    @FXML
+    public void handleAllocateBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
 
 }
