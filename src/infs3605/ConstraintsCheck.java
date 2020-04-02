@@ -53,13 +53,13 @@ public class ConstraintsCheck {
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if ((currentweight+ newweight) > staff_capacity){ 
+            warning.add("this staff will be exceed capacity if allocate to this course");
+        }
         if (staff_type.equals("Research")) {
             if (countterm + 1 >= 3) {
                 warning.add("as a research staff, he already been allocation for 2 terms this year");
             }
-        }
-        if ((currentweight+ newweight) > staff_capacity){ 
-            warning.add("this staff will be exceed capacity if allocate to this course");
         }
     }
 }

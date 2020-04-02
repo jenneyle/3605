@@ -27,16 +27,33 @@ public class Allocation {
     private StringProperty staff_id;
     private DoubleProperty weight;
     private Button editButton;
+    private StringProperty warning1;
+    private StringProperty warning2;
 
     // ObservableList<Allocation> allocations = AllocationTableController.allocationTable.getSelectionModel().getSelectedItems();
-    public Allocation(int id, String course_id, int year, String term, double weight, String staff_id) {
+    public Allocation(int id, String course_id, int year, String term, double weight, String staff_id,String warning1,String warning2) {
         this.id = new SimpleIntegerProperty(id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
         this.course_id = new SimpleStringProperty(course_id);
         this.staff_id = new SimpleStringProperty(staff_id);
         this.weight = new SimpleDoubleProperty(weight);
+        if(warning1==null){
+            warning1="null";
+        }else{
+            warning1="exceed capacity";
+        }
+        this.warning1=new SimpleStringProperty(warning1);
+        if(warning2==null){
+            warning2="null";
+        }else{
+            warning1="exceed terms";
+        }
+        this.warning2=new SimpleStringProperty(warning2);
         this.editButton = new Button("Edit");
+        
+        
+        System.out.println(this.warning1.get());
 
 //        editButton.setOnAction(e -> {
 //
@@ -108,6 +125,21 @@ public class Allocation {
     public void setWeight(double weight) {
         this.weight.set(weight);
     }
+    public String getwarning1() {
+        return warning1.get();
+    }
+
+    public void setwarning1(String warning1) {
+        this.warning1.set(warning1);
+    }
+    public String getwarning2() {
+        return warning2.get();
+    }
+
+    public void setwarning2(String warning2) {
+        this.warning2.set(warning2);
+    }
+    
 
 
 
