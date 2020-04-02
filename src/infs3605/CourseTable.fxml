@@ -17,7 +17,7 @@
             <TableView fx:id="courseTable" layoutX="19.0" layoutY="130.0" prefHeight="299.0" prefWidth="467.0" />
             <ComboBox fx:id="courseSelectionCB" layoutX="19.0" layoutY="93.0" onAction="#selectCourseType" prefHeight="27.0" prefWidth="99.0" promptText="Course" />
             <Button fx:id="clearFilterBtn" layoutX="126.0" layoutY="93.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
-            <Label layoutX="19.0" layoutY="33.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Course Title???">
+            <Label layoutX="19.0" layoutY="33.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Courses">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
