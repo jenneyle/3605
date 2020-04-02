@@ -58,5 +58,6 @@
             </HBox>
          </children>
       </AnchorPane>
+      <Label fx:id="success" layoutX="337.0" layoutY="383.0" text="Label" />
    </children>
 </AnchorPane>

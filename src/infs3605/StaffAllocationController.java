@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -56,6 +57,8 @@ public class StaffAllocationController implements Initializable {
 
     @FXML
     private ComboBox<String> staffComboBox;
+    @FXML
+    private Label success;
 
     @FXML
     private ComboBox<String> termComboBox;
@@ -131,6 +134,15 @@ public class StaffAllocationController implements Initializable {
                         + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
                 st.execute(insertData);
                 knowledgewarning = false;
+                success.setText("Allocation Success!");
+                TimerTask task= new TimerTask() {
+                    @Override
+                    public void run() {
+                        success.setText("");
+                    }
+                };
+                Timer timer=new Timer();
+                timer.schedule(task,5000);
                 System.out.println("insert success");
 
             } catch (Exception ex) {
