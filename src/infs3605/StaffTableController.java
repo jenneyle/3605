@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,9 +25,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 /**
@@ -43,12 +43,15 @@ public class StaffTableController implements Initializable {
     @FXML
     public ComboBox staffTypeSelectionCB;
     @FXML
+    public TextField filterField;
+    @FXML
     public Button clearFilterBtn;
 
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     ObservableList<Staff> data = FXCollections.observableArrayList();
+    SortedList<Staff> sortedData;
     ObservableList<String> types = FXCollections.observableArrayList();
 
     /**
@@ -89,11 +92,49 @@ public class StaffTableController implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Staff, String>("staffType"));
         capacity.setCellValueFactory(new PropertyValueFactory<Staff, Double>("staffCapacity"));
         editStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("editButton"));
-
+        
+        setSearchField();
+        
         setEditButtons();
 
-        //Populate the Table
-        staffTable.setItems(data);
+        
+    }
+    
+    //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
+    public void setSearchField() {
+        //1.Set Search Field
+        FilteredList<Staff> filteredData = new FilteredList<>(data, p -> true);
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Staff -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name field in your object with filter.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (String.valueOf(Staff.getFirstName()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                    // Filter matches first name.
+
+                } else if (String.valueOf(Staff.getLastName()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                } 
+
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList. 
+        sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(staffTable.comparatorProperty());
+        // 5. Add sorted (and filtered) data to the table.
+        staffTable.setItems(sortedData);
+        
     }
 
     @FXML
@@ -133,6 +174,9 @@ public class StaffTableController implements Initializable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
+        setSearchField();
+        
     }
 
     public void setEditButtons() {
@@ -157,13 +201,16 @@ public class StaffTableController implements Initializable {
     }
 
     public void clearFilters(ActionEvent event) {
-        data.removeAll(data);
+        data.removeAll();
         staffTypeSelectionCB.setValue(staffTypeSelectionCB.getPromptText());
 
         setAllTable();
 
         //Populate the Table
-        staffTable.setItems(data);
+        staffTable.setItems(sortedData);
+        
+        filterField.setText("");
+        filterField.setPromptText(filterField.getPromptText());
         setEditButtons();
     }
 
