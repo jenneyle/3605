@@ -63,12 +63,12 @@ public class AllocationTableController implements Initializable {
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
         TableColumn weighting = new TableColumn("WEIGHTING");
-        TableColumn staffId = new TableColumn("STAFF ID");
+        TableColumn staffName = new TableColumn("STAFF ALLOCATED");
         TableColumn warning1=new TableColumn("Warning");
         TableColumn warning2=new TableColumn("Warning");
         editAllocation = new TableColumn("EDIT");
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffId, warning1,warning2,editAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1,warning2,editAllocation);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -102,7 +102,7 @@ public class AllocationTableController implements Initializable {
         term.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Term"));
         courseId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Course_id"));
         weighting.setCellValueFactory(new PropertyValueFactory<Allocation, Integer>("Weight"));
-        staffId.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_id"));
+        staffName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("Staff_name"));
         warning1.setCellValueFactory(new PropertyValueFactory<Allocation, String>("warning1"));
         warning2.setCellValueFactory(new PropertyValueFactory<Allocation, String>("warning2"));
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
@@ -118,9 +118,14 @@ public class AllocationTableController implements Initializable {
     public void setAllTable() {
         //Get Complete Rows from Database
         try {
-            ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id, a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term, a.staff_id,a.warning1,a.warning2"
+            ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
+                    + ", a.course_id, a.allocation_year"
+                    + ", a.allocation_term, w.weighting_term"
+                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                    + ",a.warning1,a.warning2"
                     + " FROM Allocation a"
+                    + " JOIN Staff s"
+                    + " ON s.staff_id = a.staff_id"
                     + " LEFT OUTER JOIN Weighting w"
                     + " ON a.course_id = w.course_id"
                     + " AND a.allocation_year = w.Year"

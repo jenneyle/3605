@@ -11,7 +11,6 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 
 /**
@@ -24,7 +23,7 @@ public class Allocation {
     private IntegerProperty year;
     private StringProperty term;
     private StringProperty course_id;
-    private StringProperty staff_id;
+    private StringProperty staff_name;
     private DoubleProperty weight;
     private Button editButton;
     private StringProperty warning1;
@@ -36,7 +35,7 @@ public class Allocation {
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
         this.course_id = new SimpleStringProperty(course_id);
-        this.staff_id = new SimpleStringProperty(staff_id);
+        this.staff_name = new SimpleStringProperty(staff_id);
         this.weight = new SimpleDoubleProperty(weight);
         if(warning1==null){
             warning1="null";
@@ -86,12 +85,12 @@ public class Allocation {
         this.course_id.set(course_id);
     }
 
-    public String getStaff_id() {
-        return staff_id.get();
+    public String getStaff_name() {
+        return staff_name.get();
     }
 
-    public void setStaff_id(String staff_id) {
-        this.staff_id.set(staff_id);
+    public void setStaff_name(String staff_name) {
+        this.staff_name.set(staff_name);
     }
 
     public int getYear() {
@@ -146,11 +145,11 @@ public class Allocation {
     //    public Allocation(){
 //        this(0,"","","",0.0);
 //    }
-//    public Allocation(int year, String term,String course_id, String staff_id,double weight) {
+//    public Allocation(int year, String term,String course_id, String staff_name,double weight) {
 //        this.year=new SimpleIntegerProperty(year);
 //        this.term=new SimpleStringProperty(term);
 //        this.course_id =new SimpleStringProperty(course_id);
-//        this.staff_id = new SimpleStringProperty(staff_id);
+//        this.staff_name = new SimpleStringProperty(staff_name);
 //        this.weight=new SimpleDoubleProperty(weight);
 //        this.button = new Button("Allocate");
 //    } 
