@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingController">
    <children>
       <TableView fx:id="weightingTable" layoutX="194.0" layoutY="101.0" prefHeight="298.0" prefWidth="476.0" styleClass="table-column" stylesheets="@StyleSheet.css" />
       <Button layoutX="607.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleUpdateWeightingBtn" styleClass="preferredButton" stylesheets="@StyleSheet.css" text="Update" />
@@ -22,7 +22,7 @@
          <children>
             <HBox fx:id="allocateCourseButton" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
+                  <Label alignment="CENTER" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
             <HBox layoutY="190.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">

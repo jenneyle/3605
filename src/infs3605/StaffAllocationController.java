@@ -168,13 +168,20 @@ public class StaffAllocationController implements Initializable {
         }
 
     }
-
+    
+    @FXML
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
         System.out.println("Switching to Allocation Table");
     }
     
-        @FXML
+    @FXML
+    public void handleAllocateBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+        System.out.println("Switching to Allocation Table");
+    }
+    
+    @FXML
     public void handleWeightingBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Weighting.fxml");
     }

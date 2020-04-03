@@ -123,7 +123,7 @@ public class WeightingController implements Initializable {
     }
     
     //button to allocate staff to course
-     @FXML
+    @FXML
     public void handleAllocateBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
