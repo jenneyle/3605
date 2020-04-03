@@ -22,6 +22,7 @@
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
+            <Button layoutX="389.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleInsertStaffBtn" text="Add New Staff" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
