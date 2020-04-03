@@ -45,7 +45,7 @@ public class Allocation {
         this.editButton = new Button("Edit");
         
         
-        System.out.println(this.warning1.get());
+        //System.out.println(this.warning1.get());
 
 //        editButton.setOnAction(e -> {
 //

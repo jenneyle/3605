@@ -24,7 +24,7 @@
          </font>
       </Label>
       <Button fx:id="back" layoutX="196.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="15.0" prefWidth="59.0" text="Back" />
-      <Label fx:id="success" layoutX="337.0" layoutY="383.0" text="Label" />
+      <Label fx:id="success" layoutX="337.0" layoutY="383.0" />
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <HBox fx:id="allocateCourseButton" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">

@@ -8,8 +8,8 @@
    <children>
       <Button fx:id="con" layoutX="172.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleConBtn" text="continue" />
       <Button fx:id="cancel" layoutX="336.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleCancelBtn" styleClass="preferredButton" stylesheets="@StyleSheet.css" text="cancel" />
-      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="57.0" prefHeight="55.0" prefWidth="574.0" text="Label" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="57.0" />
-      <Label fx:id="l1" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="159.0" prefHeight="17.0" prefWidth="574.0" text="Label" AnchorPane.topAnchor="159.0" />
-      <Label fx:id="l2" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="229.0" prefHeight="17.0" prefWidth="574.0" text="Label" AnchorPane.topAnchor="229.0" />
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="57.0" prefHeight="55.0" prefWidth="574.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="57.0" />
+      <Label fx:id="l1" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="163.0" prefHeight="17.0" prefWidth="574.0" AnchorPane.topAnchor="163.0" />
+      <Label fx:id="l2" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="229.0" prefHeight="17.0" prefWidth="574.0" AnchorPane.topAnchor="229.0" />
    </children>
 </AnchorPane>

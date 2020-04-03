@@ -126,10 +126,20 @@ public class StaffAllocationController implements Initializable {
 
         int year = yearComboBox.getValue();
         ConstraintsCheck rulecheck = new ConstraintsCheck();
+        
         rulecheck.check(courseCode, staffID, year, term);
         ArrayList<String> warning = ConstraintsCheck.warning;
-
-        if (warning.isEmpty() || knowledgewarning == true) {
+//        if(rulecheck.duplicateallocation(courseCode, staffID, year, term)==true){
+//            success.setText("Duplicate Allocation!");
+//                TimerTask task= new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        Platform.runLater(() -> success.setText(""));
+//                    }
+//                };
+//                timer.schedule(task,2000);
+//        }else if (warning.isEmpty() || knowledgewarning == true) {
+            if (warning.isEmpty() || knowledgewarning == true) {
             Statement st = conn.createStatement();
             try {
                 String insertData="";
