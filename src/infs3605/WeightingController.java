@@ -50,6 +50,7 @@ public class WeightingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        //Initialise the columns
         TableColumn weightingCourse = new TableColumn("COURSE ID");
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
@@ -83,12 +84,14 @@ public class WeightingController implements Initializable {
 
     }
 
+    //button to update course weightings
     @FXML
     public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "UpdateWeightings.fxml");
 
     }
 
+    //button to go back to main page
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
         System.out.println("Switching to Allocation Table");
@@ -111,7 +114,7 @@ public class WeightingController implements Initializable {
     public void handleStaffBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffTable.fxml");
     }
-
+    //button to view course details
     @FXML
     public void handleCourseBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "CourseTable.fxml");
