@@ -180,6 +180,11 @@ public class CourseTableController implements Initializable {
         setEditButtons();
     }
     
+    //button to add new course
+    public void handleNewCourseBtn (ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "NewCourse.fxml");
+    }
+    
     //button to allocate staff to course
     @FXML
     public void handleAllocateBtn(ActionEvent event) throws IOException {

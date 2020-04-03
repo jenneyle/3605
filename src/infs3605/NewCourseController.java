@@ -1,0 +1,185 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package infs3605;
+
+import com.sun.prism.impl.Disposer;
+import static infs3605.Database.conn;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
+
+/**
+ * FXML Controller class
+ *
+ * @author Rjian
+ */
+public class NewCourseController implements Initializable {
+
+    Database database = new Database();
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+
+    @FXML
+    TextField courseCode;
+    @FXML
+    TextField courseName;
+    @FXML
+    CheckBox t1;
+    @FXML
+    CheckBox t2;
+    @FXML
+    CheckBox t3;
+    @FXML
+    CheckBox ts;
+    @FXML
+    TextField studentsEnrolled;
+    @FXML
+    TextField faceToFaceHrs;
+    @FXML
+    TextField prepAndDevHrs;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public void handleSubmitBtn(ActionEvent event) throws IOException, SQLException {
+
+        String iCourseCode = courseCode.getText();
+        String iCourseName = courseName.getText();
+        int iT1 = 0;
+        int iT2 = 0;
+        int iT3 = 0;
+        int iTs = 0;
+
+        if (t1.isSelected()) {
+            iT1 = 1;
+        }
+        if (t2.isSelected()) {
+            iT2 = 1;
+        }
+        if (t3.isSelected()) {
+            iT3 = 1;
+        }
+        if (ts.isSelected()) {
+            iTs = 1;
+        }
+
+        int iStudentsEnrolled = Integer.parseInt(studentsEnrolled.getText());
+        int iFaceToFaceHrs = Integer.parseInt(faceToFaceHrs.getText());
+        int iPrepAndDevHrs = Integer.parseInt(prepAndDevHrs.getText());
+
+        Statement st = conn.createStatement();
+        try {
+            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + ")");
+
+            ResultSet rs = database.getResultSet("SELECT CURRENT_DATE");
+            int currentYear = rs.getInt(1);
+            
+            if(iT1 == 1) {
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2)+ ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                st.execute(insertData2);
+            }
+
+            if(iT2 == 1) {
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                st.execute(insertData2);
+            }
+            
+            if(iT3 == 1) {
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1)+ ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                st.execute(insertData2);
+            }
+            
+            if(iTs == 1) {
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                st.execute(insertData2);
+            }
+            
+                       st.execute(insertData);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    //button to allocate staff to course
+    @FXML
+    public void handleAllocateBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffAllocation.fxml");
+    }
+
+    //button to view course weightings
+    @FXML
+    public void handleWeightingBtn(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+
+    @FXML
+    public void handleWeightingBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+
+    //button to view staff details
+    @FXML
+    public void handleStaffBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffTable.fxml");
+    }
+
+    @FXML
+    public void handleCourseBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "CourseTable.fxml");
+    }
+
+    @FXML
+    public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+    }
+
+}

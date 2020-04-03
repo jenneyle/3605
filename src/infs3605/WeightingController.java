@@ -70,6 +70,7 @@ public class WeightingController implements Initializable {
             while (rs.next()) {
                 weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
+           //TODO: formula
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

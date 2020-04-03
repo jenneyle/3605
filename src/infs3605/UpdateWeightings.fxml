@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateWeightingsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateWeightingsController">
    <children>
       <ComboBox fx:id="updateCourseComboBox" layoutX="52.0" layoutY="80.0" prefHeight="27.0" prefWidth="201.0" promptText="Course Code" />
       <ComboBox fx:id="updateYearComboBox" layoutX="52.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Year" />
       <ComboBox fx:id="updateTermComboBox" layoutX="162.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Term" />
       <Button fx:id="updateWeightingSubmit" layoutX="321.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
-      <TextField fx:id="updateWeightingStudents" layoutX="52.0" layoutY="165.0" prefHeight="27.0" prefWidth="201.0" text="Enter no. of students enrolled" />
-      <TextField fx:id="updateWeightingFaceHrs" layoutX="52.0" layoutY="200.0" prefHeight="27.0" prefWidth="201.0" text="Enter no. face to face hours" />
-      <TextField fx:id="updateWeightingPrep" layoutX="52.0" layoutY="235.0" prefHeight="27.0" prefWidth="201.0" text="Enter prep and dev hours" />
+      <TextField fx:id="updateWeightingStudents" layoutX="52.0" layoutY="165.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. of students enrolled" />
+      <TextField fx:id="updateWeightingFaceHrs" layoutX="52.0" layoutY="200.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. face to face hours" />
+      <TextField fx:id="updateWeightingPrep" layoutX="52.0" layoutY="235.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter prep and dev hours" />
       <Label fx:id="updateMsg" layoutX="401.0" layoutY="327.0" text="Label" />
       <Button fx:id="updateWeightingBack" layoutX="52.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackBtn" text="Back" />
       <Label alignment="CENTER" layoutX="14.0" layoutY="26.0" prefHeight="35.0" prefWidth="363.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Update Course Weightings" textAlignment="CENTER">
