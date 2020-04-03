@@ -17,9 +17,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -38,15 +40,21 @@ public class WarningController implements Initializable {
     @FXML
     Button cancel;
     @FXML
-    TableColumn<String,String> warnings;
+    AnchorPane pane;
     @FXML
-    TableView<String> table;
+    Label title;
+    @FXML
+    Label l1;
+    @FXML
+    Label l2;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Collection<String> list = ConstraintsCheck.warning;
-        warnings.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-        ObservableList<String> data = FXCollections.observableArrayList(list);
-        table.setItems(data);
+        title.setText("You have got "+Integer.toString(ConstraintsCheck.warning.size())+" warning messages");
+        l1.setText(ConstraintsCheck.warning.get(0));
+        if(ConstraintsCheck.warning.size()==2){
+            l2.setText(ConstraintsCheck.warning.get(1));
+        }
     }
     public void handleConBtn(ActionEvent event){
         StaffAllocationController.knowledgewarning=true;

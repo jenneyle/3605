@@ -152,7 +152,7 @@ public class StaffAllocationController implements Initializable {
                     }
                 };
                 Timer timer=new Timer();
-                timer.schedule(task,5000);
+                timer.schedule(task,2000);
                 System.out.println("insert success");
 
             } catch (Exception ex) {
