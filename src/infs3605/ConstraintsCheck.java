@@ -36,13 +36,17 @@ public class ConstraintsCheck {
         String allocateweightQ = "SELECT (weighting_term*0.002+face_time*0.1+prep_dev*0.1) as weight FROM Allocation\n"
                 + "inner join Weighting on Allocation.course_id=Weighting.course_id and allocation_year=year and allocation_term=term\n"
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
+        String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
         //System.out.println(allocateweightQ);
         try {
+            ResultSet rs=database.getResultSet(searchStaff);
+            while(rs.next()){
+                staff_capacity=rs.getInt("staff_capacity");
+                staff_type=rs.getString("staff_type");
+            }
             ResultSet rs1 = database.getResultSet(searchQuery);
             while(rs1.next()){
                 currentweight=rs1.getDouble("weight");
-                staff_capacity=rs1.getInt("staff_capacity");
-                staff_type=rs1.getString("staff_type");
                 countterm=rs1.getInt("countterm");
             }
             

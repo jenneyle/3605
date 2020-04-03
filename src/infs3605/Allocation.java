@@ -37,18 +37,11 @@ public class Allocation {
         this.course_id = new SimpleStringProperty(course_id);
         this.staff_name = new SimpleStringProperty(staff_id);
         this.weight = new SimpleDoubleProperty(weight);
-        if(warning1==null){
-            warning1="null";
-        }else{
-            warning1="exceed capacity";
-        }
+        
         this.warning1=new SimpleStringProperty(warning1);
-        if(warning2==null){
-            warning2="null";
-        }else{
-            warning1="exceed terms";
-        }
+   
         this.warning2=new SimpleStringProperty(warning2);
+        
         this.editButton = new Button("Edit");
         
         
