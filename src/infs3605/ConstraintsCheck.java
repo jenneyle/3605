@@ -58,7 +58,8 @@ public class ConstraintsCheck {
                             "and allocation_year="+year+"\n" +
                             "and allocation_term='"+term+"'";
         try {
-            while(database.getResultSet(existQuery).next()){
+            ResultSet rs=database.getResultSet(existQuery);
+            while(rs.next()){
                 exist=true;
             }
         } catch (SQLException ex) {

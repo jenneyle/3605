@@ -70,6 +70,7 @@ public class StaffAllocationController implements Initializable {
     String staffID;
     String staffFname;
     Timer timer=new Timer();
+    Timer timer1=new Timer();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -127,56 +128,60 @@ public class StaffAllocationController implements Initializable {
         int year = yearComboBox.getValue();
         ConstraintsCheck rulecheck = new ConstraintsCheck();
         
-        rulecheck.check(courseCode, staffID, year, term);
-        ArrayList<String> warning = ConstraintsCheck.warning;
-//        if(rulecheck.duplicateallocation(courseCode, staffID, year, term)==true){
-//            success.setText("Duplicate Allocation!");
-//                TimerTask task= new TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        Platform.runLater(() -> success.setText(""));
-//                    }
-//                };
-//                timer.schedule(task,2000);
-//        }else if (warning.isEmpty() || knowledgewarning == true) {
-            if (warning.isEmpty() || knowledgewarning == true) {
-            Statement st = conn.createStatement();
-            try {
-                String insertData="";
-                switch(warning.size()){
-                    case 0:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)"
-                        + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
-                    break;
-                    case 1:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1)"
-                        + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"')");
-                    break;
-                    case 2:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
-                        + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"','"+warning.get(1)+"')");
-                    break;
-                }
-                st.execute(insertData);
-                knowledgewarning = false;
-                success.setText("Allocation Success!");
-                TimerTask task= new TimerTask() {
+        boolean exist=rulecheck.duplicateallocation(courseCode, staffID, year, term);
+        System.out.println(exist);
+        if(exist==true){
+            success.setText("Duplicate Allocation!");
+                TimerTask task1= new TimerTask() {
                     @Override
                     public void run() {
                         Platform.runLater(() -> success.setText(""));
                     }
                 };
-                timer.schedule(task,2000);
-                System.out.println("insert success");
+                timer1.schedule(task1,2000);
+        }else{
+            rulecheck.check(courseCode, staffID, year, term);
+            ArrayList<String> warning = ConstraintsCheck.warning;
+            if (warning.isEmpty() || knowledgewarning == true) {
+                Statement st = conn.createStatement();
+                try {
+                    String insertData="";
+                    switch(warning.size()){
+                        case 0:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
+                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "',' ',' ')");
+                        break;
+                        case 1:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
+                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"',' ')");
+                        break;
+                        case 2:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
+                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"','"+warning.get(1)+"')");
+                        break;
+                    }
+                    st.execute(insertData);
+                    knowledgewarning = false;
+                    success.setText("Allocation Success!");
+                    TimerTask task= new TimerTask() {
+                        @Override
+                        public void run() {
+                            Platform.runLater(() -> success.setText(""));
+                        }
+                    };
+                    timer.schedule(task,2000);
+                    System.out.println("insert success");
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
+            } else {
+                Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
             }
-            //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
-        } else {
-            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
         }
+        
 
     }
     
