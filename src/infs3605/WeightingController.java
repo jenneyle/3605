@@ -40,6 +40,7 @@ public class WeightingController implements Initializable {
 
     @FXML
     TableView weightingTable;
+    TableColumn editWeighting;
 
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -58,8 +59,9 @@ public class WeightingController implements Initializable {
         TableColumn weightingFaceHrs = new TableColumn("FACE TO FACE HOURS");
         TableColumn weightingPrepHrs = new TableColumn("PREPARATION AND DEVELOPMENT HOURS");
         TableColumn weightingTotal = new TableColumn("TOTAL WEIGHTING");
+        editWeighting = new TableColumn("EDIT");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal,editWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
@@ -80,7 +82,29 @@ public class WeightingController implements Initializable {
         weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
         weightingPrepHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("prep_dev"));
         weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
+        editWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
+        setEditButtons();
         weightingTable.setItems(weighting);
+
+    }
+    public void setEditButtons() {
+        // Edit Button
+        editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+
+        editWeighting.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell();
+            }
+
+        });
 
     }
 

@@ -62,6 +62,7 @@ public class UpdateWeightingsController implements Initializable {
 
     @FXML
     private Label updateMsg;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,6 +82,7 @@ public class UpdateWeightingsController implements Initializable {
             ResultSet rs2 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
             updateYearList.addAll(rs2.getInt(1), rs2.getInt(1) + 1, rs2.getInt(1) + 2, rs2.getInt(1) + 3, rs2.getInt(1) + 4);
             updateYearComboBox.setItems(updateYearList);
+            updateMsg.setVisible(false);
         } catch (Exception e) {
 
         }
