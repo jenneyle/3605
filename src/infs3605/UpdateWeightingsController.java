@@ -78,7 +78,6 @@ public class UpdateWeightingsController implements Initializable {
                 updateCourseList.add(rs1.getString(1));
                 updateCourseComboBox.setItems(updateCourseList);
             }
-            //later edition -- dont need current year in table as we can get current date from SQL. (Select CURRENT_YEAR;)
             ResultSet rs2 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
             updateYearList.addAll(rs2.getInt(1), rs2.getInt(1) + 1, rs2.getInt(1) + 2, rs2.getInt(1) + 3, rs2.getInt(1) + 4);
             updateYearComboBox.setItems(updateYearList);
@@ -95,13 +94,13 @@ public class UpdateWeightingsController implements Initializable {
         int year = updateYearComboBox.getValue();
 
         String updateStudents = updateWeightingStudents.getText();
-        int intUpdateStudents = Integer.valueOf(updateStudents);
+        double intUpdateStudents = Double.valueOf(updateStudents);
 
         String updateFaceHrs = updateWeightingFaceHrs.getText();
-        int intUpdateFaceHrs = Integer.valueOf(updateFaceHrs);
+        double intUpdateFaceHrs = Double.valueOf(updateFaceHrs);
 
         String updatePrepDevHrs = updateWeightingPrep.getText();
-        int intUpdatePrepDevHrs = Integer.valueOf(updatePrepDevHrs);
+        double intUpdatePrepDevHrs = Double.valueOf(updatePrepDevHrs);
 
         Statement st = conn.createStatement();
         try {

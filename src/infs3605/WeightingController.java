@@ -79,7 +79,7 @@ public class WeightingController implements Initializable {
         weightingStudents.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("students_enrolled"));
         weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
         weightingPrepHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("prep_dev"));
-        weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("weighting_term"));
+        weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
         weightingTable.setItems(weighting);
 
     }

@@ -95,8 +95,8 @@ public class Weighting {
         this.prep_dev.set(prep_dev);
     }
 
-    public int getWeighting_term() {
-        return (int) weighting_term.get();
+    public double getWeighting_term() {
+        return (double) weighting_term.get();
     }
 
     public void setWeighting_term(double weighting_term) {
