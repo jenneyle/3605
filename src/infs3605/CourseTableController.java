@@ -162,7 +162,7 @@ public class CourseTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new ButtonCell();
+                return new AllocationButtonCell();
             }
 
         });

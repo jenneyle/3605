@@ -3,7 +3,9 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationInfoController">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -21,15 +23,10 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="back1" layoutX="141.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Edit" textFill="#414446" />
+      <Button fx:id="submit" layoutX="141.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
       <Button fx:id="back11" layoutX="209.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Delete" textFill="#414446" />
-      <HBox layoutX="45.0" layoutY="90.0" prefHeight="28.0" prefWidth="282.0">
+      <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
          <children>
-            <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="147.13671875">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
             <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" wrappingWidth="162.13671875">
                <font>
                   <Font size="22.0" />
@@ -39,11 +36,6 @@
       </HBox>
       <VBox layoutX="60.0" layoutY="157.0" prefHeight="88.0" prefWidth="162.0">
          <children>
-            <Text fx:id="staffName" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name" wrappingWidth="147.13671579770744">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
             <Pane prefHeight="10.0" prefWidth="163.0" />
             <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="127.13671875">
                <font>
@@ -51,13 +43,12 @@
                </font>
             </Text>
             <Pane prefHeight="10.0" prefWidth="163.0" />
-            <Text fx:id="yearTerm" strokeType="OUTSIDE" strokeWidth="0.0" text="Year + Term" wrappingWidth="162.1367155611515">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
+            <ComboBox fx:id="year" prefWidth="150.0" />
+            <ComboBox fx:id="term" prefWidth="150.0" />
          </children>
       </VBox>
+      <TextField fx:id="courseCode" layoutX="60.0" layoutY="93.0" />
+      <TextField fx:id="staffName" layoutX="60.0" layoutY="132.0" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />

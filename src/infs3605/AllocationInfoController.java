@@ -5,16 +5,33 @@
  */
 package infs3605;
 
+import static infs3605.Database.conn;
+import static infs3605.StaffAllocationController.knowledgewarning;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 
 /**
  * FXML Controller class
@@ -27,29 +44,121 @@ public class AllocationInfoController {
     Button back;
 
     @FXML
-    Text courseCode;
+    TextField courseCode;
     @FXML
     Text courseName;
     @FXML
     Text staffId;
     @FXML
-    Text staffName;
+    TextField staffName;
     @FXML
-    Text yearTerm;
-
+    ComboBox year;
     @FXML
-    public void handleBackButton(ActionEvent event) throws IOException {
+    ComboBox term;
+    
+    int allocationId = 0;
 
-        Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
-    }
+    ObservableList<String> courseCodeList = FXCollections.observableArrayList();
+    ObservableList<String> staffList = FXCollections.observableArrayList();
+    ObservableList<Integer> yearList = FXCollections.observableArrayList();
+    ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
 
-    public void setData(String iCourseId, String iCourseName, String iStaffId, String iStaffName, String iYearTerm) {
+    public void setData(int iAllocationId, String iCourseId, String iCourseName, String iStaffId, String iStaffName, int iYear, String iTerm) {
+       allocationId = iAllocationId;
         courseCode.setText(iCourseId);
         courseName.setText(iCourseName);
         staffId.setText(iStaffId);
         staffName.setText(iStaffName);
-        yearTerm.setText(iYearTerm);
+        year.setValue(iYear);
+        term.setValue(iTerm);
+
+        setLists();
+
+    }
+
+    public void setLists() {
+
+        try {
+            Database.openConnection();
+            ResultSet rs1 = conn.createStatement().executeQuery("Select * FROM Courses");
+            while (rs1.next()) {
+                courseCodeList.add(rs1.getString(1));
+            }
+
+            ResultSet rs2 = conn.createStatement().executeQuery("Select * FROM Staff");
+            while (rs2.next()) {
+                staffList.add(rs2.getString(2) + " " + rs2.getString(3));
+            }
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
+            yearList.addAll(rs3.getInt(1), rs3.getInt(1) + 1, rs3.getInt(1) + 2, rs3.getInt(1) + 3, rs3.getInt(1) + 4);
+            year.setItems(yearList);
+
+            term.setItems(termList);
+            TextFields.bindAutoCompletion(courseCode, courseCodeList);
+            TextFields.bindAutoCompletion(staffName, staffList);
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    public void handleBackButton(ActionEvent event) throws IOException {
+        Stage stage = (Stage) back.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
+        String iCourseCode = courseCode.getText();
+        String iTerm = (String) term.getValue();
+        String iStaffName = staffName.getText();
+        iStaffName = iStaffName.substring(0, iStaffName.indexOf(" "));
+        int iYear = (int) year.getValue();
+        String staffID = "";
+
+        try {
+            Database.openConnection();
+            ResultSet rs = conn.createStatement().executeQuery("Select staff_id FROM Staff WHERE Fname = '" + staffName + "'");
+            staffID = rs.getString(1);
+        } catch (Exception e) {
+        }
+
+        ConstraintsCheck rulecheck = new ConstraintsCheck();
+        rulecheck.check(iCourseCode, staffID, iYear, iTerm);
+        ArrayList<String> warning = ConstraintsCheck.warning;
+        if (warning.isEmpty() || knowledgewarning == true) {
+            
+            try {
+                Statement st = conn.createStatement();
+                String updateData = ("UPDATE ALLOCATION SET allocation_year = " + iYear + ", allocation_term = '" + iTerm + "', course_id = '" 
+                        + iCourseCode + "', staff_id = '" + staffID + "' WHERE allocation_id = " + allocationId );
+                     st.execute(updateData);    
+               
+               
+                knowledgewarning = false;
+//                success.setText("Allocation Success!");
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+//                        success.setText("");
+                    }
+                };
+                Timer timer = new Timer();
+                timer.schedule(task, 5000);
+                System.out.println("insert success");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        }
 
     }
 }

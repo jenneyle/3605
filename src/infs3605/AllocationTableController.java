@@ -153,7 +153,7 @@ public class AllocationTableController implements Initializable {
 
             @Override
             public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell();
+                return new AllocationButtonCell();
             }
 
         });

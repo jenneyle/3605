@@ -93,6 +93,8 @@ public class NewCourseController implements Initializable {
         int iStudentsEnrolled = Integer.parseInt(studentsEnrolled.getText());
         int iFaceToFaceHrs = Integer.parseInt(faceToFaceHrs.getText());
         int iPrepAndDevHrs = Integer.parseInt(prepAndDevHrs.getText());
+        
+        double totalWeight = (iStudentsEnrolled*0.002) + (iFaceToFaceHrs*0.1) + (iPrepAndDevHrs*0.1);
 
         Statement st = conn.createStatement();
         try {
@@ -102,42 +104,42 @@ public class NewCourseController implements Initializable {
             int currentYear = rs.getInt(1);
             
             if(iT1 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2)+ ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev, weighting_term) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2)+ ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 1'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + ")");
                 st.execute(insertData2);
             }
 
             if(iT2 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev, weighting_term) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 2'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + ")");
                 st.execute(insertData2);
             }
             
             if(iT3 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1)+ ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev, weighting_term) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1)+ ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 3'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + ")");
                 st.execute(insertData2);
             }
             
             if(iTs == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, face_time, prep_dev, weighting_term) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Summer Term'," + iStudentsEnrolled + "," + iFaceToFaceHrs + "," + iPrepAndDevHrs + "," + totalWeight + ")");
                 st.execute(insertData2);
             }
             

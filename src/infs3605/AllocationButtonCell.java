@@ -22,20 +22,20 @@ import javafx.stage.Stage;
  *
  * @author freey
  */
-public class ButtonCell extends TableCell<Record, Boolean> {
+public class AllocationButtonCell extends TableCell<Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-    Button cellButton = new Button("Edit");
+    Button cellButton = new Button("Details");
     Database database = new Database();
 
-    ButtonCell() {
+    AllocationButtonCell() {
 
         //Action when the button is pressed
         cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent t) {
-                Allocation currentRow = (Allocation) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+                Allocation currentRow = (Allocation) AllocationButtonCell.this.getTableView().getItems().get(AllocationButtonCell.this.getIndex());
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("AllocationInfo.fxml"));
 
@@ -44,30 +44,34 @@ public class ButtonCell extends TableCell<Record, Boolean> {
                 } catch (IOException e) {
                 }
 
+                int allocationId =0;
                 String courseId = "";
                 String courseName = "";
                 String staffId = "";
                 String staffName = "";
-                String yearTerm = "";
+                int year = 0;
+                String term = "";
 
                 try {
-                    ResultSet rs = database.getResultSet("SELECT Allocation.allocation_term, Allocation.allocation_year,"
+                    ResultSet rs = database.getResultSet("SELECT Allocation.allocation_id, Allocation.allocation_term, Allocation.allocation_year,"
                             + " Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname"
                             + " FROM Staff JOIN Allocation ON Staff.staff_id = Allocation.staff_id JOIN Courses ON"
                             + " Courses.course_id = Allocation.course_id WHERE allocation_id =" + currentRow.getId());
                     System.out.println("hi");
-                    courseId = rs.getString(3);
-                    courseName = rs.getString(5);
-                    staffId = rs.getString(4);
-                    staffName = rs.getString(6) + " " + rs.getString(7);
-                    yearTerm = rs.getString(1) + " " + rs.getString(2);
+                    allocationId = rs.getInt(1);
+                    courseId = rs.getString(4);
+                    courseName = rs.getString(6);
+                    staffId = rs.getString(5);
+                    staffName = rs.getString(7) + " " + rs.getString(8);
+                    year = rs.getInt(3);
+                    term = rs.getString(2);
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
                 AllocationInfoController allocationInfoController = fxmlLoader.getController();
-                allocationInfoController.setData(courseId, courseName, staffId, staffName, yearTerm);
+                allocationInfoController.setData(allocationId, courseId, courseName, staffId, staffName, year, term);
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
