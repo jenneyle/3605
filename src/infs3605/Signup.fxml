@@ -13,7 +13,7 @@
       <TextField fx:id="username" alignment="CENTER" layoutX="266.0" layoutY="262.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
       <PasswordField fx:id="p1" alignment="CENTER" layoutX="266.0" layoutY="308.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
       <PasswordField fx:id="p2" alignment="CENTER" layoutX="266.0" layoutY="348.0" promptText="Confirm Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
-      <Button fx:id="signupButton" layoutX="318.0" layoutY="399.0" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign up" />
+      <Button fx:id="signupButton" layoutX="373.0" layoutY="398.0" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign up" />
       <Label fx:id="showmessage1" layoutX="438.0" layoutY="183.0" />
       <Label fx:id="showmessage2" layoutX="323.0" layoutY="291.0" />
       <ImageView fitHeight="184.0" fitWidth="254.0" layoutX="235.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
@@ -21,5 +21,6 @@
             <Image url="@../resources/LecticLogo.png" />
          </image>
       </ImageView>
+      <Button fx:id="backButton" layoutX="266.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
    </children>
 </AnchorPane>

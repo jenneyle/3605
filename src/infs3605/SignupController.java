@@ -38,7 +38,7 @@ public class SignupController implements Initializable {
      * Initializes the controller class.
      */
     Database database=new Database();
-    PageSwitchHelper pageswitcher=new PageSwitchHelper();
+    PageSwitchHelper pageswitcher = new PageSwitchHelper();
     @FXML
     private ImageView logoimage;
     @FXML
@@ -49,6 +49,8 @@ public class SignupController implements Initializable {
     private PasswordField p2;
     @FXML
     private Button signupButton;
+    @FXML
+    private Button backButton;
     @FXML
     private Label showmessage1;
     @FXML
@@ -105,5 +107,9 @@ public class SignupController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        
     }    
+    
+    public void handleBackButton(ActionEvent event) throws IOException {
+        pageswitcher.switcher(event, "Login.fxml");
+    }
     
 }
