@@ -35,6 +35,12 @@ and open the template in the editor.
   font-family: Candara, Arial, Helvetica, sans-serif;
 }
 
+.preferredButton {-fx-background-color: #dbe4ed;} /* Blue */
+
+.table-column {
+  -fx-alignment: CENTER;
+}
+
 /*#6495ED*/
 
 /*00BFFF*/

@@ -15,12 +15,12 @@
    <children>
       <AnchorPane layoutX="1.0" prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutY="190.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutY="150.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="190.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="Course Weighting" />
                </children>
@@ -40,7 +40,7 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Staff" />
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="110.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="150.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Current Allocations" />
                </children>
@@ -49,7 +49,7 @@
       </AnchorPane>
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
-            <TableView fx:id="allocationTable" layoutX="18.0" layoutY="139.0" prefHeight="300.0" prefWidth="489.0" />
+            <TableView fx:id="allocationTable" layoutX="18.0" layoutY="139.0" prefHeight="300.0" prefWidth="489.0" styleClass="table-column" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="courseSelectionCB" layoutX="206.0" layoutY="98.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" styleClass="button" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="termSelectionCB" layoutX="112.0" layoutY="98.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" styleClass="button" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="yearSelectionCB" layoutX="18.0" layoutY="98.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" stylesheets="@StyleSheet.css">

@@ -10,18 +10,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.LoginController">
    <children>
-      <ImageView fx:id="logoimage" fitHeight="189.0" fitWidth="242.0" layoutX="232.0" layoutY="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="231.1618194580078" AnchorPane.topAnchor="50.0">
+      <ImageView fx:id="logoimage" fitHeight="189.0" fitWidth="242.0" layoutX="233.0" layoutY="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="230.1618194580078" AnchorPane.topAnchor="50.0">
          <image>
             <Image url="@../resources/LecticLogo.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="174.0" layoutY="259.0" prefHeight="189.0" prefWidth="380.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="259.0">
+      <AnchorPane layoutX="215.0" layoutY="257.0" prefHeight="200.0" prefWidth="271.0">
          <children>
-            <TextField fx:id="username" alignment="CENTER" layoutX="106.0" layoutY="39.0" prefHeight="27.0" prefWidth="152.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
-            <PasswordField fx:id="password" alignment="CENTER" layoutX="106.0" layoutY="81.0" prefHeight="27.0" prefWidth="152.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
-            <Label fx:id="incorrectMessage" layoutX="79.0" layoutY="8.0" prefHeight="17.0" prefWidth="203.0" text="Incorrect username or password" textFill="#cf0606" />
-            <Button fx:id="loginButton" layoutX="106.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="27.0" prefWidth="64.0" stylesheets="@StyleSheet.css" text="Login" textFill="#414446" />
-            <Button fx:id="signupButton" layoutX="191.0" layoutY="128.0" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446" />
+            <Label fx:id="incorrectMessage" alignment="TOP_CENTER" layoutX="41.0" layoutY="6.0" prefHeight="0.0" prefWidth="203.0" text="Incorrect username or password" textFill="#cf0606" />
+            <TextField fx:id="username" alignment="CENTER" layoutX="64.0" layoutY="43.0" prefHeight="27.0" prefWidth="152.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
+            <PasswordField fx:id="password" alignment="CENTER" layoutX="63.0" layoutY="85.0" prefHeight="27.0" prefWidth="152.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
+            <Button fx:id="signupButton" layoutX="63.0" layoutY="127.0" mnemonicParsing="false" onAction="#handlesignupButton" prefHeight="29.0" prefWidth="67.0" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446" />
+            <Button fx:id="signupButton1" layoutX="147.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="29.0" prefWidth="67.0" styleClass="preferredButton" stylesheets="@StyleSheet.css" text="Login" textFill="#414446" />
          </children>
       </AnchorPane>
    </children>

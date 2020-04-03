@@ -8,12 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
    <children>
       <TextField fx:id="username" alignment="CENTER" layoutX="266.0" layoutY="262.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
       <PasswordField fx:id="p1" alignment="CENTER" layoutX="266.0" layoutY="308.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
       <PasswordField fx:id="p2" alignment="CENTER" layoutX="266.0" layoutY="348.0" promptText="Confirm Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
-      <Button fx:id="signupButton" layoutX="373.0" layoutY="398.0" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign up" />
+      <Button fx:id="signupButton" layoutX="368.0" layoutY="397.0" mnemonicParsing="false" onAction="#handlesignupButton" styleClass="preferredButton" stylesheets="@StyleSheet.css" text="Sign up" />
       <Label fx:id="showmessage1" layoutX="438.0" layoutY="183.0" />
       <Label fx:id="showmessage2" layoutX="323.0" layoutY="291.0" />
       <ImageView fitHeight="184.0" fitWidth="254.0" layoutX="235.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
@@ -21,6 +21,6 @@
             <Image url="@../resources/LecticLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="266.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+      <Button fx:id="signupButton1" layoutX="268.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="65.0" stylesheets="@StyleSheet.css" text="Back" />
    </children>
 </AnchorPane>

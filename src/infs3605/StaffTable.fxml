@@ -14,10 +14,10 @@
       <children>
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
-            <TableView fx:id="staffTable" layoutX="29.0" layoutY="149.0" prefHeight="299.0" prefWidth="467.0" />
-            <ComboBox fx:id="staffTypeSelectionCB" layoutX="29.0" layoutY="113.0" onAction="#selectStaffType" prefHeight="25.0" prefWidth="86.0" promptText="Type" />
-            <Button fx:id="clearFilterBtn" layoutX="123.0" layoutY="113.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
-            <Label layoutX="27.0" layoutY="47.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Staff ">
+            <TableView fx:id="staffTable" layoutX="29.0" layoutY="149.0" prefHeight="299.0" prefWidth="467.0" styleClass="table-column" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="staffTypeSelectionCB" layoutX="29.0" layoutY="113.0" onAction="#selectStaffType" prefHeight="27.0" prefWidth="107.0" promptText="Type" />
+            <Button fx:id="clearFilterBtn" layoutX="145.0" layoutY="113.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
+            <Label layoutX="27.0" layoutY="47.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Staff List">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
@@ -27,12 +27,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutY="190.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutY="150.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="190.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="Course Weighting" />
                </children>
@@ -52,7 +52,7 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Staff" />
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="110.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="150.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Current Allocations" />
                </children>
