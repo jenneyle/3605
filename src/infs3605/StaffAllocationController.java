@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,6 +69,7 @@ public class StaffAllocationController implements Initializable {
     private ComboBox<String> courseComboBox;
     String staffID;
     String staffFname;
+    Timer timer=new Timer();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -148,10 +150,9 @@ public class StaffAllocationController implements Initializable {
                 TimerTask task= new TimerTask() {
                     @Override
                     public void run() {
-                        success.setText("");
+                        Platform.runLater(() -> success.setText(""));
                     }
                 };
-                Timer timer=new Timer();
                 timer.schedule(task,2000);
                 System.out.println("insert success");
 
