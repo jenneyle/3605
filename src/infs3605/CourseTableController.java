@@ -187,7 +187,7 @@ public class CourseTableController implements Initializable {
     
     //button to allocate staff to course
     @FXML
-    public void handleAllocateBtn(ActionEvent event) throws IOException {
+    public void handleAllocateBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
     //button to view course weightings

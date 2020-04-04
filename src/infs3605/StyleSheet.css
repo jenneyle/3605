@@ -41,6 +41,11 @@ and open the template in the editor.
   -fx-alignment: CENTER;
 }
 
+
+.sidebarColoured{
+    -fx-background-color: #c0cdd6;
+
+}
 /*#6495ED*/
 
 /*00BFFF*/

@@ -40,10 +40,14 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Staff" />
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="150.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="150.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Current Allocations" />
                </children>
+               <styleClass>
+                  <String fx:value="sideButton" />
+                  <String fx:value="sidebarColoured" />
+               </styleClass>
             </HBox>
          </children>
       </AnchorPane>

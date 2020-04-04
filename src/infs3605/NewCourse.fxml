@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.NewCourseController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.NewCourseController">
     <children>
-      <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
+      <AnchorPane layoutX="171.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
             <Label layoutX="19.0" layoutY="33.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Add New Course">
                <font>
@@ -33,14 +33,14 @@
             <CheckBox fx:id="ts" layoutX="94.0" layoutY="272.0" mnemonicParsing="false" text="Summer Term" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="-2.0" prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+      <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <HBox fx:id="allocateCourseButton" layoutY="190.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutY="110.0" onMouseClicked="#handleAllocateBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Allocate Courses" />
                </children>
             </HBox>
-            <HBox layoutY="150.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="190.0" onMouseClicked="#handleWeightingBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="Course Weighting" />
                </children>
@@ -50,7 +50,7 @@
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
-            <HBox layoutY="230.0" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="230.0" onMouseClicked="#handleCourseBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Courses" />
                </children>
@@ -60,7 +60,7 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="165.0" text="View Staff" />
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="110.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="150.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="40.0" prefWidth="170.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="174.0" text="Current Allocations" />
                </children>
