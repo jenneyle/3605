@@ -55,8 +55,9 @@ public class AllocationInfoController {
     ComboBox year;
     @FXML
     ComboBox term;
-    
+
     int allocationId = 0;
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     ObservableList<String> courseCodeList = FXCollections.observableArrayList();
     ObservableList<String> staffList = FXCollections.observableArrayList();
@@ -64,7 +65,7 @@ public class AllocationInfoController {
     ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
 
     public void setData(int iAllocationId, String iCourseId, String iCourseName, String iStaffId, String iStaffName, int iYear, String iTerm) {
-       allocationId = iAllocationId;
+        allocationId = iAllocationId;
         courseCode.setText(iCourseId);
         courseName.setText(iCourseName);
         staffId.setText(iStaffId);
@@ -119,46 +120,47 @@ public class AllocationInfoController {
 
         try {
             Database.openConnection();
-            ResultSet rs = conn.createStatement().executeQuery("Select staff_id FROM Staff WHERE Fname = '" + staffName + "'");
+            ResultSet rs = conn.createStatement().executeQuery("Select staff_id FROM Staff WHERE Fname = '" + iStaffName + "'");
             staffID = rs.getString(1);
-        } catch (Exception e) {
-        }
-
-        ConstraintsCheck rulecheck = new ConstraintsCheck();
-        rulecheck.check(iCourseCode, staffID, iYear, iTerm);
-        ArrayList<String> warning = ConstraintsCheck.warning;
-        if (warning.isEmpty() || knowledgewarning == true) {
             
-            try {
+            
                 Statement st = conn.createStatement();
-                String updateData = ("UPDATE ALLOCATION SET allocation_year = " + iYear + ", allocation_term = '" + iTerm + "', course_id = '" 
-                        + iCourseCode + "', staff_id = '" + staffID + "' WHERE allocation_id = " + allocationId );
-                     st.execute(updateData);    
-               
-               
-                knowledgewarning = false;
-//                success.setText("Allocation Success!");
-                TimerTask task = new TimerTask() {
-                    @Override
-                    public void run() {
-//                        success.setText("");
-                    }
-                };
-                Timer timer = new Timer();
-                timer.schedule(task, 5000);
+                String updateData = ("UPDATE ALLOCATION SET allocation_year = " + iYear + ", allocation_term = '" + iTerm + "', course_id = '"
+                        + iCourseCode + "', staff_id = '" + staffID + "' WHERE allocation_id = " + allocationId);
+                st.execute(updateData);
                 System.out.println("insert success");
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            //pageSwitcher.switcher(event, "DisplayAllocation.fxml");
-        } else {
-            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+        } catch (Exception e) {
+            System.out.println("SQL error");
         }
+
+//        ConstraintsCheck rulecheck = new ConstraintsCheck();
+//        rulecheck.check(iCourseCode, staffID, iYear, iTerm);
+//        ArrayList<String> warning = ConstraintsCheck.warning;
+//        if (warning.isEmpty() || knowledgewarning == true) {
+
+      
+//                knowledgewarning = false;
+////                success.setText("Allocation Success!");
+//                TimerTask task = new TimerTask() {
+//                    @Override
+//                    public void run() {
+////                        success.setText("");
+//                    }
+//                };
+//                Timer timer = new Timer();
+//                timer.schedule(task, 5000);
+                
+
+            
+            
+//        } else {
+//            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.show();
+//        }
 
     }
 }

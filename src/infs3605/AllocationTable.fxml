@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
@@ -54,14 +54,14 @@
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
             <TableView fx:id="allocationTable" layoutX="18.0" layoutY="139.0" prefHeight="300.0" prefWidth="489.0" styleClass="table-column" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="courseSelectionCB" layoutX="206.0" layoutY="98.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" styleClass="button" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="termSelectionCB" layoutX="112.0" layoutY="98.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Term" styleClass="button" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="courseSelectionCB" layoutX="243.0" layoutY="98.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" styleClass="button" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="termSelectionCB" layoutX="112.0" layoutY="98.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="122.0" promptText="Term" styleClass="button" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="yearSelectionCB" layoutX="18.0" layoutY="98.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="86.0" promptText="Year" stylesheets="@StyleSheet.css">
                <styleClass>
                   <String fx:value="button" />
                   <String fx:value="title" />
                </styleClass></ComboBox>
-            <Button fx:id="clearFilterBtn" layoutX="308.0" layoutY="98.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
+            <Button fx:id="clearFilterBtn" layoutX="345.0" layoutY="98.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
             <Label layoutX="19.0" layoutY="37.0" prefHeight="40.0" prefWidth="331.0" stylesheets="@StyleSheet.css" text="Current Allocations">
                <font>
                   <Font name="Candara" size="25.0" />
