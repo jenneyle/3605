@@ -24,17 +24,18 @@ public class ConstraintsCheck {
     static double currentweight=0;
     static double newweight=0;
     static int staff_capacity=0;
+    static String staff_name="";
     
 
     public void check(String courseid, String staffid, int year, String term) {
         ConstraintsCheck.warning.clear();
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
-            warning.add("this staff will be exceed weight capacity");
+            warning.add("exceed weight capacity");
         }
         if (staff_type.equals("Research")) {
             if (countterm + 1 >= 3) {
-                warning.add("this staff will be exceed term capacity");
+                warning.add("exceed term capacity");
             }
         }
     }
@@ -83,6 +84,7 @@ public class ConstraintsCheck {
             while(rs.next()){
                 staff_capacity=rs.getInt("staff_capacity");
                 staff_type=rs.getString("staff_type");
+                staff_name=rs.getString("fname")+" "+rs.getString("lname");
             }
             ResultSet rs1 = database.getResultSet(searchQuery);
             while(rs1.next()){

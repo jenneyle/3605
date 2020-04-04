@@ -50,10 +50,11 @@ public class WarningController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        title.setText("You have got "+Integer.toString(ConstraintsCheck.warning.size())+" warning messages");
-        l1.setText(ConstraintsCheck.warning.get(0));
+        String name=ConstraintsCheck.staff_name;
+        title.setText("You have encounter "+Integer.toString(ConstraintsCheck.warning.size())+"/2 errors");
+        l1.setText("This allocation "+name+" "+ConstraintsCheck.warning.get(0));
         if(ConstraintsCheck.warning.size()==2){
-            l2.setText(ConstraintsCheck.warning.get(1));
+            l2.setText("This allocation "+name+" "+ConstraintsCheck.warning.get(1));
         }
     }
     public void handleConBtn(ActionEvent event){
