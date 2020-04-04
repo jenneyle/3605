@@ -27,30 +27,35 @@ public class ConstraintsCheck {
     static String staff_name="";
     
 
-    public void check(String courseid, String staffid, int year, String term) {
+    public boolean check(String courseid, String staffid, int year, String term) {
+        boolean warning_exist=false;
         ConstraintsCheck.warning.clear();
+        ConstraintsCheck.warning.add("");
+        ConstraintsCheck.warning.add("");
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
-            warning.add("exceed weight capacity");
+            warning.set(0,"exceed weight capacity");
+            warning_exist=true;
         }
         if (staff_type.equals("Research")) {
             if (countterm + 1 >= 3) {
-                warning.add("exceed term capacity");
+                warning.set(0,"exceed term capacity");
+                warning_exist=true;
             }
         }
+        return warning_exist;
     }
-//    public void deletecheck(String courseid, String staffid, int year, String term) {
-//        ConstraintsCheck.warning.clear();
-//        getdatabasevalue(courseid, staffid, year,term);
-//        if ((currentweight- newweight) > staff_capacity){ 
-//            warning.add("this staff will be exceed weight capacity");
-//        }
-//        if (staff_type.equals("Research")) {
-//            if (countterm + 1 >= 3) {
-//                warning.add("this staff will be exceed term capacity");
-//            }
-//        }  
-//    }
+    public void deletecheck(String courseid, String staffid, int year, String term) {
+        ConstraintsCheck.warning.clear();
+        getdatabasevalue(courseid, staffid, year,term);
+        if ((currentweight- newweight) <= staff_capacity){ 
+        }
+        if (staff_type.equals("Research")) {
+            if (countterm - 1 < 3) {
+                String update_warning="";
+            }
+        }  
+    }
     public boolean duplicateallocation(String courseid, String staffid, int year, String term){
         boolean exist=false;
         String existQuery="select * from Allocation\n" +

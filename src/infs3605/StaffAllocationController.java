@@ -140,9 +140,9 @@ public class StaffAllocationController implements Initializable {
                 };
                 timer1.schedule(task1,2000);
         }else{
-            rulecheck.check(courseCode, staffID, year, term);
+            boolean warning_exist=rulecheck.check(courseCode, staffID, year, term);
             ArrayList<String> warning = ConstraintsCheck.warning;
-            if (warning.isEmpty() || knowledgewarning == true) {
+            if (warning_exist==false|| knowledgewarning == true) {
                 Statement st = conn.createStatement();
                 try {
                     String insertData="";
