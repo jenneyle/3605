@@ -69,7 +69,8 @@ public class AllocationTableController implements Initializable {
         editAllocation = new TableColumn("EDIT");
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1,warning2,editAllocation);
-
+        warning1.setVisible(false);
+        warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
             ResultSet yearRS = database.getResultSet("SELECT DISTINCT allocation_year FROM Allocation");
@@ -133,6 +134,14 @@ public class AllocationTableController implements Initializable {
             );
             while (rs.next()) {
                 data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6),rs.getString(7),rs.getString(8)));
+            }
+                ResultSet rs1 = database.getResultSet("SELECT w.course_id, year, term, weighting_term,allocation_id\n" +
+                    "FROM Weighting w \n" +
+                    "left JOIN Allocation a\n" +
+                    "on w.course_id=a.course_id and year=allocation_year and term=allocation_term\n" +
+                    "where allocation_id is NULL");
+            while (rs1.next()) {
+                data.add(new Allocation(0,rs1.getString(1),rs1.getInt(2),rs1.getString(3),rs1.getDouble(4),"","",""));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
