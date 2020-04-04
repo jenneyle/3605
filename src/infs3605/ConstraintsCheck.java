@@ -39,7 +39,7 @@ public class ConstraintsCheck {
         }
         if (staff_type.equals("Research")) {
             if (countterm + 1 >= 3) {
-                warning.set(0,"exceed term capacity");
+                warning.set(1,"exceed term capacity");
                 warning_exist=true;
             }
         }

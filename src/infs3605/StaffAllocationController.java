@@ -146,17 +146,8 @@ public class StaffAllocationController implements Initializable {
                 Statement st = conn.createStatement();
                 try {
                     String insertData="";
-                    switch(warning.size()){
-                        case 0:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
-                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "',' ',' ')");
-                        break;
-                        case 1:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
-                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"',' ')");
-                        break;
-                        case 2:insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
+                    insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id,warning1,warning2)"
                             + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "','"+warning.get(0)+"','"+warning.get(1)+"')");
-                        break;
-                    }
                     st.execute(insertData);
                     knowledgewarning = false;
                     success.setText("Allocation Success!");
