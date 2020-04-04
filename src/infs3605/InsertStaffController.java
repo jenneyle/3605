@@ -36,10 +36,12 @@ public class InsertStaffController implements Initializable {
 
     @FXML
     ComboBox<String> insertStaffType;
-    @FXML
-    ComboBox<Integer> insertStaffCapacity;
+//    @FXML
+//    ComboBox<Integer> insertStaffCapacity;
     @FXML
     private TextField insertStaffFname;
+    @FXML
+    private TextField insertStaffCapacity;
     @FXML
     private TextField insertStaffLname;
     @FXML
@@ -58,8 +60,8 @@ public class InsertStaffController implements Initializable {
         ObservableList<String> staffTypeList = FXCollections.observableArrayList("Education", "Research");
         insertStaffType.setItems(staffTypeList);
 
-        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);
-        insertStaffCapacity.setItems(staffCapacityList);
+//        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);
+//        insertStaffCapacity.setItems(staffCapacityList);
         updateMsg.setVisible(false);
     }
 
@@ -70,7 +72,9 @@ public class InsertStaffController implements Initializable {
         String type = insertStaffType.getValue();
 //        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);
 //        insertStaffCapacity.setItems(staffCapacityList);
-        Integer capacity = insertStaffCapacity.getValue();
+        String insertCapacity = insertStaffCapacity.getText();
+        double capacity = Integer.valueOf(insertCapacity);
+//        Integer capacity = insertStaffCapacity.getValue();
         String insertFname = insertStaffFname.getText();
         String insertLname = insertStaffLname.getText();
         String insertZid = insertStaffZid.getText();

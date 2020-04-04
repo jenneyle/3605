@@ -17,15 +17,15 @@
       <AnchorPane layoutX="172.0" layoutY="-2.0" prefHeight="500.0" prefWidth="525.0">
          <children>
             <TableView fx:id="staffTable" layoutX="29.0" layoutY="133.0" prefHeight="299.0" prefWidth="467.0" styleClass="table-column" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="staffTypeSelectionCB" layoutX="29.0" layoutY="100.0" onAction="#selectStaffType" prefHeight="27.0" prefWidth="107.0" promptText="Type" />
-            <Button fx:id="clearFilterBtn" layoutX="279.0" layoutY="100.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
+            <ComboBox fx:id="staffTypeSelectionCB" layoutX="29.0" layoutY="100.0" onAction="#selectStaffType" prefHeight="27.0" prefWidth="139.0" promptText="Type" />
+            <Button fx:id="clearFilterBtn" layoutX="309.0" layoutY="100.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear" />
             <Label layoutX="27.0" layoutY="47.0" prefHeight="40.0" prefWidth="222.0" stylesheets="@StyleSheet.css" text="Staff List">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
             <Button layoutX="389.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleInsertStaffBtn" text="Add New Staff" />
-            <TextField fx:id="filterField" layoutX="146.0" layoutY="100.0" prefHeight="25.0" prefWidth="123.0" promptText="Search Staff" />
+            <TextField fx:id="filterField" layoutX="177.0" layoutY="100.0" prefHeight="25.0" prefWidth="123.0" promptText="Search Staff" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">

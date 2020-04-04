@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="infs3605.InsertStaffController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.InsertStaffController">
    <children>
       <Button fx:id="back" layoutX="61.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <TextField fx:id="insertStaffFname" layoutX="53.0" layoutY="77.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter First Name" />
@@ -16,6 +15,6 @@
       <ComboBox fx:id="insertStaffType" layoutX="53.0" layoutY="179.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Type" />
       <Button fx:id="submit" layoutX="174.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleInsertBtn" text="Submit" />
       <Label fx:id="updateMsg" layoutX="258.0" layoutY="331.0" text="Label" />
-      <ComboBox fx:id="insertStaffCapacity" layoutX="53.0" layoutY="215.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Capacity" />
+      <TextField fx:id="insertStaffCapacity" layoutX="53.0" layoutY="213.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
    </children>
 </AnchorPane>
