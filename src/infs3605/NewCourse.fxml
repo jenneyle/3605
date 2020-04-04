@@ -19,7 +19,7 @@
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <Button layoutX="43.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+            <Button layoutX="131.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
             <TextField fx:id="courseCode" layoutX="79.0" layoutY="89.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Code" />
             <TextField fx:id="studentsEnrolled" layoutX="79.0" layoutY="333.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter no. of students enrolled" />
             <TextField fx:id="courseName" layoutX="79.0" layoutY="126.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Name" />
@@ -31,6 +31,7 @@
             <CheckBox fx:id="t3" layoutX="94.0" layoutY="241.0" mnemonicParsing="false" text="Term 3" />
             <Label layoutX="76.0" layoutY="162.0" text="Course Offering" />
             <CheckBox fx:id="ts" layoutX="94.0" layoutY="272.0" mnemonicParsing="false" text="Summer Term" />
+            <Label fx:id="updateMsg" layoutX="207.0" layoutY="448.0" text="Label" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
