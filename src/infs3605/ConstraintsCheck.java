@@ -25,11 +25,12 @@ public class ConstraintsCheck {
     static double newweight=0;
     static int staff_capacity=0;
     static String staff_name="";
+    static boolean casual_staff=false;
     
 
     public boolean check(String courseid, String staffid, int year, String term) {
         boolean warning_exist=false;
-        ConstraintsCheck.warning.clear();
+        ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
         getdatabasevalue(courseid, staffid, year,term);
@@ -43,19 +44,22 @@ public class ConstraintsCheck {
                 warning_exist=true;
             }
         }
+        if(staff_type.equals("Casual")){
+            
+        }
         return warning_exist;
     }
-    public void deletecheck(String courseid, String staffid, int year, String term) {
-        ConstraintsCheck.warning.clear();
-        getdatabasevalue(courseid, staffid, year,term);
-        if ((currentweight- newweight) <= staff_capacity){ 
-        }
-        if (staff_type.equals("Research")) {
-            if (countterm - 1 < 3) {
-                String update_warning="";
-            }
-        }  
-    }
+//    public void deletecheck(String courseid, String staffid, int year, String term) {
+//        ConstraintsCheck.warning.clear();
+//        getdatabasevalue(courseid, staffid, year,term);
+//        if ((currentweight- newweight) <= staff_capacity){ 
+//        }
+//        if (staff_type.equals("Research")) {
+//            if (countterm - 1 < 3) {
+//                String update_warning="";
+//            }
+//        }  
+//    }
     public boolean duplicateallocation(String courseid, String staffid, int year, String term){
         boolean exist=false;
         String existQuery="select * from Allocation\n" +
@@ -74,15 +78,16 @@ public class ConstraintsCheck {
         return exist;
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
-        String searchQuery = "SELECT staff_id,sum(weighting_term*0.002+face_time*0.1+prep_dev*0.1) as weight,count(DISTINCT allocation_term) as countterm FROM Allocation\n" +
-"                inner join Weighting on Allocation.course_id=Weighting.course_id and allocation_year=year and allocation_term=term\n" +
-"                where staff_id='"+staffid+"'\n" +
-"                GROUP by staff_id";
+        String searchQuery = "﻿select sum(weighting_term)  as weight,count(distinct allocation_term) as countterm from allocation \n" +
+                                "inner join Weighting on Allocation.course_id=Weighting.course_id a\n" +
+                                "nd allocation_year=year and allocation_term=term\n" +
+                                "where staff_id='"+staffid+"' and allocation_year="+year+"\n" +
+                                "group by staff_id";
         //System.out.println(searchQuery);
-        String allocateweightQ = "SELECT (weighting_term*0.002+face_time*0.1+prep_dev*0.1) as weight FROM Allocation\n"
-                + "inner join Weighting on Allocation.course_id=Weighting.course_id and allocation_year=year and allocation_term=term\n"
+        String allocateweightQ = "﻿select weighting_term from Weighting"
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
+        String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
         //System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
@@ -100,8 +105,23 @@ public class ConstraintsCheck {
             while(rs2.next()){
                 newweight=rs2.getDouble("weight");
             }
+            if(database.getResultSet(casualQuery).next()){
+                casual_staff=true;
+            }else{
+                casual_staff=false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public void cleandata(){
+        String staff_type="";
+        int countterm=0;
+        double currentweight=0;
+        double newweight=0;
+        int staff_capacity=0;
+        String staff_name="";
+        boolean casual_staff=false;
+        ConstraintsCheck.warning.clear();
     }
 }
