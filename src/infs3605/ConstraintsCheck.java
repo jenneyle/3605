@@ -19,17 +19,20 @@ public class ConstraintsCheck {
 
     public Database database = new Database();
     public static ArrayList<String> warning = new ArrayList<String>();
-    static String staff_type="";
-    static int countterm=0;
-    static double currentweight=0;
-    static double newweight=0;
-    static int staff_capacity=0;
-    static String staff_name="";
-    static boolean casual_staff=false;
+    static String staff_type;
+    static int countterm;
+    static double currentweight;
+    static double newweight;
+    static int staff_capacity;
+    static String staff_name;
+    static boolean casual_staff;
+    static String lic;
     
 
     public boolean check(String courseid, String staffid, int year, String term) {
         boolean warning_exist=false;
+        cleandata();
+        ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
@@ -44,9 +47,13 @@ public class ConstraintsCheck {
                 warning_exist=true;
             }
         }
-        if(staff_type.equals("Casual")){
-            
+        if(staff_type.equals("Casual")&&casual_staff==true){
+            warning.set(2,"already allocated courses in"+term);
         }
+        if(!lic.equals("null")){
+            warning.set(3,lic+"has been allocted as LIC in this couse" );
+        }
+        
         return warning_exist;
     }
 //    public void deletecheck(String courseid, String staffid, int year, String term) {
@@ -60,6 +67,40 @@ public class ConstraintsCheck {
 //            }
 //        }  
 //    }
+    public void updatecoursecheck(String courseid, double weight,String term, int year){
+        ArrayList<String> warning=new ArrayList<String>();
+        ArrayList<String> affectStaff=new ArrayList<String>();
+        ArrayList<Integer> affectStaffcapacity=new ArrayList<Integer>();
+        String courseStaff="﻿SELECT s.staff_id,s.staff_capacity from Allocation a \n" +
+                            "join Staff  s on  a.staff_id=s.staff_id\n" +
+                            "where course_id='"+courseid+"' and allocation_year="+year+" and allocation_term='"+term+"'";
+        ResultSet rs1;
+        try {
+            rs1 = database.getResultSet(courseStaff);
+            while(rs1.next()){
+                affectStaff.add(rs1.getString(1));
+                affectStaffcapacity.add(rs1.getInt(2));
+            }
+            if(affectStaff.size()!=0){
+                for(int i=0;i<affectStaff.size();i++){
+                    String checkweight="﻿select sum(weighting_term)  as weight from allocation \n" +
+                                "inner join Weighting on Allocation.course_id=Weighting.course_id a\n" +
+                                "nd allocation_year=year and allocation_term=term\n" +
+                                "where staff_id='"+affectStaff.get(i)+"' and allocation_year="+year+" and courseid!='"+courseid+"\n" +
+                                "group by staff_id";
+                    ResultSet rs2=database.getResultSet(checkweight);
+                    while(rs2.next()){
+                        if((rs2.getInt(1)+weight)>affectStaffcapacity.get(i)){
+                            warning.add("You now have unallocated capacity for "+courseid+". Do you still want to continue? Y/N");
+                        }
+                    }
+                }
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public boolean duplicateallocation(String courseid, String staffid, int year, String term){
         boolean exist=false;
         String existQuery="select * from Allocation\n" +
@@ -115,13 +156,14 @@ public class ConstraintsCheck {
         }
     }
     public void cleandata(){
-        String staff_type="";
-        int countterm=0;
-        double currentweight=0;
-        double newweight=0;
-        int staff_capacity=0;
-        String staff_name="";
-        boolean casual_staff=false;
+        staff_type="";
+        countterm=0;
+        currentweight=0;
+        newweight=0;
+        staff_capacity=0;
+        staff_name="";
+        casual_staff=false;
+        lic="null";
         ConstraintsCheck.warning.clear();
     }
 }
