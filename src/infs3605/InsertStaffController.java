@@ -47,6 +47,8 @@ public class InsertStaffController implements Initializable {
     @FXML
     private TextField insertStaffZid;
     @FXML
+    private TextField insertStaffEmail;
+    @FXML
     private Label updateMsg;
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -78,11 +80,12 @@ public class InsertStaffController implements Initializable {
         String insertFname = insertStaffFname.getText();
         String insertLname = insertStaffLname.getText();
         String insertZid = insertStaffZid.getText();
+        String insertEmail = insertStaffEmail.getText();
 
         Statement st = conn.createStatement();
         try {
-            String insertData = ("INSERT INTO STAFF (staff_id, Fname, Lname, staff_type, staff_capacity)" + " VALUES ('" + insertZid + "','"
-                    + insertFname + "', '" + insertLname + "', '" + type + "', '" + capacity + "')");
+            String insertData = ("INSERT INTO STAFF (staff_id, Fname, Lname, staff_type, staff_capacity, staff_email)" + " VALUES ('" + insertZid + "','"
+                    + insertFname + "', '" + insertLname + "', '" + type + "', '" + capacity + "', '" + insertEmail + "')");
 
             st.execute(insertData);
             System.out.println("Submitted");

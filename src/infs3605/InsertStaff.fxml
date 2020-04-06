@@ -12,9 +12,10 @@
       <TextField fx:id="insertStaffFname" layoutX="53.0" layoutY="77.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter First Name" />
       <TextField fx:id="insertStaffLname" layoutX="53.0" layoutY="110.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Last Name" />
       <TextField fx:id="insertStaffZid" layoutX="53.0" layoutY="143.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter ziD" />
-      <ComboBox fx:id="insertStaffType" layoutX="53.0" layoutY="179.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Type" />
+      <ComboBox fx:id="insertStaffType" layoutX="53.0" layoutY="211.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Type" />
       <Button fx:id="submit" layoutX="174.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleInsertBtn" text="Submit" />
       <Label fx:id="updateMsg" layoutX="258.0" layoutY="331.0" text="Label" />
-      <TextField fx:id="insertStaffCapacity" layoutX="53.0" layoutY="213.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
+      <TextField fx:id="insertStaffCapacity" layoutX="53.0" layoutY="246.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
+      <TextField fx:id="insertStaffEmail" layoutX="53.0" layoutY="176.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
    </children>
 </AnchorPane>
