@@ -15,6 +15,12 @@ and open the template in the editor.
     -fx-border-color: #d5e2ea;
 }
 
+.button3{
+    -fx-border-color: #c0cdd6;
+    -fx-border-width: 2 2 2 2;
+   // -fx-background-radius: 10 10 10 10;
+    
+}
 
 .leftBackground{
 
@@ -32,13 +38,13 @@ and open the template in the editor.
 
 
 .title {
-  font-family: Candara, Arial, Helvetica, sans-serif;
+    font-family: Candara, Arial, Helvetica, sans-serif;
 }
 
 .preferredButton {-fx-background-color: #dbe4ed;} /* Blue */
 
 .table-column {
-  -fx-alignment: CENTER;
+    -fx-alignment: CENTER;
 }
 
 
@@ -46,6 +52,16 @@ and open the template in the editor.
     -fx-background-color: #c0cdd6;
 
 }
+
+#stackPane{
+    -fx-hgap: 100%;
+    -fx-vgap: 100%;
+    
+}
+
+
+
+
 /*#6495ED*/
 
 /*00BFFF*/
