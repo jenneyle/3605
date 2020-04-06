@@ -96,22 +96,28 @@ public class UpdateWeightingsController implements Initializable {
         int year = updateYearComboBox.getValue();
 
         String updateStudents = updateWeightingStudents.getText();
-        double intUpdateStudents = Double.valueOf(updateStudents);
+        double doubleUpdateStudents = Double.valueOf(updateStudents);
+        double roundStudent = Math.round(doubleUpdateStudents*100)/100;
 
         String updateFaceHrs = updateWeightingFaceHrs.getText();
-        double intUpdateFaceHrs = Double.valueOf(updateFaceHrs);
+        double doubleUpdateFaceHrs = Double.valueOf(updateFaceHrs);
+        double roundFaceHrs = Math.round(doubleUpdateFaceHrs*100)/100;
 
         String updatePrepDevHrs = updateWeightingPrep.getText();
-        double intUpdatePrepDevHrs = Double.valueOf(updatePrepDevHrs);
+        double doubleUpdatePrepDevHrs = Double.valueOf(updatePrepDevHrs);
+        double roundPrepDevHrs = Math.round(doubleUpdatePrepDevHrs*100)/100;
+        
+//        double a = 123.13698;
+//    double roundOff = Math.round(a*100)/100;
 
         Statement st = conn.createStatement();
         try {
             String updateDatabase = ("UPDATE Weighting SET course_id = '" + courseCode
                     + "' , Year = '" + year
                     + "' , Term = '" + term
-                    + "' ,  students_enrolled = '" + intUpdateStudents
-                    + "' ,  face_time = '" + intUpdateFaceHrs
-                    + "' ,  prep_dev = '" + intUpdatePrepDevHrs
+                    + "' ,  students_enrolled = '" + roundStudent
+                    + "' ,  face_time = '" + roundFaceHrs
+                    + "' ,  prep_dev = '" + roundPrepDevHrs
                     + "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';");
             st.execute(updateDatabase);
             System.out.println("Submitted");

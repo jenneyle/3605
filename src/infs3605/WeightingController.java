@@ -66,7 +66,8 @@ public class WeightingController implements Initializable {
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
         try {
-            ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
+            //ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
+            ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled, face_time, prep_dev, ROUND(weighting_term, 2) FROM Weighting");
             while (rs.next()) {
                 weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
