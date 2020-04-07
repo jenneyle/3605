@@ -15,6 +15,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +25,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -41,6 +44,8 @@ public class CourseTableController implements Initializable {
     @FXML
     public ComboBox courseSelectionCB;
     @FXML
+    public TextField filterField;    
+    @FXML
     public Button clearFilterBtn;
     
     Database database = new Database();
@@ -48,6 +53,7 @@ public class CourseTableController implements Initializable {
    
     ObservableList<Course> data = FXCollections.observableArrayList();
     ObservableList<String> courses = FXCollections.observableArrayList();
+    SortedList<Course> sortedData;
 
     /**
      * Initializes the controller class.
@@ -107,7 +113,46 @@ public class CourseTableController implements Initializable {
         
         //Populate the Table
         courseTable.setItems(data);
+        
+        setSearchField();
     }    
+    
+    //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
+    public void setSearchField() {
+        //1.Set Search Field
+        FilteredList<Course> filteredData = new FilteredList<>(data, p -> true);
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Course -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name field in your object with filter.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (String.valueOf(Course.getCourse_id()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                    // Filter matches first name.
+
+                } else if (String.valueOf(Course.getCourseName()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                } 
+
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList. 
+        sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(courseTable.comparatorProperty());
+        // 5. Add sorted (and filtered) data to the table.
+        courseTable.setItems(sortedData);
+        
+    }
     
     @FXML
     public void selectCourseType(){
@@ -170,13 +215,15 @@ public class CourseTableController implements Initializable {
     }
     
     public void clearFilters(ActionEvent event) {
-        data.removeAll(data);
+        data.removeAll();
         courseSelectionCB.setValue(courseSelectionCB.getPromptText());
         
         setAllTable();
         
         //Populate the Table
-        courseTable.setItems(data);
+        courseTable.setItems(sortedData);
+        filterField.setText("");
+        filterField.setPromptText(filterField.getPromptText());
         setEditButtons();
     }
     

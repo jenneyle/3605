@@ -131,7 +131,7 @@ public class StaffAllocationController implements Initializable {
         boolean exist=rulecheck.duplicateallocation(courseCode, staffID, year, term);
         System.out.println(exist);
         if(exist==true){
-            success.setText("Duplicate Allocation!");
+            success.setText("Row not inserted due to a duplicate Allocation!");
                 TimerTask task1= new TimerTask() {
                     @Override
                     public void run() {

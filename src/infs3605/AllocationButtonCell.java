@@ -28,6 +28,20 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
     Button cellButton = new Button("Details");
     Database database = new Database();
 
+//    AllocationDeleteButtonCell() {
+//
+//        //Action when the button is pressed
+//        cellButton.setOnAction(new EventHandler<ActionEvent>() {
+//
+//            @Override
+//            public void handle(ActionEvent t) {
+//                Allocation currentRow = (Allocation) AllocationButtonCell.this.getTableView().getItems().get(AllocationButtonCell.this.getIndex());
+//                //remove selected item from the table list
+//                	
+//            }
+//        });
+//    }
+    
     AllocationButtonCell() {
 
         //Action when the button is pressed

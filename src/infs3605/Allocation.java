@@ -26,6 +26,7 @@ public class Allocation {
     private StringProperty staff_name;
     private DoubleProperty weight;
     private Button editButton;
+    private Button deleteButton;
     private StringProperty warning1;
     private StringProperty warning2;
 
@@ -43,6 +44,7 @@ public class Allocation {
         this.warning2=new SimpleStringProperty(warning2);
         
         this.editButton = new Button("Edit");
+        this.deleteButton = new Button("Delete");
         
         
         //System.out.println(this.warning1.get());
@@ -61,7 +63,14 @@ public class Allocation {
 //        });
         // AllocationTableController.data 
     }
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
 
+    public void getDeleteButton(Button button) {
+        this.deleteButton = button;
+    }
+    
     public Button getButton() {
         return editButton;
     }
