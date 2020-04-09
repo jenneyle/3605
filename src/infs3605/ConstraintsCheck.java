@@ -34,8 +34,8 @@ public class ConstraintsCheck {
         cleandata();
         ConstraintsCheck.warning.add("");
         ConstraintsCheck.warning.add("");
-        ConstraintsCheck.warning.add("");
-        ConstraintsCheck.warning.add("");
+        //ConstraintsCheck.warning.add("");
+        //ConstraintsCheck.warning.add("");
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
             warning.set(0,"exceed weight capacity");
@@ -47,12 +47,12 @@ public class ConstraintsCheck {
                 warning_exist=true;
             }
         }
-        if(staff_type.equals("Casual")&&casual_staff==true){
-            warning.set(2,"already allocated courses in"+term);
-        }
-        if(!lic.equals("null")){
-            warning.set(3,lic+"has been allocted as LIC in this couse" );
-        }
+//        if(staff_type.equals("Casual")&&casual_staff==true){
+//            warning.set(2,"already allocated courses in"+term);
+//        }
+//        if(!lic.equals("null")){
+//            warning.set(3,lic+"has been allocted as LIC in this couse" );
+//        }
         
         return warning_exist;
     }
@@ -128,7 +128,7 @@ public class ConstraintsCheck {
         String allocateweightQ = "﻿select weighting_term from Weighting"
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
-        String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
+        //String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
         //System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
@@ -146,11 +146,11 @@ public class ConstraintsCheck {
             while(rs2.next()){
                 newweight=rs2.getDouble("weight");
             }
-            if(database.getResultSet(casualQuery).next()){
-                casual_staff=true;
-            }else{
-                casual_staff=false;
-            }
+//            if(database.getResultSet(casualQuery).next()){
+//                casual_staff=true;
+//            }else{
+//                casual_staff=false;
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
