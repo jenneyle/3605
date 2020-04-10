@@ -115,17 +115,17 @@ public class ConstraintsCheck {
         return exist;
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
-        String searchQuery = "﻿select sum(weighting_term)  as weight,count(distinct allocation_term) as countterm from allocation \n" +
+        String searchQuery = "select sum(weighting_term)  as weight,count(distinct allocation_term) as countterm from allocation \n" +
                                 "inner join Weighting on Allocation.course_id=Weighting.course_id \n" +
                                 "and allocation_year=year and allocation_term=term\n" +
                                 "where staff_id='"+staffid+"' and allocation_year="+year+"\n" +
                                 "group by staff_id";
-        System.out.println(searchQuery);
-        String allocateweightQ = "﻿select weighting_term from Weighting"
+        //System.out.println(searchQuery);
+        String allocateweightQ = "select weighting_term from Weighting "
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
-        String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
-        //System.out.println(allocateweightQ);
+        String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
+        System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
             while(rs.next()){
@@ -140,7 +140,7 @@ public class ConstraintsCheck {
             }
             ResultSet rs2 = database.getResultSet(allocateweightQ);
             while(rs2.next()){
-                newweight=rs2.getDouble("weight");
+                newweight=rs2.getDouble("weighting_term");
             }
             if(database.getResultSet(casualQuery).next()){
                 casual_staff=true;

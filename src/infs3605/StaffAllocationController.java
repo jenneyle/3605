@@ -70,7 +70,6 @@ public class StaffAllocationController implements Initializable {
     String staffID;
     String staffFname;
     Timer timer=new Timer();
-    Timer timer1=new Timer();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -138,7 +137,7 @@ public class StaffAllocationController implements Initializable {
                         Platform.runLater(() -> success.setText(""));
                     }
                 };
-                timer1.schedule(task1,2000);
+                timer.schedule(task1,2000);
         }else{
             boolean warning_exist=rulecheck.check(courseCode, staffID, year, term);
             ArrayList<String> warning = ConstraintsCheck.warning;

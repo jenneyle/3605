@@ -51,7 +51,7 @@ public class WarningController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String name=ConstraintsCheck.staff_name;
         int warningcount=0;
-        title.setText("You have encounter "+ConstraintsCheck.warning.size()+"/ errors");
+        title.setText("You have encounter "+ConstraintsCheck.warning.size()+" errors");
         for(String i :ConstraintsCheck.warning){
             warnings.setText(i+"\n");
         }
