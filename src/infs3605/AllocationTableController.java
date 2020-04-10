@@ -131,7 +131,6 @@ public class AllocationTableController implements Initializable {
 //                    + ", a.allocation_term, ROUND(w.weighting_term,2"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -141,7 +140,7 @@ public class AllocationTableController implements Initializable {
                     + " AND a.allocation_term = w.Term"
             );
             while (rs.next()) {
-                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
             }
             ResultSet rs1 = database.getResultSet("SELECT w.course_id, year, term, weighting_term,allocation_id\n"
                     + "FROM Weighting w \n"
@@ -149,7 +148,7 @@ public class AllocationTableController implements Initializable {
                     + "on w.course_id=a.course_id and year=allocation_year and term=allocation_term\n"
                     + "where allocation_id is NULL");
             while (rs1.next()) {
-                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), rs1.getDouble(4), "", "", ""));
+                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), rs1.getDouble(4), ""));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -247,7 +246,7 @@ public class AllocationTableController implements Initializable {
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        + ",a.warning1,a.warning2"
+                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -260,7 +259,7 @@ public class AllocationTableController implements Initializable {
 
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -276,7 +275,7 @@ public class AllocationTableController implements Initializable {
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        + ",a.warning1,a.warning2"
+                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -289,7 +288,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -305,7 +304,7 @@ public class AllocationTableController implements Initializable {
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        + ",a.warning1,a.warning2"
+                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -320,7 +319,7 @@ public class AllocationTableController implements Initializable {
 
                 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -333,7 +332,7 @@ public class AllocationTableController implements Initializable {
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        + ",a.warning1,a.warning2"
+                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -347,7 +346,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -381,7 +380,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -393,7 +392,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -408,7 +407,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -421,7 +420,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -437,7 +436,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -450,7 +449,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -463,7 +462,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -476,7 +475,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -509,7 +508,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -521,7 +520,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -536,7 +535,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -549,7 +548,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -565,7 +564,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -578,7 +577,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -591,7 +590,7 @@ public class AllocationTableController implements Initializable {
                     + ", a.course_id, a.allocation_year"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    + ",a.warning1,a.warning2"
+                    //+ ",a.warning1,a.warning2"
                     + " FROM Allocation a"
                     + " JOIN Staff s"
                     + " ON s.staff_id = a.staff_id"
@@ -605,7 +604,7 @@ public class AllocationTableController implements Initializable {
 
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();

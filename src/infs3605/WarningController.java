@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -44,25 +45,15 @@ public class WarningController implements Initializable {
     @FXML
     Label title;
     @FXML
-    Label l1;
-    @FXML
-    Label l2;
+    TextArea warnings;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String name=ConstraintsCheck.staff_name;
         int warningcount=0;
-        for(int i=0;i<ConstraintsCheck.warning.size();i++){
-            if (!ConstraintsCheck.warning.get(i).equals("")){
-                warningcount+=1;
-                title.setText("You have encounter "+Integer.toString(warningcount)+"/2 errors");
-            }
-        }
-        if(!ConstraintsCheck.warning.get(0).equals("")){
-            l1.setText("This allocation "+name+" "+ConstraintsCheck.warning.get(0));
-        }
-        if(!ConstraintsCheck.warning.get(1).equals("")){
-            l2.setText("This allocation "+name+" "+ConstraintsCheck.warning.get(1));
+        title.setText("You have encounter "+ConstraintsCheck.warning.size()+"/ errors");
+        for(String i :ConstraintsCheck.warning){
+            warnings.setText(i+"\n");
         }
     }
     public void handleConBtn(ActionEvent event){

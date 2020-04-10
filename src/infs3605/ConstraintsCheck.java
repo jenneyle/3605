@@ -32,27 +32,23 @@ public class ConstraintsCheck {
     public boolean check(String courseid, String staffid, int year, String term) {
         boolean warning_exist=false;
         cleandata();
-        ConstraintsCheck.warning.add("");
-        ConstraintsCheck.warning.add("");
-        //ConstraintsCheck.warning.add("");
-        //ConstraintsCheck.warning.add("");
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
-            warning.set(0,"exceed weight capacity");
+            warning.add("exceed weight capacity");
             warning_exist=true;
         }
         if (staff_type.equals("Research")) {
             if (countterm + 1 >= 3) {
-                warning.set(1,"exceed term capacity");
+                warning.add("exceed term capacity");
                 warning_exist=true;
             }
         }
-//        if(staff_type.equals("Casual")&&casual_staff==true){
-//            warning.set(2,"already allocated courses in"+term);
-//        }
-//        if(!lic.equals("null")){
-//            warning.set(3,lic+"has been allocted as LIC in this couse" );
-//        }
+        if(staff_type.equals("Casual")&&casual_staff==true){
+            warning.add("already allocated courses in"+term);
+        }
+        if(!lic.equals("null")){
+            warning.add(lic+"has been allocted as LIC in this couse" );
+        }
         
         return warning_exist;
     }
@@ -120,15 +116,15 @@ public class ConstraintsCheck {
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
         String searchQuery = "﻿select sum(weighting_term)  as weight,count(distinct allocation_term) as countterm from allocation \n" +
-                                "inner join Weighting on Allocation.course_id=Weighting.course_id a\n" +
-                                "nd allocation_year=year and allocation_term=term\n" +
+                                "inner join Weighting on Allocation.course_id=Weighting.course_id \n" +
+                                "and allocation_year=year and allocation_term=term\n" +
                                 "where staff_id='"+staffid+"' and allocation_year="+year+"\n" +
                                 "group by staff_id";
-        //System.out.println(searchQuery);
+        System.out.println(searchQuery);
         String allocateweightQ = "﻿select weighting_term from Weighting"
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
-        //String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
+        String casualQuery="﻿select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
         //System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
@@ -146,11 +142,11 @@ public class ConstraintsCheck {
             while(rs2.next()){
                 newweight=rs2.getDouble("weight");
             }
-//            if(database.getResultSet(casualQuery).next()){
-//                casual_staff=true;
-//            }else{
-//                casual_staff=false;
-//            }
+            if(database.getResultSet(casualQuery).next()){
+                casual_staff=true;
+            }else{
+                casual_staff=false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -31,7 +31,7 @@ public class Allocation {
     private StringProperty warning2;
 
     // ObservableList<Allocation> allocations = AllocationTableController.allocationTable.getSelectionModel().getSelectedItems();
-    public Allocation(int id, String course_id, int year, String term, double weight, String staff_id,String warning1,String warning2) {
+    public Allocation(int id, String course_id, int year, String term, double weight, String staff_id) {
         this.id = new SimpleIntegerProperty(id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
@@ -39,9 +39,9 @@ public class Allocation {
         this.staff_name = new SimpleStringProperty(staff_id);
         this.weight = new SimpleDoubleProperty(weight);
         
-        this.warning1=new SimpleStringProperty(warning1);
-   
-        this.warning2=new SimpleStringProperty(warning2);
+//        this.warning1=new SimpleStringProperty(warning1);
+//   
+//        this.warning2=new SimpleStringProperty(warning2);
         
         this.editButton = new Button("Edit");
         this.deleteButton = new Button("Delete");
