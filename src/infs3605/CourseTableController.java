@@ -67,9 +67,10 @@ public class CourseTableController implements Initializable {
         TableColumn t1Col = new TableColumn("T1");
         TableColumn t2Col = new TableColumn("T2");
         TableColumn t3Col = new TableColumn("T3");
+        TableColumn tsCol = new TableColumn("Summer");
         editCourse = new TableColumn("EDIT");
         //Add columns to tableview
-        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, editCourse);
+        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, tsCol, editCourse);
         
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -107,6 +108,7 @@ public class CourseTableController implements Initializable {
 //        });
         t2Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t2Offer"));
         t3Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t3Offer"));
+        tsCol.setCellValueFactory(new PropertyValueFactory<Course, Double>("tsOffer"));
         editCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("editButton"));
         
         setEditButtons();
@@ -161,12 +163,12 @@ public class CourseTableController implements Initializable {
         //Get Complete Rows from Database
         try {
             ResultSet rs = database.getResultSet("SELECT course_id, course_name"
-                                                + ", t1_offer, t2_offer, t3_offer"
+                                                + ", t1_offer, t2_offer, t3_offer, summer_offer"
                                                 + " FROM Courses"
                                                 + " WHERE course_id = '" + courseSelectionCB.getValue() + "'"
                                                 );
             while (rs.next()) {
-                data.add(new Course(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+                data.add(new Course(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -182,11 +184,11 @@ public class CourseTableController implements Initializable {
         //Get Complete Rows from Database
         try {
             ResultSet rs = database.getResultSet("SELECT course_id, course_name"
-                                                + ", t1_offer, t2_offer, t3_offer"
+                                                + ", t1_offer, t2_offer, t3_offer, summer_offer"
                                                 + " FROM Courses"
                                                 );
             while (rs.next()) {
-                data.add(new Course(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+                data.add(new Course(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -207,7 +209,7 @@ public class CourseTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new AllocationButtonCell();
+                return new CourseInfoDetailButtonCell();
             }
 
         });

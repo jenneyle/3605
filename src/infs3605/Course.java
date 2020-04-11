@@ -22,15 +22,17 @@ public class Course {
     private IntegerProperty t1Offer;
     private IntegerProperty t2Offer;
     private IntegerProperty t3Offer;
+    private IntegerProperty tsOffer;
     private Button editButton;
     
     //Constructor
-    public Course(String course_id, String courseName, int t1Offer, int t2Offer, int t3Offer) {    
+    public Course(String course_id, String courseName, int t1Offer, int t2Offer, int t3Offer, int tsOffer) {    
         this.course_id = new SimpleStringProperty(course_id);
         this.courseName = new SimpleStringProperty(courseName);
         this.t1Offer = new SimpleIntegerProperty(t1Offer);
         this.t2Offer = new SimpleIntegerProperty(t2Offer);
         this.t3Offer = new SimpleIntegerProperty(t3Offer);
+        this.tsOffer = new SimpleIntegerProperty(tsOffer);
         this.editButton = new Button("Edit");
     }
     
@@ -74,6 +76,14 @@ public class Course {
     public void setT3Offer(int t3Offer) {    
         this.t3Offer = new SimpleIntegerProperty(t3Offer);
     }
+    
+    public int getTsOffer() {
+        return tsOffer.get();
+    }
+
+    public void setTsOffer(int tsOffer) {    
+        this.tsOffer = new SimpleIntegerProperty(tsOffer);
+    }
 
     public Button getEditButton() {
         return editButton;
@@ -81,5 +91,10 @@ public class Course {
 
     public void setEditButton(Button editButton) {
         this.editButton = editButton;
+    }
+    
+    @Override
+    public String toString() {
+        return course_id.get();
     }
 }

@@ -18,7 +18,7 @@ and open the template in the editor.
 .button3{
     -fx-border-color: #c0cdd6;
     -fx-border-width: 2 2 2 2;
-   // -fx-background-radius: 10 10 10 10;
+    /*-fx-background-radius: 10 10 10 10;*/
     
 }
 

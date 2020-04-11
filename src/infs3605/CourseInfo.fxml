@@ -4,84 +4,69 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="317.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
-      <Label alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Information" textAlignment="CENTER">
+      <Button fx:id="back" layoutX="329.0" layoutY="463.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Label alignment="CENTER" layoutX="83.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Information">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <VBox layoutX="78.0" layoutY="55.0" prefHeight="200.0" prefWidth="100.0">
+      <GridPane layoutX="51.0" layoutY="147.0" prefHeight="139.0" prefWidth="131.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.33334350585938" minWidth="10.0" prefWidth="67.33334350585938" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.33331298828125" minWidth="10.0" prefWidth="63.666656494140625" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="39.666656494140625" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="35.333343505859375" minHeight="8.666656494140625" prefHeight="32.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="131.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="131.13671875">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
-               </children>
-            </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" wrappingWidth="131.13671875" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1:" wrappingWidth="54.0" />
-                  <ImageView fx:id="t1Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Capture.JPG" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2:" wrappingWidth="54.0" />
-                  <ImageView fx:id="t2Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../../../Capture.JPG" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3:" wrappingWidth="54.0" />
-                  <ImageView fx:id="t3Offer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../../../Capture.JPG" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Summer:" wrappingWidth="54.0" />
-                  <ImageView fx:id="tSOffer" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../../../Capture.JPG" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1:" wrappingWidth="54.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2:" wrappingWidth="54.0" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3:" wrappingWidth="54.0" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Summer:" wrappingWidth="54.0" GridPane.rowIndex="3" />
+            <ImageView fx:id="t1Offer" fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="t2Offer" fitHeight="27.0" fitWidth="25.0" layoutX="110.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="t3Offer" fitHeight="27.0" fitWidth="25.0" layoutX="110.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ImageView fx:id="tsOffer" fitHeight="27.0" fitWidth="25.0" layoutX="110.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
-      </VBox>
+      </GridPane>
+      <Text fx:id="courseCode" layoutX="51.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="79.21875236928463">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="courseName" layoutX="130.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="RIGHT" wrappingWidth="235.99999889731407">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="51.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" textAlignment="CENTER" wrappingWidth="79.21875" />
+      <Text layoutX="185.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historical Staff Allocation" textAlignment="CENTER" wrappingWidth="215.88543701171875" />
+      <TableView layoutX="217.0" layoutY="147.0" prefHeight="139.0" prefWidth="153.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Text layoutX="51.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes" wrappingWidth="106.55209350585938" />
+      <TextArea layoutX="48.0" layoutY="334.0" prefHeight="104.0" prefWidth="325.0" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
