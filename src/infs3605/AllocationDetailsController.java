@@ -82,7 +82,7 @@ public class AllocationDetailsController {
             staffId.setText(rs.getString(2));
             term.setText(rs.getString(3));
             year.setText(rs.getString(4));
-            notes.setText(rs.getString(5));
+            notes.setText("Notes: " + rs.getString(5));
             if(rs.getInt(6)==1){
                 lic.setText("LIC: Yes");
             } else {
