@@ -40,7 +40,8 @@ public class AllocationTableController implements Initializable {
     TableColumn editAllocation;
     @FXML
     TableColumn deleteAllocation;
-
+    @FXML
+    TableColumn viewDetailsAllocation;
     @FXML
     public ComboBox yearSelectionCB;
     @FXML
@@ -72,8 +73,10 @@ public class AllocationTableController implements Initializable {
         TableColumn warning2 = new TableColumn("Warning");
         editAllocation = new TableColumn("EDIT");
         deleteAllocation = new TableColumn("DELETE");
+        viewDetailsAllocation = new TableColumn("DETAILS");
+
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, editAllocation, deleteAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, viewDetailsAllocation,editAllocation, deleteAllocation);
         warning1.setVisible(false);
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
@@ -113,10 +116,11 @@ public class AllocationTableController implements Initializable {
         warning2.setCellValueFactory(new PropertyValueFactory<Allocation, String>("warning2"));
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
         deleteAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("deleteButton"));
+        viewDetailsAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("detailsButton"));
 
         setEditButtons();
         setDeleteButtons();
-
+        setDetailsButtons();
         //Populate the Table
         allocationTable.setItems(data);
 
@@ -125,10 +129,11 @@ public class AllocationTableController implements Initializable {
     //Fetch Rows from Database and set Table
     public void setAllTable() {
         //Get Complete Rows from Database
+        data.clear();
         try {
             ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                     + ", a.course_id, a.allocation_year"
-//                    + ", a.allocation_term, ROUND(w.weighting_term,2"
+                    //                    + ", a.allocation_term, ROUND(w.weighting_term,2"
                     + ", a.allocation_term, w.weighting_term"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                     + " FROM Allocation a"
@@ -198,6 +203,27 @@ public class AllocationTableController implements Initializable {
 
     }
 
+    public void setDetailsButtons() {
+        // Edit Button
+        viewDetailsAllocation.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+
+        viewDetailsAllocation.setCellFactory(
+                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
+
+            @Override
+            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
+                return new AllocationDetailButtonCell();
+            }
+
+        });
+
+    }
+
     //button to allocate staff to course
     @FXML
     public void handleAllocateBtn(MouseEvent event) throws IOException {
@@ -246,7 +272,6 @@ public class AllocationTableController implements Initializable {
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -256,7 +281,6 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_term = w.Term"
                         + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
                 );
-
 
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -271,11 +295,9 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -300,11 +322,9 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -316,8 +336,6 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
 
-
-                
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
                 }
@@ -328,11 +346,9 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
                         + ", a.course_id, a.allocation_year"
                         + ", a.allocation_term, w.weighting_term"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                        
                         + " FROM Allocation a"
                         + " JOIN Staff s"
                         + " ON s.staff_id = a.staff_id"
@@ -343,7 +359,6 @@ public class AllocationTableController implements Initializable {
                         + " WHERE a.allocation_year = " + yearSelectionCB.getValue()
                         + " AND allocation_term = '" + termSelectionCB.getValue() + "'"
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
-
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -358,6 +373,7 @@ public class AllocationTableController implements Initializable {
         allocationTable.setItems(data);
         setEditButtons();
         setDeleteButtons();
+        setDetailsButtons();
     }
 
     @FXML
@@ -377,19 +393,17 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -404,20 +418,18 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
-                    + " AND a.allocation_year = " + yearSelectionCB.getValue()
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
+                        + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -432,21 +444,18 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
-                    + " AND course_id = '" + courseSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
+                        + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -458,21 +467,18 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"                        + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
-                    + " AND allocation_year = " + yearSelectionCB.getValue()
-                    + " AND course_id = '" + courseSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term" + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
+                        + " AND allocation_year = " + yearSelectionCB.getValue()
+                        + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -487,6 +493,7 @@ public class AllocationTableController implements Initializable {
         allocationTable.setItems(data);
         setEditButtons();
         setDeleteButtons();
+        setDetailsButtons();
     }
 
     @FXML
@@ -505,19 +512,17 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -532,20 +537,18 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
-                    + " AND a.allocation_year = " + yearSelectionCB.getValue()
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
+                        + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -560,21 +563,18 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
-                    + " AND a.allocation_term = '" + termSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
+                        + " AND a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -586,22 +586,20 @@ public class AllocationTableController implements Initializable {
             //Get Complete Rows from Database
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
-
-                    + ", a.course_id, a.allocation_year"
-                    + ", a.allocation_term, w.weighting_term"
-                    + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
-                    //+ ",a.warning1,a.warning2"
-                    + " FROM Allocation a"
-                    + " JOIN Staff s"
-                    + " ON s.staff_id = a.staff_id"
-                    + " LEFT OUTER JOIN Weighting w"
-                    + " ON a.course_id = w.course_id"
-                    + " AND a.allocation_year = w.Year"
-                    + " AND a.allocation_term = w.Term"
-                    + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
-                    + " AND allocation_year = " + yearSelectionCB.getValue()
-                    + " AND allocation_term = '" + termSelectionCB.getValue() + "'"
-
+                        + ", a.course_id, a.allocation_year"
+                        + ", a.allocation_term, w.weighting_term"
+                        + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
+                        //+ ",a.warning1,a.warning2"
+                        + " FROM Allocation a"
+                        + " JOIN Staff s"
+                        + " ON s.staff_id = a.staff_id"
+                        + " LEFT OUTER JOIN Weighting w"
+                        + " ON a.course_id = w.course_id"
+                        + " AND a.allocation_year = w.Year"
+                        + " AND a.allocation_term = w.Term"
+                        + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
+                        + " AND allocation_year = " + yearSelectionCB.getValue()
+                        + " AND allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
                     data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
@@ -616,6 +614,7 @@ public class AllocationTableController implements Initializable {
         allocationTable.setItems(data);
         setEditButtons();
         setDeleteButtons();
+        setDetailsButtons();
     }
 
     public void clearFilters(ActionEvent event) {
@@ -630,5 +629,6 @@ public class AllocationTableController implements Initializable {
         allocationTable.setItems(data);
         setEditButtons();
         setDeleteButtons();
+        setDetailsButtons();
     }
 }

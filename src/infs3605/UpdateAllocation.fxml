@@ -13,18 +13,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationInfoController">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="277.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Button fx:id="back" layoutX="60.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
       <Label alignment="CENTER" layoutX="82.0" layoutY="35.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Allocation Information" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="141.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
-      <Button fx:id="back11" layoutX="209.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Delete" textFill="#414446" />
+      <Button fx:id="submit" layoutX="289.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
       <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
          <children>
             <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" visible="false" wrappingWidth="162.13671875">

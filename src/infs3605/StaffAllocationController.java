@@ -29,8 +29,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -58,6 +60,11 @@ public class StaffAllocationController implements Initializable {
 
     @FXML
     private ComboBox<String> staffComboBox;
+    @FXML
+    private CheckBox licCheckBox;
+    
+        @FXML
+    private TextArea allocationNotes;
     @FXML
     private Label success;
 
@@ -112,6 +119,12 @@ public class StaffAllocationController implements Initializable {
         String courseCode = courseComboBox.getValue();
         String term = termComboBox.getValue();
         String staffName = staffComboBox.getValue();
+        String notes = allocationNotes.getText();
+        int licCheck = 0;
+        
+        if (licCheckBox.isSelected()) {
+            licCheck = 1;
+        }
 
         //getting first name of the staff
         staffName = staffName.substring(0, staffName.indexOf(" "));
@@ -145,8 +158,8 @@ public class StaffAllocationController implements Initializable {
                 Statement st = conn.createStatement();
                 try {
                     String insertData="";
-                    insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id)"
-                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "')");
+                    insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id, lic, allocation_description)"
+                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "'," + licCheck + ",'" + notes +"')");
                     st.execute(insertData);
                     knowledgewarning = false;
                     success.setText("Allocation Success!");

@@ -27,6 +27,7 @@ public class Allocation {
     private DoubleProperty weight;
     private Button editButton;
     private Button deleteButton;
+    private Button detailsButton;
     private StringProperty warning1;
     private StringProperty warning2;
 
@@ -45,6 +46,7 @@ public class Allocation {
         
         this.editButton = new Button("Edit");
         this.deleteButton = new Button("Delete");
+        this.detailsButton = new Button("Details");
         
         
         //System.out.println(this.warning1.get());
@@ -69,6 +71,14 @@ public class Allocation {
 
     public void getDeleteButton(Button button) {
         this.deleteButton = button;
+    }
+        
+    public Button getDetailsButton() {
+        return detailsButton;
+    }
+
+    public void getDetailsButton(Button button) {
+        this.detailsButton = button;
     }
     
     public Button getButton() {

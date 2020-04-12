@@ -1,6 +1,5 @@
 package infs3605;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,12 +10,12 @@ import java.sql.SQLException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Mashilan
  */
 public class Database {
+
     public static Connection conn;
 
     public static void openConnection() {
@@ -24,19 +23,34 @@ public class Database {
             try {
                 conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             } catch (SQLException ex) {
-             
+
                 ex.printStackTrace();
+            } finally {
+                if (conn != null) {
+                    try {
+                        System.out.println("finally block");
+                     //   conn.close(); // <-- This is important
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
         }
     }
    
    
+    
+
+    
+
     public ResultSet getResultSet(String sqlstatement) throws SQLException {
         openConnection();
         ResultSet RS = conn.createStatement().executeQuery(sqlstatement);
         return RS;
-        
+
     }
+
     public void insertStatement(String insert_query) throws SQLException {
         java.sql.Statement stmt = null;
         openConnection();

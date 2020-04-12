@@ -2,8 +2,10 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,16 +17,16 @@
    <children>
       <ComboBox fx:id="courseComboBox" layoutX="196.0" layoutY="119.0" prefHeight="27.0" prefWidth="143.0" promptText="Course Code" />
       <ComboBox fx:id="staffComboBox" layoutX="196.0" layoutY="166.0" prefHeight="25.0" prefWidth="316.0" promptText="Staff Member" />
-      <Button fx:id="submit" layoutX="464.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+      <Button fx:id="submit" layoutX="458.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
       <Text fx:id="courseName" layoutX="390.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
       <ComboBox fx:id="yearComboBox" layoutX="196.0" layoutY="216.0" prefWidth="150.0" promptText="Year" />
-      <ComboBox fx:id="termComboBox" layoutX="371.0" layoutY="216.0" prefWidth="150.0" promptText="Term" />
+      <ComboBox fx:id="termComboBox" layoutX="362.0" layoutY="216.0" prefWidth="150.0" promptText="Term" />
       <Label layoutX="196.0" layoutY="37.0" prefHeight="40.0" prefWidth="299.0" stylesheets="@StyleSheet.css" text="Allocate Staff To Course">
          <font>
             <Font name="Candara" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="back" layoutX="196.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="15.0" prefWidth="59.0" text="Back" />
+      <Button fx:id="back" layoutX="196.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="15.0" prefWidth="59.0" text="Back" />
       <Label fx:id="success" layoutX="337.0" layoutY="383.0" textFill="#c00d0d" />
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
@@ -64,5 +66,8 @@
             </HBox>
          </children>
       </AnchorPane>
+      <CheckBox fx:id="licCheckBox" layoutX="196.0" layoutY="263.0" mnemonicParsing="false" text="LIC?" />
+      <TextArea fx:id="allocationNotes" layoutX="196.0" layoutY="314.0" prefHeight="99.0" prefWidth="316.0" />
+      <Text layoutX="196.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
    </children>
 </AnchorPane>

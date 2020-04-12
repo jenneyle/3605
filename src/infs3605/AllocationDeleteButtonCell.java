@@ -37,7 +37,6 @@ public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boole
                 //remove selected item from the table list
                 data.remove(currentRow);
                 try {
-                    System.out.println("freeya was here");
                     Statement st = conn.createStatement();
                     String query = ("DELETE FROM Allocation WHERE allocation_id = " + currentRow.getId());
                     System.out.println("deleting field ");

@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 public class AllocationButtonCell extends TableCell<Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-    Button cellButton = new Button("Details");
+    Button cellButton = new Button("Edit");
     Database database = new Database();
 
 //    AllocationDeleteButtonCell() {
@@ -51,7 +51,7 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
             public void handle(ActionEvent t) {
                 Allocation currentRow = (Allocation) AllocationButtonCell.this.getTableView().getItems().get(AllocationButtonCell.this.getIndex());
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("AllocationInfo.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("UpdateAllocation.fxml"));
 
                 try {
                     fxmlLoader.load();
@@ -84,8 +84,8 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
                     e.printStackTrace();
                 }
 
-                AllocationInfoController allocationInfoController = fxmlLoader.getController();
-                allocationInfoController.setData(allocationId, courseId, courseName, staffId, staffName, year, term);
+                UpdateAllocationController updateAllocationController = fxmlLoader.getController();
+                updateAllocationController.setData(allocationId, courseId, courseName, staffId, staffName, year, term);
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();

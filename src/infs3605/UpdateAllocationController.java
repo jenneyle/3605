@@ -38,7 +38,7 @@ import org.controlsfx.control.textfield.TextFields;
  *
  * @author SOPHIA
  */
-public class AllocationInfoController {
+public class UpdateAllocationController {
 
     @FXML
     Button back;
