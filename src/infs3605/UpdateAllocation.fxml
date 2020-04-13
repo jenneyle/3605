@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -23,7 +23,7 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="289.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
+      <Button fx:id="submit" layoutX="276.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
       <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
          <children>
             <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" visible="false" wrappingWidth="162.13671875">
@@ -33,7 +33,7 @@
             </Text>
          </children>
       </HBox>
-      <VBox layoutX="60.0" layoutY="157.0" prefHeight="88.0" prefWidth="162.0">
+      <VBox layoutX="60.0" layoutY="189.0" prefHeight="88.0" prefWidth="162.0">
          <children>
             <Pane prefHeight="10.0" prefWidth="163.0" />
             <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" visible="false" wrappingWidth="127.13671875">
@@ -47,7 +47,8 @@
          </children>
       </VBox>
       <TextField fx:id="courseCode" layoutX="60.0" layoutY="93.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="staffName" layoutX="60.0" layoutY="132.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="staffName" layoutX="60.0" layoutY="129.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="weighting" layoutX="60.0" layoutY="165.0" prefHeight="25.0" prefWidth="179.0" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />

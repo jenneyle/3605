@@ -61,6 +61,8 @@ public class AllocationDetailsController {
     Text lic;
     @FXML
     Text notes;
+    @FXML
+    Text weighting;      
 
     // int allocationId = 0;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -75,14 +77,15 @@ public class AllocationDetailsController {
 
         try {
             Database.openConnection();
-            ResultSet rs = conn.createStatement().executeQuery("Select a.course_id, a.staff_id, allocation_term, allocation_year, allocation_description, lic, course_name, Fname, Lname "
-                    + "FROM Courses c JOIN Allocation a ON a.course_id = c.course_id JOIN Staff s ON a.staff_id = s.staff_id WHERE allocation_id =" + iAllocationId);
+            ResultSet rs = conn.createStatement().executeQuery("Select a.course_id, a.staff_id, allocation_term, allocation_year, allocation_description, lic, course_name, Fname, Lname, w.weighting_term "
+                    + "FROM Courses c JOIN Allocation a ON a.course_id = c.course_id JOIN Staff s ON a.staff_id = s.staff_id JOIN Weighting w ON w.course_id = a.course_id WHERE allocation_id =" + iAllocationId);
 
             courseCode.setText(rs.getString(1));
             staffId.setText(rs.getString(2));
             term.setText(rs.getString(3));
             year.setText(rs.getString(4));
             notes.setText("Notes: " + rs.getString(5));
+            weighting.setText(rs.getString(10));
             if(rs.getInt(6)==1){
                 lic.setText("LIC: Yes");
             } else {

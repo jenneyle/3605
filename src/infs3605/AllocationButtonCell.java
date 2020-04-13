@@ -65,12 +65,15 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
                 String staffName = "";
                 int year = 0;
                 String term = "";
-
+                String weighting = "";
+               // String weight_term = Double.toString(weighting);
+                
+             
                 try {
                     ResultSet rs = database.getResultSet("SELECT Allocation.allocation_id, Allocation.allocation_term, Allocation.allocation_year,"
-                            + " Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname"
+                            + " Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname, Weighting.weighting_term"
                             + " FROM Staff JOIN Allocation ON Staff.staff_id = Allocation.staff_id JOIN Courses ON"
-                            + " Courses.course_id = Allocation.course_id WHERE allocation_id =" + currentRow.getId());
+                            + " Courses.course_id = Allocation.course_id JOIN Weighting on Weighting.course_id = Courses.course_id WHERE allocation_id =" + currentRow.getId());
                     System.out.println("hi");
                     allocationId = rs.getInt(1);
                     courseId = rs.getString(4);
@@ -79,13 +82,14 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
                     staffName = rs.getString(7) + " " + rs.getString(8);
                     year = rs.getInt(3);
                     term = rs.getString(2);
+                    weighting = rs.getString(9);
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
                 UpdateAllocationController updateAllocationController = fxmlLoader.getController();
-                updateAllocationController.setData(allocationId, courseId, courseName, staffId, staffName, year, term);
+                updateAllocationController.setData(allocationId, courseId, courseName, staffId, staffName, year, term, weighting);
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();

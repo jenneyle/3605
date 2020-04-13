@@ -52,6 +52,8 @@ public class UpdateAllocationController {
     @FXML
     TextField staffName;
     @FXML
+    TextField weighting;
+    @FXML
     ComboBox year;
     @FXML
     ComboBox term;
@@ -63,8 +65,9 @@ public class UpdateAllocationController {
     ObservableList<String> staffList = FXCollections.observableArrayList();
     ObservableList<Integer> yearList = FXCollections.observableArrayList();
     ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
+    
 
-    public void setData(int iAllocationId, String iCourseId, String iCourseName, String iStaffId, String iStaffName, int iYear, String iTerm) {
+    public void setData(int iAllocationId, String iCourseId, String iCourseName, String iStaffId, String iStaffName, int iYear, String iTerm, String iWeighting) {
         allocationId = iAllocationId;
         courseCode.setText(iCourseId);
         courseName.setText(iCourseName);
@@ -72,6 +75,7 @@ public class UpdateAllocationController {
         staffName.setText(iStaffName);
         year.setValue(iYear);
         term.setValue(iTerm);
+        weighting.setText(iWeighting);
 
         setLists();
 
