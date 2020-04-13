@@ -19,6 +19,7 @@ public class CourseDetails {
     //Properties
     private StringProperty course_id;
     private StringProperty courseName;
+    private StringProperty courseDesc;
     private IntegerProperty t1Offer;
     private IntegerProperty t2Offer;
     private IntegerProperty t3Offer;
@@ -27,11 +28,12 @@ public class CourseDetails {
     private Button editButton;
     
     //Constructor
-    public CourseDetails(String course_id, String courseName, int t1Offer
-                        , int t2Offer, int t3Offer, int tsOffer
-                        , String allocationNotes) {    
+    public CourseDetails(String course_id, String courseName, String courseDesc
+                        , int t1Offer, int t2Offer, int t3Offer
+                        , int tsOffer, String allocationNotes) {    
         this.course_id = new SimpleStringProperty(course_id);
         this.courseName = new SimpleStringProperty(courseName);
+        this.courseDesc = new SimpleStringProperty(courseDesc);
         this.t1Offer = new SimpleIntegerProperty(t1Offer);
         this.t2Offer = new SimpleIntegerProperty(t2Offer);
         this.t3Offer = new SimpleIntegerProperty(t3Offer);
@@ -55,6 +57,14 @@ public class CourseDetails {
 
     public void setCourseName(String courseName) {
         this.courseName = new SimpleStringProperty(courseName);
+    }
+    
+    public String getCourseDesc() {
+        return courseDesc.get();
+    }
+    
+    public void setCourseDesc(String courseDesc) {
+        this.courseDesc = new SimpleStringProperty(courseDesc);
     }
     
     public String getAllocationNotes() {
