@@ -46,7 +46,7 @@ and open the template in the editor.
 .sideButton:hover {
     -fx-background-color: #a3bad2; 
     -fx-background-radius: 0 20 20 0;
-    // -fx-padding: 15
+    /* -fx-padding: 15*/
 }
 
 

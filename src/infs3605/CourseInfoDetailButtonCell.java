@@ -13,8 +13,12 @@ import com.sun.prism.impl.Disposer;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
+import javafx.stage.Stage;
 
 /**
  *
@@ -32,22 +36,28 @@ public class CourseInfoDetailButtonCell extends TableCell<Disposer.Record, Boole
         cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
-            public void handle(ActionEvent t){
+            public void handle(ActionEvent t) {
                 String courseID = CourseInfoDetailButtonCell.this.getTableRow().getItem().toString();
                 //Lauch the Course Detail Popup
-                
+
                 try {
-                    courseInfoController.intialiser(t, courseID, "CourseInfo.fxml");
-                } catch (IOException io){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CourseInfo.fxml"));
+                    Parent root = loader.load();
+
+                    //The following both lines are the only addition we need to pass the arguments
+                    CourseInfoController controller2 = loader.getController();
+                    controller2.start(courseID);
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException io) {
                     io.printStackTrace();
                 }
-                
-                
 
             }
         });
     }
-    
+
     //Display button if the row is not empty
     @Override
     protected void updateItem(Boolean t, boolean empty) {
