@@ -42,7 +42,6 @@ public class WeightingController implements Initializable {
     TableView weightingTable;
     TableColumn editWeighting;
     TableColumn updateWeighting;
-    TableColumn deleteWeighting;
 
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -63,9 +62,8 @@ public class WeightingController implements Initializable {
         TableColumn weightingTotal = new TableColumn("TOTAL WEIGHTING");
         editWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
-        deleteWeighting = new TableColumn("DELETE");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal,editWeighting, updateWeighting, deleteWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal,editWeighting, updateWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
@@ -92,8 +90,6 @@ public class WeightingController implements Initializable {
         setEditButtons();
         updateWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("updateButton"));
         setUpdateButtons();
-        deleteWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("deleteButton"));
-        setDeleteButtons();
         weightingTable.setItems(weighting);
 
     }
@@ -138,26 +134,7 @@ public class WeightingController implements Initializable {
 
     }
 
-    public void setDeleteButtons() {
-        // Edit Button
-        deleteWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-
-        deleteWeighting.setCellFactory(
-                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
-
-            @Override
-            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new AllocationButtonCell();
-            }
-
-        });
-
-    }
+ 
     //button to update course weightings
     @FXML
     public void handleUpdateWeightingBtn(ActionEvent event) throws IOException {
