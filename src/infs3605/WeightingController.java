@@ -93,18 +93,21 @@ public class WeightingController implements Initializable {
         wlecture_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_hrs"));
         wconsultation_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("consultation_hrs"));
         
+        wmarking_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("marking_hrs"));
         wtutorial_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("tutorial_prep"));
         wlecture_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_prep"));
         
         wstaff_development.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("staff_development"));
         weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
         editWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
+        //uncomment to make it work
         //setEditButtons();
         updateWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("updateButton"));
         setUpdateButtons();
         weightingTable.setItems(weighting);
 
     }
+    //uncomment to make it work
 //    public void setEditButtons() {
 //        // Detail Button
 //        editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
