@@ -10,6 +10,7 @@ and open the template in the editor.
 
 .button:hover{
     -fx-background-color: #c0cdd6;
+   
 }
 .textbox{
     -fx-border-color: #d5e2ea;
@@ -18,7 +19,7 @@ and open the template in the editor.
 .button3{
     -fx-border-color: #c0cdd6;
     -fx-border-width: 2 2 2 2;
-    /*-fx-background-radius: 10 10 10 10;*/
+    -fx-background-radius: 3 3 3 3;
     
 }
 
@@ -34,6 +35,8 @@ and open the template in the editor.
 
 .sideButton:hover {
     -fx-background-color: #a3bad2; 
+    -fx-background-radius: 0 20 20 0;
+    // -fx-padding: 15
 }
 
 
@@ -45,11 +48,16 @@ and open the template in the editor.
 
 .table-column {
     -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+     
 }
 
 
 .sidebarColoured{
     -fx-background-color: #c0cdd6;
+     -fx-background-radius: 0 20 20 0;
+    
+  
 
 }
 
@@ -59,6 +67,17 @@ and open the template in the editor.
     
 }
 
+
+.roundedButton{
+  -fx-background-radius: 20 20 20 20;
+  -fx-background-color: #ffffff;
+  -fx-padding: 15
+    
+}
+
+.roundedButton:hover {
+    -fx-background-color: #a3bad2; 
+}
 
 
 

@@ -56,15 +56,15 @@ public class WeightingController implements Initializable {
         TableColumn weightingCourse = new TableColumn("COURSE ID");
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
-        TableColumn weightingStudents = new TableColumn("STUDENTS ENROLLED");
-        TableColumn wtutorial_hrs = new TableColumn("TUTORIAL HOURS");
-        TableColumn wlecture_hrs = new TableColumn("LECTURE HOURS");
-        TableColumn wconsultation_hrs = new TableColumn("CONSULTATION HOURS");
-        TableColumn wmarking_hrs = new TableColumn("MARKING HOURS");
-        TableColumn wtutorial_prep = new TableColumn("TUTORIAL PREPARATION");
-        TableColumn wlecture_prep = new TableColumn("LECTURE PREPARATION");
-        TableColumn wstaff_development = new TableColumn("STAFF DEVELOPMENT HOURS");
-        TableColumn weightingTotal = new TableColumn("TOTAL WEIGHTING");
+        TableColumn weightingStudents = new TableColumn("STUDENTS\nENROLLED");
+        TableColumn wtutorial_hrs = new TableColumn("TUTORIAL\nHOURS");
+        TableColumn wlecture_hrs = new TableColumn("LECTURE\nHOURS");
+        TableColumn wconsultation_hrs = new TableColumn("CONSULTATION\nHOURS");
+        TableColumn wmarking_hrs = new TableColumn("MARKING\nHOURS");
+        TableColumn wtutorial_prep = new TableColumn("TUTORIAL\nPREPARATION");
+        TableColumn wlecture_prep = new TableColumn("LECTURE\nPREPARATION");
+        TableColumn wstaff_development = new TableColumn("STAFF\nDEVELOPMENT\nHOURS");
+        TableColumn weightingTotal = new TableColumn("TOTAL\nWEIGHTING");
         editWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
 
