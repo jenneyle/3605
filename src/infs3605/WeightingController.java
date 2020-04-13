@@ -94,7 +94,7 @@ public class WeightingController implements Initializable {
 
     }
     public void setEditButtons() {
-        // Edit Button
+        // Detail Button
         editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
@@ -107,7 +107,7 @@ public class WeightingController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new AllocationButtonCell();
+                return new WeightingDetailButtonCell();
             }
 
         });
