@@ -57,21 +57,26 @@ public class WeightingController implements Initializable {
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
         TableColumn weightingStudents = new TableColumn("STUDENTS ENROLLED");
-        TableColumn weightingFaceHrs = new TableColumn("FACE TO FACE HOURS");
-        TableColumn weightingPrepHrs = new TableColumn("PREPARATION AND DEVELOPMENT HOURS");
+        TableColumn wtutorial_hrs = new TableColumn("TUTORIAL HOURS");
+        TableColumn wlecture_hrs = new TableColumn("LECTURE HOURS");
+        TableColumn wconsultation_hrs = new TableColumn("CONSULTATION HOURS");
+        TableColumn wmarking_hrs = new TableColumn("MARKING HOURS");
+        TableColumn wtutorial_prep = new TableColumn("TUTORIAL PREPARATION");
+        TableColumn wlecture_prep = new TableColumn("LECTURE PREPARATION");
+        TableColumn wstaff_development = new TableColumn("STAFF DEVELOPMENT HOURS");
         TableColumn weightingTotal = new TableColumn("TOTAL WEIGHTING");
         editWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, weightingFaceHrs, weightingPrepHrs, weightingTotal,editWeighting, updateWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wtutorial_hrs, wlecture_hrs, wconsultation_hrs, wmarking_hrs, wtutorial_prep, wlecture_prep, wstaff_development, weightingTotal,editWeighting, updateWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
         try {
             //ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
-            ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled, face_time, prep_dev, ROUND(weighting_term, 2) FROM Weighting");
+            ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, ROUND(weighting_term, 2) FROM Weighting");
             while (rs.next()) {
-                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
+                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getDouble(13)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
            //TODO: formula
             }
@@ -83,36 +88,43 @@ public class WeightingController implements Initializable {
         weightingYear.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("Year"));
         weightingTerm.setCellValueFactory(new PropertyValueFactory<Weighting, String>("Term"));
         weightingStudents.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("students_enrolled"));
-        weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
-        weightingPrepHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("prep_dev"));
+        //weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
+        wtutorial_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("tutorial_hrs"));
+        wlecture_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_hrs"));
+        wconsultation_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("consultation_hrs"));
+        
+        wtutorial_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("tutorial_prep"));
+        wlecture_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_prep"));
+        
+        wstaff_development.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("staff_development"));
         weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
         editWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
-        setEditButtons();
+        //setEditButtons();
         updateWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("updateButton"));
         setUpdateButtons();
         weightingTable.setItems(weighting);
 
     }
-    public void setEditButtons() {
-        // Detail Button
-        editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-
-        editWeighting.setCellFactory(
-                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
-
-            @Override
-            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new WeightingDetailButtonCell();
-            }
-
-        });
-
-    }
+//    public void setEditButtons() {
+//        // Detail Button
+//        editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+//            @Override
+//            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+//                return new SimpleBooleanProperty(p.getValue() != null);
+//            }
+//        });
+//
+//        editWeighting.setCellFactory(
+//                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+//
+//            @Override
+//            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+//                return new WeightingDetailButtonCell();
+//            }
+//
+//        });
+//
+//    }
     public void setUpdateButtons() {
         // Edit Button
         updateWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
