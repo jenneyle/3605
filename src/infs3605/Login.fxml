@@ -13,24 +13,24 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.LoginController">
          <children>
       <Pane prefHeight="25.0" prefWidth="100.0" />
-            <ImageView fx:id="logoimage" fitHeight="189.0" fitWidth="242.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoimage" fitHeight="181.0" fitWidth="231.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
       <Pane prefHeight="25.0" prefWidth="100.0" />
-      <VBox alignment="CENTER" prefHeight="97.0" prefWidth="195.0">
+      <VBox alignment="CENTER" prefHeight="96.0" prefWidth="538.0">
          <children>
-                  <Label fx:id="incorrectMessage" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="223.0" text="Incorrect username or password" textFill="#cf0606" />
+                  <Label fx:id="incorrectMessage" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="314.0" text="Incorrect username or password" textFill="#cf0606" />
             <Pane prefHeight="25.0" prefWidth="100.0" />
-                  <TextField fx:id="username" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
+                  <TextField fx:id="username" alignment="CENTER" maxHeight="30.0" maxWidth="208.0" prefHeight="29.0" prefWidth="144.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
             <Pane prefHeight="25.0" prefWidth="100.0" />
-                  <PasswordField fx:id="password" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
+                  <PasswordField fx:id="password" alignment="CENTER" maxHeight="30.0" maxWidth="210.0" prefHeight="29.0" prefWidth="136.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
+      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" stylesheets="@StyleSheet.css">
          <children>
-                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#handlesignupButton" prefHeight="29.0" prefWidth="67.0" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446" />
+                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#handlesignupButton" prefHeight="29.0" prefWidth="69.0" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446" />
             <Pane prefHeight="100.0" prefWidth="24.0" />
                   <Button fx:id="signupButton1" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="29.0" prefWidth="67.0" styleClass="button3" stylesheets="@StyleSheet.css" text="Login" textFill="#414446" />
          </children>

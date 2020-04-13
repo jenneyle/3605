@@ -85,7 +85,7 @@
                   <String fx:value="sidebarColoured" />
                </styleClass>
             </HBox>
-            <HBox fx:id="allocateCourseButton" layoutX="5.0" layoutY="73.0" onMouseClicked="#handleAllocateBtn" prefHeight="50.0" prefWidth="165.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutX="7.0" layoutY="73.0" onMouseClicked="#handleAllocateBtn" prefHeight="50.0" prefWidth="165.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="151.0" text=" Allocate Courses">
                      <graphic>
