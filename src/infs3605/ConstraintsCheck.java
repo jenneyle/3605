@@ -37,16 +37,16 @@ public class ConstraintsCheck {
             warning.add("exceed weight capacity");
             warning_exist=true;
         }
-        if (staff_type.equals("Research")) {
+        if (staff_type.equals("Full-time Teaching/Research")) {
             if (countterm + 1 >= 3) {
                 warning.add("exceed term capacity");
                 warning_exist=true;
             }
         }
-        if(staff_type.equals("Casual")&&casual_staff==true){
+        if(staff_type.equals("Casual Teaching")&&casual_staff==true){
             warning.add("already allocated courses in"+term);
         }
-        if(!lic.equals("null")){
+        if(lic.equals("yes")){
             warning.add(lic+"has been allocted as LIC in this couse" );
         }
         
@@ -125,6 +125,7 @@ public class ConstraintsCheck {
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
         String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
+        String licQuery="select * from Allocation where allocation_term='"+term+"' and allocation_year= "+year+" and course_id= '"+courseid+"';";
         System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
@@ -146,6 +147,12 @@ public class ConstraintsCheck {
                 casual_staff=true;
             }else{
                 casual_staff=false;
+            }
+            ResultSet rs3=database.getResultSet(licQuery);
+            while(rs3.next()){
+                if(rs3.getInt("LIC")==1){
+                    lic="yes";
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
