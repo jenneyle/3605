@@ -57,8 +57,8 @@ public class WeightingController implements Initializable {
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
         TableColumn weightingStudents = new TableColumn("STUDENTS\nENROLLED");
-        TableColumn wfacetoface_hrs = new TableColumn("FACE TO FACE\nHOURS");
-        TableColumn wpd_hrs = new TableColumn("PREPARATION AND\nDEVELOPMENT\nHOURS");
+        TableColumn<Weighting,Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\nHOURS");
+        TableColumn<Weighting,Integer> wpd_hrs = new TableColumn("PREPARATION AND\nDEVELOPMENT\nHOURS");
         TableColumn totalweighting = new TableColumn("TOTAL\nWEIGHTING");
         
         detailWeighting = new TableColumn("DETAILS");
@@ -75,24 +75,22 @@ public class WeightingController implements Initializable {
                                                 "(marking_hrs+tutorial_prep+lecture_prep+staff_development) as 'pd_hours', \n" +
                                                 "weighting_term FROM Weighting");
             while (rs.next()) {
-                int facetoface=(int)rs.getDouble(6);
-                int pd=(int)rs.getDouble(7);
-                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),facetoface,pd, Math.round(rs.getDouble(8)*10.0)/10.0));
+                weighting.add(new Weighting(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),Math.round(rs.getDouble(8)*10.0)/10.0));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
            //TODO: formula
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-        weightingCourse.setCellValueFactory(new PropertyValueFactory<Weighting, String>("course_id"));
-        weightingYear.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("Year"));
-        weightingTerm.setCellValueFactory(new PropertyValueFactory<Weighting, String>("Term"));
-        weightingStudents.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("students_enrolled"));
+        
+        weightingCourse.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        weightingYear.setCellValueFactory(new PropertyValueFactory<>("Year"));
+        weightingTerm.setCellValueFactory(new PropertyValueFactory<>("Term"));
+        weightingStudents.setCellValueFactory(new PropertyValueFactory<>("students_enrolled"));
         //weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
-        wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("facetoface_hours"));
-        wpd_hrs.setCellValueFactory(new PropertyValueFactory<Weighting,Integer>("pd_hours"));
-        totalweighting.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
+        wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<>("facetoface_hours"));
+        wpd_hrs.setCellValueFactory(new PropertyValueFactory<>("pd_hours"));
+        totalweighting.setCellValueFactory(new PropertyValueFactory<>("weighting_term"));
         detailWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
   
         setEditButtons();
