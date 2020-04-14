@@ -18,7 +18,7 @@ import javafx.beans.property.StringProperty;
  */
 public class Weighting {
 
-    private StringProperty weight_id;
+    private IntegerProperty weight_id;
     private StringProperty course_id;
     private IntegerProperty year;
     private StringProperty term;
@@ -33,8 +33,8 @@ public class Weighting {
     private DoubleProperty weighting_term;
     
 
-    public Weighting(String weight_id, String course_id, int year, String term, int students_enrolled, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, double weighting_term){
-        this.weight_id = new SimpleStringProperty(weight_id);
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, double weighting_term){
+        this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
@@ -49,11 +49,11 @@ public class Weighting {
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
     }
 
-    public String getWeight_id() {
+    public Integer getWeight_id() {
         return weight_id.get();
     }
 
-    public void setWeight_id(String weight_id) {
+    public void setWeight_id(int weight_id) {
         this.weight_id.set(weight_id);
     }
 
