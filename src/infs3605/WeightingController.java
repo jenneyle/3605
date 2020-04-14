@@ -68,7 +68,7 @@ public class WeightingController implements Initializable {
         detailWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wtutorial_hrs, wlecture_hrs, wconsultation_hrs, wmarking_hrs, wtutorial_prep, wlecture_prep, wstaff_development, weightingTotal,detailWeighting, updateWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wtutorial_hrs, wlecture_hrs, wconsultation_hrs, wmarking_hrs, wtutorial_prep, wlecture_prep, wstaff_development, weightingTotal, detailWeighting, updateWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
