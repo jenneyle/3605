@@ -109,6 +109,7 @@ public class WeightingController implements Initializable {
     }
     //uncomment to make it work
     public void setEditButtons() {
+        System.out.println("clicked");
         // Detail Button
         detailWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override

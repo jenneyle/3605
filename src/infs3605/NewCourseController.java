@@ -53,7 +53,6 @@ public class NewCourseController implements Initializable {
     TextField courseDes;
     @FXML
     TextField allocationNotes;
-    
     @FXML
     CheckBox t1;
     @FXML
@@ -128,8 +127,8 @@ public class NewCourseController implements Initializable {
         //double totalWeight = (iStudentsEnrolled * 0.002) + (iFaceToFaceHrs * 0.1) + (iPrepAndDevHrs * 0.1);
         Statement st = conn.createStatement();
         try {
-            System.out.println("work");
-            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + "," + iCourseDes + "," + iAllocationNotes + ")");
+            System.out.println("it works");
+            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + ",'" + iCourseDes + "','" + iAllocationNotes + "')");
 
             ResultSet rs = database.getResultSet("SELECT CURRENT_DATE");
             int currentYear = rs.getInt(1);
