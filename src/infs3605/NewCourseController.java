@@ -29,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -49,10 +50,10 @@ public class NewCourseController implements Initializable {
     TextField courseCode;
     @FXML
     TextField courseName;
+//    @FXML
+//    TextField courseDes;
     @FXML
-    TextField courseDes;
-    @FXML
-    TextField allocationNotes;
+    TextArea allocationNotes;
     @FXML
     CheckBox t1;
     @FXML
@@ -93,7 +94,7 @@ public class NewCourseController implements Initializable {
 
         String iCourseCode = courseCode.getText();
         String iCourseName = courseName.getText();
-        String iCourseDes = courseDes.getText();
+//        String iCourseDes = courseDes.getText();
         String iAllocationNotes = allocationNotes.getText();
         int iT1 = 0;
         int iT2 = 0;
@@ -128,7 +129,7 @@ public class NewCourseController implements Initializable {
         Statement st = conn.createStatement();
         try {
             System.out.println("it works");
-            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + ",'" + iCourseDes + "','" + iAllocationNotes + "')");
+            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + ",'" + "0" + "','" + iAllocationNotes + "')");
 
             ResultSet rs = database.getResultSet("SELECT CURRENT_DATE");
             int currentYear = rs.getInt(1);
