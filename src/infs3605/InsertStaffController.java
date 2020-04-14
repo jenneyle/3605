@@ -62,8 +62,6 @@ public class InsertStaffController implements Initializable {
         ObservableList<String> staffTypeList = FXCollections.observableArrayList("Full-time Teaching", "Full-time Research", "Full-time Teaching/Research", "Casual Teaching");
         insertStaffType.setItems(staffTypeList);
 
-//        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);
-//        insertStaffCapacity.setItems(staffCapacityList);
         updateMsg.setVisible(false);
     }
 

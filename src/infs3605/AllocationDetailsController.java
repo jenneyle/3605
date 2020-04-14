@@ -96,7 +96,7 @@ public class AllocationDetailsController {
             
             courseName.setText(rs.getString(7));
             staffName.setText(rs.getString(8) + " " + rs.getString(9));
-            conn.close();
+            //conn.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
