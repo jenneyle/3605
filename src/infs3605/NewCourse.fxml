@@ -19,19 +19,25 @@
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <Button layoutX="131.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+            <Button layoutX="351.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
             <TextField fx:id="courseCode" layoutX="79.0" layoutY="89.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Code" />
-            <TextField fx:id="studentsEnrolled" layoutX="79.0" layoutY="333.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter no. of students enrolled" />
-            <TextField fx:id="courseName" layoutX="79.0" layoutY="126.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Name" />
-            <TextField fx:id="prepAndDevHrs" layoutX="79.0" layoutY="405.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter prep and dev hours" />
-            <TextField fx:id="faceToFaceHrs" layoutX="79.0" layoutY="370.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter no. face to face hours" />
-            <Label layoutX="83.0" layoutY="305.0" text="Course Weighting" />
-            <CheckBox fx:id="t1" layoutX="94.0" layoutY="186.0" mnemonicParsing="false" text="Term 1" />
-            <CheckBox fx:id="t2" layoutX="94.0" layoutY="213.0" mnemonicParsing="false" text="Term 2" />
-            <CheckBox fx:id="t3" layoutX="94.0" layoutY="241.0" mnemonicParsing="false" text="Term 3" />
-            <Label layoutX="76.0" layoutY="162.0" text="Course Offering" />
-            <CheckBox fx:id="ts" layoutX="94.0" layoutY="272.0" mnemonicParsing="false" text="Summer Term" />
-            <Label fx:id="updateMsg" layoutX="207.0" layoutY="448.0" text="Label" />
+            <TextField fx:id="studentsEnrolled" layoutX="68.0" layoutY="243.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter no. of students enrolled" />
+            <TextField fx:id="courseName" layoutX="79.0" layoutY="123.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Name" />
+            <TextField fx:id="lectureHrs" layoutX="68.0" layoutY="315.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter lecture hours" />
+            <TextField fx:id="tutorialHrs" layoutX="68.0" layoutY="280.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter tutorial hours" />
+            <Label layoutX="70.0" layoutY="220.0" text="Course Weighting" />
+            <CheckBox fx:id="t1" layoutX="79.0" layoutY="186.0" mnemonicParsing="false" text="Term 1" />
+            <CheckBox fx:id="t2" layoutX="159.0" layoutY="186.0" mnemonicParsing="false" text="Term 2" />
+            <CheckBox fx:id="t3" layoutX="241.0" layoutY="186.0" mnemonicParsing="false" text="Term 3" />
+            <Label layoutX="76.0" layoutY="159.0" text="Course Offering" />
+            <CheckBox fx:id="ts" layoutX="327.0" layoutY="186.0" mnemonicParsing="false" text="Summer Term" />
+            <Label fx:id="updateMsg" layoutX="422.0" layoutY="462.0" text="Label" />
+            <TextField fx:id="consultationHrs" layoutX="68.0" layoutY="350.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter consultation hours" />
+            <TextField fx:id="markingHrs" layoutX="68.0" layoutY="385.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter marking hours" />
+            <TextField fx:id="tutorialPrep" layoutX="277.0" layoutY="280.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter tutoral preparation hours" />
+            <TextField fx:id="lecturePrep" layoutX="277.0" layoutY="315.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter lecture preparation hours" />
+            <TextField fx:id="staffDev" layoutX="278.0" layoutY="350.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter staff development hours" />
+            <TextField fx:id="overallWeighting" layoutX="278.0" layoutY="385.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter overall weighting" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="170.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
