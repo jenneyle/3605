@@ -50,6 +50,11 @@ public class NewCourseController implements Initializable {
     @FXML
     TextField courseName;
     @FXML
+    TextField courseDes;
+    @FXML
+    TextField allocationNotes;
+    
+    @FXML
     CheckBox t1;
     @FXML
     CheckBox t2;
@@ -89,6 +94,8 @@ public class NewCourseController implements Initializable {
 
         String iCourseCode = courseCode.getText();
         String iCourseName = courseName.getText();
+        String iCourseDes = courseDes.getText();
+        String iAllocationNotes = allocationNotes.getText();
         int iT1 = 0;
         int iT2 = 0;
         int iT3 = 0;
@@ -122,7 +129,7 @@ public class NewCourseController implements Initializable {
         Statement st = conn.createStatement();
         try {
             System.out.println("work");
-            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + ")");
+            String insertData = ("INSERT INTO Courses VALUES ('" + iCourseCode + "','" + iCourseName + "'," + iT1 + "," + iT2 + "," + iT3 + "," + iTs + "," + iCourseDes + "," + iAllocationNotes + ")");
 
             ResultSet rs = database.getResultSet("SELECT CURRENT_DATE");
             int currentYear = rs.getInt(1);
