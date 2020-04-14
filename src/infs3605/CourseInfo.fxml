@@ -20,15 +20,15 @@
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="330.0" layoutY="523.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Button fx:id="back" layoutX="320.0" layoutY="524.0" mnemonicParsing="false" onAction="#handleBackButton" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
       <Label alignment="CENTER" layoutX="83.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Information">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <GridPane layoutX="52.0" layoutY="207.0" prefHeight="139.0" prefWidth="131.0">
+      <GridPane layoutX="42.0" layoutY="208.0" prefHeight="139.0" prefWidth="131.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.33334350585938" minWidth="10.0" prefWidth="67.33334350585938" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.33331298828125" minWidth="10.0" prefWidth="63.666656494140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.33334350585938" minWidth="10.0" prefWidth="79.66668701171875" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.33331298828125" minWidth="10.0" prefWidth="51.33331298828125" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="39.666656494140625" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
@@ -40,7 +40,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1:" wrappingWidth="54.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2:" wrappingWidth="54.0" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3:" wrappingWidth="54.0" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Summer:" wrappingWidth="54.0" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Summer:" wrappingWidth="64.6666259765625" GridPane.rowIndex="3" />
             <ImageView fx:id="t1Offer" fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1">
                <image>
                   <Image url="@../resources/tick.png" />
@@ -59,22 +59,22 @@
                </image></ImageView>
          </children>
       </GridPane>
-      <Text fx:id="courseCode" layoutX="51.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="79.21875236928463">
+      <Text fx:id="courseCode" layoutX="42.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="106.55209857970476">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="courseName" layoutX="159.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="215.88543282821774">
+      <Text fx:id="courseName" layoutX="160.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="202.5521198399365">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" textAlignment="CENTER" wrappingWidth="79.21875" />
-      <Text layoutX="189.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historical Staff Allocation" textAlignment="CENTER" wrappingWidth="215.88543701171875" />
-      <TableView fx:id="historyTable" layoutX="223.0" layoutY="207.0" prefHeight="139.0" prefWidth="148.0" />
-      <Text layoutX="52.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes" wrappingWidth="106.55209350585938" />
-      <TextArea fx:id="allocationNotes" editable="false" layoutX="49.0" layoutY="394.0" prefHeight="104.0" prefWidth="325.0" wrapText="true" />
-      <Text fx:id="courseDesc" layoutX="49.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="324.99999636411667" />
+      <Text layoutX="42.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" textAlignment="CENTER" wrappingWidth="79.21875" />
+      <Text layoutX="186.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historical Staff Allocation" textAlignment="CENTER" wrappingWidth="175.0000017285347" />
+      <TableView fx:id="historyTable" layoutX="186.0" layoutY="208.0" prefHeight="139.0" prefWidth="175.0" />
+      <Text layoutX="42.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Notes for Allocation" wrappingWidth="165.21878051757812" />
+      <TextArea fx:id="allocationNotes" editable="false" layoutX="39.0" layoutY="395.0" prefHeight="104.0" prefWidth="325.0" wrapText="true" />
+      <Text fx:id="courseDesc" layoutX="39.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="324.99999636411667" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
