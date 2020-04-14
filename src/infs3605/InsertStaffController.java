@@ -59,7 +59,7 @@ public class InsertStaffController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> staffTypeList = FXCollections.observableArrayList("Education", "Research");
+        ObservableList<String> staffTypeList = FXCollections.observableArrayList("Full-time Teaching", "Full-time Research", "Full-time Teaching/Research", "Casual Teaching");
         insertStaffType.setItems(staffTypeList);
 
 //        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);

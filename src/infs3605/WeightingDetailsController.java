@@ -49,10 +49,8 @@ public class WeightingDetailsController {
     Text totalWeighting;
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    
-    
+
     public void setData(int iWeightingId) {
-        // allocationId = iAllocationId;
 
         try {
             Database.openConnection();
@@ -71,15 +69,12 @@ public class WeightingDetailsController {
             lecturePrep.setText(rs.getString(11));
             staffDev.setText(rs.getString(12));
             totalWeighting.setText(rs.getString(13));
-            
+
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
 //            } else {
 //                lic.setText("LIC: No");
 //            }
-            
-            
-            
 //            courseName.setText(rs.getString(7));
 //            staffName.setText(rs.getString(8) + " " + rs.getString(9));
             conn.close();
