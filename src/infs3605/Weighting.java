@@ -23,22 +23,20 @@ public class Weighting {
     private IntegerProperty year;
     private StringProperty term;
     private IntegerProperty students_enrolled;
-    
-    private IntegerProperty pd_hours;
     private IntegerProperty facetoface_hours;
-    
+    private IntegerProperty pd_hours;
     private DoubleProperty weighting_term;
     
 
-    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facehrs,int pdhrs, double weighting_term){
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours,int pd_hours, double weighting_term){
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
         this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
-        this.facetoface_hours = new SimpleIntegerProperty(facehrs);
-        this.pd_hours = new SimpleIntegerProperty(pdhrs);
-        System.out.println(this.pd_hours);
+        this.facetoface_hours = new SimpleIntegerProperty(facetoface_hours);
+        this.pd_hours = new SimpleIntegerProperty(pd_hours);
+        System.out.println(pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
     }
 
@@ -82,20 +80,20 @@ public class Weighting {
         this.students_enrolled.set(students_enrolled);
     }
 
-    public int getfacetoface_hrs() {
+    public int getfacetoface_hours() {
         return facetoface_hours.get();
     }
 
-    public void setfacetoface_hrs(int facetoface_hrs) {
-        this.facetoface_hours.set(facetoface_hrs);
+    public void setfacetoface_hours(int facetoface_hours) {
+        this.facetoface_hours.set(facetoface_hours);
     }
 
-    public int getpd_hrs() {
+    public int getpd_hours() {
         return pd_hours.get();
     }
 
-    public void setpd_hrs(int pd_hrs){
-        this.pd_hours.set(pd_hrs);
+    public void setpd_hours(int pd_hours){
+        this.pd_hours.set(pd_hours);
     }
 
     public double getWeighting_term() {

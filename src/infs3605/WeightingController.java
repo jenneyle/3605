@@ -59,23 +59,25 @@ public class WeightingController implements Initializable {
         TableColumn weightingStudents = new TableColumn("STUDENTS\nENROLLED");
         TableColumn wfacetoface_hrs = new TableColumn("FACE TO FACE\nHOURS");
         TableColumn wpd_hrs = new TableColumn("PREPARATION AND\nDEVELOPMENT\nHOURS");
-        TableColumn weightingTotal = new TableColumn("TOTAL\nWEIGHTING");
+        TableColumn totalweighting = new TableColumn("TOTAL\nWEIGHTING");
         
         detailWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents,wfacetoface_hrs,wpd_hrs,weightingTotal, detailWeighting, updateWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents,wfacetoface_hrs,wpd_hrs,totalweighting, detailWeighting, updateWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
         try {
             //ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
             ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled,\n" +
-                                                "(tutorial_hrs+lecture_hrs+consultation_hrs),\n" +
-                                                "(marking_hrs+tutorial_prep+lecture_prep+staff_development), \n" +
+                                                "(tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours',\n" +
+                                                "(marking_hrs+tutorial_prep+lecture_prep+staff_development) as 'pd_hours', \n" +
                                                 "weighting_term FROM Weighting");
             while (rs.next()) {
-                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), (int)rs.getDouble(6),(int)rs.getDouble(7), Math.round(rs.getDouble(8)*10.0)/10.0));
+                int facetoface=(int)rs.getDouble(6);
+                int pd=(int)rs.getDouble(7);
+                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),facetoface,pd, Math.round(rs.getDouble(8)*10.0)/10.0));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
            //TODO: formula
             }
@@ -90,7 +92,7 @@ public class WeightingController implements Initializable {
         //weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
         wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("facetoface_hours"));
         wpd_hrs.setCellValueFactory(new PropertyValueFactory<Weighting,Integer>("pd_hours"));
-        weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
+        totalweighting.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
         detailWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
   
         setEditButtons();
