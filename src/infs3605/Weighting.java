@@ -28,7 +28,7 @@ public class Weighting {
     private IntegerProperty pd_hours;
     private DoubleProperty weighting_term;
     
-    private Button wDetailsButton;
+    private Button detailsButton;
     
 
     public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours,int pd_hours, double weighting_term){
@@ -43,15 +43,15 @@ public class Weighting {
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
         
         //this.editButton = new Button("Edit");
-        this.wDetailsButton = new Button("WeightDetails");
+        this.detailsButton = new Button("Details");
     }
 
     public Button getWDetailsButton() {
-        return wDetailsButton;
+        return detailsButton;
     }
 
     public void setWDetailsButton(Button wDetailsButton) {
-        this.wDetailsButton = wDetailsButton;
+        this.detailsButton = wDetailsButton;
     }
 
     public Integer getWeight_id() {
@@ -94,19 +94,19 @@ public class Weighting {
         this.students_enrolled.set(students_enrolled);
     }
 
-    public int getfacetoface_hours() {
+    public int getFacetoface_hours() {
         return facetoface_hours.get();
     }
 
-    public void setfacetoface_hours(int facetoface_hours) {
+    public void setFacetoface_hours(int facetoface_hours) {
         this.facetoface_hours.set(facetoface_hours);
     }
 
-    public int getpd_hours() {
+    public int getPd_hours() {
         return pd_hours.get();
     }
 
-    public void setpd_hours(int pd_hours){
+    public void setPd_hours(int pd_hours){
         this.pd_hours.set(pd_hours);
     }
 
