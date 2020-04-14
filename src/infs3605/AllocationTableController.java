@@ -145,7 +145,7 @@ public class AllocationTableController implements Initializable {
                     + " AND a.allocation_term = w.Term"
             );
             while (rs.next()) {
-                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
             }
             ResultSet rs1 = database.getResultSet("SELECT w.course_id, year, term, weighting_term,allocation_id\n"
                     + "FROM Weighting w \n"
@@ -153,7 +153,7 @@ public class AllocationTableController implements Initializable {
                     + "on w.course_id=a.course_id and year=allocation_year and term=allocation_term\n"
                     + "where allocation_id is NULL");
             while (rs1.next()) {
-                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), rs1.getDouble(4), ""));
+                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), Math.round((rs1.getDouble(4))*10.0)/10.0, ""));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -283,7 +283,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -310,7 +310,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -337,7 +337,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -361,7 +361,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -406,7 +406,7 @@ public class AllocationTableController implements Initializable {
                         + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -432,7 +432,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -458,7 +458,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -481,7 +481,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -525,7 +525,7 @@ public class AllocationTableController implements Initializable {
                         + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -551,7 +551,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -577,7 +577,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -602,7 +602,7 @@ public class AllocationTableController implements Initializable {
                         + " AND allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
