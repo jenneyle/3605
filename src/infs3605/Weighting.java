@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -18,17 +19,19 @@ import javafx.beans.property.StringProperty;
  */
 public class Weighting {
 
-    private SimpleIntegerProperty weight_id;
-    private SimpleStringProperty course_id;
-    private SimpleIntegerProperty year;
-    private SimpleStringProperty term;
-    private SimpleIntegerProperty students_enrolled;
-    private SimpleIntegerProperty facetoface_hours;
-    private SimpleIntegerProperty pd_hours;
-    private SimpleDoubleProperty weighting_term;
+    private IntegerProperty weight_id;
+    private StringProperty course_id;
+    private IntegerProperty year;
+    private StringProperty term;
+    private IntegerProperty students_enrolled;
+    private IntegerProperty facetoface_hours;
+    private IntegerProperty pd_hours;
+    private DoubleProperty weighting_term;
+    
+    private Button wDetailsButton;
     
 
-    public Weighting(int weight_id,String course_id,int year,String term,int students_enrolled,int facetoface_hours,int pd_hours,double weighting_term){
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours,int pd_hours, double weighting_term){
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
@@ -36,8 +39,19 @@ public class Weighting {
         this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
         this.facetoface_hours = new SimpleIntegerProperty(facetoface_hours);
         this.pd_hours = new SimpleIntegerProperty(pd_hours);
-        //System.out.println(this.pd_hours);
+        System.out.println(pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
+        
+        //this.editButton = new Button("Edit");
+        this.wDetailsButton = new Button("WeightDetails");
+    }
+
+    public Button getWDetailsButton() {
+        return wDetailsButton;
+    }
+
+    public void setWDetailsButton(Button wDetailsButton) {
+        this.wDetailsButton = wDetailsButton;
     }
 
     public Integer getWeight_id() {
@@ -80,19 +94,19 @@ public class Weighting {
         this.students_enrolled.set(students_enrolled);
     }
 
-    public int getFacetoface_hours() {
+    public int getfacetoface_hours() {
         return facetoface_hours.get();
     }
 
-    public void setFacetoface_hours(int facetoface_hours) {
+    public void setfacetoface_hours(int facetoface_hours) {
         this.facetoface_hours.set(facetoface_hours);
     }
 
-    public int getPd_hours() {
+    public int getpd_hours() {
         return pd_hours.get();
     }
 
-    public void setPd_hours(int pd_hours){
+    public void setpd_hours(int pd_hours){
         this.pd_hours.set(pd_hours);
     }
 

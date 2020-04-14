@@ -91,10 +91,10 @@ public class WeightingController implements Initializable {
         wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<>("facetoface_hours"));
         wpd_hrs.setCellValueFactory(new PropertyValueFactory<>("pd_hours"));
         totalweighting.setCellValueFactory(new PropertyValueFactory<>("weighting_term"));
-        detailWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
+        detailWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("editButton"));
   
         setEditButtons();
-        updateWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("updateButton"));
+        updateWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("updateButton"));
         setUpdateButtons();
         weightingTable.setItems(weighting);
 

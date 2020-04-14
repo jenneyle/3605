@@ -34,31 +34,24 @@ public class WeightingDetailButtonCell extends TableCell<Record, Boolean> {
 
             @Override
             public void handle(ActionEvent t) {
+                //int weightID = Integer.parseInt(WeightingDetailButtonCell.this.getTableRow().getItem().toString());
+                 Weighting currentRow = (Weighting) WeightingDetailButtonCell.this.getTableView().getItems().get(WeightingDetailButtonCell.this.getIndex());
+               
+       
                 
-                Weighting currentRow = (Weighting) WeightingDetailButtonCell.this.getTableView().getItems().get(WeightingDetailButtonCell.this.getIndex());
-                
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("WeightingDetails.fxml"));
-
                 try {
-                    fxmlLoader.load();
-                } catch (IOException e) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("WeightingDetails.fxml"));
+                    Parent root = loader.load();
+
+                    //The following both lines are the only addition we need to pass the arguments
+                    WeightingDetailsController weightingDetailsController = loader.getController();
+                   weightingDetailsController.setData(currentRow.getWeight_id());
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException io) {
+                    io.printStackTrace();
                 }
-
-               // int weightingId = 0;
-//                String courseId = "";
-//                String weighting_term = "";
-               // String staffName = "";
-
-
-                WeightingDetailsController weightingDetailsController = fxmlLoader.getController();
-                weightingDetailsController.setData(currentRow.getWeight_id());
-//
-                Parent p = fxmlLoader.getRoot();
-                Stage stage = new Stage();
-                stage.setTitle("Weighting Details Page");
-                stage.setScene(new Scene(p));
-                stage.show();
             }
         });
     }
