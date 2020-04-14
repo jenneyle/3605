@@ -57,26 +57,25 @@ public class WeightingController implements Initializable {
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
         TableColumn weightingStudents = new TableColumn("STUDENTS\nENROLLED");
-        TableColumn wtutorial_hrs = new TableColumn("TUTORIAL\nHOURS");
-        TableColumn wlecture_hrs = new TableColumn("LECTURE\nHOURS");
-        TableColumn wconsultation_hrs = new TableColumn("CONSULTATION\nHOURS");
-        TableColumn wmarking_hrs = new TableColumn("MARKING\nHOURS");
-        TableColumn wtutorial_prep = new TableColumn("TUTORIAL\nPREPARATION");
-        TableColumn wlecture_prep = new TableColumn("LECTURE\nPREPARATION");
-        TableColumn wstaff_development = new TableColumn("STAFF\nDEVELOPMENT\nHOURS");
+        TableColumn wfacetoface_hrs = new TableColumn("FACE TO FACE\nHOURS");
+        TableColumn wpd_hrs = new TableColumn("PREPARATION AND\nDEVELOPMENT\nHOURS");
         TableColumn weightingTotal = new TableColumn("TOTAL\nWEIGHTING");
+        
         detailWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wtutorial_hrs, wlecture_hrs, wconsultation_hrs, wmarking_hrs, wtutorial_prep, wlecture_prep, wstaff_development, weightingTotal, detailWeighting, updateWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents,wfacetoface_hrs,wpd_hrs,weightingTotal, detailWeighting, updateWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
         try {
             //ResultSet rs = database.getResultSet("SELECT * FROM Weighting");
-            ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, ROUND(weighting_term, 2) FROM Weighting");
+            ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled,\n" +
+                                                "(tutorial_hrs+lecture_hrs+consultation_hrs),\n" +
+                                                "(marking_hrs+tutorial_prep+lecture_prep+staff_development), \n" +
+                                                "weighting_term FROM Weighting");
             while (rs.next()) {
-                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getDouble(13)));
+                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), (int)rs.getDouble(6),(int)rs.getDouble(7), Math.round(rs.getDouble(8)*10.0)/10.0));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
            //TODO: formula
             }
@@ -89,15 +88,8 @@ public class WeightingController implements Initializable {
         weightingTerm.setCellValueFactory(new PropertyValueFactory<Weighting, String>("Term"));
         weightingStudents.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("students_enrolled"));
         //weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
-        wtutorial_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("tutorial_hrs"));
-        wlecture_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_hrs"));
-        wconsultation_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("consultation_hrs"));
-        
-        wmarking_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("marking_hrs"));
-        wtutorial_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("tutorial_prep"));
-        wlecture_prep.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("lecture_prep"));
-        
-        wstaff_development.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("staff_development"));
+        wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("facetoface_hours"));
+        wpd_hrs.setCellValueFactory(new PropertyValueFactory<Weighting,Integer>("pd_hours"));
         weightingTotal.setCellValueFactory(new PropertyValueFactory<Weighting, Double>("weighting_term"));
         detailWeighting.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
   

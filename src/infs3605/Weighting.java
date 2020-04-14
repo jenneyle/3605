@@ -23,29 +23,22 @@ public class Weighting {
     private IntegerProperty year;
     private StringProperty term;
     private IntegerProperty students_enrolled;
-    private IntegerProperty tutorial_hrs;
-    private IntegerProperty lecture_hrs;
-    private IntegerProperty consultation_hrs;
-    private IntegerProperty marking_hrs;
-    private IntegerProperty tutorial_prep;
-    private IntegerProperty lecture_prep;
-    private IntegerProperty staff_development;
+    
+    private IntegerProperty pd_hours;
+    private IntegerProperty facetoface_hours;
+    
     private DoubleProperty weighting_term;
     
 
-    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, double weighting_term){
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facehrs,int pdhrs, double weighting_term){
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
         this.term = new SimpleStringProperty(term);
         this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
-        this.tutorial_hrs = new SimpleIntegerProperty(tutorial_hrs);
-        this.lecture_hrs = new SimpleIntegerProperty(lecture_hrs);
-        this.consultation_hrs = new SimpleIntegerProperty(consultation_hrs);
-        this.marking_hrs = new SimpleIntegerProperty(marking_hrs);
-        this.tutorial_prep = new SimpleIntegerProperty(tutorial_prep);
-        this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
-        this.staff_development = new SimpleIntegerProperty(staff_development);
+        this.facetoface_hours = new SimpleIntegerProperty(facehrs);
+        this.pd_hours = new SimpleIntegerProperty(pdhrs);
+        System.out.println(this.pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
     }
 
@@ -89,60 +82,20 @@ public class Weighting {
         this.students_enrolled.set(students_enrolled);
     }
 
-    public int getTutorial_hrs() {
-        return tutorial_hrs.get();
+    public int getfacetoface_hrs() {
+        return facetoface_hours.get();
     }
 
-    public void setTutorial_hrs(int tutorial_hrs) {
-        this.tutorial_hrs.set(tutorial_hrs);
+    public void setfacetoface_hrs(int facetoface_hrs) {
+        this.facetoface_hours.set(facetoface_hrs);
     }
 
-    public int getLecture_hrs() {
-        return lecture_hrs.get();
+    public int getpd_hrs() {
+        return pd_hours.get();
     }
 
-    public void setLecture_hrs(int lecture_hrs) {
-        this.lecture_hrs.set(lecture_hrs);
-    }
-
-    public int getConsultation_hrs() {
-        return consultation_hrs.get();
-    }
-
-    public void setConsultation_hrs(int consultation_hrs) {
-        this.consultation_hrs.set(consultation_hrs);
-    }
-
-    public int getMarking_hrs() {
-        return marking_hrs.get();
-    }
-
-    public void setMarking_hrs(int marking_hrs) {
-        this.marking_hrs.set(marking_hrs);
-    }
-
-    public int getTutorial_prep() {
-        return tutorial_prep.get();
-    }
-
-    public void setTutorial_prep(int tutorial_prep) {
-        this.tutorial_prep.set(tutorial_prep);
-    }
-
-    public int getLecture_prep() {
-        return lecture_prep.get();
-    }
-
-    public void setLecture_prep(int lecture_prep) {
-        this.lecture_prep.set(lecture_prep);
-    }
-
-    public int getStaff_development() {
-        return staff_development.get();
-    }
-
-    public void setStaff_development(int staff_development) {
-        this.staff_development.set(staff_development);
+    public void setpd_hrs(int pd_hrs){
+        this.pd_hours.set(pd_hrs);
     }
 
     public double getWeighting_term() {
