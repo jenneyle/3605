@@ -141,7 +141,7 @@ public class StaffAllocationController implements Initializable {
         ConstraintsCheck rulecheck = new ConstraintsCheck();
         
         boolean exist=rulecheck.duplicateallocation(courseCode, staffID, year, term);
-        System.out.println(exist);
+        System.out.println(exist+"duplicate");
         if(exist==true){
             success.setText("Row not inserted due to a duplicate Allocation!");
                 TimerTask task1= new TimerTask() {
@@ -152,13 +152,11 @@ public class StaffAllocationController implements Initializable {
                 };
                 timer.schedule(task1,2000);
         }else{
-            boolean warning_exist=rulecheck.check(courseCode, staffID, year, term);
-            ArrayList<String> warning = ConstraintsCheck.warning;
-            if (warning_exist==false|| knowledgewarning == true) {
+            rulecheck.check(courseCode, staffID, year, term);
+            if (ConstraintsCheck.warning.size()==0 || knowledgewarning == true) {
                 Statement st = conn.createStatement();
                 try {
-                    String insertData="";
-                    insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id, lic, allocation_description)"
+                    String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id, lic, allocation_description)"
                             + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "'," + licCheck + ",'" + notes +"')");
                     st.execute(insertData);
                     knowledgewarning = false;

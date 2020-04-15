@@ -26,31 +26,30 @@ public class ConstraintsCheck {
     static int staff_capacity;
     static String staff_name;
     static boolean casual_staff;
-    static String lic;
+    static String licname;
     
 
-    public boolean check(String courseid, String staffid, int year, String term) {
-        boolean warning_exist=false;
+    public void check(String courseid, String staffid, int year, String term) {
         cleandata();
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
-            warning.add("exceed weight capacity");
-            warning_exist=true;
+            warning.add(staff_name + " will exceed weight capacity");
+            
         }
         if (staff_type.equals("Full-time Teaching/Research")) {
             if (countterm + 1 >= 3) {
-                warning.add("exceed term capacity");
-                warning_exist=true;
+                warning.add(staff_name +"as a Full-time Teaching/Research staff will exceed term capacity");
             }
         }
         if(staff_type.equals("Casual Teaching")&&casual_staff==true){
-            warning.add("already allocated courses in"+term);
+            warning.add(staff_name +" as a Casual staff already allocated to a courses in"+term);
         }
-        if(lic.equals("yes")){
-            warning.add(lic+"has been allocted as LIC in this couse" );
+        if(!licname.equals("null")){
+            warning.add(licname+" has been allocted as LIC in this couse" );
         }
-        
-        return warning_exist;
+//        for( String i :warning){
+//            System.out.println(i);
+//        }
     }
 //    public void deletecheck(String courseid, String staffid, int year, String term) {
 //        ConstraintsCheck.warning.clear();
@@ -125,8 +124,11 @@ public class ConstraintsCheck {
                 + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
         String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
-        String licQuery="select * from Allocation where allocation_term='"+term+"' and allocation_year= "+year+" and course_id= '"+courseid+"';";
-        System.out.println(allocateweightQ);
+        String licQuery="select lic,Fname,Lname from Allocation \n"
+                        +"join Staff on Staff.staff_id=Allocation.staff_id \n"
+                        + "where allocation_term='"+term+"' and allocation_year= "+year+" and course_id= '"+courseid+"' and lic=1;";
+        //System.out.println(licQuery);
+        //System.out.println(allocateweightQ);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
             while(rs.next()){
@@ -150,9 +152,7 @@ public class ConstraintsCheck {
             }
             ResultSet rs3=database.getResultSet(licQuery);
             while(rs3.next()){
-                if(rs3.getInt("LIC")==1){
-                    lic="yes";
-                }
+                licname=rs3.getString(2)+" "+rs3.getString(3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ConstraintsCheck.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,7 +166,7 @@ public class ConstraintsCheck {
         staff_capacity=0;
         staff_name="";
         casual_staff=false;
-        lic="null";
+        licname="null";
         ConstraintsCheck.warning.clear();
     }
 }

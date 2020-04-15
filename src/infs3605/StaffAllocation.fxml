@@ -27,9 +27,9 @@
          </font>
       </Label>
       <Button fx:id="back" layoutX="196.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="15.0" prefWidth="59.0" text="Back" />
-      <Label fx:id="success" layoutX="337.0" layoutY="383.0" textFill="#c00d0d" />
+      <Label fx:id="success" layoutX="313.0" layoutY="466.0" prefHeight="17.0" prefWidth="82.0" textFill="#c00d0d" />
       <CheckBox fx:id="licCheckBox" layoutX="196.0" layoutY="263.0" mnemonicParsing="false" text="LIC" />
-      <TextArea fx:id="allocationNotes" layoutX="196.0" layoutY="314.0" prefHeight="99.0" prefWidth="316.0" />
+      <TextArea fx:id="allocationNotes" layoutX="204.0" layoutY="325.0" prefHeight="99.0" prefWidth="316.0" />
       <Text layoutX="196.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
       <AnchorPane prefHeight="500.0" prefWidth="187.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
