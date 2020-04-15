@@ -24,7 +24,7 @@
          <children>
             <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="162.13671875">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text fx:id="totalWeighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting" textAlignment="CENTER" wrappingWidth="162.13671875">
