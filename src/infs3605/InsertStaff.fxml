@@ -13,13 +13,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.InsertStaffController">
    <children>
-      <Button fx:id="back" layoutX="246.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <TextField fx:id="insertStaffFname" layoutX="213.0" layoutY="91.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter First Name" />
       <TextField fx:id="insertStaffLname" layoutX="213.0" layoutY="124.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Last Name" />
       <TextField fx:id="insertStaffZid" layoutX="213.0" layoutY="157.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter ziD" />
       <ComboBox fx:id="insertStaffType" layoutX="213.0" layoutY="225.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Type" />
-      <Button fx:id="submit" layoutX="343.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleInsertBtn" text="Submit" />
-      <Label fx:id="updateMsg" layoutX="435.0" layoutY="319.0" text="Label" />
+      <Button fx:id="submit" layoutX="262.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleInsertBtn" text="Submit" />
+      <Label fx:id="updateMsg" layoutX="350.0" layoutY="311.0" text="Label" />
       <TextField fx:id="insertStaffCapacity" layoutX="213.0" layoutY="260.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
       <TextField fx:id="insertStaffEmail" layoutX="213.0" layoutY="190.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
       <AnchorPane layoutY="-1.0" prefHeight="500.0" prefWidth="187.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">

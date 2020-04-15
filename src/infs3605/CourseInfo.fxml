@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="573.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
+<AnchorPane id="AnchorPane" prefHeight="573.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -73,7 +73,7 @@
       <Text layoutX="186.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historical Staff Allocation" textAlignment="CENTER" wrappingWidth="175.0000017285347" />
       <TableView fx:id="historyTable" layoutX="186.0" layoutY="208.0" prefHeight="139.0" prefWidth="175.0" />
       <Text layoutX="42.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Notes for Allocation" wrappingWidth="165.21878051757812" />
-      <TextArea fx:id="allocationNotes" editable="false" layoutX="39.0" layoutY="395.0" prefHeight="104.0" prefWidth="325.0" wrapText="true" />
+      <TextArea fx:id="allocationNotes" editable="false" layoutX="39.0" layoutY="408.0" prefHeight="104.0" prefWidth="325.0" wrapText="true" />
       <Text fx:id="courseDesc" layoutX="39.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="324.99999636411667" />
    </children>
    <styleClass>

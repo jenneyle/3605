@@ -20,64 +20,64 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <VBox layoutX="36.0" layoutY="79.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox layoutX="36.0" layoutY="79.0" prefHeight="257.0" prefWidth="207.0">
          <children>
-            <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="233.13671875">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text fx:id="totalWeighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="totalWeighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting" textAlignment="CENTER" wrappingWidth="231.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="term" strokeType="OUTSIDE" strokeWidth="0.0" text="Term" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="term" strokeType="OUTSIDE" strokeWidth="0.0" text="Term" textAlignment="CENTER" wrappingWidth="229.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" textAlignment="CENTER" wrappingWidth="233.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="studentsEnrolled" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="studentsEnrolled" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled" textAlignment="CENTER" wrappingWidth="232.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="tutorialHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="tutorialHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours" textAlignment="CENTER" wrappingWidth="233.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="lectureHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="lectureHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours" textAlignment="CENTER" wrappingWidth="235.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="consultationHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="consultationHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours" textAlignment="CENTER" wrappingWidth="236.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="markingHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="markingHrs" strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Hours" textAlignment="CENTER" wrappingWidth="234.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="tutorialPrep" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="tutorialPrep" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation Hours" textAlignment="CENTER" wrappingWidth="235.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="lecturePrep" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="lecturePrep" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation Hours" textAlignment="CENTER" wrappingWidth="232.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="staffDev" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" textAlignment="CENTER" wrappingWidth="162.13671875">
+            <Text fx:id="staffDev" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" textAlignment="CENTER" wrappingWidth="235.13671875">
                <font>
                   <Font size="14.0" />
                </font>
