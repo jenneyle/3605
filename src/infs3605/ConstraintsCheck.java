@@ -47,9 +47,9 @@ public class ConstraintsCheck {
         if(!licname.equals("null")){
             warning.add(licname+" has been allocted as LIC in this couse" );
         }
-//        for( String i :warning){
-//            System.out.println(i);
-//        }
+        for( String i :warning){
+            System.out.println(i);
+        }
     }
 //    public void deletecheck(String courseid, String staffid, int year, String term) {
 //        ConstraintsCheck.warning.clear();
