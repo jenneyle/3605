@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="500.0" prefWidth="187.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
@@ -111,6 +111,7 @@
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
+            <Button fx:id="exportToExcelBtn" layoutX="26.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleExportBtn" styleClass="buttonNormal" stylesheets="@StyleSheet.css" text="Export To Excel" />
          </children>
       </AnchorPane>
    </children>

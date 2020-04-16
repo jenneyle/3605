@@ -6,11 +6,15 @@
 package infs3605;
 
 import com.sun.prism.impl.Disposer.Record;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,6 +22,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
@@ -26,6 +32,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -50,7 +59,8 @@ public class AllocationTableController implements Initializable {
     public ComboBox courseSelectionCB;
     @FXML
     public Button clearFilterBtn;
-
+    @FXML
+    public Button exportToExcelBtn;
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
@@ -76,7 +86,7 @@ public class AllocationTableController implements Initializable {
         viewDetailsAllocation = new TableColumn("DETAILS");
 
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, viewDetailsAllocation,editAllocation, deleteAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
         warning1.setVisible(false);
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
@@ -123,7 +133,6 @@ public class AllocationTableController implements Initializable {
         setDetailsButtons();
         //Populate the Table
         allocationTable.setItems(data);
-
     }
 
     //Fetch Rows from Database and set Table
@@ -145,7 +154,7 @@ public class AllocationTableController implements Initializable {
                     + " AND a.allocation_term = w.Term"
             );
             while (rs.next()) {
-                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
             }
             ResultSet rs1 = database.getResultSet("SELECT w.course_id, year, term, weighting_term,allocation_id\n"
                     + "FROM Weighting w \n"
@@ -153,7 +162,7 @@ public class AllocationTableController implements Initializable {
                     + "on w.course_id=a.course_id and year=allocation_year and term=allocation_term\n"
                     + "where allocation_id is NULL");
             while (rs1.next()) {
-                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), Math.round((rs1.getDouble(4))*10.0)/10.0, ""));
+                data.add(new Allocation(0, rs1.getString(1), rs1.getInt(2), rs1.getString(3), Math.round((rs1.getDouble(4)) * 10.0) / 10.0, ""));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -283,7 +292,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -310,7 +319,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -337,7 +346,7 @@ public class AllocationTableController implements Initializable {
                 );
 
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -361,7 +370,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -406,7 +415,7 @@ public class AllocationTableController implements Initializable {
                         + " WHERE a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -432,7 +441,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -458,7 +467,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -481,7 +490,7 @@ public class AllocationTableController implements Initializable {
                         + " AND course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -525,7 +534,7 @@ public class AllocationTableController implements Initializable {
                         + " WHERE a.course_id = '" + courseSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -551,7 +560,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_year = " + yearSelectionCB.getValue()
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -577,7 +586,7 @@ public class AllocationTableController implements Initializable {
                         + " AND a.allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -602,7 +611,7 @@ public class AllocationTableController implements Initializable {
                         + " AND allocation_term = '" + termSelectionCB.getValue() + "'"
                 );
                 while (rs.next()) {
-                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5))*10.0)/10.0, rs.getString(6)));
+                    data.add(new Allocation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), Math.round((rs.getDouble(5)) * 10.0) / 10.0, rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -616,6 +625,42 @@ public class AllocationTableController implements Initializable {
         setDeleteButtons();
         setDetailsButtons();
     }
+     public void handleExportBtn(ActionEvent event) {
+          try {
+                ResultSet rs = database.getResultSet("SELECT * FROM Allocation");
+
+                XSSFWorkbook wb = new XSSFWorkbook();
+                XSSFSheet sheet = wb.createSheet("Current Allocations");
+                XSSFRow header = sheet.createRow(0);
+                header.createCell(0).setCellValue(rs.getString(1));
+//                header.createCell(1).setCellValue("Year");
+//                header.createCell(2).setCellValue("Term");
+//                header.createCell(3).setCellValue("Course_id");
+                int index = 1;
+
+                while (rs.next()) {
+                    XSSFRow row = sheet.createRow(index);
+                    row.createCell(0).setCellValue(rs.getString(1));
+
+                    index++;
+                }
+
+                FileOutputStream fileOut = new FileOutputStream("CurrentAllocations.xlsx");
+
+                wb.write(fileOut);
+                fileOut.close();
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information being downloaded");
+                alert.setHeaderText(null);
+                alert.setContentText("exporting to excel sheet");
+                alert.showAndWait();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        
+    }
+    
 
     public void clearFilters(ActionEvent event) {
         data.removeAll(data);
