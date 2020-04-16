@@ -81,9 +81,9 @@ public class AllocationTableController implements Initializable {
         TableColumn staffName = new TableColumn("STAFF ALLOCATED");
         TableColumn warning1 = new TableColumn("Warning");
         TableColumn warning2 = new TableColumn("Warning");
-        editAllocation = new TableColumn("EDIT");
-        deleteAllocation = new TableColumn("DELETE");
-        viewDetailsAllocation = new TableColumn("DETAILS");
+        editAllocation = new TableColumn("");
+        deleteAllocation = new TableColumn("");
+        viewDetailsAllocation = new TableColumn("");
 
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
@@ -632,28 +632,36 @@ public class AllocationTableController implements Initializable {
                 XSSFWorkbook wb = new XSSFWorkbook();
                 XSSFSheet sheet = wb.createSheet("Current Allocations");
                 XSSFRow header = sheet.createRow(0);
-                header.createCell(0).setCellValue(rs.getString(1));
-//                header.createCell(1).setCellValue("Year");
-//                header.createCell(2).setCellValue("Term");
-//                header.createCell(3).setCellValue("Course_id");
+                header.createCell(0).setCellValue("Allocation ID");
+                
+                header.createCell(1).setCellValue("Year");
+                header.createCell(2).setCellValue("Term");
+                header.createCell(3).setCellValue("Course Code");
+                header.createCell(4).setCellValue("Staff ID");
+                
+
                 int index = 1;
 
                 while (rs.next()) {
                     XSSFRow row = sheet.createRow(index);
                     row.createCell(0).setCellValue(rs.getString(1));
+                    row.createCell(1).setCellValue(rs.getString(2));
+                    row.createCell(2).setCellValue(rs.getString(3));
+                    row.createCell(3).setCellValue(rs.getString(4));
+                    row.createCell(4).setCellValue(rs.getString(5));
 
                     index++;
                 }
 
-                FileOutputStream fileOut = new FileOutputStream("CurrentAllocations.xlsx");
+                FileOutputStream fileOut = new FileOutputStream("Current Allocations Export.xlsx");
 
                 wb.write(fileOut);
                 fileOut.close();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information being downloaded");
+                alert.setTitle("Export Download");
                 alert.setHeaderText(null);
-                alert.setContentText("exporting to excel sheet");
+                alert.setContentText("Export to excel spreadsheet is complete!");
                 alert.showAndWait();
             } catch (Exception ex) {
                 ex.printStackTrace();
