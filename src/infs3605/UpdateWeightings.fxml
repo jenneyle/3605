@@ -1,27 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateWeightingsController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateWeightingsController">
    <children>
-      <ComboBox fx:id="updateCourseComboBox" layoutX="52.0" layoutY="80.0" prefHeight="27.0" prefWidth="201.0" promptText="Course Code" />
-      <ComboBox fx:id="updateYearComboBox" layoutX="52.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Year" />
-      <ComboBox fx:id="updateTermComboBox" layoutX="162.0" layoutY="120.0" prefHeight="27.0" prefWidth="91.0" promptText="Term" />
-      <Button fx:id="updateWeightingSubmit" layoutX="321.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
-      <TextField fx:id="updateWeightingStudents" layoutX="52.0" layoutY="165.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. of students enrolled" />
-      <TextField fx:id="updateWeightingFaceHrs" layoutX="52.0" layoutY="200.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. face to face hours" />
-      <TextField fx:id="updateWeightingPrep" layoutX="52.0" layoutY="235.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter prep and dev hours" />
-      <Label fx:id="updateMsg" layoutX="401.0" layoutY="327.0" text="Label" />
-      <Button fx:id="updateWeightingBack" layoutX="52.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackBtn" text="Back" />
-      <Label alignment="CENTER" layoutX="14.0" layoutY="26.0" prefHeight="35.0" prefWidth="363.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Update Course Weightings" textAlignment="CENTER">
+      <ComboBox fx:id="updateCourseComboBox" layoutX="425.0" layoutY="190.0" prefHeight="27.0" prefWidth="201.0" promptText="Course Code" />
+      <ComboBox fx:id="updateYearComboBox" layoutX="425.0" layoutY="230.0" prefHeight="27.0" prefWidth="91.0" promptText="Year" />
+      <ComboBox fx:id="updateTermComboBox" layoutX="535.0" layoutY="230.0" prefHeight="27.0" prefWidth="91.0" promptText="Term" />
+      <Button fx:id="updateWeightingSubmit" layoutX="694.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+      <TextField fx:id="updateWeightingStudents" layoutX="425.0" layoutY="275.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. of students enrolled" />
+      <TextField fx:id="updateWeightingFaceHrs" layoutX="425.0" layoutY="310.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter no. face to face hours" />
+      <TextField fx:id="updateWeightingPrep" layoutX="425.0" layoutY="345.0" prefHeight="27.0" prefWidth="201.0" promptText="Enter prep and dev hours" />
+      <Label fx:id="updateMsg" layoutX="774.0" layoutY="437.0" text="Label" />
+      <Text layoutX="352.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Course Weighting">
          <font>
-            <Font size="22.0" />
+            <Font size="36.0" />
          </font>
-      </Label>
+      </Text>
+      <AnchorPane prefHeight="770.0" prefWidth="277.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="80.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/LecticLogo.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="289.0" onMouseClicked="#handleWeightingBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="256.0" text="  Course Weighting">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/percent.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="-4.0" layoutY="367.0" onMouseClicked="#handleCourseBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="219.0" text="  View Courses">
+                     <graphic>
+                        <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/training.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="-2.0" layoutY="449.0" onMouseClicked="#handleStaffBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="188.0" text="  View Staff">
+                     <graphic>
+                        <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/staff.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="allocateCourseButton1" layoutY="205.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="257.0" text="  Current Allocations">
+                     <graphic>
+                        <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/course.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="allocateCourseButton" layoutX="13.0" layoutY="91.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="249.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="210.0" text=" Allocate Courses">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/plus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutY="531.0" onMouseClicked="#handleLogoutBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="164.0" text="  Logout">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

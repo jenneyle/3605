@@ -217,5 +217,8 @@ public class NewCourseController implements Initializable {
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
-
+@FXML
+    public void handleLogoutBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Login.fxml");
+    }
 }

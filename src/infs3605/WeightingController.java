@@ -56,10 +56,10 @@ public class WeightingController implements Initializable {
         TableColumn weightingCourse = new TableColumn("COURSE ID");
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
-        TableColumn weightingStudents = new TableColumn("STUDENTS\nENROLLED");
-        TableColumn<Weighting,Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\nHOURS");
-        TableColumn<Weighting,Integer> wpd_hrs = new TableColumn("PREPARATION AND\nDEVELOPMENT\nHOURS");
-        TableColumn totalweighting = new TableColumn("TOTAL\nWEIGHTING");
+        TableColumn weightingStudents = new TableColumn(" STUDENTS\n ENROLLED");
+        TableColumn<Weighting,Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n      HOURS");
+        TableColumn<Weighting,Integer> wpd_hrs = new TableColumn("   PREPARATION AND\n DEVELOPMENT HOURS");
+        TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
         
         detailWeighting = new TableColumn("DETAILS");
         updateWeighting = new TableColumn("UPDATE");
@@ -183,6 +183,11 @@ public class WeightingController implements Initializable {
     @FXML
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
+    }
+    
+      @FXML
+    public void handleLogoutBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Login.fxml");
     }
 
 }

@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
@@ -131,5 +132,37 @@ public class UpdateWeightingsController implements Initializable {
     //Back button to Weighting page
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+    
+       @FXML
+    public void handleAllocateBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffAllocation.fxml");
+    }
+
+    //button to view course weightings
+    @FXML
+    public void handleWeightingBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Weighting.fxml");
+    }
+
+    //button to view staff details
+    @FXML
+    public void handleStaffBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "StaffTable.fxml");
+    }
+
+    @FXML
+    public void handleCourseBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "CourseTable.fxml");
+    }
+
+    @FXML
+    public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AllocationTable.fxml");
+    }
+    
+     @FXML
+    public void handleLogoutBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Login.fxml");
     }
 }

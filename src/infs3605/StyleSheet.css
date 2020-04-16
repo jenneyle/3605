@@ -14,13 +14,13 @@ and open the template in the editor.
    
 }
 
-.button{
+/*.button{
      -fx-background-radius: 10 10 10 10;
      -fx-border-radius: 10 10 10 10;
      -fx-border-color: #BDBDBD;
     -fx-border-width: 1 1 1 1;
     
-}
+}*/
 
 
 
@@ -28,7 +28,6 @@ and open the template in the editor.
 
      -fx-border-radius: 0 0 0 0;
      -fx-background-radius: 0 0 0 0;
-    
     
 }
 
@@ -49,10 +48,10 @@ and open the template in the editor.
     -fx-background-color: #dbe4ed;
 }
 .rightBackground{
-    -fx-background-color: #e7e7e7;
+    -fx-background-color: #e7eaed
+        //#e7e7e7;
 
 }
-
 
 .sideButton:hover {
     -fx-background-color: #a3bad2; 
@@ -61,9 +60,6 @@ and open the template in the editor.
 }
 
 
-.title {
-    font-family: Candara, Arial, Helvetica, sans-serif;
-}
 
 .preferredButton {-fx-background-color: #dbe4ed;} /* Blue */
 
@@ -73,24 +69,26 @@ and open the template in the editor.
      
 }
 
+.table-row-cell:selected {
+    -fx-background-color: #a3bad2;
+}
+
+
 
 .sidebarColoured{
     -fx-background-color: #c0cdd6;
      -fx-background-radius: 0 20 20 0;
-    
   
-
 }
 
 #stackPane{
     -fx-hgap: 100%;
-    -fx-vgap: 100%;
-    
+    -fx-vgap: 100%;   
 }
 
 
 .roundedButton{
-  -fx-background-radius: 20 20 20 20;
+ -fx-background-radius: 20 20 20 20;
   -fx-background-color: #ffffff;
   -fx-padding: 15
     
@@ -98,6 +96,13 @@ and open the template in the editor.
 
 .roundedButton:hover {
     -fx-background-color: #a3bad2; 
+}
+
+
+.borderButton{
+    
+  -fx-border-color: #c0cdd6;
+    -fx-border-width: 1 1 1 1;
 }
 
 

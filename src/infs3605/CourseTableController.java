@@ -240,10 +240,10 @@ public class CourseTableController implements Initializable {
         pageSwitcher.switcher(event, "StaffAllocation.fxml");
     }
     //button to view course weightings
-    @FXML
-    public void handleWeightingBtn(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "Weighting.fxml");
-    }   
+//    @FXML
+//    public void handleWeightingBtn(ActionEvent event) throws IOException {
+//        pageSwitcher.switcher(event, "Weighting.fxml");
+//    }   
     
      @FXML
     public void handleWeightingBtn(MouseEvent event) throws IOException {
@@ -265,5 +265,8 @@ public class CourseTableController implements Initializable {
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
-    
+     @FXML
+    public void handleLogoutBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Login.fxml");
+    }
 }

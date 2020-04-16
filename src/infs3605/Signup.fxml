@@ -7,20 +7,36 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.SignupController">
    <children>
-      <TextField fx:id="username" alignment="CENTER" layoutX="266.0" layoutY="262.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css" />
-      <PasswordField fx:id="p1" alignment="CENTER" layoutX="266.0" layoutY="308.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
-      <PasswordField fx:id="p2" alignment="CENTER" layoutX="266.0" layoutY="348.0" promptText="Confirm Password" styleClass="textbox" stylesheets="@StyleSheet.css" />
-      <Button fx:id="signupButton" layoutX="368.0" layoutY="397.0" mnemonicParsing="false" onAction="#handlesignupButton" styleClass="preferredButton" stylesheets="@StyleSheet.css" text="Sign up" />
+      <TextField fx:id="username" alignment="CENTER" layoutX="434.0" layoutY="411.0" prefHeight="35.0" prefWidth="180.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <PasswordField fx:id="p1" alignment="CENTER" layoutX="434.0" layoutY="461.0" prefHeight="35.0" prefWidth="180.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css">
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="p2" alignment="CENTER" layoutX="434.0" layoutY="508.0" prefHeight="35.0" prefWidth="180.0" promptText="Confirm Password" styleClass="textbox" stylesheets="@StyleSheet.css">
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <Button fx:id="signupButton" layoutX="536.0" layoutY="571.0" mnemonicParsing="false" onAction="#handlesignupButton" styleClass="borderButton" stylesheets="@StyleSheet.css" text="Sign up">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <Label fx:id="showmessage1" layoutX="438.0" layoutY="183.0" />
       <Label fx:id="showmessage2" layoutX="323.0" layoutY="291.0" />
-      <ImageView fitHeight="184.0" fitWidth="254.0" layoutX="235.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="signupButton1" layoutX="422.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="90.0" stylesheets="@StyleSheet.css" text="Back">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ImageView fx:id="logoimage" fitHeight="261.0" fitWidth="321.0" layoutX="364.0" layoutY="131.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/LecticLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="signupButton1" layoutX="268.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="65.0" stylesheets="@StyleSheet.css" text="Back" />
    </children>
 </AnchorPane>
