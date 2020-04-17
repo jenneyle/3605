@@ -29,7 +29,7 @@ public class ConstraintsCheck {
     static String licname;
     
 
-    public void check(String courseid, String staffid, int year, String term) {
+    public void check(String courseid, String staffid, int year, String term, int liccheck) {
         cleandata();
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ newweight) > staff_capacity){ 
@@ -47,7 +47,7 @@ public class ConstraintsCheck {
         if(staff_type.equals("Casual Teaching")&&casual_staff==true){
             warning.add(staff_name +" as a Casual staff already allocated to a courses in"+term);
         }
-        if(!licname.equals("null")){
+        if(!licname.equals("null") && liccheck==1){
             warning.add(licname+" has been allocted as LIC in this couse" );
         }
         for( String i :warning){

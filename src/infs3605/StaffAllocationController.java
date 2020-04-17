@@ -152,7 +152,7 @@ public class StaffAllocationController implements Initializable {
                 };
                 timer.schedule(task1,2000);
         }else{
-            rulecheck.check(courseCode, staffID, year, term);
+            rulecheck.check(courseCode, staffID, year, term,licCheck);
             if (ConstraintsCheck.warning.size()==0 || knowledgewarning == true) {
                 Statement st = conn.createStatement();
                 try {
