@@ -21,9 +21,9 @@
       <Text fx:id="courseName" layoutX="390.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
       <ComboBox fx:id="yearComboBox" layoutX="315.0" layoutY="241.0" prefWidth="150.0" promptText="Year" />
       <ComboBox fx:id="termComboBox" layoutX="315.0" layoutY="289.0" prefWidth="150.0" promptText="Term" />
-      <Label fx:id="success" layoutX="313.0" layoutY="466.0" prefHeight="17.0" prefWidth="82.0" textFill="#c00d0d" />
+      <Label fx:id="success" layoutX="291.0" layoutY="654.0" prefHeight="17.0" prefWidth="82.0" textFill="#c00d0d" />
       <CheckBox fx:id="licCheckBox" layoutX="678.0" layoutY="150.0" mnemonicParsing="false" text="LIC" />
-      <TextArea fx:id="allocationNotes" layoutX="315.0" layoutY="408.0" prefHeight="129.0" prefWidth="562.0" />
+      <TextArea fx:id="allocationNotes" layoutX="313.0" layoutY="386.0" prefHeight="129.0" prefWidth="562.0" />
       <Text layoutX="313.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
       <AnchorPane layoutY="1.0" prefHeight="770.0" prefWidth="277.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
