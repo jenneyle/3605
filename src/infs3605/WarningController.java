@@ -23,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -45,18 +46,19 @@ public class WarningController implements Initializable {
     @FXML
     Label title;
     @FXML
-    TextArea warnings;
+    Label warnings;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String name=ConstraintsCheck.staff_name;
         int warningcount=0;
         String warning="";
-        title.setText("You have encounter "+ConstraintsCheck.warning.size()+" errors");
+        title.setText("You have encountered "+ConstraintsCheck.warning.size()+" errors");
         for(String i :ConstraintsCheck.warning){
             warning=warning+"\n"+i;
         }
         warnings.setText(warning);
+        warnings.setTextAlignment(TextAlignment.CENTER);
     }
     public void handleConBtn(ActionEvent event){
         StaffAllocationController.knowledgewarning=true;
