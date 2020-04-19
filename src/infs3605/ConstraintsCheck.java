@@ -29,10 +29,10 @@ public class ConstraintsCheck {
     static String licname;
     
 
-    public void check(String courseid, String staffid, int year, String term, int liccheck) {
+    public void check(String courseid, String staffid, int year, String term, int liccheck,double weight) {
         cleandata();
         getdatabasevalue(courseid, staffid, year,term);
-        if ((currentweight+ newweight) > staff_capacity){ 
+        if ((currentweight+ weight) > staff_capacity){ 
             warning.add(staff_name + " will exceed weight capacity");
             
         }
@@ -117,19 +117,14 @@ public class ConstraintsCheck {
         return exist;
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
-        String searchQuery = "select weighting_term, allocation_term from Allocation\n" +
-                                "join Weighting on Allocation.course_id=Weighting.course_id  \n" +
-                                "and allocation_year=year and allocation_term=term\n" +
-                                "where staff_id= '"+staffid+"' and year="+year+"";
+        String searchQuery = "select allocation_weight, allocation_term from Allocation";
         //System.out.println(searchQuery);
-        String allocateweightQ = "select weighting_term from Weighting "
-                + "where Weighting.course_id='" + courseid + "'and year=" + year + " and term='" + term + "'";
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
         String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
         String licQuery="select lic,Fname,Lname from Allocation \n"
                         +"join Staff on Staff.staff_id=Allocation.staff_id \n"
                         + "where allocation_term='"+term+"' and allocation_year= "+year+" and course_id= '"+courseid+"' and lic=1;";
-        System.out.println(searchQuery);
+        //System.out.println(searchQuery);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
             while(rs.next()){
@@ -139,17 +134,13 @@ public class ConstraintsCheck {
             }
             ResultSet rs1 = database.getResultSet(searchQuery);
             while(rs1.next()){
-                currentweight=currentweight+rs1.getDouble("weighting_term");
+                currentweight=currentweight+rs1.getDouble("allocation_weight");
                 countterm.add(rs1.getString("allocation_term"));
-                System.out.println(rs1.getString("allocation_term"));
+                //System.out.println(rs1.getString("allocation_term"));
             }
 //            for(String i : countterm){
 //                System.out.println(i);
 //            }
-            ResultSet rs2 = database.getResultSet(allocateweightQ);
-            while(rs2.next()){
-                newweight=rs2.getDouble("weighting_term");
-            }
             if(database.getResultSet(casualQuery).next()){
                 casual_staff=true;
             }else{

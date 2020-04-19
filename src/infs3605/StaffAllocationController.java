@@ -47,6 +47,7 @@ import javafx.stage.Stage;
 public class StaffAllocationController implements Initializable {
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    Database database=new Database();
 
     public static Boolean knowledgewarning = false;
     @FXML
@@ -74,6 +75,10 @@ public class StaffAllocationController implements Initializable {
     private ComboBox<Integer> yearComboBox;
     @FXML
     private ComboBox<String> courseComboBox;
+    @FXML
+    Label available_weight;
+    @FXML
+    TextField allocation_weight;
     String staffID;
     String staffFname;
     Timer timer=new Timer();
@@ -112,6 +117,40 @@ public class StaffAllocationController implements Initializable {
 
         }
     }
+    public void handleAllocation_weight(MouseEvent event){
+        String courseCode = courseComboBox.getValue();
+        String term = termComboBox.getValue();
+        int year = yearComboBox.getValue();
+        String av_weight="select weighting_term from weighting where course_id='"+courseCode+"'"
+                + " and term='"+term+"' and year="+year+";";
+        try {
+            ResultSet rs = database.getResultSet(av_weight);
+            while(rs.next()){
+                double weight=Math.rint(rs.getDouble(1)*10.0)/10.0;
+                available_weight.setText("/ "+Double.toString(weight));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffAllocationController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        }
+    public void handleterm(MouseEvent event){
+        System.out.println("I'm here");
+            String courseCode = courseComboBox.getValue();
+            int year = yearComboBox.getValue();
+            String av_term="select term from weighting where course_id='"+courseCode+"'"
+                    + " and year="+year+";";
+            ObservableList<String> termList = FXCollections.observableArrayList();
+            try {
+                ResultSet rs = database.getResultSet(av_term);
+                while(rs.next()){
+                    available_weight.setText(Double.toString(rs.getDouble(1)));
+                    termList.add(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(StaffAllocationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            termComboBox.setItems(termList);
+    }
 
     //TODO: autofill coursename
     public void handleSubmitBtn(ActionEvent event) throws IOException, SQLException {
@@ -120,6 +159,20 @@ public class StaffAllocationController implements Initializable {
         String term = termComboBox.getValue();
         String staffName = staffComboBox.getValue();
         String notes = allocationNotes.getText();
+        String weightinput=allocation_weight.getText();
+        double weight=0;
+        if(weightinput.isEmpty()){
+            weightinput=available_weight.getText().substring(1);
+            weight=Double.valueOf(weightinput);
+        }else{
+            try{
+                weight=Double.valueOf(weightinput);
+            }catch(Exception ex){
+                success.setText("you must enter a numberic number in textfield");
+            }
+        }
+        
+        
         int licCheck = 0;
         
         if (licCheckBox.isSelected()) {
@@ -152,12 +205,12 @@ public class StaffAllocationController implements Initializable {
                 };
                 timer.schedule(task1,2000);
         }else{
-            rulecheck.check(courseCode, staffID, year, term,licCheck);
+            rulecheck.check(courseCode, staffID, year, term,licCheck,weight);
             if (ConstraintsCheck.warning.size()==0 || knowledgewarning == true) {
                 Statement st = conn.createStatement();
                 try {
-                    String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id, lic, allocation_description)"
-                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "'," + licCheck + ",'" + notes +"')");
+                    String insertData = ("INSERT INTO ALLOCATION (allocation_year, allocation_term, course_id, staff_id, lic, allocation_description,allocation_weight)"
+                            + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "'," + licCheck + ",'" + notes +"',"+weight+")");
                     st.execute(insertData);
                     knowledgewarning = false;
                     success.setText("Allocation Success!");
