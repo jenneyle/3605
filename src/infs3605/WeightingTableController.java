@@ -166,7 +166,7 @@ public class WeightingTableController implements Initializable {
     //button to view course weightings
     @FXML
     public void handleWeightingBtn(MouseEvent event) throws IOException {
-        pageSwitcher.switcher(event, "Weighting.fxml");
+        pageSwitcher.switcher(event, "WeightingTable.fxml");
     }
 
     //button to view staff details

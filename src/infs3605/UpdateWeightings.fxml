@@ -27,16 +27,16 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <AnchorPane prefHeight="770.0" prefWidth="277.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+      <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="80.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="69.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
-            <HBox layoutY="289.0" onMouseClicked="#handleWeightingBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="282.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="256.0" text="  Course Weighting">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="238.0" text="  Course Weighting">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -48,14 +48,14 @@
                         <Insets left="10.0" />
                      </padding>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="-4.0" layoutY="367.0" onMouseClicked="#handleCourseBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-4.0" layoutY="350.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="219.0" text="  View Courses">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="211.0" text="  View Courses">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -67,14 +67,14 @@
                         <Insets left="10.0" />
                      </padding>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="-2.0" layoutY="449.0" onMouseClicked="#handleStaffBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-2.0" layoutY="419.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="188.0" text="  View Staff">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="185.0" text="  View Staff">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,14 +86,14 @@
                         <Insets left="10.0" />
                      </padding>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="205.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="213.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="257.0" text="  Current Allocations">
+                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="239.0" text="  Current Allocations">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -105,12 +105,12 @@
                         <Insets left="10.0" />
                      </padding>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton" layoutX="13.0" layoutY="91.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="249.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutX="18.0" layoutY="106.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="222.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="38.0" prefWidth="210.0" text=" Allocate Courses">
                      <graphic>
@@ -126,9 +126,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutY="531.0" onMouseClicked="#handleLogoutBtn" prefHeight="66.0" prefWidth="270.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="489.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="66.0" prefWidth="164.0" text="  Logout">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="164.0" text="  Logout">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -140,7 +140,7 @@
                         <Insets left="10.0" />
                      </padding>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
