@@ -19,7 +19,7 @@ import javafx.scene.control.Button;
  */
 public class Staff {
     //Properties
-    private IntegerProperty staffId;
+    private StringProperty staffId;
     private StringProperty firstName;
     private StringProperty lastName;
     private StringProperty staffType;
@@ -27,8 +27,8 @@ public class Staff {
     private Button editButton;
     
     //Constructor
-    public Staff(int staffId, String firstName, String lastName, String staffType, double staffCapacity) {
-        this.staffId = new SimpleIntegerProperty(staffId);
+    public Staff(String staffId, String firstName, String lastName, String staffType, double staffCapacity) {
+        this.staffId = new SimpleStringProperty(staffId);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.staffType = new SimpleStringProperty(staffType);
@@ -37,12 +37,12 @@ public class Staff {
     }
     
     //Getters and Setters
-    public int getStaffId() {
+    public String getStaffId() {
         return staffId.get();
     }
 
-    public void setStaffId(int staffId) {
-        this.staffId = new SimpleIntegerProperty(staffId);
+    public void setStaffId(String staffId) {
+        this.staffId = new SimpleStringProperty(staffId);
     }
 
     public String getFirstName() {

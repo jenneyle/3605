@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="770.0" prefWidth="277.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
@@ -140,7 +140,10 @@
                <styleClass>
                   <String fx:value="table-column" />
                   <String fx:value="table-row-cell" />
-               </styleClass></TableView>
+               </styleClass>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy></TableView>
             <ComboBox fx:id="courseSelectionCB" layoutX="38.0" layoutY="123.0" onAction="#selectCourseComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Course" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="termSelectionCB" layoutX="254.0" layoutY="123.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="122.0" promptText="Term" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="yearSelectionCB" layoutX="146.0" layoutY="123.0" onAction="#selectYearComboBox" prefHeight="25.0" prefWidth="95.0" promptText="Year" styleClass="title" stylesheets="@StyleSheet.css" />

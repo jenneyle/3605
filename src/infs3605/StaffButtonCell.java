@@ -22,10 +22,10 @@ import javafx.stage.Stage;
  *
  * @author freey
  */
-public class AllocationDetailButtonCell extends TableCell<Record, Boolean> {
+public class StaffButtonCell extends TableCell<Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-    Button cellButton = new Button("Details");
+    Button cellButton = new Button("Edit");
     Database database = new Database();
 
 //    AllocationDeleteButtonCell() {
@@ -42,37 +42,38 @@ public class AllocationDetailButtonCell extends TableCell<Record, Boolean> {
 //        });
 //    }
     
-    AllocationDetailButtonCell() {
+    StaffButtonCell() {
 
         //Action when the button is pressed
         cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent t) {
-                Allocation currentRow = (Allocation) AllocationDetailButtonCell.this.getTableView().getItems().get(AllocationDetailButtonCell.this.getIndex());
+                Staff currentRow = (Staff) StaffButtonCell.this.getTableView().getItems().get(StaffButtonCell.this.getIndex());
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("AllocationDetails.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("UpdateStaff.fxml"));
 
                 try {
                     fxmlLoader.load();
                 } catch (IOException e) {
                 }
 
-                //int allocationId = 0;
+//                int allocationId =0;
 //                String courseId = "";
 //                String courseName = "";
 //                String staffId = "";
 //                String staffName = "";
 //                int year = 0;
 //                String term = "";
-////                String notes = "";
-////                int lic = 0;
-//
+//                String weighting = "";
+               // String weight_term = Double.toString(weighting);
+                
+             
 //                try {
 //                    ResultSet rs = database.getResultSet("SELECT Allocation.allocation_id, Allocation.allocation_term, Allocation.allocation_year,"
-//                            + " Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname"
+//                            + " Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname, Weighting.weighting_term"
 //                            + " FROM Staff JOIN Allocation ON Staff.staff_id = Allocation.staff_id JOIN Courses ON"
-//                            + " Courses.course_id = Allocation.course_id WHERE allocation_id =" + currentRow.getId());
+//                            + " Courses.course_id = Allocation.course_id JOIN Weighting on Weighting.course_id = Courses.course_id WHERE allocation_id =" + currentRow.getStaffId());
 //                    System.out.println("hi");
 //                    allocationId = rs.getInt(1);
 //                    courseId = rs.getString(4);
@@ -81,17 +82,18 @@ public class AllocationDetailButtonCell extends TableCell<Record, Boolean> {
 //                    staffName = rs.getString(7) + " " + rs.getString(8);
 //                    year = rs.getInt(3);
 //                    term = rs.getString(2);
-//
+//                    weighting = rs.getString(9);
+
 //                } catch (SQLException e) {
 //                    e.printStackTrace();
 //                }
 
-                AllocationDetailsController allocationDetailsController = fxmlLoader.getController();
-                allocationDetailsController.setData(currentRow.getId());
+                UpdateStaffController updateStaffController = fxmlLoader.getController();
+                updateStaffController.setData(currentRow.getStaffId());
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Allocation Details Page");
+                stage.setTitle("Allocation Info Page");
                 stage.setScene(new Scene(p));
                 stage.show();
             }

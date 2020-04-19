@@ -25,13 +25,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.util.Callback;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -260,13 +268,11 @@ public class AllocationTableController implements Initializable {
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
-    
-    
+
     @FXML
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
     }
-    
 
     @FXML
     public void selectYearComboBox(ActionEvent event) {
@@ -632,50 +638,60 @@ public class AllocationTableController implements Initializable {
         setDeleteButtons();
         setDetailsButtons();
     }
-     public void handleExportBtn(ActionEvent event) {
-          try {
-                ResultSet rs = database.getResultSet("SELECT * FROM Allocation");
 
-                XSSFWorkbook wb = new XSSFWorkbook();
-                XSSFSheet sheet = wb.createSheet("Current Allocations");
-                XSSFRow header = sheet.createRow(0);
-                header.createCell(0).setCellValue("Allocation ID");
-                
-                header.createCell(1).setCellValue("Year");
-                header.createCell(2).setCellValue("Term");
-                header.createCell(3).setCellValue("Course Code");
-                header.createCell(4).setCellValue("Staff ID");
-                
+    public void handleExportBtn(ActionEvent event) {
+        try {
+            ResultSet rs = database.getResultSet("SELECT * FROM Allocation");
 
-                int index = 1;
+            Workbook wb = new XSSFWorkbook();
+            Sheet sheet = wb.createSheet("Current Allocations");
+            org.apache.poi.ss.usermodel.Font headerFont = wb.createFont();
+            headerFont.setBold(true);
 
-                while (rs.next()) {
-                    XSSFRow row = sheet.createRow(index);
-                    row.createCell(0).setCellValue(rs.getString(1));
-                    row.createCell(1).setCellValue(rs.getString(2));
-                    row.createCell(2).setCellValue(rs.getString(3));
-                    row.createCell(3).setCellValue(rs.getString(4));
-                    row.createCell(4).setCellValue(rs.getString(5));
+            CellStyle headerCellStyle = wb.createCellStyle();
+            headerCellStyle.setFont(headerFont);
 
-                    index++;
-                }
+            Row headerRow = sheet.createRow(0);
 
-                FileOutputStream fileOut = new FileOutputStream("Current Allocations Export.xlsx");
+            headerRow.createCell(1).setCellValue("Year");
+            headerRow.createCell(2).setCellValue("Term");
+            headerRow.createCell(3).setCellValue("Course Code");
+            headerRow.createCell(4).setCellValue("Staff ID");
 
-                wb.write(fileOut);
-                fileOut.close();
+//                XSSFFont font = wb.createFont();
+//                font.setBold(true);
+//                XSSFCellStyle style = header.getRowStyle();
+//                style.setFont(font);
+//               // header.getRowStyle().getFont().setBold(true);
+//                
+            int index = 1;
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Export Download");
-                alert.setHeaderText(null);
-                alert.setContentText("Export to excel spreadsheet is complete!");
-                alert.showAndWait();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            while (rs.next()) {
+                Row row = sheet.createRow(index);
+                row.createCell(0).setCellValue(rs.getString(1));
+                row.createCell(1).setCellValue(rs.getString(2));
+                row.createCell(2).setCellValue(rs.getString(3));
+                row.createCell(3).setCellValue(rs.getString(4));
+                row.createCell(4).setCellValue(rs.getString(5));
+
+                index++;
             }
-        
+
+            FileOutputStream fileOut = new FileOutputStream("Current Allocations.xlsx");
+
+            wb.write(fileOut);
+            fileOut.close();
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Export Download");
+            alert.setHeaderText(null);
+            alert.setContentText("Export to excel spreadsheet is complete!");
+            alert.showAndWait();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
-    
 
     public void clearFilters(ActionEvent event) {
         data.removeAll(data);

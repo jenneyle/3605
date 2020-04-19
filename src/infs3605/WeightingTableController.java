@@ -32,7 +32,7 @@ import javafx.util.Callback;
  * @author jenneyle
  */
 //To dispay Weighting table
-public class WeightingController implements Initializable {
+public class WeightingTableController implements Initializable {
     
 
     @FXML

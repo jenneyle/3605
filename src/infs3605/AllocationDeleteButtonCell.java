@@ -10,11 +10,14 @@ import static infs3605.Database.conn;
 import static infs3605.AllocationTableController.data;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 
 /**
@@ -33,19 +36,28 @@ public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boole
 
             @Override
             public void handle(ActionEvent t) {
-                Allocation currentRow = (Allocation) AllocationDeleteButtonCell.this.getTableView().getItems().get(AllocationDeleteButtonCell.this.getIndex());
-                //remove selected item from the table list
-                data.remove(currentRow);
-                try {
-                    Statement st = conn.createStatement();
-                    String query = ("DELETE FROM Allocation WHERE allocation_id = " + currentRow.getId());
-                    System.out.println("deleting field ");
 
-                    st.execute(query);
-                } catch (SQLException ex) {
-                    Logger.getLogger(AllocationDeleteButtonCell.class.getName()).log(Level.SEVERE, null, ex);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirm Delete");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to delete this field?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    Allocation currentRow = (Allocation) AllocationDeleteButtonCell.this.getTableView().getItems().get(AllocationDeleteButtonCell.this.getIndex());
+                    //remove selected item from the table list
+                    data.remove(currentRow);
+                    try {
+                        Statement st = conn.createStatement();
+                        String query = ("DELETE FROM Allocation WHERE allocation_id = " + currentRow.getId());
+                        System.out.println("deleting field ");
+
+                        st.execute(query);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AllocationDeleteButtonCell.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    System.out.println("Delete Cancelled");
                 }
-
             }
         });
     }

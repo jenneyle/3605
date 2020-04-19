@@ -149,7 +149,7 @@ public class StaffTableController implements Initializable {
                     + " WHERE staff_type = '" + staffTypeSelectionCB.getValue() + "'"
             );
             while (rs.next()) {
-                data.add(new Staff(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
+                data.add(new Staff(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -169,7 +169,7 @@ public class StaffTableController implements Initializable {
                     + "FROM Staff"
             );
             while (rs.next()) {
-                data.add(new Staff(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
+                data.add(new Staff(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -193,7 +193,7 @@ public class StaffTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new AllocationButtonCell();
+                return new StaffButtonCell();
             }
 
         });
