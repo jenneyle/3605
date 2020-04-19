@@ -41,7 +41,7 @@ public class ConstraintsCheck {
             long distinctterm =countterm.stream().distinct().count();
             System.out.println("countterm: "+distinctterm);
             if (distinctterm> 2) {
-                warning.add(staff_name +"as a Full-time Teaching/Research staff will exceed term capacity");
+                warning.add(staff_name +"as a Full-time Teaching/Research staff will exceed year capacity");
             }
         }
         if(staff_type.equals("Casual Teaching")&&casual_staff==true){
