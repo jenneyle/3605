@@ -117,8 +117,8 @@ public class ConstraintsCheck {
         return exist;
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
-        String searchQuery = "select allocation_weight, allocation_term from Allocation";
-        //System.out.println(searchQuery);
+        String searchQuery = "select allocation_weight, allocation_term from Allocation where staff_id='"+staffid+"';";
+        System.out.println(searchQuery);
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
         String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
         String licQuery="select lic,Fname,Lname from Allocation \n"
