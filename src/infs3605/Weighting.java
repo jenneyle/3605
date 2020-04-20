@@ -34,15 +34,13 @@ public class Weighting {
     private IntegerProperty tutorial_prep;
     private IntegerProperty lecture_prep;
     private IntegerProperty staff_development;
-    
-    
+    private IntegerProperty repeat_lecture;
     private Button detailsButton;
 
     public Weighting() {
     }
-    
 
-    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours,int pd_hours, double weighting_term){
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours, int pd_hours, double weighting_term) {
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
@@ -52,10 +50,27 @@ public class Weighting {
         this.pd_hours = new SimpleIntegerProperty(pd_hours);
         System.out.println(pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
-        
+//        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+
         //this.editButton = new Button("Edit");
         this.detailsButton = new Button("Details");
     }
+
+   
+//    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours, int pd_hours, double weighting_term, int repeat_lecture) {
+//        this.weight_id = new SimpleIntegerProperty(weight_id);
+//        this.course_id = new SimpleStringProperty(course_id);
+//        this.year = new SimpleIntegerProperty(year);
+//        this.term = new SimpleStringProperty(term);
+//        this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
+//        this.facetoface_hours = new SimpleIntegerProperty(facetoface_hours);
+//        this.pd_hours = new SimpleIntegerProperty(pd_hours);
+//        System.out.println(pd_hours);
+//        this.weighting_term = new SimpleDoubleProperty(weighting_term);
+//        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+//        this.detailsButton = detailsButton;
+//    }
+    
 
     public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development) {
         this.weight_id = new SimpleIntegerProperty(weight_id);
@@ -64,7 +79,7 @@ public class Weighting {
         this.term = new SimpleStringProperty(term);
         this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
-        this.tutorial_hrs =new SimpleIntegerProperty(tutorial_hrs);
+        this.tutorial_hrs = new SimpleIntegerProperty(tutorial_hrs);
         this.lecture_hrs = new SimpleIntegerProperty(lecture_hrs);
         this.consultation_hrs = new SimpleIntegerProperty(consultation_hrs);
         this.marking_hrs = new SimpleIntegerProperty(marking_hrs);
@@ -72,8 +87,6 @@ public class Weighting {
         this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
         this.staff_development = new SimpleIntegerProperty(staff_development);
     }
-    
-    
 
     public Button getWDetailsButton() {
         return detailsButton;
@@ -135,7 +148,7 @@ public class Weighting {
         return pd_hours.get();
     }
 
-    public void setPd_hours(int pd_hours){
+    public void setPd_hours(int pd_hours) {
         this.pd_hours.set(pd_hours);
     }
 
@@ -146,12 +159,23 @@ public class Weighting {
     public void setWeighting_term(double weighting_term) {
         this.weighting_term.set(weighting_term);
     }
+
+    public Integer getRepeatLecture() {
+        return repeat_lecture.get();
+    }
+
+    public void setRepeatLecture(int repeat_lecture) {
+        this.repeat_lecture.set(repeat_lecture);
+    }
+
     public int getTutorial_hrs() {
         return tutorial_hrs.get();
     }
+
     public void setTutorial_hrs(int tutorial_hrs) {
         this.tutorial_hrs.set(tutorial_hrs);
     }
+
     public int getLecture_hrs() {
         return lecture_hrs.get();
     }
@@ -159,7 +183,7 @@ public class Weighting {
     public void setLecture_hrs(int lecture_hrs) {
         this.lecture_hrs.set(lecture_hrs);
     }
-    
+
     public int getConsultation_hrs() {
         return consultation_hrs.get();
     }
@@ -167,18 +191,23 @@ public class Weighting {
     public void setConsultation_hrs(int consultation_hrs) {
         this.consultation_hrs.set(consultation_hrs);
     }
+
     public int getMarking_hrs() {
         return marking_hrs.get();
     }
+
     public void setMarking_hrs(int marking_hrs) {
         this.marking_hrs.set(marking_hrs);
     }
+
     public int getTutorial_prep() {
         return tutorial_prep.get();
     }
+
     public void setTutorial_prep(int tutorial_prep) {
         this.tutorial_prep.set(tutorial_prep);
     }
+
     public int getLecture_prep() {
         return lecture_prep.get();
     }
@@ -186,6 +215,7 @@ public class Weighting {
     public void setLecture_prep(int lecture_prep) {
         this.lecture_prep.set(lecture_prep);
     }
+
     public int getStaff_development() {
         return staff_development.get();
     }

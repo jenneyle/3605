@@ -60,6 +60,7 @@ public class WeightingTableController implements Initializable {
         TableColumn<Weighting,Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n      HOURS");
         TableColumn<Weighting,Integer> wpd_hrs = new TableColumn("   PREPARATION AND\n DEVELOPMENT HOURS");
         TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
+        TableColumn <Weighting,Integer>weightingRepeatLecture = new TableColumn(" REPEATED\n LECTURE");
         
         detailWeighting = new TableColumn("");
         updateWeighting = new TableColumn("");
@@ -73,9 +74,10 @@ public class WeightingTableController implements Initializable {
             ResultSet rs = database.getResultSet("SELECT weight_id, course_id, Year, Term, students_enrolled,\n" +
                                                 "(tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours',\n" +
                                                 "(marking_hrs+tutorial_prep+lecture_prep+staff_development) as 'pd_hours', \n" +
-                                                "weighting_term FROM Weighting");
+                                                "weighting_term, repeat_lecture FROM Weighting");
             while (rs.next()) {
-                weighting.add(new Weighting(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),Math.round(rs.getDouble(8)*10.0)/10.0));
+                //weighting.add(new Weighting(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),Math.round(rs.getDouble(8)*10.0)/10.0),rs.getInt(9));
+                weighting.add(new Weighting(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),(Math.round(rs.getDouble(8)*10.0)/10.0)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
            //TODO: formula
             }
@@ -89,6 +91,7 @@ public class WeightingTableController implements Initializable {
         weightingStudents.setCellValueFactory(new PropertyValueFactory<>("students_enrolled"));
         //weightingFaceHrs.setCellValueFactory(new PropertyValueFactory<Weighting, Integer>("face_time"));
         wfacetoface_hrs.setCellValueFactory(new PropertyValueFactory<>("facetoface_hours"));
+        weightingRepeatLecture.setCellValueFactory(new PropertyValueFactory<>("repeat_lecture"));
         wpd_hrs.setCellValueFactory(new PropertyValueFactory<>("pd_hours"));
         totalweighting.setCellValueFactory(new PropertyValueFactory<>("weighting_term"));
         detailWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("editButton"));

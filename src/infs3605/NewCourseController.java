@@ -69,6 +69,8 @@ public class NewCourseController implements Initializable {
     @FXML
     TextField lectureHrs;
     @FXML
+    CheckBox repeatedLecture;
+    @FXML
     TextField consultationHrs;
     @FXML
     TextField markingHrs;
@@ -177,6 +179,7 @@ public class NewCourseController implements Initializable {
 
             st.execute(insertData);
             updateMsg.setText("Successfully submitted");
+            updateMsg.setTextFill(Color.web("#008000"));
             updateMsg.setVisible(true);
 
         } catch (Exception ex) {

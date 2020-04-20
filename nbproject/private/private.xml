@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/EditWeightingController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/StaffTableController.java</file>
+            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/InsertStaffController.java</file>
+            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/NewCourseController.java</file>
             <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/Weighting.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/UpdateWeightingsController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/AllocationDetailButtonCell.java</file>
             <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/WeightingTableController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/UpdateAllocationController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/AllocationButtonCell.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/WeightingEditButtonCell.java</file>
         </group>
     </open-files>
 </project-private>
