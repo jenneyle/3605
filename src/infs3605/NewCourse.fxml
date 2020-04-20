@@ -16,30 +16,33 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.NewCourseController">
     <children>
-      <AnchorPane layoutX="450.0" layoutY="125.0" prefHeight="476.0" prefWidth="454.0">
+      <AnchorPane layoutX="279.0" layoutY="100.0" prefHeight="638.0" prefWidth="731.0">
          <children>
-            <Button layoutX="245.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
-            <TextField fx:id="courseCode" layoutX="71.0" layoutY="83.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Code" />
-            <TextField fx:id="studentsEnrolled" layoutX="67.0" layoutY="194.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter no. of students enrolled" />
-            <TextField fx:id="courseName" layoutX="276.0" layoutY="83.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Name" />
-            <TextField fx:id="lectureHrs" layoutX="70.0" layoutY="285.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter lecture hours" />
-            <TextField fx:id="tutorialHrs" layoutX="70.0" layoutY="250.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter tutorial hours" />
-            <Label layoutX="69.0" layoutY="171.0" text="Course Weighting" />
-            <CheckBox fx:id="t1" layoutX="71.0" layoutY="140.0" mnemonicParsing="false" text="Term 1" />
-            <CheckBox fx:id="t2" layoutX="151.0" layoutY="140.0" mnemonicParsing="false" text="Term 2" />
-            <CheckBox fx:id="t3" layoutX="233.0" layoutY="140.0" mnemonicParsing="false" text="Term 3" />
-            <Label layoutX="70.0" layoutY="113.0" text="Course Offering" />
-            <CheckBox fx:id="ts" layoutX="319.0" layoutY="140.0" mnemonicParsing="false" text="Summer Term" />
-            <Label fx:id="updateMsg" layoutX="319.0" layoutY="454.0" text="Label" />
-            <TextField fx:id="consultationHrs" layoutX="70.0" layoutY="320.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter consultation hours" />
-            <TextField fx:id="markingHrs" layoutX="286.0" layoutY="191.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter marking hours" />
-            <TextField fx:id="tutorialPrep" layoutX="285.0" layoutY="224.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter tutoral preparation hours" />
-            <TextField fx:id="lecturePrep" layoutX="285.0" layoutY="257.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter lecture preparation hours" />
-            <TextField fx:id="staffDev" layoutX="285.0" layoutY="291.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter staff development hours" />
-            <TextField fx:id="overallWeighting" layoutX="286.0" layoutY="324.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter overall weighting" />
-            <Label layoutX="69.0" layoutY="224.0" prefHeight="17.0" prefWidth="131.0" text="Face to face hours" />
-            <Label layoutX="286.0" layoutY="170.0" prefHeight="17.0" prefWidth="210.0" text="Preparation &amp; Development" />
-            <TextArea fx:id="allocationNotes" layoutX="67.0" layoutY="361.0" prefHeight="80.0" prefWidth="430.0" promptText="Enter Course Notes" />
+            <Button layoutX="217.0" layoutY="572.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+            <TextField fx:id="courseCode" layoutX="27.0" layoutY="22.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Course Code" />
+            <TextField fx:id="studentsEnrolled" layoutX="23.0" layoutY="147.0" prefHeight="27.0" prefWidth="202.0" promptText="Enter no. of students enrolled" />
+            <TextField fx:id="courseName" layoutX="242.0" layoutY="22.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter Course Name" />
+            <TextField fx:id="lectureHrs" layoutX="28.0" layoutY="242.0" prefHeight="27.0" prefWidth="192.0" promptText="Enter lecture hours" />
+            <TextField fx:id="tutorialHrs" layoutX="28.0" layoutY="207.0" prefHeight="27.0" prefWidth="192.0" promptText="Enter tutorial hours" />
+            <Label layoutX="27.0" layoutY="124.0" text="Number of Students" />
+            <CheckBox fx:id="t1" layoutX="27.0" layoutY="93.0" mnemonicParsing="false" text="Term 1" />
+            <CheckBox fx:id="t2" layoutX="107.0" layoutY="93.0" mnemonicParsing="false" text="Term 2" />
+            <CheckBox fx:id="t3" layoutX="189.0" layoutY="93.0" mnemonicParsing="false" text="Term 3" />
+            <Label layoutX="26.0" layoutY="66.0" text="Course Offering" />
+            <CheckBox fx:id="ts" layoutX="275.0" layoutY="93.0" mnemonicParsing="false" text="Summer Term" />
+            <Label fx:id="updateMsg" layoutX="314.0" layoutY="577.0" text="Label" />
+            <TextField fx:id="consultationHrs" layoutX="28.0" layoutY="306.0" prefHeight="27.0" prefWidth="192.0" promptText="Enter consultation hours" />
+            <TextField fx:id="markingHrs" layoutX="249.0" layoutY="147.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter marking hours" />
+            <TextField fx:id="tutorialPrep" layoutX="248.0" layoutY="180.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter tutoral preparation hours" />
+            <TextField fx:id="lecturePrep" layoutX="248.0" layoutY="213.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter lecture preparation hours" />
+            <TextField fx:id="staffDev" layoutX="248.0" layoutY="247.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter staff development hours" />
+            <TextField fx:id="overallWeighting" layoutX="251.0" layoutY="306.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter overall weighting" />
+            <Label layoutX="28.0" layoutY="183.0" prefHeight="17.0" prefWidth="131.0" text="Face to face" />
+            <Label layoutX="248.0" layoutY="124.0" prefHeight="17.0" prefWidth="210.0" text="Preparation &amp; Development" />
+            <TextArea fx:id="allocationNotes" layoutX="32.0" layoutY="368.0" prefHeight="99.0" prefWidth="430.0" promptText="Enter Course Notes" />
+            <Label layoutX="249.0" layoutY="278.0" prefHeight="17.0" prefWidth="131.0" text="Course Weighting" />
+            <Label layoutX="31.0" layoutY="349.0" prefHeight="17.0" prefWidth="131.0" text="Course Notes" />
+            <CheckBox fx:id="repeatedLecture" layoutX="26.0" layoutY="277.0" mnemonicParsing="false" text="Repeated Lecture?" />
          </children>
       </AnchorPane>
       <Text layoutX="340.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Course">

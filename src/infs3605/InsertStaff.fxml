@@ -19,7 +19,7 @@
       <TextField fx:id="insertStaffZid" layoutX="351.0" layoutY="201.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter ziD" />
       <ComboBox fx:id="insertStaffType" layoutX="351.0" layoutY="269.0" prefHeight="27.0" prefWidth="179.0" promptText="Select Staff Type" />
       <Button fx:id="submit" layoutX="400.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleInsertBtn" text="Submit" />
-      <Label fx:id="updateMsg" layoutX="488.0" layoutY="355.0" text="Label" />
+      <Label fx:id="updateMsg" layoutX="488.0" layoutY="355.0" text="Label" textFill="#58d647" />
       <TextField fx:id="insertStaffCapacity" layoutX="351.0" layoutY="304.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
       <TextField fx:id="insertStaffEmail" layoutX="351.0" layoutY="234.0" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
       <Text layoutX="340.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Staff">

@@ -21,6 +21,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -89,6 +90,7 @@ public class InsertStaffController implements Initializable {
             st.execute(insertData);
             System.out.println("Submitted");
             updateMsg.setText("Successfully submitted");
+            updateMsg.setTextFill(Color.web("#008000"));
             updateMsg.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
