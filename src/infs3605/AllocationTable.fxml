@@ -154,6 +154,7 @@
                </font>
             </Text>
             <Button fx:id="clearFilterBtn" layoutX="436.0" layoutY="123.0" mnemonicParsing="false" onAction="#clearFilters" styleClass="buttonNormal" stylesheets="@StyleSheet.css" text="Clear" />
+            <Button fx:id="importbtn" layoutX="504.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleimport" text="Import" />
          </children>
       </AnchorPane>
    </children>

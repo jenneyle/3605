@@ -6,6 +6,7 @@
 package infs3605;
 
 import com.sun.prism.impl.Disposer.Record;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -33,6 +35,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -69,6 +73,8 @@ public class AllocationTableController implements Initializable {
     public Button clearFilterBtn;
     @FXML
     public Button exportToExcelBtn;
+    @FXML
+    public Button importbtn;
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
@@ -707,5 +713,15 @@ public class AllocationTableController implements Initializable {
         setEditButtons();
         setDeleteButtons();
         setDetailsButtons();
+    }
+    public void handleimport(ActionEvent event){
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        FileChooser fileChooser =new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        try {
+            Importing_excel_allocationtable.reading_excel(selectedFile);
+        } catch (IOException ex) {
+            Logger.getLogger(AllocationTableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
