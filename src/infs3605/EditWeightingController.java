@@ -62,21 +62,21 @@ public class EditWeightingController implements Initializable {
     int weightingId = 0;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
-    public void setData(int iWeightingId, String iCourseCode, int iYear, String iTerm, int iStudentsEnrolled, int iTutorialHrs, int iLectureHrs, int iConsultHrs, int iMarkingHrs, int iTutorialPrep, int iLecturePrep, int iStaffDev, int iWeightingTotal) {
+    public void setData(int iWeightingId) {
 
         weightingId = iWeightingId;
-        courseCode.setText(iCourseCode);
-        year.setText(Integer.toString(iYear));
-        term.setText(iTerm);
-        studentsEnrol.setText(Integer.toString(iStudentsEnrolled));
-        tutorialHrs.setText(Integer.toString(iTutorialHrs));
-        lectureHrs.setText(Integer.toString(iLectureHrs));
-        consultHrs.setText(Integer.toString(iConsultHrs));
-        markingHrs.setText(Integer.toString(iMarkingHrs));
-        tutorialPrep.setText(Integer.toString(iTutorialPrep));
-        lecturePrep.setText(Integer.toString(iLecturePrep));
-        staffDev.setText(Integer.toString(iStaffDev));
-        totalWeighting.setText(Integer.toString(iWeightingTotal));
+//        courseCode.setText(iCourseCode);
+//        year.setText(Integer.toString(iYear));
+//        term.setText(iTerm);
+//        studentsEnrol.setText(Integer.toString(iStudentsEnrolled));
+//        tutorialHrs.setText(Integer.toString(iTutorialHrs));
+//        lectureHrs.setText(Integer.toString(iLectureHrs));
+//        consultHrs.setText(Integer.toString(iConsultHrs));
+//        markingHrs.setText(Integer.toString(iMarkingHrs));
+//        tutorialPrep.setText(Integer.toString(iTutorialPrep));
+//        lecturePrep.setText(Integer.toString(iLecturePrep));
+//        staffDev.setText(Integer.toString(iStaffDev));
+//        totalWeighting.setText(Integer.toString(iWeightingTotal));
 
 //        setLists();
     }
@@ -89,9 +89,9 @@ public class EditWeightingController implements Initializable {
 
     @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
-        String iCourseCode = courseCode.getText();
-        String iTerm = term.getText();
-        int iYear = Integer.parseInt(year.getText());
+//        String iCourseCode = courseCode.getText();
+//        String iTerm = term.getText();
+//        int iYear = Integer.parseInt(year.getText());
         int iStudentsEnrolled = Integer.parseInt(studentsEnrol.getText());
         int iTutorialHrs = Integer.parseInt(tutorialHrs.getText());
         int iLectureHrs = Integer.parseInt(lectureHrs.getText());

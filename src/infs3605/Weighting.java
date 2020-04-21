@@ -36,7 +36,7 @@ public class Weighting {
     private IntegerProperty staff_development;
     private IntegerProperty repeat_lecture;
     private Button detailsButton;
-    private Button updateButton;
+    private Button editButton;
 
     public Weighting() {
     }
@@ -57,22 +57,9 @@ public class Weighting {
 
         //this.editButton = new Button("Edit");
         this.detailsButton = new Button("Details");
+        this.editButton = new Button("Edit");
     }
 
-   
-//    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, int facetoface_hours, int pd_hours, double weighting_term, int repeat_lecture) {
-//        this.weight_id = new SimpleIntegerProperty(weight_id);
-//        this.course_id = new SimpleStringProperty(course_id);
-//        this.year = new SimpleIntegerProperty(year);
-//        this.term = new SimpleStringProperty(term);
-//        this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
-//        this.facetoface_hours = new SimpleIntegerProperty(facetoface_hours);
-//        this.pd_hours = new SimpleIntegerProperty(pd_hours);
-//        System.out.println(pd_hours);
-//        this.weighting_term = new SimpleDoubleProperty(weighting_term);
-//        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
-//        this.detailsButton = detailsButton;
-//    }
     
 
     public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development) {
@@ -90,8 +77,8 @@ public class Weighting {
         this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
         this.staff_development = new SimpleIntegerProperty(staff_development);
         
-        this.detailsButton = new Button("details");
-        this.updateButton = new Button("update");
+        this.detailsButton = new Button("Details");
+        this.editButton = new Button("Edit");
     }
 
     public Button getWDetailsButton() {
@@ -230,12 +217,12 @@ public class Weighting {
         this.staff_development.set(staff_development);
     }
 
-    public Button getUpdateButton() {
-        return updateButton;
+    public Button getEditButton() {
+        return editButton;
     }
 
-    public void setUpdateButton(Button updateButton) {
-        this.updateButton = updateButton;
+    public void setEditButton(Button updateButton) {
+        this.editButton = updateButton;
     }
     
     

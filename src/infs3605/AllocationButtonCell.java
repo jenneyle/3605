@@ -27,20 +27,6 @@ public class AllocationButtonCell extends TableCell<Record, Boolean> {
     //TODO: Sophia to make the button with an image of a pencilnot text
     Button cellButton = new Button("Edit");
     Database database = new Database();
-
-//    AllocationDeleteButtonCell() {
-//
-//        //Action when the button is pressed
-//        cellButton.setOnAction(new EventHandler<ActionEvent>() {
-//
-//            @Override
-//            public void handle(ActionEvent t) {
-//                Allocation currentRow = (Allocation) AllocationButtonCell.this.getTableView().getItems().get(AllocationButtonCell.this.getIndex());
-//                //remove selected item from the table list
-//                	
-//            }
-//        });
-//    }
     
     AllocationButtonCell() {
 

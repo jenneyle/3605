@@ -40,7 +40,7 @@ public class WeightingTableController implements Initializable {
     @FXML
     TableView weightingTable;
     TableColumn detailWeighting;
-    TableColumn updateWeighting;
+    TableColumn editWeighting;
 
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -56,17 +56,16 @@ public class WeightingTableController implements Initializable {
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
         TableColumn weightingStudents = new TableColumn(" STUDENTS\n ENROLLED");
-        TableColumn<Weighting, Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n      HOURS");
+        TableColumn<Weighting, Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n HOURS");
         TableColumn<Weighting, Integer> wpd_hrs = new TableColumn("   PREPARATION AND\n DEVELOPMENT HOURS");
         TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
         TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn(" REPEATED\n LECTURE");
 
         detailWeighting = new TableColumn("");
-        updateWeighting = new TableColumn("");
+        editWeighting = new TableColumn("edit");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear
-                , weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs
-                , totalweighting, detailWeighting, updateWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs
+                , totalweighting, detailWeighting, editWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
@@ -95,17 +94,18 @@ public class WeightingTableController implements Initializable {
         weightingRepeatLecture.setCellValueFactory(new PropertyValueFactory<>("repeat_lecture"));
         wpd_hrs.setCellValueFactory(new PropertyValueFactory<>("pd_hours"));
         totalweighting.setCellValueFactory(new PropertyValueFactory<>("weighting_term"));
-        detailWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("editButton"));
-        updateWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("updateButton"));
+        detailWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("detailsButton"));
+        editWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("editButton"));
         
-        setEditButtons();
-        setUpdateButtons();
         weightingTable.setItems(weighting);
+        setDetailButtons();
+        setEditButtons();
+        
 
     }
 
     //uncomment to make it work
-    public void setEditButtons() {
+    public void setDetailButtons() {
         System.out.println("clicked");
         // Detail Button
         detailWeighting.setCellValueFactory(
@@ -130,16 +130,16 @@ public class WeightingTableController implements Initializable {
 
     }
 
-    public void setUpdateButtons() {
+    public void setEditButtons() {
         // Edit Button
-        updateWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+        editWeighting.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
         });
 
-        updateWeighting.setCellFactory(
+        editWeighting.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
 
             @Override
