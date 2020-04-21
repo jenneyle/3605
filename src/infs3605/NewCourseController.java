@@ -124,7 +124,7 @@ public class NewCourseController implements Initializable {
         int iTutorialPrep = Integer.parseInt(tutorialPrep.getText());
         int iLecturePrep = Integer.parseInt(lecturePrep.getText());
         int iStaffDev = Integer.parseInt(staffDev.getText());
-        int iOverallWeighting = Integer.parseInt(overallWeighting.getText());
+        double iOverallWeighting = Double.parseDouble(overallWeighting.getText());
         //+ iStaffDev + ","
 
         //double totalWeight = (iStudentsEnrolled * 0.002) + (iFaceToFaceHrs * 0.1) + (iPrepAndDevHrs * 0.1);
