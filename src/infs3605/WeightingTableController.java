@@ -139,7 +139,7 @@ public class WeightingTableController implements Initializable {
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
                 //change class
-                return new AllocationButtonCell();
+                return new WeightingEditButtonCell();
             }
 
         });
