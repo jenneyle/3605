@@ -94,7 +94,8 @@ public class AllocationTableController implements Initializable {
         viewDetailsAllocation = new TableColumn("");
 
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting, staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting
+                , staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
         warning1.setVisible(false);
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses

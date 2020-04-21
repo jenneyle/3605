@@ -66,17 +66,17 @@ public class EditWeightingController implements Initializable {
 
         weightingId = iWeightingId;
         courseCode.setText(iCourseCode);
-        year.setValue(iYear);
+        year.setText(Integer.toString(iYear));
         term.setText(iTerm);
-        studentsEnrol.setValue(iStudentsEnrolled);
-        tutorialHrs.setValue(iTutorialHrs);
-        lectureHrs.setValue(iLectureHrs);
-        consultHrs.setValue(iConsultHrs);
-        markingHrs.setValue(iMarkingHrs);
-        tutorialPrep.setValue(iTutorialPrep);
-        lecturePrep.setValue(iLecturePrep);
-        staffDev.setValue(iStaffDev);
-        totalWeighting.setValue(iWeightingTotal);
+        studentsEnrol.setText(Integer.toString(iStudentsEnrolled));
+        tutorialHrs.setText(Integer.toString(iTutorialHrs));
+        lectureHrs.setText(Integer.toString(iLectureHrs));
+        consultHrs.setText(Integer.toString(iConsultHrs));
+        markingHrs.setText(Integer.toString(iMarkingHrs));
+        tutorialPrep.setText(Integer.toString(iTutorialPrep));
+        lecturePrep.setText(Integer.toString(iLecturePrep));
+        staffDev.setText(Integer.toString(iStaffDev));
+        totalWeighting.setText(Integer.toString(iWeightingTotal));
 
 //        setLists();
     }
@@ -91,16 +91,16 @@ public class EditWeightingController implements Initializable {
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
         String iCourseCode = courseCode.getText();
         String iTerm = term.getText();
-        int iYear = Integer.parseInt(year.getValue());
-        int iStudentsEnrolled = studentsEnrol.getValue();
-        int iTutorialHrs = tutorialHrs.getValue();
-        int iLectureHrs = lectureHrs.getValue();
-        int iConsultHrs = consultHrs.getValue();
-        int iMarkingHrs = markingHrs.getValue();
-        int iTutorialPrep = tutorialPrep.getValue();
-        int iLecturePrep = lecturePrep.getValue();
-        int iStaffDev = staffDev.getValue();
-        int iWeightingTotal = totalWeighting.getValue();
+        int iYear = Integer.parseInt(year.getText());
+        int iStudentsEnrolled = Integer.parseInt(studentsEnrol.getText());
+        int iTutorialHrs = Integer.parseInt(tutorialHrs.getText());
+        int iLectureHrs = Integer.parseInt(lectureHrs.getText());
+        int iConsultHrs = Integer.parseInt(consultHrs.getText());
+        int iMarkingHrs = Integer.parseInt(markingHrs.getText());
+        int iTutorialPrep = Integer.parseInt(tutorialPrep.getText());
+        int iLecturePrep = Integer.parseInt(lecturePrep.getText());
+        int iStaffDev = Integer.parseInt(staffDev.getText());
+        int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
 
            Statement st = conn.createStatement();
         try {

@@ -26,7 +26,7 @@ public class WeightingDetailButtonCell extends TableCell<Record, Boolean> {
     //TODO: Sophia to make the button with an image of a pencilnot text
     Button cellButton = new Button("Details");
     Database database = new Database();
-    
+
     WeightingDetailButtonCell() {
 
         //Action when the button is pressed
@@ -35,17 +35,15 @@ public class WeightingDetailButtonCell extends TableCell<Record, Boolean> {
             @Override
             public void handle(ActionEvent t) {
                 //int weightID = Integer.parseInt(WeightingDetailButtonCell.this.getTableRow().getItem().toString());
-                 Weighting currentRow = (Weighting) WeightingDetailButtonCell.this.getTableView().getItems().get(WeightingDetailButtonCell.this.getIndex());
-               
-       
-                
+                Weighting currentRow = (Weighting) WeightingDetailButtonCell.this.getTableView().getItems().get(WeightingDetailButtonCell.this.getIndex());
+
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("WeightingDetails.fxml"));
                     Parent root = loader.load();
-
+                    
                     //The following both lines are the only addition we need to pass the arguments
                     WeightingDetailsController weightingDetailsController = loader.getController();
-                   weightingDetailsController.setData(currentRow.getWeight_id());
+                    weightingDetailsController.setData(currentRow.getWeight_id());
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.show();
@@ -65,5 +63,3 @@ public class WeightingDetailButtonCell extends TableCell<Record, Boolean> {
         }
     }
 }
-
-
