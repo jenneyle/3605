@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class PageSwitchHelper {
     
     public void switcher(ActionEvent event, String page) throws IOException {
-        System.out.println("Switching pages");
+        System.out.println("Switching pages to " + page);
         Parent parent = FXMLLoader.load(getClass().getResource(page));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -29,7 +29,7 @@ public class PageSwitchHelper {
 
     
     public void switcher(MouseEvent event, String page) throws IOException {
-        System.out.println("Switching pages");
+        System.out.println("Switching pages to " + page);
         Parent parent = FXMLLoader.load(getClass().getResource(page));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
