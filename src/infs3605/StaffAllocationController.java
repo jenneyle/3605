@@ -253,7 +253,7 @@ public class StaffAllocationController implements Initializable {
     
     @FXML
     public void handleWeightingBtn(MouseEvent event) throws IOException {
-        pageSwitcher.switcher(event, "Weighting.fxml");
+        pageSwitcher.switcher(event, "WeightingTable.fxml");
     }
     
 
