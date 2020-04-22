@@ -69,7 +69,7 @@ public class NewCourseController implements Initializable {
     @FXML
     TextField lectureHrs;
     @FXML
-    CheckBox repeatedLecture;
+    CheckBox repeatedLectureBox;
     @FXML
     TextField consultationHrs;
     @FXML
@@ -127,6 +127,13 @@ public class NewCourseController implements Initializable {
         double iOverallWeighting = Double.parseDouble(overallWeighting.getText());
         //+ iStaffDev + ","
 
+        int repeatedLecture;
+        if (repeatedLectureBox.isSelected()) {
+            repeatedLecture = 1;
+        } else {
+            repeatedLecture = 0;
+        }
+
         //double totalWeight = (iStudentsEnrolled * 0.002) + (iFaceToFaceHrs * 0.1) + (iPrepAndDevHrs * 0.1);
         Statement st = conn.createStatement();
         try {
@@ -137,42 +144,42 @@ public class NewCourseController implements Initializable {
             int currentYear = rs.getInt(1);
 
             if (iT1 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 1'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + ")");
                 st.execute(insertData2);
             }
 
             if (iT2 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 2'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + ")");
                 st.execute(insertData2);
             }
 
             if (iT3 == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term) "
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture) "
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Term 3'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + ")");
                 st.execute(insertData2);
             }
 
             if (iTs == 1) {
-                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term)"
-                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "),"
-                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + ")");
+                String insertData2 = ("INSERT INTO Weighting (course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, marking_hrs, tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture)"
+                        + "VALUES ('" + iCourseCode + "'," + currentYear + ", 'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 1) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 2) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 3) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + "),"
+                        + "('" + iCourseCode + "'," + (currentYear + 4) + ",'Summer Term'," + iStudentsEnrolled + "," + iTutorialHrs + "," + iLectureHrs + "," + iConsultationHrs + "," + iMarkingHrs + "," + iTutorialPrep + "," + iLecturePrep + "," + iStaffDev + "," + iOverallWeighting + "," + repeatedLecture + ")");
                 st.execute(insertData2);
 
             }
@@ -220,7 +227,8 @@ public class NewCourseController implements Initializable {
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
-@FXML
+
+    @FXML
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
     }

@@ -189,7 +189,7 @@ public class StaffAllocationController implements Initializable {
             try {
                 weight = Double.valueOf(weightinput);
             } catch (Exception ex) {
-                success.setText("you must enter a numberic number in textfield");
+                success.setText("you must enter a numeric number in textfield");
             }
         }
 

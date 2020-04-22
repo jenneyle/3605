@@ -60,7 +60,7 @@ public class Weighting {
         this.editButton = new Button("Edit");
     }
 
-    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development) {
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, int repeat_lecture) {
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
@@ -74,6 +74,8 @@ public class Weighting {
         this.tutorial_prep = new SimpleIntegerProperty(tutorial_prep);
         this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
         this.staff_development = new SimpleIntegerProperty(staff_development);
+        
+        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
 
         this.detailsButton = new Button("Details");
         this.editButton = new Button("Edit");
