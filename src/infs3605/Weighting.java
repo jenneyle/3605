@@ -81,6 +81,12 @@ public class Weighting {
         this.editButton = new Button("Edit");
     }
 
+    public Weighting(int repeat_lecture) {
+        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+    }
+    
+    
+
     public Button getWDetailsButton() {
         return detailsButton;
     }

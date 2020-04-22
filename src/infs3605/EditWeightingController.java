@@ -26,7 +26,6 @@ import javafx.stage.Stage;
  *
  * @author jenneyle
  */
-
 public class EditWeightingController {
 
     @FXML
@@ -65,35 +64,32 @@ public class EditWeightingController {
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     public void setData(int iWeightingId) {
-weightId = iWeightingId;
-       // weightingId = iWeightingId;
-       
-       try{
-       Database.openConnection();
+        weightId = iWeightingId;
+        // weightingId = iWeightingId;
+
+        try {
+            Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select * FROM Weighting WHERE weight_id = " + iWeightingId);
-            
-          courseCode.setText(rs.getString(2));
-        year.setText(Integer.toString(rs.getInt(3)));
-        term.setText(rs.getString(4));
-        studentsEnrol.setText(Integer.toString(rs.getInt(5)));
-        tutorialHrs.setText(Integer.toString(rs.getInt(8)));
-        lectureHrs.setText(Integer.toString(rs.getInt(9)));
-        consultHrs.setText(Integer.toString(rs.getInt(10)));
-        markingHrs.setText(Integer.toString(rs.getInt(11)));
-        tutorialPrep.setText(Integer.toString(rs.getInt(12)));
-        lecturePrep.setText(Integer.toString(rs.getInt(13)));
-        staffDev.setText(Integer.toString(rs.getInt(14)));
-        totalWeighting.setText(Integer.toString(rs.getInt(6)));
+
+            courseCode.setText(rs.getString(2));
+            year.setText(Integer.toString(rs.getInt(3)));
+            term.setText(rs.getString(4));
+            studentsEnrol.setText(Integer.toString(rs.getInt(5)));
+            tutorialHrs.setText(Integer.toString(rs.getInt(8)));
+            lectureHrs.setText(Integer.toString(rs.getInt(9)));
+            consultHrs.setText(Integer.toString(rs.getInt(10)));
+            markingHrs.setText(Integer.toString(rs.getInt(11)));
+            tutorialPrep.setText(Integer.toString(rs.getInt(12)));
+            lecturePrep.setText(Integer.toString(rs.getInt(13)));
+            staffDev.setText(Integer.toString(rs.getInt(14)));
+            totalWeighting.setText(Integer.toString(rs.getInt(6)));
             //Add description, and repeat lecture.
-            
-            
-       } catch(Exception e){
-           System.out.println("here");
-           e.printStackTrace();
-           
-           
-       }
-       
+
+        } catch (Exception e) {
+            System.out.println("here");
+            e.printStackTrace();
+
+        }
 
 //        setLists();
     }
@@ -119,7 +115,7 @@ weightId = iWeightingId;
         int iStaffDev = Integer.parseInt(staffDev.getText());
         int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
 
-           Statement st = conn.createStatement();
+        Statement st = conn.createStatement();
         try {
             String updateDatabase = ("UPDATE Weighting SET students_enrolled = '" + iStudentsEnrolled
                     + "' ,  weighting_term = '" + iWeightingTotal
@@ -141,7 +137,4 @@ weightId = iWeightingId;
 
     }
 
-
 }
-
-

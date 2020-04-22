@@ -60,6 +60,7 @@ public class CourseInfoController implements Initializable {
     CourseDetails course;
     CourseHistoricalAllocation history;
     Database database = new Database();
+    Weighting w;
 
     ObservableList<CourseHistoricalAllocation> data = FXCollections.observableArrayList();
 
@@ -79,9 +80,9 @@ public class CourseInfoController implements Initializable {
 
             while (rs.next()) {
                 course = new CourseDetails(rs.getString(1), rs.getString(2),
-                         rs.getString(3), rs.getInt(4),
-                         rs.getInt(5), rs.getInt(6),
-                         rs.getInt(7), rs.getString(8));
+                        rs.getString(3), rs.getInt(4),
+                        rs.getInt(5), rs.getInt(6),
+                        rs.getInt(7), rs.getString(8));
 
                 System.out.println("CourseId: " + courseID + " | ");
 
@@ -105,43 +106,55 @@ public class CourseInfoController implements Initializable {
                 }
             }
 //            
+//Database.openConnection();
             ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
-            while (a.next()){
-            }
-            
-            //Get Historical Allocations
-            ResultSet ha = database.getResultSet(
-                    "Select allocation_year "
-                    + "|| replace(allocation_term, 'erm ', '')"
-                    + ", Fname || ' ' || Lname "
-                    + " FROM Allocation a JOIN Staff s"
-                    + " ON a.staff_id = s.staff_id"
-                    + " WHERE course_id = '" + courseID + "'"
-                    + " AND allocation_year < strftime('%Y', date('now'))"
-                    + " ORDER BY a.allocation_year DESC"
-            );
-            
-            while (ha.next()) {
-                data.add(new CourseHistoricalAllocation(ha.getString(1), ha.getString(2)));
-            }
-            
-            TableColumn yearTerm = new TableColumn("DATE");
-            TableColumn staffName = new TableColumn("STAFF NAME");
-            historyTable.getColumns().addAll(yearTerm, staffName);
-            yearTerm.setCellValueFactory(new PropertyValueFactory<Allocation, String>("yearTerm"));
-            staffName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("staffName"));
-            historyTable.setItems(data);
+//            ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
+//            while (a.next()) {
+//                w = new Weighting(a.getInt(1));
+                //a.getInt(1);
 
-        } catch (SQLException ex) {
+                if (w.getRepeatLecture() == 1) {
+                    repeatLectures.setText("Yes");
+                } else //(w.getRepeatLecture() == 0)
+                {
+                    repeatLectures.setText("No");
+                }
+//            }
+
+                //Get Historical Allocations
+                ResultSet ha = database.getResultSet(
+                        "Select allocation_year "
+                        + "|| replace(allocation_term, 'erm ', '')"
+                        + ", Fname || ' ' || Lname "
+                        + " FROM Allocation a JOIN Staff s"
+                        + " ON a.staff_id = s.staff_id"
+                        + " WHERE course_id = '" + courseID + "'"
+                        + " AND allocation_year < strftime('%Y', date('now'))"
+                        + " ORDER BY a.allocation_year DESC"
+                );
+
+                while (ha.next()) {
+                    data.add(new CourseHistoricalAllocation(ha.getString(1), ha.getString(2)));
+                }
+
+                TableColumn yearTerm = new TableColumn("DATE");
+                TableColumn staffName = new TableColumn("STAFF NAME");
+                historyTable.getColumns().addAll(yearTerm, staffName);
+                yearTerm.setCellValueFactory(new PropertyValueFactory<Allocation, String>("yearTerm"));
+                staffName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("staffName"));
+                historyTable.setItems(data);
+
+            }catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-    }
+        }
 
-    @FXML
-    public void handleBackButton(ActionEvent event) throws IOException {
-        Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
-    }
+        @FXML
+        public void handleBackButton
+        (ActionEvent event) throws IOException {
+            Stage stage = (Stage) back.getScene().getWindow();
+            stage.close();
+        }
 
-}
+    }
