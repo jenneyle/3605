@@ -158,7 +158,7 @@ public class AllocationTableController implements Initializable {
             ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                     + ", a.course_id, a.allocation_year"
                     //                    + ", a.allocation_term, ROUND(w.weighting_term,2"
-                    + ", a.allocation_term, w.weighting_term"
+                    + ", a.allocation_term, allocation_weight"
                     + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                     + " FROM Allocation a"
                     + " JOIN Staff s"
@@ -299,7 +299,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -325,7 +325,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -352,7 +352,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -376,7 +376,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -423,7 +423,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -448,7 +448,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -474,7 +474,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -497,7 +497,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -542,7 +542,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -567,7 +567,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -593,7 +593,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         + " FROM Allocation a"
                         + " JOIN Staff s"
@@ -616,7 +616,7 @@ public class AllocationTableController implements Initializable {
             try {
                 ResultSet rs = database.getResultSet("SELECT DISTINCT a.allocation_id"
                         + ", a.course_id, a.allocation_year"
-                        + ", a.allocation_term, w.weighting_term"
+                        + ", a.allocation_term, allocation_weight"
                         + ", s.Fname || ' ' || s.Lname AS 'staff_name'"
                         //+ ",a.warning1,a.warning2"
                         + " FROM Allocation a"
