@@ -5,6 +5,7 @@
  */
 package infs3605;
 
+import static infs3605.Database.conn;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -106,55 +107,53 @@ public class CourseInfoController implements Initializable {
                 }
             }
 //            
-//Database.openConnection();
-            ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
+            ResultSet a = conn.createStatement().executeQuery("SELECT repeat_lecture FROM Weighting");
 //            ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
 //            while (a.next()) {
 //                w = new Weighting(a.getInt(1));
-                //a.getInt(1);
+            //a.getInt(1);
 
-                if (w.getRepeatLecture() == 1) {
-                    repeatLectures.setText("Yes");
-                } else //(w.getRepeatLecture() == 0)
-                {
-                    repeatLectures.setText("No");
-                }
-//            }
+            if (a.getInt(1) == 1) {
+                repeatLectures.setText("Yes");
+            }
+            if (a.getInt(1) == 0) {
+                repeatLectures.setText("No");
+            }
+            //}
 
-                //Get Historical Allocations
-                ResultSet ha = database.getResultSet(
-                        "Select allocation_year "
-                        + "|| replace(allocation_term, 'erm ', '')"
-                        + ", Fname || ' ' || Lname "
-                        + " FROM Allocation a JOIN Staff s"
-                        + " ON a.staff_id = s.staff_id"
-                        + " WHERE course_id = '" + courseID + "'"
-                        + " AND allocation_year < strftime('%Y', date('now'))"
-                        + " ORDER BY a.allocation_year DESC"
-                );
+            //Get Historical Allocations
+            ResultSet ha = database.getResultSet(
+                    "Select allocation_year "
+                    + "|| replace(allocation_term, 'erm ', '')"
+                    + ", Fname || ' ' || Lname "
+                    + " FROM Allocation a JOIN Staff s"
+                    + " ON a.staff_id = s.staff_id"
+                    + " WHERE course_id = '" + courseID + "'"
+                    + " AND allocation_year < strftime('%Y', date('now'))"
+                    + " ORDER BY a.allocation_year DESC"
+            );
 
-                while (ha.next()) {
-                    data.add(new CourseHistoricalAllocation(ha.getString(1), ha.getString(2)));
-                }
+            while (ha.next()) {
+                data.add(new CourseHistoricalAllocation(ha.getString(1), ha.getString(2)));
+            }
 
-                TableColumn yearTerm = new TableColumn("DATE");
-                TableColumn staffName = new TableColumn("STAFF NAME");
-                historyTable.getColumns().addAll(yearTerm, staffName);
-                yearTerm.setCellValueFactory(new PropertyValueFactory<Allocation, String>("yearTerm"));
-                staffName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("staffName"));
-                historyTable.setItems(data);
+            TableColumn yearTerm = new TableColumn("DATE");
+            TableColumn staffName = new TableColumn("STAFF NAME");
+            historyTable.getColumns().addAll(yearTerm, staffName);
+            yearTerm.setCellValueFactory(new PropertyValueFactory<Allocation, String>("yearTerm"));
+            staffName.setCellValueFactory(new PropertyValueFactory<Allocation, String>("staffName"));
+            historyTable.setItems(data);
 
-            }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        }
-
-        @FXML
-        public void handleBackButton
-        (ActionEvent event) throws IOException {
-            Stage stage = (Stage) back.getScene().getWindow();
-            stage.close();
-        }
-
     }
+
+    @FXML
+    public void handleBackButton(ActionEvent event) throws IOException {
+        Stage stage = (Stage) back.getScene().getWindow();
+        stage.close();
+    }
+
+}
