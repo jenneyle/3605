@@ -3,24 +3,37 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="infs3605.EditWeightingController">
+<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.EditWeightingController">
    <children>
-      <Text fx:id="courseCode" layoutX="226.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="term" layoutX="293.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="year" layoutX="366.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextField fx:id="totalWeighting" layoutX="223.0" layoutY="102.0" />
-      <TextField fx:id="studentsEnrol" layoutX="223.0" layoutY="140.0" />
-      <TextField fx:id="tutorialHrs" layoutX="223.0" layoutY="180.0" />
-      <TextField fx:id="lectureHrs" layoutX="223.0" layoutY="217.0" />
-      <TextField fx:id="markingHrs" layoutX="223.0" layoutY="253.0" />
-      <TextField fx:id="tutorialPrep" layoutX="223.0" layoutY="290.0" />
-      <TextField fx:id="lecturePrep" layoutX="223.0" layoutY="326.0" />
-      <TextField fx:id="staffDev" layoutX="223.0" layoutY="359.0" />
-      <Button fx:id="back" layoutX="155.0" layoutY="340.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="update" layoutX="430.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Button" />
-      <TextField fx:id="consultHrs" layoutX="406.0" layoutY="253.0" />
+      <Text fx:id="courseCode" layoutX="106.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Text fx:id="term" layoutX="172.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Text fx:id="year" layoutX="236.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <TextField fx:id="totalWeighting" layoutX="88.0" layoutY="91.0" />
+      <TextField fx:id="studentsEnrol" layoutX="88.0" layoutY="129.0" />
+      <TextField fx:id="tutorialHrs" layoutX="88.0" layoutY="169.0" />
+      <TextField fx:id="lectureHrs" layoutX="88.0" layoutY="206.0" />
+      <TextField fx:id="markingHrs" layoutX="88.0" layoutY="242.0" />
+      <TextField fx:id="tutorialPrep" layoutX="88.0" layoutY="279.0" />
+      <TextField fx:id="lecturePrep" layoutX="88.0" layoutY="315.0" />
+      <TextField fx:id="staffDev" layoutX="88.0" layoutY="348.0" />
+      <Button fx:id="update" layoutX="255.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Update" />
+      <TextField fx:id="consultHrs" layoutX="271.0" layoutY="242.0" />
+      <Text layoutX="35.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Weighting Update Information">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
