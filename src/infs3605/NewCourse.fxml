@@ -32,7 +32,7 @@
             <CheckBox fx:id="ts" layoutX="275.0" layoutY="93.0" mnemonicParsing="false" text="Summer Term" />
             <Label fx:id="updateMsg" layoutX="380.0" layoutY="577.0" text="Label" />
             <TextField fx:id="consultationHrs" layoutX="28.0" layoutY="306.0" prefHeight="27.0" prefWidth="192.0" promptText="Enter consultation hours" />
-            <TextField fx:id="markingHrs" layoutX="249.0" layoutY="147.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter marking hours" />
+            <TextField fx:id="markingHrs" layoutX="249.0" layoutY="147.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter marking percentage" />
             <TextField fx:id="tutorialPrep" layoutX="248.0" layoutY="180.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter tutoral preparation hours" />
             <TextField fx:id="lecturePrep" layoutX="248.0" layoutY="213.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter lecture preparation hours" />
             <TextField fx:id="staffDev" layoutX="248.0" layoutY="247.0" prefHeight="27.0" prefWidth="210.0" promptText="Enter staff development hours" />
