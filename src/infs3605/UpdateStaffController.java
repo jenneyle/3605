@@ -26,10 +26,10 @@ import javafx.stage.Stage;
  * @author SOPHIA
  */
 public class UpdateStaffController {
-
+    
     @FXML
     Button back;
-
+    
     @FXML
     Text staffId;
     @FXML
@@ -42,41 +42,38 @@ public class UpdateStaffController {
     ComboBox staffType;
     @FXML
     TextField staffCapacity;
+    
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
-     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-
-  //  ObservableList<String> courseCodeList = FXCollections.observableArrayList();
-  //  ObservableList<String> staffList = FXCollections.observableArrayList();
+    //  ObservableList<String> courseCodeList = FXCollections.observableArrayList();
+    //  ObservableList<String> staffList = FXCollections.observableArrayList();
     ObservableList<String> staffTypeList = FXCollections.observableArrayList("Full-time Teaching", "Full-time Research", "Full-time Teaching/Research", "Casual Teaching");
     
-
     public void setData(String uStaffId) {
         
         try {
-        Database.openConnection();
+            Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select * FROM Staff WHERE staff_id = '" + uStaffId + "'");
             
-           
-        staffId.setText(uStaffId);
-        staffFName.setText(rs.getString(2));
-        staffLName.setText(rs.getString(3));        
-        staffCapacity.setText(rs.getString(5));   
-        staffEmail.setText(rs.getString(6));   
-        staffType.setItems(staffTypeList);
-        staffType.setValue(rs.getString("staff_type"));
-        
-             } catch (Exception ex){
-         ex.printStackTrace();
+            staffId.setText(uStaffId);
+            staffFName.setText(rs.getString(2));
+            staffLName.setText(rs.getString(3));            
+            staffCapacity.setText(rs.getString(5));            
+            staffEmail.setText(rs.getString(6));            
+            staffType.setItems(staffTypeList);
+            staffType.setValue(rs.getString("staff_type"));
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
-
     
     @FXML
     public void handleBackButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         stage.close();
     }
-
+    
     @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
         String iStaffId = staffId.getText();
@@ -85,14 +82,14 @@ public class UpdateStaffController {
         String iStaffEmail = staffEmail.getText();
         String iStaffType = (String) staffType.getValue();
         int iStaffCapacity = Integer.parseInt(staffCapacity.getText());        
-
+        
         try {
             Statement st = conn.createStatement();
-                String updateData = ("UPDATE Staff SET Fname = '" +iStaffFName+ "', Lname = '" +iStaffLName+ "', staff_type = '" +iStaffType+ "', staff_capacity = " +iStaffCapacity+ ", staff_email = '" + iStaffEmail+ "' WHERE staff_id = '" +iStaffId+ "'");
-                st.execute(updateData);
-                System.out.println("insert success");   
-                //reload page
-                
+            String updateData = ("UPDATE Staff SET Fname = '" + iStaffFName + "', Lname = '" + iStaffLName + "', staff_type = '" + iStaffType + "', staff_capacity = " + iStaffCapacity + ", staff_email = '" + iStaffEmail + "' WHERE staff_id = '" + iStaffId + "'");
+            st.execute(updateData);
+            System.out.println("insert success");
+            //reload page
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,8 +98,6 @@ public class UpdateStaffController {
 //        rulecheck.check(iCourseCode, staffID, iYear, iTerm);
 //        ArrayList<String> warning = ConstraintsCheck.warning;
 //        if (warning.isEmpty() || knowledgewarning == true) {
-
-      
 //                knowledgewarning = false;
 ////                success.setText("Allocation Success!");
 //                TimerTask task = new TimerTask() {
@@ -113,10 +108,6 @@ public class UpdateStaffController {
 //                };
 //                Timer timer = new Timer();
 //                timer.schedule(task, 5000);
-                
-
-            
-            
 //        } else {
 //            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
 //            Scene scene = new Scene(root);
@@ -124,6 +115,5 @@ public class UpdateStaffController {
 //            stage.setScene(scene);
 //            stage.show();
 //        }
-
     }
 }

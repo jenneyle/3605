@@ -40,6 +40,7 @@ public class StaffTableController implements Initializable {
     @FXML
     public TableView staffTable;
     TableColumn editStaff;
+    TableColumn detailsStaff;
     @FXML
     public ComboBox staffTypeSelectionCB;
     @FXML
@@ -66,8 +67,9 @@ public class StaffTableController implements Initializable {
         TableColumn type = new TableColumn("STAFF TYPE");
         TableColumn capacity = new TableColumn("TEACHING CAPACITY");
         editStaff = new TableColumn("");
+        detailsStaff = new TableColumn("");
         //Add columns to tableview
-        staffTable.getColumns().addAll(id, fName, lName, type, capacity, editStaff);
+        staffTable.getColumns().addAll(id, fName, lName, type, capacity, editStaff, detailsStaff);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -92,14 +94,15 @@ public class StaffTableController implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Staff, String>("staffType"));
         capacity.setCellValueFactory(new PropertyValueFactory<Staff, Double>("staffCapacity"));
         editStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("editButton"));
-        
-        setSearchField();
-        
-        setEditButtons();
+        detailsStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("detailsButton"));
 
-        
+        setSearchField();
+
+        setEditButtons();
+        setDetailButtons();
+
     }
-    
+
     //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
     public void setSearchField() {
         //1.Set Search Field
@@ -121,7 +124,7 @@ public class StaffTableController implements Initializable {
 
                 } else if (String.valueOf(Staff.getLastName()).toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
-                } 
+                }
 
                 return false; // Does not match.
             });
@@ -134,7 +137,7 @@ public class StaffTableController implements Initializable {
         sortedData.comparatorProperty().bind(staffTable.comparatorProperty());
         // 5. Add sorted (and filtered) data to the table.
         staffTable.setItems(sortedData);
-        
+
     }
 
     @FXML
@@ -158,6 +161,7 @@ public class StaffTableController implements Initializable {
         //Populate the Table
         staffTable.setItems(data);
         setEditButtons();
+        setDetailButtons();
     }
 
     //Fetch Rows from Database and set Table
@@ -174,9 +178,9 @@ public class StaffTableController implements Initializable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+
         setSearchField();
-        
+
     }
 
     public void setEditButtons() {
@@ -187,7 +191,6 @@ public class StaffTableController implements Initializable {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
         });
-
         editStaff.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
 
@@ -195,9 +198,24 @@ public class StaffTableController implements Initializable {
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
                 return new StaffButtonCell();
             }
-
         });
+    }
 
+    public void setDetailButtons() {
+        detailsStaff.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+        detailsStaff.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new StaffDetailButtonCell();
+            }
+        });
     }
 
     public void clearFilters(ActionEvent event) {
@@ -208,10 +226,11 @@ public class StaffTableController implements Initializable {
 
         //Populate the Table
         staffTable.setItems(sortedData);
-        
+
         filterField.setText("");
         filterField.setPromptText(filterField.getPromptText());
         setEditButtons();
+        setDetailButtons();
     }
 
     public void handleInsertStaffBtn(ActionEvent event) throws IOException {
@@ -245,8 +264,8 @@ public class StaffTableController implements Initializable {
     public void handleCurrentAlloBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
     }
-    
-     @FXML
+
+    @FXML
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
     }

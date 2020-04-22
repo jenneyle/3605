@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
  * @author Rjian
  */
 public class Staff {
+
     //Properties
     private StringProperty staffId;
     private StringProperty firstName;
@@ -25,7 +26,8 @@ public class Staff {
     private StringProperty staffType;
     private DoubleProperty staffCapacity;
     private Button editButton;
-    
+    private Button detailsButton;
+
     //Constructor
     public Staff(String staffId, String firstName, String lastName, String staffType, double staffCapacity) {
         this.staffId = new SimpleStringProperty(staffId);
@@ -34,8 +36,17 @@ public class Staff {
         this.staffType = new SimpleStringProperty(staffType);
         this.staffCapacity = new SimpleDoubleProperty(staffCapacity);
         this.editButton = new Button("Edit");
+        this.detailsButton = new Button("Details");
     }
-    
+
+    public Button getDetailsButton() {
+        return detailsButton;
+    }
+
+    public void setDetailsButton(Button detailsButton) {
+        this.detailsButton = detailsButton;
+    }
+
     //Getters and Setters
     public String getStaffId() {
         return staffId.get();
@@ -84,7 +95,5 @@ public class Staff {
     public void setEditButton(Button editButton) {
         this.editButton = editButton;
     }
-    
-    
-    
+
 }

@@ -62,7 +62,7 @@ public class WeightingTableController implements Initializable {
         TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn(" REPEATED\n LECTURE");
 
         detailWeighting = new TableColumn("");
-        editWeighting = new TableColumn("edit");
+        editWeighting = new TableColumn("");
 
         weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs
                 ,weightingRepeatLecture, totalweighting, detailWeighting, editWeighting);
@@ -145,7 +145,7 @@ public class WeightingTableController implements Initializable {
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
             //need to change to weighting edit button cell
-                return new WeightingDetailButtonCell();
+                return new WeightingEditButtonCell();
                 //return new WeightingEditButtonCell();
             }
 

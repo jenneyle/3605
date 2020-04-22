@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -33,11 +34,11 @@ public class EditWeightingController {
     @FXML
     Button update;
     @FXML
-    TextField courseCode;
+    Text courseCode;
     @FXML
-    TextField term;
+    Text term;
     @FXML
-    TextField year;
+    Text year;
     @FXML
     TextField totalWeighting;
     @FXML
@@ -64,19 +65,34 @@ public class EditWeightingController {
 
     public void setData(int iWeightingId) {
 
-        weightingId = iWeightingId;
-//        courseCode.setText(iCourseCode);
-//        year.setText(Integer.toString(iYear));
-//        term.setText(iTerm);
-//        studentsEnrol.setText(Integer.toString(iStudentsEnrolled));
-//        tutorialHrs.setText(Integer.toString(iTutorialHrs));
-//        lectureHrs.setText(Integer.toString(iLectureHrs));
-//        consultHrs.setText(Integer.toString(iConsultHrs));
-//        markingHrs.setText(Integer.toString(iMarkingHrs));
-//        tutorialPrep.setText(Integer.toString(iTutorialPrep));
-//        lecturePrep.setText(Integer.toString(iLecturePrep));
-//        staffDev.setText(Integer.toString(iStaffDev));
-//        totalWeighting.setText(Integer.toString(iWeightingTotal));
+       // weightingId = iWeightingId;
+       
+       try{
+       Database.openConnection();
+            ResultSet rs = conn.createStatement().executeQuery("Select * FROM Weighting WHERE weight_id = " + iWeightingId);
+            
+          courseCode.setText(rs.getString(2));
+        year.setText(Integer.toString(rs.getInt(3)));
+        term.setText(rs.getString(4));
+        studentsEnrol.setText(Integer.toString(rs.getInt(5)));
+        tutorialHrs.setText(Integer.toString(rs.getInt(8)));
+        lectureHrs.setText(Integer.toString(rs.getInt(9)));
+        consultHrs.setText(Integer.toString(rs.getInt(10)));
+        markingHrs.setText(Integer.toString(rs.getInt(11)));
+        tutorialPrep.setText(Integer.toString(rs.getInt(12)));
+        lecturePrep.setText(Integer.toString(rs.getInt(13)));
+        staffDev.setText(Integer.toString(rs.getInt(14)));
+        totalWeighting.setText(Integer.toString(rs.getInt(6)));
+            //Add description, and repeat lecture.
+            
+            
+       } catch(Exception e){
+           System.out.println("here");
+           e.printStackTrace();
+           
+           
+       }
+       
 
 //        setLists();
     }
@@ -127,10 +143,6 @@ public class EditWeightingController {
 
     }
 
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 
 }
 
