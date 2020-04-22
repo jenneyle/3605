@@ -45,23 +45,28 @@ and open the template in the editor.
 
 .leftBackground{
 
-    -fx-background-color: #dbe4ed;
+    -fx-background-color:  #faf4ff;
+        //#dbe4ed; #faf4ff
 }
 .rightBackground{
-    -fx-background-color: #e7eaed
+    -fx-background-color: #ffffff;
+        
+      //  #e7eaed faf4ff
         /*#e7e7e7;*/
 
 }
 
 .sideButton:hover {
-    -fx-background-color: #a3bad2; 
+    -fx-background-color: #daf1f9; 
     -fx-background-radius: 0 20 20 0;
     /* -fx-padding: 15*/
+    //#a3bad2
+   // b2ebf2
 }
 
 
 
-.preferredButton {-fx-background-color: #dbe4ed;} /* Blue */
+.preferredButton {-fx-background-color: #daf1f9;} /* Blue   #dbe4ed*/
 
 .table-column {
     -fx-alignment: CENTER;
@@ -70,15 +75,18 @@ and open the template in the editor.
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #a3bad2;
+    -fx-background-color: #5378d3;
+    
+    
+    //#a3bad2
 }
 
 
 
 .sidebarColoured{
-    -fx-background-color: #c0cdd6;
+    -fx-background-color:#daf1f9;  
      -fx-background-radius: 0 20 20 0;
-  
+  //#c0cdd6
 }
 
 #stackPane{
@@ -95,7 +103,7 @@ and open the template in the editor.
 }
 
 .roundedButton:hover {
-    -fx-background-color: #a3bad2; 
+    -fx-background-color: #daf1f9; 
 }
 
 

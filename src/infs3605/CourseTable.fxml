@@ -14,25 +14,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
     <children>
-      <Text layoutX="330.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course List ">
+      <Text layoutX="312.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course List ">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <ComboBox fx:id="courseSelectionCB" layoutX="330.0" layoutY="133.0" onAction="#selectCourseType" prefHeight="27.0" prefWidth="99.0" promptText="Course" />
-      <Button fx:id="clearFilterBtn" layoutX="612.0" layoutY="133.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
-      <TextField fx:id="filterField" layoutX="447.0" layoutY="133.0" promptText="Search courses" />
-      <Button layoutX="841.0" layoutY="683.0" mnemonicParsing="false" onAction="#handleNewCourseBtn" stylesheets="@StyleSheet.css" text="Insert new course" />
-      <TableView fx:id="courseTable" layoutX="327.0" layoutY="175.0" prefHeight="487.0" prefWidth="643.0" stylesheets="@StyleSheet.css">
+      <ComboBox fx:id="courseSelectionCB" layoutX="298.0" layoutY="120.0" onAction="#selectCourseType" prefHeight="27.0" prefWidth="99.0" promptText="Course" styleClass="leftBackground" />
+      <Button fx:id="clearFilterBtn" layoutX="580.0" layoutY="120.0" mnemonicParsing="false" onAction="#clearFilters" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Clear" />
+      <TextField fx:id="filterField" layoutX="413.0" layoutY="120.0" promptText="Search courses" styleClass="table-column" />
+      <Button layoutX="853.0" layoutY="703.0" mnemonicParsing="false" onAction="#handleNewCourseBtn" stylesheets="@StyleSheet.css" text="Insert new course" />
+      <TableView fx:id="courseTable" layoutX="298.0" layoutY="170.0" prefHeight="508.0" prefWidth="683.0" stylesheets="@StyleSheet.css">
          <styleClass>
             <String fx:value="table-column" />
             <String fx:value="table-row-cell" />
+            <String fx:value="leftBackground" />
          </styleClass>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
       </TableView>
       <AnchorPane layoutX="1.0" layoutY="-1.0" prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>

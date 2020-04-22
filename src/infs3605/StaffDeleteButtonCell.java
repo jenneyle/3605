@@ -21,6 +21,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -28,8 +30,15 @@ import javafx.scene.control.TableCell;
  */
 public class StaffDeleteButtonCell extends TableCell<Disposer.Record, Boolean> {
 
-    Button cellButton = new Button("Delete");
-    Database database = new Database();
+     Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/close1.png"));
+    
+   //Image newimg = pencilImage.
+    
+    
+     Button cellButton = new Button("", new ImageView(closeImage));
+      
+     Database database = new Database();
+      
 
     StaffDeleteButtonCell() {
 

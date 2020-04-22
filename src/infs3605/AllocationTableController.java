@@ -92,7 +92,7 @@ public class AllocationTableController implements Initializable {
         TableColumn term = new TableColumn("TERM");
         TableColumn courseId = new TableColumn("COURSE ID");
         TableColumn weighting = new TableColumn("WEIGHTING");
-        TableColumn staffName = new TableColumn("STAFF \nALLOCATED");
+        TableColumn staffName = new TableColumn("     STAFF \nALLOCATED");
         TableColumn warning1 = new TableColumn("Warning");
         TableColumn warning2 = new TableColumn("Warning");
         editAllocation = new TableColumn("");

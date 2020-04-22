@@ -27,9 +27,22 @@ import javafx.scene.image.ImageView;
  * @author freey
  */
 public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boolean> {
-    Image deleteImg = new Image(this.getClass().getResourceAsStream("/resources/close.png"));
-    Button cellButton = new Button("", new ImageView(deleteImg));
-    Database database = new Database();
+
+//    Button cellButton = new Button("Delete");
+//    Database database = new Database();
+    
+    Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/close1.png"));
+    
+   //Image newimg = pencilImage.
+    
+    
+     Button cellButton = new Button("", new ImageView(closeImage));
+      
+     Database database = new Database();
+      
+    
+    
+    
 
     AllocationDeleteButtonCell() {
 

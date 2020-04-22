@@ -14,25 +14,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" onMouseClicked="#handleterm" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.StaffAllocationController">
+<AnchorPane id="AnchorPane" onMouseClicked="#handleterm" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.StaffAllocationController">
    <children>
       <ComboBox fx:id="courseComboBox" layoutX="315.0" layoutY="194.0" prefHeight="27.0" prefWidth="150.0" promptText="Course Code" />
       <ComboBox fx:id="staffComboBox" layoutX="315.0" layoutY="145.0" prefHeight="25.0" prefWidth="316.0" promptText="Staff Member" />
-      <Button fx:id="submit" layoutX="706.0" layoutY="558.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
+      <Button fx:id="submit" layoutX="844.0" layoutY="631.0" mnemonicParsing="false" onAction="#handleSubmitBtn" text="Submit" />
       <Text fx:id="courseName" layoutX="390.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
       <ComboBox fx:id="yearComboBox" layoutX="315.0" layoutY="241.0" onAction="#handleyear" prefWidth="150.0" promptText="Year" />
-      <ComboBox fx:id="termComboBox" layoutX="315.0" layoutY="289.0" onMouseClicked="#handleterm" prefWidth="150.0" promptText="Term" />
+      <ComboBox fx:id="termComboBox" layoutX="492.0" layoutY="241.0" onMouseClicked="#handleterm" prefWidth="150.0" promptText="Term" />
       <Label fx:id="success" layoutX="320.0" layoutY="563.0" prefHeight="17.0" prefWidth="316.0" textFill="#c00d0d" />
-      <CheckBox fx:id="licCheckBox" layoutX="678.0" layoutY="150.0" mnemonicParsing="false" text="LIC" />
-      <TextArea fx:id="allocationNotes" layoutX="313.0" layoutY="386.0" prefHeight="129.0" prefWidth="562.0" />
-      <Text layoutX="313.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
+      <CheckBox fx:id="licCheckBox" layoutX="661.0" layoutY="149.0" mnemonicParsing="false" text="LIC" />
+      <TextArea fx:id="allocationNotes" layoutX="337.0" layoutY="448.0" prefHeight="129.0" prefWidth="562.0" />
+      <Text layoutX="337.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
       <Text layoutX="322.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocate Staff To Course">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="allocation_weight" layoutX="316.0" layoutY="328.0" onMouseClicked="#handleAllocation_weight" />
-      <Label fx:id="available_weight" layoutX="487.0" layoutY="332.0" text="available weight" />
+      <TextField fx:id="allocation_weight" layoutX="491.0" layoutY="194.0" onMouseClicked="#handleAllocation_weight" />
+      <Label fx:id="available_weight" layoutX="667.0" layoutY="198.0" text="available weight" />
       <AnchorPane layoutY="-1.0" prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="69.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">

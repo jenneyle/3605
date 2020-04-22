@@ -56,10 +56,10 @@ public class WeightingTableController implements Initializable {
         TableColumn weightingYear = new TableColumn("YEAR");
         TableColumn weightingTerm = new TableColumn("TERM");
         TableColumn weightingStudents = new TableColumn(" STUDENTS\n ENROLLED");
-        TableColumn<Weighting, Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n HOURS");
+        TableColumn<Weighting, Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n     HOURS");
         TableColumn<Weighting, Integer> wpd_hrs = new TableColumn("   PREPARATION AND\n DEVELOPMENT HOURS");
-        TableColumn totalweighting = new TableColumn("TOTAL\nWEIGHTING");
-        TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn(" REPEATED\n LECTURE");
+        TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
+        TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn("REPEATED\n LECTURE");
 
         detailWeighting = new TableColumn("");
         editWeighting = new TableColumn("");

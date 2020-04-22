@@ -14,14 +14,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 public class WeightingEditButtonCell extends TableCell<Disposer.Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-    Button cellButton = new Button("Edit");
-    Database database = new Database();
+  Image pencilImage = new Image(this.getClass().getResourceAsStream("/resources/Pencil1.png"));
+    
+   //Image newimg = pencilImage.
+    
+    
+     Button cellButton = new Button("", new ImageView(pencilImage));
+      
+     Database database = new Database();
 
     WeightingEditButtonCell() {
 
