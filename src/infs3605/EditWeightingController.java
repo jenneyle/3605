@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  * @author jenneyle
  */
 
-public class EditWeightingController implements Initializable {
+public class EditWeightingController {
 
     @FXML
     Button back;
@@ -127,10 +127,10 @@ public class EditWeightingController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public void initialize(URL location, ResourceBundle resources) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }
 

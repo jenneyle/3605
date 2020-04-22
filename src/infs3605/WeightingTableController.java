@@ -65,7 +65,7 @@ public class WeightingTableController implements Initializable {
         editWeighting = new TableColumn("edit");
 
         weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs
-                , totalweighting, detailWeighting, editWeighting);
+                ,weightingRepeatLecture, totalweighting, detailWeighting, editWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
@@ -77,7 +77,7 @@ public class WeightingTableController implements Initializable {
                     + "weighting_term, repeat_lecture FROM Weighting");
             while (rs.next()) {
                 //weighting.add(new Weighting(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),Math.round(rs.getDouble(8)*10.0)/10.0),rs.getInt(9));
-                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), (Math.round(rs.getDouble(8) * 10.0) / 10.0)));
+                weighting.add(new Weighting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), (Math.round(rs.getDouble(8) * 10.0) / 10.0), rs.getInt(9)));
 //                weighting.add(new Weighting(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
                 //TODO: formula
             }
@@ -144,8 +144,9 @@ public class WeightingTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                //change class
-                return new WeightingEditButtonCell();
+            //need to change to weighting edit button cell
+                return new WeightingDetailButtonCell();
+                //return new WeightingEditButtonCell();
             }
 
         });

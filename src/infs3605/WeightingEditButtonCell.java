@@ -116,7 +116,7 @@ public class WeightingEditButtonCell extends TableCell<Disposer.Record, Boolean>
     //TODO: Sophia to make the button with an image of a pencilnot text
     Button cellButton = new Button("Edit");
     Database database = new Database();
-    
+
     WeightingEditButtonCell() {
 
         //Action when the button is pressed
@@ -132,14 +132,13 @@ public class WeightingEditButtonCell extends TableCell<Disposer.Record, Boolean>
                     fxmlLoader.load();
                 } catch (IOException e) {
                 }
-            
 
                 EditWeightingController editWeightingController = fxmlLoader.getController();
                 editWeightingController.setData(currentRow.getWeight_id());
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Allocation Info Page");
+                stage.setTitle("Weighting Info Page");
                 stage.setScene(new Scene(p));
                 stage.show();
             }
