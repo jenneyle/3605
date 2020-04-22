@@ -58,14 +58,14 @@ public class WeightingTableController implements Initializable {
         TableColumn weightingStudents = new TableColumn(" STUDENTS\n ENROLLED");
         TableColumn<Weighting, Integer> wfacetoface_hrs = new TableColumn("FACE TO FACE\n HOURS");
         TableColumn<Weighting, Integer> wpd_hrs = new TableColumn("   PREPARATION AND\n DEVELOPMENT HOURS");
-        TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
+        TableColumn totalweighting = new TableColumn("TOTAL\nWEIGHTING");
         TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn(" REPEATED\n LECTURE");
 
         detailWeighting = new TableColumn("");
         editWeighting = new TableColumn("");
 
-        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs
-                ,weightingRepeatLecture, totalweighting, detailWeighting, editWeighting);
+        weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs,
+                 weightingRepeatLecture, totalweighting, detailWeighting, editWeighting);
 
         ObservableList<Weighting> weighting = FXCollections.observableArrayList();
 
@@ -96,21 +96,18 @@ public class WeightingTableController implements Initializable {
         totalweighting.setCellValueFactory(new PropertyValueFactory<>("weighting_term"));
         detailWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("detailsButton"));
         editWeighting.setCellValueFactory(new PropertyValueFactory<Weighting, String>("editButton"));
-        
+
         weightingTable.setItems(weighting);
         setDetailButtons();
         setEditButtons();
-        
 
     }
 
     //uncomment to make it work
     public void setDetailButtons() {
-        System.out.println("clicked");
         // Detail Button
         detailWeighting.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>
-                        , ObservableValue<Boolean>>() {
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
@@ -118,8 +115,7 @@ public class WeightingTableController implements Initializable {
         });
 
         detailWeighting.setCellFactory(
-                new Callback<TableColumn<Disposer.Record, Boolean>
-                        , TableCell<Disposer.Record, Boolean>>() {
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
@@ -144,7 +140,7 @@ public class WeightingTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-            //need to change to weighting edit button cell
+                //need to change to weighting edit button cell
                 return new WeightingEditButtonCell();
                 //return new WeightingEditButtonCell();
             }
@@ -163,7 +159,6 @@ public class WeightingTableController implements Initializable {
     //button to go back to main page
     public void handleBackBtn(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "AllocationTable.fxml");
-        System.out.println("Switching to Allocation Table");
     }
 
     //button to allocate staff to course

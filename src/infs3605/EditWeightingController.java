@@ -59,12 +59,13 @@ public class EditWeightingController {
     TextField consultHrs;
     @FXML
     Label udateMsg;
+    int weightId;
 
     int weightingId = 0;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     public void setData(int iWeightingId) {
-
+weightId = iWeightingId;
        // weightingId = iWeightingId;
        
        try{
@@ -120,10 +121,7 @@ public class EditWeightingController {
 
            Statement st = conn.createStatement();
         try {
-            String updateDatabase = ("UPDATE Weighting SET course_id = '" + courseCode
-                    + "' , Year = '" + year
-                    + "' , Term = '" + term
-                    + "' ,  students_enrolled = '" + iStudentsEnrolled
+            String updateDatabase = ("UPDATE Weighting SET students_enrolled = '" + iStudentsEnrolled
                     + "' ,  weighting_term = '" + iWeightingTotal
                     + "' ,  tutorial_hrs = '" + iTutorialHrs
                     + "' ,  lecture_hrs = '" + iLectureHrs
@@ -132,7 +130,7 @@ public class EditWeightingController {
                     + "' ,  tutorial_prep = '" + iTutorialPrep
                     + "' ,  lecture_prep = '" + iLecturePrep
                     + "' ,  staff_development = '" + iStaffDev
-                    + "' WHERE course_id = '" + courseCode + "' AND Year = '" + year + "' AND Term = '" + term + "';");
+                    + "' WHERE weight_id = " + weightId);
             st.execute(updateDatabase);
             System.out.println("Submitted");
 //            updateMsg.setText("Successfully submitted");
