@@ -134,7 +134,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="272.0" layoutY="5.0" prefHeight="762.0" prefWidth="719.0" styleClass="rightBackground" stylesheets="@StyleSheet.css">
+      <AnchorPane layoutX="272.0" layoutY="5.0" prefHeight="762.0" prefWidth="747.0" styleClass="rightBackground" stylesheets="@StyleSheet.css">
          <children>
             <TableView fx:id="allocationTable" layoutX="37.0" layoutY="168.0" prefHeight="513.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
                <styleClass>
@@ -142,17 +142,17 @@
                   <String fx:value="table-row-cell" />
                   <String fx:value="leftBackground" />
                </styleClass></TableView>
-            <ComboBox fx:id="courseSelectionCB" layoutX="38.0" layoutY="123.0" onAction="#selectCourseComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Course" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="termSelectionCB" layoutX="301.0" layoutY="123.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="123.0" promptText="Term" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
-            <ComboBox fx:id="yearSelectionCB" layoutX="170.0" layoutY="123.0" onAction="#selectYearComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Year" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="courseSelectionCB" layoutX="38.0" layoutY="123.0" onAction="#selectCourseComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Course" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="termSelectionCB" layoutX="301.0" layoutY="123.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="123.0" promptText="Term" stylesheets="@StyleSheet.css" />
+            <ComboBox fx:id="yearSelectionCB" layoutX="170.0" layoutY="123.0" onAction="#selectYearComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Year" stylesheets="@StyleSheet.css" />
             <Button fx:id="exportToExcelBtn" layoutX="596.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleExportBtn" styleClass="buttonNormal" stylesheets="@StyleSheet.css" text="Export To Excel" />
             <Text layoutX="41.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Allocations ">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <Button fx:id="clearFilterBtn" layoutX="436.0" layoutY="123.0" mnemonicParsing="false" onAction="#clearFilters" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Clear" />
-            <Button fx:id="importbtn" layoutX="504.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleimport" text="Import" />
+            <Button fx:id="clearFilterBtn" layoutX="436.0" layoutY="123.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
+            <Button fx:id="importbtn" layoutX="437.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleimport" text="Import From Excel" />
          </children>
       </AnchorPane>
    </children>

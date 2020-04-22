@@ -7,23 +7,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" layoutX="82.0" layoutY="35.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Edit Information" textAlignment="CENTER">
+      <Button fx:id="back" layoutX="60.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Label alignment="CENTER" layoutX="82.0" layoutY="35.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Allocation Information" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="283.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
-      <TextField fx:id="courseCode" layoutX="111.0" layoutY="90.0" prefHeight="25.0" prefWidth="179.0" promptText="Course Code" />
-      <TextField fx:id="staffName" layoutX="111.0" layoutY="126.0" prefHeight="25.0" prefWidth="179.0" promptText="Staff Name" />
-      <TextField fx:id="weighting" layoutX="111.0" layoutY="162.0" prefHeight="25.0" prefWidth="179.0" promptText="Weighting" />
-      <ComboBox fx:id="year" layoutX="111.0" layoutY="202.0" prefHeight="27.0" prefWidth="179.0" promptText="Term" />
-      <ComboBox fx:id="term" layoutX="111.0" layoutY="244.0" prefHeight="27.0" prefWidth="179.0" promptText="Year" />
+      <Button fx:id="submit" layoutX="276.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
+      <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
+         <children>
+            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" visible="false" wrappingWidth="162.13671875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox layoutX="60.0" layoutY="189.0" prefHeight="88.0" prefWidth="162.0">
+         <children>
+            <Pane prefHeight="10.0" prefWidth="163.0" />
+            <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" visible="false" wrappingWidth="127.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Pane prefHeight="10.0" prefWidth="163.0" />
+            <ComboBox fx:id="year" prefWidth="150.0" />
+            <ComboBox fx:id="term" prefWidth="150.0" />
+         </children>
+      </VBox>
+      <TextField fx:id="courseCode" layoutX="60.0" layoutY="93.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="staffName" layoutX="60.0" layoutY="129.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="weighting" layoutX="60.0" layoutY="165.0" prefHeight="25.0" prefWidth="179.0" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
