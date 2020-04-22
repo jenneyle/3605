@@ -33,7 +33,7 @@ public class ConstraintsCheck {
         cleandata();
         getdatabasevalue(courseid, staffid, year,term);
         if ((currentweight+ weight) > staff_capacity){ 
-            warning.add(staff_name + " will exceed weight capacity");
+            warning.add(staff_name + " is taking on too many standard courses in this year");
             
         }
         if (staff_type.equals("Full-time Teaching/Research")) {
@@ -41,7 +41,7 @@ public class ConstraintsCheck {
             long distinctterm =countterm.stream().distinct().count();
             System.out.println("countterm: "+distinctterm);
             if (distinctterm> 2) {
-                warning.add(staff_name +"as a Full-time Teaching/Research staff will exceed year capacity");
+                warning.add("As a Full TIme teaching/Research Type staff, "+staff_name +"  is taking on too many terms in this year");
             }
         }
         if(staff_type.equals("Casual Teaching")&&casual_staff==true){
