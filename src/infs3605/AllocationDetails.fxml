@@ -20,14 +20,14 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <HBox layoutX="49.0" layoutY="68.0" prefHeight="27.0" prefWidth="298.0">
+      <HBox layoutX="14.0" layoutY="68.0" prefHeight="27.0" prefWidth="370.0">
          <children>
             <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" textAlignment="CENTER" wrappingWidth="128.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="183.13671875">
+            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="243.13671875">
                <font>
                   <Font size="14.0" />
                </font>

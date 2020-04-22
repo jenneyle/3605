@@ -26,6 +26,7 @@ public class Weighting {
     private IntegerProperty students_enrolled;
     private IntegerProperty facetoface_hours;
     private IntegerProperty pd_hours;
+    private IntegerProperty total_marking;
     private DoubleProperty weighting_term;
     private IntegerProperty tutorial_hrs;
     private IntegerProperty lecture_hrs;
@@ -141,6 +142,13 @@ public class Weighting {
 
     public void setFacetoface_hours(int facetoface_hours) {
         this.facetoface_hours.set(facetoface_hours);
+    }
+    public int getTotal_marking() {
+        return total_marking.get();
+    }
+
+    public void setTotal_marking(int total_marking) {
+        this.total_marking.set(total_marking);
     }
 
     public int getPd_hours() {
