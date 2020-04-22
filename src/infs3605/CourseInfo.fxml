@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseInfoController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -61,27 +61,29 @@
       </GridPane>
       <Text layoutX="18.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term Offerings" textAlignment="CENTER" wrappingWidth="130.9999966621399" />
       <Text layoutX="247.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historical Staff Allocation" textAlignment="CENTER" wrappingWidth="175.0000017285347" />
-      <TableView fx:id="historyTable" layoutX="230.0" layoutY="172.0" prefHeight="139.0" prefWidth="210.0">
+      <TableView fx:id="historyTable" layoutX="233.0" layoutY="172.0" prefHeight="139.0" prefWidth="207.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy></TableView>
-      <Text layoutX="39.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Notes for Allocation" wrappingWidth="282.2187805175781" />
-      <TextArea fx:id="allocationNotes" editable="false" layoutX="39.0" layoutY="356.0" prefHeight="124.0" prefWidth="402.0" wrapText="true" />
+      <Text layoutX="39.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Notes for Allocation" wrappingWidth="282.2187805175781" />
+      <TextArea fx:id="allocationNotes" editable="false" layoutX="39.0" layoutY="389.0" prefHeight="124.0" prefWidth="402.0" wrapText="true" />
       <Text fx:id="courseDesc" layoutX="39.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="401.99999636411667" />
-      <HBox layoutX="90.0" layoutY="59.0" prefHeight="27.0" prefWidth="296.0">
+      <HBox layoutX="36.0" layoutY="59.0" prefHeight="25.0" prefWidth="422.0">
          <children>
             <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="111.55209857970476">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="178.5521198399365">
+            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="310.5521198399365">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
          </children>
       </HBox>
+      <Text layoutX="36.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repeated Lectures?" />
+      <Text fx:id="repeatLectures" layoutX="166.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />

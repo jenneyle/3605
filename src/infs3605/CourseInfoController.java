@@ -52,6 +52,8 @@ public class CourseInfoController implements Initializable {
     ImageView tsOffer;
     @FXML
     TableView historyTable;
+    @FXML
+    Text repeatLectures;
 
     String courseID;
 
@@ -101,6 +103,10 @@ public class CourseInfoController implements Initializable {
                 if (course.getTsOffer() == 1) {
                     tsOffer.setVisible(true);
                 }
+            }
+//            
+            ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
+            while (a.next()){
             }
             
             //Get Historical Allocations
