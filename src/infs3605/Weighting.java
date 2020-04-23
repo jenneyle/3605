@@ -189,11 +189,11 @@ public class Weighting {
         this.weighting_term.set(weighting_term);
     }
 
-    public ImageView getRepeat_Lecture() {
+    public ImageView getRepeat_lecture() {
         return repeat_lecture;
     }
 
-    public void setRepeat_Lecture(int repeat_lecture) {
+    public void setRepeat_lecture(int repeat_lecture) {
         this.repeat_lecture = getRepeatLecture(repeat_lecture);
     }
 
