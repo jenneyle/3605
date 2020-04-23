@@ -6,52 +6,81 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="586.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.EditWeightingController">
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="500.0" styleClass="leftBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.EditWeightingController">
    <children>
       <Text fx:id="courseCode" layoutX="48.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="373.8717260956764">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <TextField fx:id="totalWeighting" layoutX="52.0" layoutY="136.0" />
-      <TextField fx:id="studentsEnrol" layoutX="253.0" layoutY="136.0" />
-      <TextField fx:id="tutorialHrs" layoutX="50.0" layoutY="271.0" />
-      <TextField fx:id="lectureHrs" layoutX="51.0" layoutY="316.0" />
-      <TextField fx:id="markingHrs" layoutX="249.0" layoutY="224.0" prefHeight="16.0" prefWidth="149.0" />
-      <TextField fx:id="tutorialPrep" layoutX="249.0" layoutY="271.0" />
-      <TextField fx:id="lecturePrep" layoutX="249.0" layoutY="316.0" />
-      <TextField fx:id="staffDev" layoutX="249.0" layoutY="367.0" />
-      <Button fx:id="update" layoutX="343.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-      <TextField fx:id="consultHrs" layoutX="50.0" layoutY="224.0" />
-      <Text layoutX="48.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Course Weighting" textAlignment="CENTER" wrappingWidth="373.8717260956764">
+      <Button fx:id="update" layoutX="374.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+      <Text layoutX="62.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Course Weighting" textAlignment="CENTER" wrappingWidth="373.8717260956764">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <Text layoutX="53.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting" />
-      <Text layoutX="255.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled" />
-      <Text layoutX="48.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Face to Face Hours">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="50.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours" />
-      <Text layoutX="51.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours" />
-      <CheckBox fx:id="repeatLectures" layoutX="52.0" layoutY="350.0" mnemonicParsing="false" text="Repeated Lecture?" />
-      <Text layoutX="50.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours" />
-      <Text layoutX="249.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Preparation Hours" wrappingWidth="149.000001847744">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="249.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Percentage (%)" />
-      <Text layoutX="249.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation" />
-      <Text layoutX="249.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation" />
-      <Text layoutX="249.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" />
-      <Label fx:id="updateMsg" layoutX="165.0" layoutY="525.0" prefHeight="17.0" prefWidth="164.0" text="Label" textAlignment="RIGHT" />
-      <Text layoutX="44.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <TextArea fx:id="description" layoutX="44.0" layoutY="417.0" prefHeight="88.0" prefWidth="356.0" />
+      <Label fx:id="updateMsg" layoutX="210.0" layoutY="541.0" prefHeight="17.0" prefWidth="164.0" text="Label" textAlignment="RIGHT" />
+      <Text layoutX="44.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <TextArea fx:id="description" layoutX="41.0" layoutY="433.0" prefHeight="88.0" prefWidth="408.0" />
+      <HBox layoutX="34.0" layoutY="108.0" prefHeight="27.0" prefWidth="408.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting" wrappingWidth="97.03662109375" />
+            <HBox prefHeight="33.0" prefWidth="26.0" />
+            <TextField fx:id="totalWeighting" prefHeight="27.0" prefWidth="55.0" />
+            <HBox prefHeight="27.0" prefWidth="63.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled" />
+            <HBox prefHeight="33.0" prefWidth="26.0" />
+            <TextField fx:id="studentsEnrol" prefHeight="27.0" prefWidth="55.0" />
+         </children>
+      </HBox>
+      <VBox layoutX="34.0" layoutY="151.0" prefHeight="242.0" prefWidth="176.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Face to Face Hours">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="20.0" prefWidth="176.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours" />
+            <TextField fx:id="consultHrs" />
+            <VBox prefHeight="20.0" prefWidth="176.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours" />
+            <TextField fx:id="tutorialHrs" />
+            <VBox prefHeight="20.0" prefWidth="176.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours" />
+            <TextField fx:id="lectureHrs" />
+            <VBox prefHeight="20.0" prefWidth="176.0" />
+            <CheckBox fx:id="repeatLectures" mnemonicParsing="false" text="Repeated Lecture?" />
+         </children>
+      </VBox>
+      <VBox layoutX="250.0" layoutY="153.0" prefHeight="242.0" prefWidth="188.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Preparation Hours" wrappingWidth="199.000001847744">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="12.0" prefWidth="211.0">
+               <children>
+                  <VBox prefHeight="16.0" prefWidth="211.0" />
+               </children>
+            </VBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Percentage (%)" />
+            <TextField fx:id="markingHrs" prefHeight="16.0" prefWidth="149.0" />
+            <VBox prefHeight="16.0" prefWidth="211.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation" />
+            <TextField fx:id="tutorialPrep" />
+            <VBox prefHeight="16.0" prefWidth="211.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation" />
+            <TextField fx:id="lecturePrep" />
+            <VBox prefHeight="16.0" prefWidth="211.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" />
+            <TextField fx:id="staffDev" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

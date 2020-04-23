@@ -145,7 +145,16 @@ public class AllocationTableController implements Initializable {
         editAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("editButton"));
         deleteAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("deleteButton"));
         viewDetailsAllocation.setCellValueFactory(new PropertyValueFactory<Allocation, String>("detailsButton"));
-
+        
+        year.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.135));
+        term.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.135));
+        courseId.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.17));
+        weighting.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.135));
+        staffName.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.17));
+        editAllocation.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.075));
+        deleteAllocation.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.075));
+        viewDetailsAllocation.prefWidthProperty().bind(allocationTable.widthProperty().multiply(0.075));
+        
         setEditButtons();
         setDeleteButtons();
         setDetailsButtons();
