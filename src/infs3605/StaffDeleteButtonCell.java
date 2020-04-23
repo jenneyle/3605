@@ -7,7 +7,7 @@ package infs3605;
 
 import com.sun.prism.impl.Disposer;
 import static infs3605.Database.conn;
-import static infs3605.AllocationTableController.data;
+import static infs3605.StaffTableController.data;
 import static infs3605.Database.conn;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,15 +30,12 @@ import javafx.scene.image.ImageView;
  */
 public class StaffDeleteButtonCell extends TableCell<Disposer.Record, Boolean> {
 
-     Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/close1.png"));
-    
-   //Image newimg = pencilImage.
-    
-    
-     Button cellButton = new Button("", new ImageView(closeImage));
-      
-     Database database = new Database();
-      
+    Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/close1.png"));
+
+    //Image newimg = pencilImage.
+    Button cellButton = new Button("", new ImageView(closeImage));
+
+    Database database = new Database();
 
     StaffDeleteButtonCell() {
 
@@ -74,15 +71,18 @@ public class StaffDeleteButtonCell extends TableCell<Disposer.Record, Boolean> {
                         Optional<ButtonType> result = alert.showAndWait();
                         if (result.get() == ButtonType.OK) {
                             //remove selected item from the table list
-                            data.remove(currentRow);
+                            //data.remove(currentRow);
                             try {
                                 Statement st = conn.createStatement();
-                                String query = ("DELETE FROM Staff WHERE staff_id = " + currentRow.getStaffId());
-                                System.out.println("deleting field");
+                                String query = ("DELETE FROM Staff WHERE staff_id = '" + currentRow.getStaffId()) + "'";
 
+                                data.remove(currentRow);
+                                
                                 st.execute(query);
+
+                                System.out.println("deleting field");
                             } catch (SQLException ex) {
-                                Logger.getLogger(StaffDeleteButtonCell.class.getName()).log(Level.SEVERE, null, ex);
+                                ex.printStackTrace();
                             }
                         } else {
                             System.out.println("Delete Cancelled");
