@@ -105,7 +105,7 @@ public class InsertStaffController implements Initializable {
     //button to view course weightings
     @FXML
     public void handleWeightingBtn(MouseEvent event) throws IOException {
-        pageSwitcher.switcher(event, "Weighting.fxml");
+        pageSwitcher.switcher(event, "WeightingTable.fxml");
     }
 
     //button to view staff details
@@ -126,6 +126,12 @@ public class InsertStaffController implements Initializable {
  @FXML
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
+    }
+     @FXML
+    public void handleReportsBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Reports.fxml");
+    
+    
     }
 
 }

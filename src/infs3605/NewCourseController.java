@@ -232,4 +232,11 @@ public class NewCourseController implements Initializable {
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
     }
+    
+     @FXML
+    public void handleReportsBtn(MouseEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Reports.fxml");
+    
+    
+    }
 }
