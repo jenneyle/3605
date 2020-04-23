@@ -71,9 +71,6 @@ public class UpdateAllocationController {
 
             allocationId = uAllocationId;
            courseCode.setText(rs.getString("course_id") + " " + rs.getString("course_name"));
-           // courseCode.setText(rs.getString("course_id"));
-            //courseName.setText(rs.getString("course_name"));
-           // staffId.setText(rs.getString("staff_id"));
             staffName.setText(rs.getString(7) + " " + rs.getString(8));
             year.setValue(rs.getString("allocation_year"));
             term.setValue(rs.getString("allocation_term"));

@@ -14,6 +14,7 @@ and open the template in the editor.
     -fx-color: black;
     -fx-font-weight: bolder;
     -fx-font-size: 22px;
+    
 }
 
 .boldText{
@@ -42,7 +43,7 @@ and open the template in the editor.
 }
 .leftBackground{
 
-    -fx-background-color:  #faf4ff;
+    -fx-background-color:  #EAFCFC;
     /*#dbe4ed; #faf4ff*/
 }
 .rightBackground{
@@ -53,17 +54,19 @@ and open the template in the editor.
 
 }
 .sideButton:hover {
-    -fx-background-color: #daf1f9; 
+    -fx-background-color: #B4EBF7; 
     -fx-background-radius: 0 20 20 0;
     /* -fx-padding: 15*/
     /*#a3bad2*/
     /* b2ebf2*/
 }
-.preferredButton {-fx-background-color: #daf1f9;} /* Blue   #dbe4ed*/
+.preferredButton {-fx-background-color: #FEF0B3;} /* Blue   #dbe4ed*/
+
 .table-column {
     -fx-alignment: CENTER;
     -fx-text-alignment: center;
-
+    -fx-header-color:#EAFCFC;
+  
 }
 .table-row-cell:selected {
     -fx-background-color: #5378d3;
@@ -72,7 +75,7 @@ and open the template in the editor.
     /*#a3bad2*/
 }
 .sidebarColoured{
-    -fx-background-color:#daf1f9;  
+    -fx-background-color:#B4EBF7;  
     -fx-background-radius: 0 20 20 0;
     /*#c0cdd6*/
 }
@@ -87,7 +90,7 @@ and open the template in the editor.
 
 }
 .roundedButton:hover {
-    -fx-background-color: #daf1f9; 
+    -fx-background-color: #B4EBF7; 
 }
 .borderButton{
 

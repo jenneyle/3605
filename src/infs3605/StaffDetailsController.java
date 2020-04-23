@@ -65,13 +65,13 @@ public class StaffDetailsController {
                     + "WHERE allocation_year = strftime('%Y', date('now')) "
                     + "AND s.staff_id = '" + iStaffId + "'"));
 
-            magicTxt.setText(rs.getString(1));
-            System.out.println(magicTxt.getText());
-            if (magicTxt.getText().equals("")) {
-                staffCapacity.setText("0 / " + staffCapacity.getText());
-            } else {
-                staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
-            }
+////            magicTxt.setText(rs.getString(1));
+//            System.out.println(magicTxt.getText());
+//            if (magicTxt.getText().equals("")) {
+//                staffCapacity.setText("0 / " + staffCapacity.getText());
+//            } else {
+//                staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
+//            }
 
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
