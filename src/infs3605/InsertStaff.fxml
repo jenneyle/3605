@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.InsertStaffController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.InsertStaffController">
    <children>
       <Button fx:id="submit" layoutX="521.0" layoutY="474.0" mnemonicParsing="false" onAction="#handleInsertBtn" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Submit" />
       <Label fx:id="updateMsg" layoutX="432.0" layoutY="481.0" text="Label" textFill="#58d647" />
@@ -171,7 +171,7 @@
             <VBox prefHeight="27.0" prefWidth="213.0" />
             <TextField fx:id="insertStaffEmail" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
             <VBox prefHeight="27.0" prefWidth="213.0" />
-            <TextField fx:id="insertStaffCapacity" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
+            <TextField fx:id="insertStaffCapacity" prefHeight="27.0" prefWidth="179.0" promptText="Enter Yearly Standard Course Capacity" />
             <VBox prefHeight="27.0" prefWidth="213.0" />
             <ComboBox fx:id="insertStaffType" prefHeight="27.0" prefWidth="239.0" promptText="Select Staff Type" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
          </children>
