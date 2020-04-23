@@ -24,6 +24,7 @@ public class Course {
     private ImageView t2Offer;
     private ImageView t3Offer;
     private ImageView tsOffer;
+    private Button detailsButton;
     private Button editButton;
 
     //Constructor
@@ -34,7 +35,16 @@ public class Course {
         this.t2Offer = isOffered(t2Offer);
         this.t3Offer = isOffered(t3Offer);
         this.tsOffer = isOffered(tsOffer);
+        this.detailsButton = new Button("Details");
         this.editButton = new Button("Edit");
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
     }
 
     public ImageView isOffered(int offer) {
@@ -73,12 +83,12 @@ public class Course {
         this.courseName = new SimpleStringProperty(courseName);
     }
 
-    public Button getEditButton() {
-        return editButton;
+    public Button getDetailsButton() {
+        return detailsButton;
     }
 
-    public void setEditButton(Button editButton) {
-        this.editButton = editButton;
+    public void setDetailsButton(Button detailsButton) {
+        this.detailsButton = detailsButton;
     }
 
     public ImageView getT1Offer() {

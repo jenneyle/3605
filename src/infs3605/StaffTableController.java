@@ -66,8 +66,8 @@ public class StaffTableController implements Initializable {
         TableColumn fName = new TableColumn("FIRST NAME");
         TableColumn lName = new TableColumn("LAST NAME");
         TableColumn type = new TableColumn("STAFF TYPE");
-        TableColumn capacity = new TableColumn("TEACHING CAPACITY");
-        TableColumn leftover = new TableColumn("LEFTOVER CAPACITY");
+        TableColumn capacity = new TableColumn("TEACHING \nCAPACITY");
+        TableColumn leftover = new TableColumn("LEFTOVER \nCAPACITY");
         editStaff = new TableColumn("");
         detailsStaff = new TableColumn("");
         deleteStaff = new TableColumn("");

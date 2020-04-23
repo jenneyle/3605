@@ -14,12 +14,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
     <children>
       <ComboBox fx:id="courseSelectionCB" layoutX="298.0" layoutY="131.0" onAction="#selectCourseType" prefHeight="27.0" prefWidth="132.0" promptText="Course" styleClass="leftBackground" />
       <TextField fx:id="filterField" layoutX="445.0" layoutY="131.0" promptText="Search courses" styleClass="table-column" />
       <Button layoutX="854.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleNewCourseBtn" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Add New Course" />
-      <TableView fx:id="courseTable" layoutX="298.0" layoutY="181.0" prefHeight="508.0" prefWidth="683.0" stylesheets="@StyleSheet.css">
+      <TableView fx:id="courseTable" layoutX="298.0" layoutY="181.0" prefHeight="508.0" prefWidth="703.0" stylesheets="@StyleSheet.css">
          <styleClass>
             <String fx:value="table-column" />
             <String fx:value="table-row-cell" />
