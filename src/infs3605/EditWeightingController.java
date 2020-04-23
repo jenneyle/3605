@@ -147,6 +147,13 @@ public class EditWeightingController {
 //            iRepeatLectures = 0;
 //        }
 
+        int iRepeatLectures = 0;
+
+        if (repeatLectures.isSelected()) {
+            iRepeatLectures = 1;
+            iLectureHrs = iLectureHrs * 2;
+        }
+
         Statement st = conn.createStatement();
         try {
             String updateDatabase = ("UPDATE Weighting SET students_enrolled = '" + iStudentsEnrolled
@@ -159,6 +166,7 @@ public class EditWeightingController {
                     + "' ,  lecture_prep = '" + iLecturePrep
                     + "' ,  staff_development = '" + iStaffDev
                     + "' ,  description = '" + iDescription
+                    + "' ,  repeat_lecture = '" + iRepeatLectures
                     + "' WHERE weight_id = " + weightId);
             st.execute(updateDatabase);
             System.out.println("Submitted");
