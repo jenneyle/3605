@@ -656,81 +656,6 @@ public class AllocationTableController implements Initializable {
         setDetailsButtons();
     }
 
-    public void handleExportBtn(ActionEvent event) {
-        try {
-
-            ResultSet rs = database.getResultSet("SELECT * FROM Allocation JOIN Staff ON Allocation.staff_id = Staff.staff_id");
-
-
-            Workbook wb = new XSSFWorkbook();
-            Sheet sheet = wb.createSheet("Current Allocations");
-
-            CellStyle headerCellStyle = wb.createCellStyle();
-            org.apache.poi.ss.usermodel.Font headerFont = wb.createFont();
-            headerFont.setBold(true);
-            headerCellStyle.setFont(headerFont);
-
-            Row headerRow = sheet.createRow(0);
-
-
-//            org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(1);
-//            cell.setCellValue("Year");
-//            cell.setCellStyle(headerCellStyle);
-//            headerRow.createCell(2).setCellValue("Term");
-//            headerRow.createCell(3).setCellValue("Course Code");
-//            headerRow.createCell(4).setCellValue("Staff ID");
-            String[] headers = {"Year", "Term", "Course Code", "Staff ID","LIC?","Allocation Weight","First Name","Last Name"};
-            for (int i = 0; i < headers.length; i++) {
-                org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(i);
-                cell.setCellValue(headers[i]);
-                cell.setCellStyle(headerCellStyle);
-            }
-
-//                XSSFFont font = wb.createFont();
-//                font.setBold(true);
-//                XSSFCellStyle style = header.getRowStyle();
-//                style.setFont(font);
-//               // header.getRowStyle().getFont().setBold(true);
-
-            
-
-//            style.setFont(font);
-            //header.getRowStyle().getFont().setBold(true);
-
-//                
-            int index = 1;
-
-            while (rs.next()) {
-                Row row = sheet.createRow(index);
-
-                row.createCell(0).setCellValue(rs.getString(2));
-                row.createCell(1).setCellValue(rs.getString(3));
-                row.createCell(2).setCellValue(rs.getString(4));
-                row.createCell(3).setCellValue(rs.getString(5));
-                row.createCell(4).setCellValue(rs.getString(7));
-                row.createCell(5).setCellValue(rs.getString(8));
-                row.createCell(6).setCellValue(rs.getString(10));
-                row.createCell(7).setCellValue(rs.getString(11));
-
-                index++;
-            }
-
-            FileOutputStream fileOut = new FileOutputStream("Current Allocations.xlsx");
-
-            wb.write(fileOut);
-            fileOut.close();
-
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Export Download");
-            alert.setHeaderText(null);
-            alert.setContentText("Export to excel spreadsheet is complete!");
-            alert.showAndWait();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     public void clearFilters(ActionEvent event) {
         data.removeAll(data);
         termSelectionCB.setValue(termSelectionCB.getPromptText());
@@ -746,16 +671,7 @@ public class AllocationTableController implements Initializable {
         setDetailsButtons();
     }
 
-    public void handleimport(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile.exists()) {
-            try {
-                Importing_excel_allocationtable.reading_excel(selectedFile);
-            } catch (IOException ex) {
-                Logger.getLogger(AllocationTableController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+//    public void handleimport(ActionEvent event) {
+//        
+//    }
 }

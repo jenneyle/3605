@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationTableController">
    <children>
       <AnchorPane layoutX="272.0" layoutY="5.0" prefHeight="762.0" prefWidth="747.0" styleClass="rightBackground" stylesheets="@StyleSheet.css">
          <children>
@@ -26,14 +26,12 @@
             <ComboBox fx:id="courseSelectionCB" layoutX="38.0" layoutY="123.0" onAction="#selectCourseComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Course" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="termSelectionCB" layoutX="301.0" layoutY="123.0" onAction="#selectTermComboBox" prefHeight="25.0" prefWidth="123.0" promptText="Term" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
             <ComboBox fx:id="yearSelectionCB" layoutX="170.0" layoutY="123.0" onAction="#selectYearComboBox" prefHeight="27.0" prefWidth="123.0" promptText="Year" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
-            <Button fx:id="exportToExcelBtn" layoutX="596.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleExportBtn" styleClass="buttonNormal" stylesheets="@StyleSheet.css" text="Export To Excel" />
             <Text layoutX="41.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Allocations ">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
             <Button fx:id="clearFilterBtn" layoutX="436.0" layoutY="123.0" mnemonicParsing="false" onAction="#clearFilters" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Clear" />
-            <Button fx:id="importbtn" layoutX="437.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleimport" text="Import From Excel" />
             <ImageView fitHeight="59.0" fitWidth="68.0" layoutX="383.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/course.png" />
