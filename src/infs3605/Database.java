@@ -50,7 +50,7 @@ public class Database {
         return RS;
 
     }
-
+    
     public void insertStatement(String insert_query) throws SQLException {
         java.sql.Statement stmt = null;
         openConnection();

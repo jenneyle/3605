@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -19,8 +18,13 @@
             <String fx:value="table-column" />
             <String fx:value="table-row-cell" />
             <String fx:value="leftBackground" />
-         </styleClass></TableView>
-      <Button layoutX="837.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleUpdateWeightingBtn" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Update Weightings" />
+
+<!--         </styleClass></TableView>-->
+
+
+         </styleClass>
+         </TableView>
+
       <Text layoutX="304.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Weighting">
          <font>
             <Font size="36.0" />

@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -35,6 +36,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -185,6 +188,8 @@ public class NewCourseController implements Initializable {
             }
 
             st.execute(insertData);
+            Notifications insertnotification=Notifications.create().text("New Course Added").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            insertnotification.showInformation();
             updateMsg.setText("Successfully submitted");
             updateMsg.setTextFill(Color.web("#008000"));
             updateMsg.setVisible(true);

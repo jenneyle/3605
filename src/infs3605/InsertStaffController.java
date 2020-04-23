@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -88,6 +91,8 @@ public class InsertStaffController implements Initializable {
                     + insertFname + "', '" + insertLname + "', '" + type + "', '" + capacity + "', '" + insertEmail + "')");
 
             st.execute(insertData);
+            Notifications insertnotification=Notifications.create().text("New Staff Added").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            insertnotification.showInformation();
             System.out.println("Submitted");
             updateMsg.setText("Successfully submitted");
             updateMsg.setTextFill(Color.web("#008000"));

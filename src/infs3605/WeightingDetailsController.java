@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -54,15 +55,17 @@ public class WeightingDetailsController {
     @FXML
     Text totalStaff;
     @FXML
-    Text description;
+    TextArea description;
 
+    @FXML
+    Text marking_percent;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     public void setData(int iWeightingId) {
 
         try {
             Database.openConnection();
-            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*marking_hrs*0.01*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*marking_hrs*0.01*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description, marking_hrs FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
 
             courseCode.setText(rs.getString(2));
             term.setText(rs.getString(4));
@@ -76,9 +79,10 @@ public class WeightingDetailsController {
             lecturePrep.setText("Lecture Preparation: " + rs.getString(11));
             staffDev.setText("Staff Development Hours: " + rs.getString(12));
             totalWeighting.setText("Total Weighting: " + rs.getString(13));
-            totalFace.setText("Total Face to Face Hours Per Week: " + rs.getInt(15));
-            totalStaff.setText("Total Staff & Development Hours Per Week: " + rs.getInt(16));
+            totalFace.setText("Total Face to Face Hours: " + rs.getInt(15));
+            totalStaff.setText("Total Staff & Development Hours: " + rs.getInt(16));
             description.setText(rs.getString(17));
+            marking_percent.setText("Marking Percentage: "+rs.getString(18)+"%");
 
             if (rs.getInt(14) == 1) {
                 repeatLectures.setText("Yes");
