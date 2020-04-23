@@ -90,22 +90,7 @@ public class CourseTableController implements Initializable {
         //Based on Course, populate the cells of the table
         idCol.setCellValueFactory(new PropertyValueFactory<Course, Integer>("course_id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Course, String>("courseName"));
-        t1Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t1Offer"));
-        
-        //https://code.makery.ch/blog/javafx-8-tableview-cell-renderer/
-//        t1Col.setCellFactory(column -> {
-//            return new TableCell<Course, String>() {
-//                @Override
-//                protected void updateItem(String item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (item.equals("1")) {
-//                        setStyle("-fx-background-color: green");
-//                    } else {
-//                        setStyle("-fx-background-color: red");
-//                    }
-//                }
-//            };
-//        });
+        t1Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t1Offer"));  
         t2Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t2Offer"));
         t3Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t3Offer"));
         tsCol.setCellValueFactory(new PropertyValueFactory<Course, Double>("tsOffer"));
