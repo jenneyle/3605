@@ -61,32 +61,39 @@ public class Importing_excel_allocationtable {
                             break;
                     }
                     //System.out.println(cell.getColumnIndex());
-                    if (cell.getColumnIndex() == 6) {
-                        double weight = Double.parseDouble(record.get(6));
+                    if (cell.getColumnIndex() == 7) {
                         int year = (int) Double.parseDouble(record.get(0));
-                        int lic = (int) Double.parseDouble(record.get(5));
+                        int lic = (int) Double.parseDouble(record.get(6));
+                        double weight = Double.parseDouble(record.get(7));
+                        String courseid=record.get(2);
+                        String term=record.get(1);
 
                         //System.out.println("in column "+cell.getColumnIndex());
                         //System.out.println(year);
-                        boolean staffexist = false;
+                        String staffid="";
                         boolean courseexist = false;
-                        String checkstaff = "select * from staff where staff_id='" + record.get(3) + "';";
-                        String checkcourse = "select * from weighting where year=" + year + " and course_id='" + record.get(2) + "' and term='" + record.get(1) + "';";
-                        String insertrow = "insert into Allocation (allocation_year,allocation_term,course_id,\n"
-                                + "staff_id,allocation_description,lic,allocation_weight)\n"
-                                + "VALUES (" + year + ",'" + record.get(1) + "','" + record.get(2) + "','" + record.get(3) + "','" + record.get(4) + "'," + lic + "," + weight + ");";
+                        boolean duplicate=false;
+                        String checkstaff = "select staff_id from staff where Fname='"+record.get(3)+"' and Lname='"+record.get(4)+"';";
+                        String checkcourse = "select * from weighting where year=" + year + " and course_id='" + courseid + "' and term='" + term + "';";
                         try {
-                            //System.out.println(checkstaff);
+                            System.out.println(checkstaff);
                             if(database.getResultSet(checkstaff).next()) {
-                                staffexist = true;
-                                //System.out.println(staffexist);
+                                staffid=database.getResultSet(checkstaff).getString(1);
+                                String checkduplicate="select * from allocation where allocation_year="+year+" and course_id='" + courseid + "' and allocation_term='" + term + "' and staff_id='"+staffid+"';";
+                                if(database.getResultSet(checkduplicate).next()){
+                                    duplicate=true;
+                                    
+                                }
                             }
+                            System.out.println(duplicate);
                             //System.out.println(checkcourse);
                             if (database.getResultSet(checkcourse).next()) {
                                 courseexist = true;
-                                //System.out.println(courseexist);
                             }
-                            if(staffexist ==true&& courseexist==true) {
+                            if(!staffid.isEmpty()&& courseexist==true&&duplicate==false) {
+                                String insertrow = "insert into Allocation (allocation_year,allocation_term,course_id,\n"
+                                + "staff_id,allocation_description,lic,allocation_weight)\n"
+                                + "VALUES (" + year + ",'" + term + "','" + courseid + "','" + staffid + "','" + record.get(5) + "'," + lic + "," + weight + ");";
                                 database.insertStatement(insertrow);
                                 System.out.println("inserted");
                             }

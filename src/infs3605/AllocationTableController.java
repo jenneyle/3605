@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,8 +101,8 @@ public class AllocationTableController implements Initializable {
         viewDetailsAllocation = new TableColumn("");
 
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting
-                , staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting,
+                staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
         warning1.setVisible(false);
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
@@ -648,22 +649,31 @@ public class AllocationTableController implements Initializable {
 
     public void handleExportBtn(ActionEvent event) {
         try {
-            ResultSet rs = database.getResultSet("SELECT * FROM Allocation");
+            ResultSet rs = database.getResultSet("select allocation_id,allocation_year,allocation_term, course_id,allocation_weight,Fname,Lname from Allocation\n"
+                    + "join Staff on Allocation.staff_id=Staff.staff_id");
 
             Workbook wb = new XSSFWorkbook();
             Sheet sheet = wb.createSheet("Current Allocations");
-            org.apache.poi.ss.usermodel.Font headerFont = wb.createFont();
-            headerFont.setBold(true);
 
             CellStyle headerCellStyle = wb.createCellStyle();
+            org.apache.poi.ss.usermodel.Font headerFont = wb.createFont();
+            headerFont.setBold(true);
             headerCellStyle.setFont(headerFont);
 
             Row headerRow = sheet.createRow(0);
 
-            headerRow.createCell(1).setCellValue("Year");
-            headerRow.createCell(2).setCellValue("Term");
-            headerRow.createCell(3).setCellValue("Course Code");
-            headerRow.createCell(4).setCellValue("Staff ID");
+//            org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(1);
+//            cell.setCellValue("Year");
+//            cell.setCellStyle(headerCellStyle);
+//            headerRow.createCell(2).setCellValue("Term");
+//            headerRow.createCell(3).setCellValue("Course Code");
+//            headerRow.createCell(4).setCellValue("Staff ID");
+            String[] headers = {"Allocation ID", "Year", "Term", "Course Code", "Weight","First Name","Last Name"};
+            for (int i = 0; i < headers.length; i++) {
+                org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(i);
+                cell.setCellValue(headers[i]);
+                cell.setCellStyle(headerCellStyle);
+            }
 
 //                XSSFFont font = wb.createFont();
 //                font.setBold(true);
@@ -680,6 +690,8 @@ public class AllocationTableController implements Initializable {
                 row.createCell(2).setCellValue(rs.getString(3));
                 row.createCell(3).setCellValue(rs.getString(4));
                 row.createCell(4).setCellValue(rs.getString(5));
+                row.createCell(5).setCellValue(rs.getString(6));
+                row.createCell(6).setCellValue(rs.getString(7));
 
                 index++;
             }
@@ -714,14 +726,17 @@ public class AllocationTableController implements Initializable {
         setDeleteButtons();
         setDetailsButtons();
     }
-    public void handleimport(ActionEvent event){
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        FileChooser fileChooser =new FileChooser();
+
+    public void handleimport(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(stage);
-        try {
-            Importing_excel_allocationtable.reading_excel(selectedFile);
-        } catch (IOException ex) {
-            Logger.getLogger(AllocationTableController.class.getName()).log(Level.SEVERE, null, ex);
+        if (selectedFile.exists()) {
+            try {
+                Importing_excel_allocationtable.reading_excel(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(AllocationTableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
