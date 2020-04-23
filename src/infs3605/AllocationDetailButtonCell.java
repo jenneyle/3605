@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class AllocationDetailButtonCell extends TableCell<Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/tick.png"));
+Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/detail.png"));
 
     //Image newimg = pencilImage.
     Button cellButton = new Button("", new ImageView(closeImage));

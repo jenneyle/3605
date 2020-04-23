@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingTableController">
    <children>
-      <TableView fx:id="weightingTable" layoutX="303.0" layoutY="158.0" prefHeight="531.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
+      <TableView fx:id="weightingTable" layoutX="303.0" layoutY="121.0" prefHeight="572.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
          <styleClass>
             <String fx:value="table-column" />
             <String fx:value="table-row-cell" />
