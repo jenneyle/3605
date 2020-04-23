@@ -27,17 +27,18 @@ public class StaffDetailsController {
     @FXML
     Button back;
 
-
     @FXML
     Text staffId;
     @FXML
     Text staffName;
     @FXML
     Text email;
- @FXML
+    @FXML
+    Text magicTxt;
+    @FXML
     Text staffType;
- @FXML
-Text staffCapacity;    
+    @FXML
+    Text staffCapacity;
 
     // int allocationId = 0;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -46,19 +47,32 @@ Text staffCapacity;
 //    ObservableList<String> staffList = FXCollections.observableArrayList();
 //    ObservableList<Integer> yearList = FXCollections.observableArrayList();
 //    ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
-
     public void setData(String iStaffId) {
         // allocationId = iAllocationId;
 
         try {
             Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select * FROM Staff WHERE staff_id = '" + iStaffId + "'");
-
-            staffId.setText(rs.getString(1));
-            staffName.setText(rs.getString(2) + " " + rs.getString(3));
+            staffName.setText(rs.getString(2) + " " + rs.getString(3)
+                    + " (" + rs.getString(1) + ")");
             staffType.setText(rs.getString(4));
             staffCapacity.setText(rs.getString(5));
             email.setText(rs.getString(6));
+
+            rs = conn.createStatement().executeQuery(("SELECT SUM(allocation_weight) "
+                    + "FROM Staff s LEFT OUTER JOIN Allocation a "
+                    + "ON s.staff_id = a.staff_id "
+                    + "WHERE allocation_year = strftime('%Y', date('now')) "
+                    + "AND s.staff_id = '" + iStaffId + "'"));
+
+////            magicTxt.setText(rs.getString(1));
+//            System.out.println(magicTxt.getText());
+//            if (magicTxt.getText().equals("")) {
+//                staffCapacity.setText("0 / " + staffCapacity.getText());
+//            } else {
+//                staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
+//            }
+
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
 //            } else {
@@ -70,7 +84,6 @@ Text staffCapacity;
 //            courseName.setText(rs.getString(7));
 //            staffName.setText(rs.getString(8) + " " + rs.getString(9));
 //            //conn.close();
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

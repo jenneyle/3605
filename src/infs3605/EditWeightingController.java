@@ -41,10 +41,6 @@ public class EditWeightingController {
     @FXML
     Text courseCode;
     @FXML
-    Text term;
-    @FXML
-    Text year;
-    @FXML
     TextField totalWeighting;
     @FXML
     TextField studentsEnrol;
@@ -80,10 +76,19 @@ public class EditWeightingController {
         try {
             Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select * FROM Weighting WHERE weight_id = " + iWeightingId);
-
-            courseCode.setText(rs.getString(2));
-            year.setText(Integer.toString(rs.getInt(3)));
-            term.setText(rs.getString(4));
+            
+            if (rs.getString(4).equals("Term 1")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T1");
+            } else if (rs.getString(4).equals("Term 2")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T2");
+            } else if (rs.getString(4).equals("Term 3")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T3");
+            } else if (rs.getString(4).equals("Summer Term")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+" Summer Term");
+            } else {
+                
+            }
+            
             studentsEnrol.setText(Integer.toString(rs.getInt(5)));
             tutorialHrs.setText(Integer.toString(rs.getInt(8)));
             lectureHrs.setText(Integer.toString(rs.getInt(9)));

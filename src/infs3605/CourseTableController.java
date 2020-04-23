@@ -46,6 +46,7 @@ public class CourseTableController implements Initializable {
     TableColumn t2Col;
     TableColumn t3Col;
     TableColumn tsCol;
+    TableColumn detailsCourse;
     TableColumn editCourse;
     
     @FXML
@@ -74,9 +75,10 @@ public class CourseTableController implements Initializable {
         t2Col = new TableColumn("T2");
         t3Col = new TableColumn("T3");
         tsCol = new TableColumn("SU");
+        detailsCourse = new TableColumn("");
         editCourse = new TableColumn("");
         //Add columns to tableview
-        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, tsCol, editCourse);
+        courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, tsCol, detailsCourse, editCourse);
         
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -100,8 +102,19 @@ public class CourseTableController implements Initializable {
         t2Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t2Offer"));
         t3Col.setCellValueFactory(new PropertyValueFactory<Course, Double>("t3Offer"));
         tsCol.setCellValueFactory(new PropertyValueFactory<Course, Double>("tsOffer"));
+        detailsCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("detailsButton"));
         editCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("editButton"));
         
+        idCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.12));
+        nameCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.3));
+        t1Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
+        t2Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
+        t3Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
+        tsCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
+        detailsCourse.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
+        editCourse.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
+        
+        setDetailsButtons();
         setEditButtons();
         
         //Populate the Table
@@ -167,6 +180,7 @@ public class CourseTableController implements Initializable {
         
         //Populate the Table
         courseTable.setItems(data);
+        setDetailsButtons();
         setEditButtons();
     }
     
@@ -188,7 +202,25 @@ public class CourseTableController implements Initializable {
         }
     }
     
-    public void setEditButtons() {
+    public void setDetailsButtons() {
+        // Edit Button
+        detailsCourse.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+
+        detailsCourse.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new CourseInfoDetailButtonCell();
+            }
+        });   
+    }
+     public void setEditButtons() {
         // Edit Button
         editCourse.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
@@ -202,7 +234,7 @@ public class CourseTableController implements Initializable {
 
             @Override
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
-                return new CourseInfoDetailButtonCell();
+                return new CourseInfoEditButtonCell();
             }
 
         });
@@ -219,6 +251,7 @@ public class CourseTableController implements Initializable {
         courseTable.setItems(sortedData);
         filterField.setText("");
         filterField.setPromptText(filterField.getPromptText());
+        setDetailsButtons();
         setEditButtons();
     }
     

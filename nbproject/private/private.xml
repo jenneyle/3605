@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/AllocationTableController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/CourseInfoController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/EditWeightingController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/StaffAllocationController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/NewCourseController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/WeightingDetailsController.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/Weighting.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/WeightingDetailButtonCell.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/Importing_excel_allocationtable.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/CourseInfoDetailButtonCell.java</file>
-            <file>file:/Users/jenneyle/NetBeansProjects/3605Test/src/infs3605/Infs3605.java</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/StaffDetailsController.java</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/Infs3605.java</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/StaffDetails.fxml</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/StaffDetailButtonCell.java</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/CourseInfoController.java</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/StyleSheet.css</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/CourseInfo.fxml</file>
+            <file>file:/C:/Users/Rjian/AndroidStudioProjects/3605Test/src/infs3605/StaffTableController.java</file>
         </group>
     </open-files>
 </project-private>

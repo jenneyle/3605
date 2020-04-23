@@ -10,9 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.commons.codec.digest.DigestUtils;
-import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA3_256;
-import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
  *
