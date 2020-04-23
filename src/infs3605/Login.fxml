@@ -7,39 +7,56 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.LoginController">
          <children>
-      <AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@StyleSheet.css">
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css">
          <children>
-                  <Button fx:id="signupButton" layoutX="402.0" layoutY="534.0" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-                  <Button fx:id="signupButton1" layoutX="539.0" layoutY="534.0" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="37.0" prefWidth="90.0" styleClass="borderButton" stylesheets="@StyleSheet.css" text="Login" textFill="#414446">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-                  <PasswordField fx:id="password" alignment="CENTER" layoutX="426.0" layoutY="483.0" maxHeight="43.0" maxWidth="210.0" prefHeight="35.0" prefWidth="180.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css">
-               <font>
-                  <Font size="18.0" />
-               </font></PasswordField>
-                  <TextField fx:id="username" alignment="CENTER" layoutX="426.0" layoutY="429.0" maxHeight="46.0" maxWidth="208.0" prefHeight="35.0" prefWidth="180.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
-                  <ImageView fx:id="logoimage" fitHeight="261.0" fitWidth="321.0" layoutX="354.0" layoutY="121.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logoimage" fitHeight="261.0" fitWidth="321.0" layoutX="647.0" layoutY="123.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/LecticLogo.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="incorrectMessage" alignment="TOP_CENTER" layoutX="348.0" layoutY="384.0" prefHeight="26.0" prefWidth="333.0" text="Incorrect username or password" textFill="#cf0606">
+                  <Label fx:id="incorrectMessage" alignment="TOP_CENTER" layoutX="647.0" layoutY="390.0" prefHeight="26.0" prefWidth="333.0" text="Incorrect username or password" textFill="#cf0606">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <AnchorPane layoutX="5.0" layoutY="1.0" prefHeight="766.0" prefWidth="589.0" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
+            <VBox layoutX="702.0" layoutY="444.0" prefHeight="189.0" prefWidth="223.0">
+               <children>
+                        <TextField fx:id="username" alignment="CENTER" maxHeight="46.0" maxWidth="210.0" prefHeight="35.0" prefWidth="180.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <VBox prefHeight="23.0" prefWidth="100.0" />
+                        <PasswordField fx:id="password" alignment="CENTER" maxHeight="46.0" maxWidth="210.0" prefHeight="35.0" prefWidth="180.0" promptText="Password" styleClass="textbox" stylesheets="@StyleSheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </PasswordField>
+                  <VBox prefHeight="37.0" prefWidth="239.0" />
+                  <HBox prefHeight="46.0" prefWidth="304.0">
+                     <children>
+                              <Button fx:id="signupButton" mnemonicParsing="false" onAction="#handlesignupButton" stylesheets="@StyleSheet.css" text="Sign Up" textFill="#414446">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <HBox prefHeight="46.0" prefWidth="26.0" />
+                              <Button fx:id="signupButton1" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="35.0" prefWidth="91.0" stylesheets="@StyleSheet.css" text="Login" textFill="#414446">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
          </children>
