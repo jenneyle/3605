@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -50,16 +53,17 @@ public class UpdateAllocationController {
     @FXML
     TextField weighting;
     @FXML
-    ComboBox year;
+    ComboBox<String> year;
     @FXML
-    ComboBox term;
+    ComboBox<String> term;
 
     int allocationId = 0;
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    Database database=new Database();
 
     ObservableList<String> courseCodeList = FXCollections.observableArrayList();
     ObservableList<String> staffList = FXCollections.observableArrayList();
-    ObservableList<Integer> yearList = FXCollections.observableArrayList();
+    ObservableList<String> yearList = FXCollections.observableArrayList();
     ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
 
     public void setData(int uAllocationId) {
@@ -105,8 +109,10 @@ public class UpdateAllocationController {
             while (rs2.next()) {
                 staffList.add(rs2.getString(2) + " " + rs2.getString(3));
             }
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT CURRENT_DATE");
-            yearList.addAll(rs3.getInt(1), rs3.getInt(1) + 1, rs3.getInt(1) + 2, rs3.getInt(1) + 3, rs3.getInt(1) + 4);
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT DISTINCT year FROM Weighting;");
+            while (rs3.next()) {
+                yearList.addAll(rs3.getString(1));
+            }
             year.setItems(yearList);
 
             term.setItems(termList);
@@ -115,6 +121,22 @@ public class UpdateAllocationController {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    public void handleAllocation_weight(MouseEvent event) {
+        String scourseCode = courseCode.getText().substring(0,8);
+        String sterm = term.getValue();
+        String syear = year.getValue();
+        String av_weight = "select weighting_term from weighting where course_id='" + scourseCode + "'"
+                + " and term='" + sterm + "' and year='" + syear + "';";
+        try {
+            ResultSet rs = database.getResultSet(av_weight);
+            while (rs.next()) {
+                double weight = Math.rint(rs.getDouble(1) * 10.0) / 10.0;
+                totalWeighting.setText("/ " + Double.toString(weight));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffAllocationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
