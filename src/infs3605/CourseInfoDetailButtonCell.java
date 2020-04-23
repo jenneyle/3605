@@ -18,6 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +28,10 @@ import javafx.stage.Stage;
  */
 public class CourseInfoDetailButtonCell extends TableCell<Disposer.Record, Boolean> {
 
-    Button cellButton = new Button("Details");
+  Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/detail.png"));
+
+    //Image newimg = pencilImage.
+    Button cellButton = new Button("", new ImageView(closeImage));
     Database database = new Database();
     CourseInfoController courseInfoController = new CourseInfoController();
 
