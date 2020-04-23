@@ -54,7 +54,7 @@
       <TextField fx:id="staffName" layoutX="43.0" layoutY="140.0" prefHeight="25.0" prefWidth="179.0" promptText="Staff Name" />
       <Text layoutX="50.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
       <TextArea fx:id="allocationNotes" layoutX="50.0" layoutY="278.0" prefHeight="110.0" prefWidth="389.0" promptText="Add Allocation Notes Here..." />
-      <TextField fx:id="weighting" layoutX="43.0" layoutY="181.0" prefHeight="27.0" prefWidth="81.0" promptText="Weighting" />
+      <TextField fx:id="weighting" layoutX="43.0" layoutY="181.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="81.0" promptText="Weighting" />
       <Text fx:id="totalWeighting" layoutX="132.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/ Total Weighting" />
    </children>
    <styleClass>
