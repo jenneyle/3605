@@ -11,9 +11,13 @@ and open the template in the editor.
 
 /* TEXT CSS */
 .titleHeading{
-    color: black;
-    font-weight: bolder;
-    font-size: 22px;
+    -fx-color: black;
+    -fx-font-weight: bolder;
+    -fx-font-size: 22px;
+}
+
+.boldText{
+     -fx-font-weight:bold;
 }
 
 /* Items */
