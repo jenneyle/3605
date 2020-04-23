@@ -261,7 +261,9 @@ public class StaffAllocationController implements Initializable {
     
     public void clear() {
         staffComboBox.setValue(staffComboBox.getPromptText());
-        licCheckBox.setDisable(true);
+        licCheckBox.setSelected(false);
+        allocationNotes.setText("");
+        allocation_weight.setText("");
         courseComboBox.setValue(courseComboBox.getPromptText());
         yearComboBox.setValue(yearComboBox.getPromptText());
         
