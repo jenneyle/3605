@@ -27,10 +27,6 @@ public class WeightingDetailsController {
     @FXML
     Text courseCode;
     @FXML
-    Text term;
-    @FXML
-    Text year;
-    @FXML
     Text studentsEnrolled;
     @FXML
     Text tutorialHrs;
@@ -66,23 +62,32 @@ public class WeightingDetailsController {
         try {
             Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*marking_hrs*0.01*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description, marking_hrs FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
+            
+            if (rs.getString(4).equals("Term 1")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T1");
+            } else if (rs.getString(4).equals("Term 2")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T2");
+            } else if (rs.getString(4).equals("Term 3")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T3");
+            } else if (rs.getString(4).equals("Summer Term")) {
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+" Summer Term");
+            } else {
+                
+            }
 
-            courseCode.setText(rs.getString(2));
-            term.setText(rs.getString(4));
-            year.setText(rs.getString(3));
-            studentsEnrolled.setText("Students Enrolled: " + rs.getString(5));
-            tutorialHrs.setText("Tutorial Hours: " + rs.getString(6));
-            lectureHrs.setText("Lecture Hours: " + rs.getString(7));
-            consultationHrs.setText("Consultation Hours: " + rs.getString(8));
-            markingHrs.setText("Marking Hours Per Term: " + rs.getString(9));
-            tutorialPrep.setText("Tutorial Preparation: " + rs.getString(10));
-            lecturePrep.setText("Lecture Preparation: " + rs.getString(11));
-            staffDev.setText("Staff Development Hours: " + rs.getString(12));
-            totalWeighting.setText("Total Weighting: " + rs.getString(13));
-            totalFace.setText("Total Face to Face Hours: " + rs.getInt(15));
-            totalStaff.setText("Total Staff & Development Hours: " + rs.getInt(16));
+            studentsEnrolled.setText(rs.getString(5));
+            tutorialHrs.setText(rs.getString(6));
+            lectureHrs.setText(rs.getString(7));
+            consultationHrs.setText(rs.getString(8));
+            markingHrs.setText(rs.getString(9) + "hrs");
+            tutorialPrep.setText(rs.getString(10));
+            lecturePrep.setText(rs.getString(11));
+            staffDev.setText(rs.getString(12));
+            totalWeighting.setText(rs.getString(13));
+            totalFace.setText(rs.getString(15));
+            totalStaff.setText(rs.getString(16));
             description.setText(rs.getString(17));
-            marking_percent.setText("Marking Percentage: "+rs.getString(18)+"%");
+            marking_percent.setText(rs.getString(18) + "%");
 
             if (rs.getInt(14) == 1) {
                 repeatLectures.setText("Yes");

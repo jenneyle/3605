@@ -23,7 +23,7 @@
       <TextField fx:id="tutorialPrep" layoutX="249.0" layoutY="271.0" />
       <TextField fx:id="lecturePrep" layoutX="249.0" layoutY="316.0" />
       <TextField fx:id="staffDev" layoutX="249.0" layoutY="367.0" />
-      <Button fx:id="update" layoutX="343.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Update" />
+      <Button fx:id="update" layoutX="343.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
       <TextField fx:id="consultHrs" layoutX="50.0" layoutY="224.0" />
       <Text layoutX="48.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Course Weighting" textAlignment="CENTER" wrappingWidth="373.8717260956764">
          <font>
