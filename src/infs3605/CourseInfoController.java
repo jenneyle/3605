@@ -87,8 +87,7 @@ public class CourseInfoController implements Initializable {
 
                 System.out.println("CourseId: " + courseID + " | ");
 
-                courseCode.setText(course.getCourse_id());
-                courseName.setText(course.getCourseName());
+                courseCode.setText(course.getCourse_id() + " " + course.getCourseName());
                 courseDesc.setText(course.getCourseDesc());
                 allocationNotes.setText(course.getAllocationNotes());
 
