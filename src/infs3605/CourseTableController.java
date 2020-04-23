@@ -105,12 +105,12 @@ public class CourseTableController implements Initializable {
         detailsCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("detailsButton"));
         editCourse.setCellValueFactory(new PropertyValueFactory<Course, String>("editButton"));
         
-        idCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.12));
-        nameCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.3));
-        t1Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
-        t2Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
-        t3Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
-        tsCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.1));
+        idCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.14));
+        nameCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.38));
+        t1Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
+        t2Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
+        t3Col.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
+        tsCol.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
         detailsCourse.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
         editCourse.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.075));
         

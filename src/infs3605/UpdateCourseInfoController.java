@@ -33,8 +33,7 @@ import javafx.stage.Stage;
  */
 public class UpdateCourseInfoController implements Initializable {
 
-    @FXML
-    Button back;
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
     @FXML
     Text courseCode;
@@ -159,6 +158,8 @@ public class UpdateCourseInfoController implements Initializable {
             String updateData = ("UPDATE Courses SET allocation_notes = '" + uAllocationNotes + "' WHERE course_id = '" + iCourseID + "'");
             st.execute(updateData);
             System.out.println("updated");
+            //  Stage stage = (Stage) back.getScene().getWindow();
+          //  stage.close();
 
             // add alert message here
         } catch (Exception e) {

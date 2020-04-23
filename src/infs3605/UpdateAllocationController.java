@@ -6,7 +6,6 @@
 package infs3605;
 
 import static infs3605.Database.conn;
-import java.awt.Checkbox;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +17,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
@@ -39,7 +37,7 @@ public class UpdateAllocationController {
     @FXML
     TextArea allocationNotes;
     @FXML
-    Checkbox lic;
+    CheckBox lic;
     @FXML
     TextField courseCode;
     @FXML
@@ -73,9 +71,6 @@ public class UpdateAllocationController {
 
             allocationId = uAllocationId;
            courseCode.setText(rs.getString("course_id") + " " + rs.getString("course_name"));
-           // courseCode.setText(rs.getString("course_id"));
-//            courseName.setText(rs.getString("course_name"));
-           // staffId.setText(rs.getString("staff_id"));
             staffName.setText(rs.getString(7) + " " + rs.getString(8));
             year.setValue(rs.getString("allocation_year"));
             term.setValue(rs.getString("allocation_term"));
@@ -83,8 +78,7 @@ public class UpdateAllocationController {
             allocationNotes.setText(rs.getString("allocation_description"));
             totalWeighting.setText("/ " + rs.getString("weighting_term"));
             if (rs.getInt("lic") == 1) {
-                //keep textbox ticked
-
+                lic.setSelected(true);
             }
 
         } catch (Exception e) {
@@ -147,10 +141,12 @@ public class UpdateAllocationController {
         String iStaffName = staffName.getText();
         String iAllocationNotes = allocationNotes.getText();
         iStaffName = iStaffName.substring(0, iStaffName.indexOf(" "));
-//ISSUES
         String iYearString =  year.getValue().toString();
         int iYear = Integer.parseInt(iYearString);
         double iWeighting = Double.parseDouble(weighting.getText());
+        int iLic = 0;
+        
+        
         String staffID = "";
 
         try {

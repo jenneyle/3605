@@ -34,8 +34,7 @@ import org.controlsfx.control.Notifications;
  */
 public class EditWeightingController {
 
-    @FXML
-    Button back;
+
     @FXML
     Button update;
     @FXML
@@ -76,19 +75,19 @@ public class EditWeightingController {
         try {
             Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select * FROM Weighting WHERE weight_id = " + iWeightingId);
-            
+
             if (rs.getString(4).equals("Term 1")) {
-                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T1");
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3) + "T1");
             } else if (rs.getString(4).equals("Term 2")) {
-                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T2");
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3) + "T2");
             } else if (rs.getString(4).equals("Term 3")) {
-                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+"T3");
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3) + "T3");
             } else if (rs.getString(4).equals("Summer Term")) {
-                courseCode.setText(rs.getString(2) + " " + rs.getInt(3)+" Summer Term");
+                courseCode.setText(rs.getString(2) + " " + rs.getInt(3) + " Summer Term");
             } else {
-                
+
             }
-            
+
             studentsEnrol.setText(Integer.toString(rs.getInt(5)));
             tutorialHrs.setText(Integer.toString(rs.getInt(8)));
             lectureHrs.setText(Integer.toString(rs.getInt(9)));
@@ -118,12 +117,6 @@ public class EditWeightingController {
     }
 
     @FXML
-    public void handleBackButton(ActionEvent event) throws IOException {
-        Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
 
         int iStudentsEnrolled = Integer.parseInt(studentsEnrol.getText());
@@ -136,7 +129,6 @@ public class EditWeightingController {
         int iStaffDev = Integer.parseInt(staffDev.getText());
         int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
         String iDescription = description.getText();
-
 
         int iRepeatLectures = 0;
 
@@ -160,12 +152,14 @@ public class EditWeightingController {
                     + "' ,  repeat_lecture = '" + iRepeatLectures
                     + "' WHERE weight_id = " + weightId);
             st.execute(updateDatabase);
-            Notifications updatenotification=Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            Notifications updatenotification = Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
             updatenotification.showInformation();
             System.out.println("Submitted");
             updateMsg.setText("Successfully submitted");
             updateMsg.setTextFill(Color.web("#008000"));
             updateMsg.setVisible(true);
+            //Stage stage = (Stage) back.getScene().getWindow();
+            //stage.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
