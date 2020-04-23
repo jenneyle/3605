@@ -65,22 +65,21 @@ public class StaffDetailsController {
                     + "WHERE allocation_year = strftime('%Y', date('now')) "
                     + "AND s.staff_id = '" + iStaffId + "'"));
 
-////            magicTxt.setText(rs.getString(1));
-//            System.out.println(magicTxt.getText());
-//            if (magicTxt.getText().equals("")) {
-//                staffCapacity.setText("0 / " + staffCapacity.getText());
-//            } else {
-//                staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
-//            }
-
+            magicTxt.setText(rs.getString(1));
+            System.out.println(magicTxt.getText());
+            if (magicTxt.getText().equals("")) {
+                staffCapacity.setText("0 / " + staffCapacity.getText());
+            } else {
+                staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
+            }
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
 //            } else {
 //                lic.setText("LIC: No");
 //            }
-//            
-//            
-//            
+            
+            
+            
 //            courseName.setText(rs.getString(7));
 //            staffName.setText(rs.getString(8) + " " + rs.getString(9));
 //            //conn.close();

@@ -7,11 +7,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateStaffController">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateStaffController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -20,26 +19,18 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="269.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
-      <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
-         <children>
-            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" visible="false" wrappingWidth="162.13671875">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
-      <TextField fx:id="staffFName" layoutX="73.0" layoutY="129.0" prefHeight="25.0" prefWidth="127.0" />
+      <Button fx:id="submit" layoutX="269.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
+      <TextField fx:id="staffFName" layoutX="73.0" layoutY="117.0" prefHeight="25.0" prefWidth="127.0" />
       <TextField fx:id="staffEmail" layoutX="73.0" layoutY="165.0" prefHeight="25.0" prefWidth="267.0" promptText="Enter Staff Email" />
-      <ComboBox fx:id="staffType" layoutX="73.0" layoutY="204.0" prefHeight="27.0" prefWidth="267.0" promptText="Select Staff Type" />
-      <Text fx:id="staffId" layoutX="73.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="127.13671875">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="staffLName" layoutX="213.0" layoutY="129.0" prefHeight="25.0" prefWidth="127.0" />
-      <TextField fx:id="staffCapacity" layoutX="73.0" layoutY="243.0" prefHeight="27.0" prefWidth="171.0" promptText="Enter Staff Capacity" />
+      <ComboBox fx:id="staffType" layoutX="73.0" layoutY="215.0" prefHeight="27.0" prefWidth="267.0" promptText="Select Staff Type" />
+      <Text fx:id="staffId" layoutX="73.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="127.13671875" />
+      <TextField fx:id="staffLName" layoutX="206.0" layoutY="117.0" prefHeight="25.0" prefWidth="134.0" />
+      <TextField fx:id="staffCapacity" layoutX="72.0" layoutY="281.0" prefHeight="27.0" prefWidth="171.0" promptText="Enter Staff Capacity" />
+      <Text layoutX="73.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+      <Text layoutX="206.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+      <Text layoutX="73.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="72.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yearly Standard Course Capacity" />
+      <Text layoutX="74.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Type" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
