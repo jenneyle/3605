@@ -65,8 +65,8 @@ public class UpdateAllocationController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT DISTINCT Allocation.allocation_id, Allocation.allocation_term, Allocation.allocation_year, Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname, Allocation.allocation_weight, Allocation.lic, Allocation.allocation_description, Weighting.weighting_term FROM Staff JOIN Allocation ON Staff.staff_id = Allocation.staff_id JOIN Courses ON Courses.course_id = Allocation.course_id Join Weighting ON Weighting.course_id = Allocation.course_id WHERE allocation_id = " + uAllocationId);
 
             allocationId = uAllocationId;
-           // courseCode.setText(rs.getString("course_id") + " " + rs.getString("course_name"));
-            courseCode.setText(rs.getString("course_id"));
+           courseCode.setText(rs.getString("course_id") + " " + rs.getString("course_name"));
+           // courseCode.setText(rs.getString("course_id"));
             courseName.setText(rs.getString("course_name"));
             staffId.setText(rs.getString("staff_id"));
             staffName.setText(rs.getString(7) + " " + rs.getString(8));
@@ -94,8 +94,8 @@ public class UpdateAllocationController {
             Database.openConnection();
             ResultSet rs1 = conn.createStatement().executeQuery("Select * FROM Courses");
             while (rs1.next()) {
-                //courseCodeList.add(rs1.getString(1) + " " + rs1.getString(2));
-                courseCodeList.add(rs1.getString(1));
+                courseCodeList.add(rs1.getString(1) + " " + rs1.getString(2));
+                //courseCodeList.add(rs1.getString(1));
             }
 
             ResultSet rs2 = conn.createStatement().executeQuery("Select * FROM Staff");
@@ -117,7 +117,7 @@ public class UpdateAllocationController {
 
     @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
-        String iCourseCode = courseCode.getText();
+        String iCourseCode = courseCode.getText().substring(0,8);
         String iTerm = (String) term.getValue();
         String iStaffName = staffName.getText();
         String iAllocationNotes = allocationNotes.getText();
