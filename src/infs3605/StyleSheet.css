@@ -8,113 +8,88 @@ and open the template in the editor.
     Author     : SOPHIA
 */
 
+
+/* TEXT CSS */
+.titleHeading{
+    color: black;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+/* Items */
 .button:hover{
     -fx-background-color: #c0cdd6;
-   
-   
 }
-
-/*.button{
-     -fx-background-radius: 10 10 10 10;
-     -fx-border-radius: 10 10 10 10;
-     -fx-border-color: #BDBDBD;
-    -fx-border-width: 1 1 1 1;
-    
-}*/
-
-
-
 .buttonNormal{
 
-     -fx-border-radius: 0 0 0 0;
-     -fx-background-radius: 0 0 0 0;
-    
-}
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
 
+}
 .textbox{
     -fx-border-color: #d5e2ea;
 }
-
 .button3{
     -fx-border-color: #c0cdd6;
     -fx-border-width: 1 1 1 1;
     -fx-background-radius: 10 10 10 10;
     -fx-border-radius: 10 10 10 10;
-    
-}
 
+}
 .leftBackground{
 
     -fx-background-color:  #faf4ff;
-        /*#dbe4ed; #faf4ff*/
+    /*#dbe4ed; #faf4ff*/
 }
 .rightBackground{
     -fx-background-color: #ffffff;
-        
-      /*  #e7eaed faf4ff*/
-        /*#e7e7e7;*/
+
+    /*  #e7eaed faf4ff*/
+    /*#e7e7e7;*/
 
 }
-
 .sideButton:hover {
     -fx-background-color: #daf1f9; 
     -fx-background-radius: 0 20 20 0;
     /* -fx-padding: 15*/
     /*#a3bad2*/
-   /* b2ebf2*/
+    /* b2ebf2*/
 }
-
-
-
 .preferredButton {-fx-background-color: #daf1f9;} /* Blue   #dbe4ed*/
-
 .table-column {
     -fx-alignment: CENTER;
     -fx-text-alignment: center;
-     
-}
 
+}
 .table-row-cell:selected {
     -fx-background-color: #5378d3;
-    
-    
+
+
     /*#a3bad2*/
 }
-
-
-
 .sidebarColoured{
     -fx-background-color:#daf1f9;  
-     -fx-background-radius: 0 20 20 0;
-  /*#c0cdd6*/
+    -fx-background-radius: 0 20 20 0;
+    /*#c0cdd6*/
 }
-
 #stackPane{
     -fx-hgap: 100%;
     -fx-vgap: 100%;   
 }
-
-
 .roundedButton{
- -fx-background-radius: 20 20 20 20;
-  -fx-background-color: #ffffff;
-  -fx-padding: 15
-    
-}
+    -fx-background-radius: 20 20 20 20;
+    -fx-background-color: #ffffff;
+    -fx-padding: 15
 
+}
 .roundedButton:hover {
     -fx-background-color: #daf1f9; 
 }
-
-
 .borderButton{
-    
-  -fx-border-color: #c0cdd6;
+
+    -fx-border-color: #c0cdd6;
     -fx-border-width: 1 1 1 1;
 }
-
-
-
 /*#6495ED*/
 
 /*00BFFF*/

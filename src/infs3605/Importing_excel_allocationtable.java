@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
@@ -33,12 +34,12 @@ public class Importing_excel_allocationtable {
 
     public static void reading_excel(File file) throws IOException {
         ArrayList<String> record = new ArrayList<>();
-        //ArrayList<Integer> recordi = new ArrayList<>();
         FileInputStream fileopen = new FileInputStream(file);
         XSSFWorkbook workbook = new XSSFWorkbook(fileopen);
         XSSFSheet sheet = workbook.getSheetAt(0);
         Iterator<Row> rowIterator = sheet.iterator();
         int current_row = 0;
+        int successrow=0;
         //System.out.println("i have got the file");
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
@@ -95,6 +96,7 @@ public class Importing_excel_allocationtable {
                                 + "staff_id,allocation_description,lic,allocation_weight)\n"
                                 + "VALUES (" + year + ",'" + term + "','" + courseid + "','" + staffid + "','" + record.get(5) + "'," + lic + "," + weight + ");";
                                 database.insertStatement(insertrow);
+                                successrow=successrow+1;
                                 System.out.println("inserted");
                             }
                             record.clear();
@@ -106,6 +108,13 @@ public class Importing_excel_allocationtable {
             }
 
         }
+        String conclusion = "Successfully import " + successrow + " out of " + (current_row-1) + " records from excel";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Import");
+        alert.setHeaderText(null);
+        alert.setContentText(conclusion);
+        alert.showAndWait();
+        record.clear();
 
     }
 

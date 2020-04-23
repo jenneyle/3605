@@ -54,7 +54,7 @@ public class Weighting {
         this.students_enrolled = new SimpleIntegerProperty(students_enrolled);
         this.facetoface_hours = new SimpleIntegerProperty(facetoface_hours);
         this.pd_hours = new SimpleIntegerProperty(pd_hours);
-        System.out.println(pd_hours);
+        //System.out.println(pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
         this.repeat_lecture = getRepeatLecture(repeat_lecture);
    
