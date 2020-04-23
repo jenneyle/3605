@@ -74,7 +74,7 @@ public class CourseTableController implements Initializable {
         t2Col = new TableColumn("T2");
         t3Col = new TableColumn("T3");
         tsCol = new TableColumn("SU");
-        editCourse = new TableColumn("EDIT");
+        editCourse = new TableColumn("");
         //Add columns to tableview
         courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, tsCol, editCourse);
         
