@@ -102,8 +102,9 @@ public class AllocationTableController implements Initializable {
 
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, weighting,
+
                 staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
-        warning1.setVisible(false);
+
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -199,7 +200,7 @@ public class AllocationTableController implements Initializable {
 
             @Override
             public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new AllocationButtonCell();
+                return new AllocationEditButtonCell();
             }
 
         });
@@ -649,8 +650,9 @@ public class AllocationTableController implements Initializable {
 
     public void handleExportBtn(ActionEvent event) {
         try {
-            ResultSet rs = database.getResultSet("select allocation_id,allocation_year,allocation_term, course_id,allocation_weight,Fname,Lname from Allocation\n"
-                    + "join Staff on Allocation.staff_id=Staff.staff_id");
+
+            ResultSet rs = database.getResultSet("SELECT * FROM Allocation JOIN Staff ON Allocation.staff_id = Staff.staff_id");
+
 
             Workbook wb = new XSSFWorkbook();
             Sheet sheet = wb.createSheet("Current Allocations");
@@ -662,13 +664,14 @@ public class AllocationTableController implements Initializable {
 
             Row headerRow = sheet.createRow(0);
 
+
 //            org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(1);
 //            cell.setCellValue("Year");
 //            cell.setCellStyle(headerCellStyle);
 //            headerRow.createCell(2).setCellValue("Term");
 //            headerRow.createCell(3).setCellValue("Course Code");
 //            headerRow.createCell(4).setCellValue("Staff ID");
-            String[] headers = {"Allocation ID", "Year", "Term", "Course Code", "Weight","First Name","Last Name"};
+            String[] headers = {"Year", "Term", "Course Code", "Staff ID","LIC?","Allocation Weight","First Name","Last Name"};
             for (int i = 0; i < headers.length; i++) {
                 org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(i);
                 cell.setCellValue(headers[i]);
@@ -680,18 +683,26 @@ public class AllocationTableController implements Initializable {
 //                XSSFCellStyle style = header.getRowStyle();
 //                style.setFont(font);
 //               // header.getRowStyle().getFont().setBold(true);
+
+            
+
+//            style.setFont(font);
+            //header.getRowStyle().getFont().setBold(true);
+
 //                
             int index = 1;
 
             while (rs.next()) {
                 Row row = sheet.createRow(index);
-                row.createCell(0).setCellValue(rs.getString(1));
-                row.createCell(1).setCellValue(rs.getString(2));
-                row.createCell(2).setCellValue(rs.getString(3));
-                row.createCell(3).setCellValue(rs.getString(4));
-                row.createCell(4).setCellValue(rs.getString(5));
-                row.createCell(5).setCellValue(rs.getString(6));
-                row.createCell(6).setCellValue(rs.getString(7));
+
+                row.createCell(0).setCellValue(rs.getString(2));
+                row.createCell(1).setCellValue(rs.getString(3));
+                row.createCell(2).setCellValue(rs.getString(4));
+                row.createCell(3).setCellValue(rs.getString(5));
+                row.createCell(4).setCellValue(rs.getString(7));
+                row.createCell(5).setCellValue(rs.getString(8));
+                row.createCell(6).setCellValue(rs.getString(10));
+                row.createCell(7).setCellValue(rs.getString(11));
 
                 index++;
             }

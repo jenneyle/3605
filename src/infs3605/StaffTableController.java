@@ -52,7 +52,7 @@ public class StaffTableController implements Initializable {
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
-    ObservableList<Staff> data = FXCollections.observableArrayList();
+   static ObservableList<Staff> data = FXCollections.observableArrayList();
     SortedList<Staff> sortedData;
     ObservableList<String> types = FXCollections.observableArrayList();
 

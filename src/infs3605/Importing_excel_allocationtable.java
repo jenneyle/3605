@@ -76,7 +76,7 @@ public class Importing_excel_allocationtable {
                         String checkstaff = "select staff_id from staff where Fname='"+record.get(3)+"' and Lname='"+record.get(4)+"';";
                         String checkcourse = "select * from weighting where year=" + year + " and course_id='" + courseid + "' and term='" + term + "';";
                         try {
-                            System.out.println(checkstaff);
+                            //System.out.println(checkstaff);
                             if(database.getResultSet(checkstaff).next()) {
                                 staffid=database.getResultSet(checkstaff).getString(1);
                                 String checkduplicate="select * from allocation where allocation_year="+year+" and course_id='" + courseid + "' and allocation_term='" + term + "' and staff_id='"+staffid+"';";
@@ -85,7 +85,7 @@ public class Importing_excel_allocationtable {
                                     
                                 }
                             }
-                            System.out.println(duplicate);
+                            //System.out.println(duplicate);
                             //System.out.println(checkcourse);
                             if (database.getResultSet(checkcourse).next()) {
                                 courseexist = true;

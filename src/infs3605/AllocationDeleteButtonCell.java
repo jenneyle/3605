@@ -30,15 +30,12 @@ public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boole
 
 //    Button cellButton = new Button("Delete");
 //    Database database = new Database();
-    
     Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/close1.png"));
-    
-   //Image newimg = pencilImage.
-    
-    
-     Button cellButton = new Button("", new ImageView(closeImage));
-     Database database = new Database();
-   
+
+    //Image newimg = pencilImage.
+    Button cellButton = new Button("", new ImageView(closeImage));
+    Database database = new Database();
+
     AllocationDeleteButtonCell() {
 
         //Action when the button is pressed
@@ -55,13 +52,14 @@ public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boole
                 if (result.get() == ButtonType.OK) {
                     Allocation currentRow = (Allocation) AllocationDeleteButtonCell.this.getTableView().getItems().get(AllocationDeleteButtonCell.this.getIndex());
                     //remove selected item from the table list
-                    data.remove(currentRow);
+
                     try {
                         Statement st = conn.createStatement();
                         String query = ("DELETE FROM Allocation WHERE allocation_id = " + currentRow.getId());
                         System.out.println("deleting field ");
-
+                        data.remove(currentRow);
                         st.execute(query);
+
                     } catch (SQLException ex) {
                         Logger.getLogger(AllocationDeleteButtonCell.class.getName()).log(Level.SEVERE, null, ex);
                     }

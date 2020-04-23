@@ -30,11 +30,6 @@
             <TextField fx:id="filterField" layoutX="256.0" layoutY="46.0" prefHeight="25.0" prefWidth="123.0" promptText="Search Staff" />
          </children>
       </AnchorPane>
-      <Text layoutX="332.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff List ">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
       <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="69.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
@@ -159,5 +154,15 @@
             </HBox>
          </children>
       </AnchorPane>
+      <Text layoutX="299.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff List">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="59.0" fitWidth="51.0" layoutX="467.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/staff.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
