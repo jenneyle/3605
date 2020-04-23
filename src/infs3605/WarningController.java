@@ -58,7 +58,7 @@ public class WarningController implements Initializable {
         for(String i :ConstraintsCheck.warning){
             warning=warning+i+"\n";
         }
-        System.out.println("in warning controller"+ warning);
+        //System.out.println("in warning controller"+ warning);
         warnings.setText(warning);
         warnings.setTextAlignment(TextAlignment.CENTER);
     }
