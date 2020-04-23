@@ -8,12 +8,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="507.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingDetailsController">
+<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingDetailsController">
    <stylesheets>
       <URL value="@StyleSheet.css" />
    </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="379.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
+      <Button fx:id="back" layoutX="379.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
       <Label alignment="CENTER" layoutX="58.0" layoutY="14.0" prefHeight="35.0" prefWidth="355.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Course Weighting Information" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
@@ -109,6 +109,12 @@
             <Font size="14.0" />
          </font>
       </Text>
+      <Text layoutX="34.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting Notes">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="description" layoutX="34.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
