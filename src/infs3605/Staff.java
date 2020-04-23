@@ -27,6 +27,7 @@ public class Staff {
     private DoubleProperty staffCapacity;
     private Button editButton;
     private Button detailsButton;
+    private Button deleteButton;
 
     //Constructor
     public Staff(String staffId, String firstName, String lastName, String staffType, double staffCapacity) {
@@ -37,6 +38,15 @@ public class Staff {
         this.staffCapacity = new SimpleDoubleProperty(staffCapacity);
         this.editButton = new Button("Edit");
         this.detailsButton = new Button("Details");
+        this.deleteButton = new Button("Delete");
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(Button deleteButton) {
+        this.deleteButton = deleteButton;
     }
 
     public Button getDetailsButton() {

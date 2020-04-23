@@ -63,7 +63,7 @@ public class StaffDeleteButtonCell extends TableCell<Disposer.Record, Boolean> {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Warning");
                         alert.setHeaderText(null);
-                        alert.setContentText("Unable to delete this field as this staff member is currently allocated to course/s. /n Please re-assign allocations to continue deleting this field.");
+                        alert.setContentText("Unable to delete this field as this staff member is currently allocated to course/s. Please re-assign allocations to delete this field.");
                         alert.showAndWait();
                     } else {
                         //alert message to display for confirmation

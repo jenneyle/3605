@@ -41,6 +41,7 @@ public class StaffTableController implements Initializable {
     public TableView staffTable;
     TableColumn editStaff;
     TableColumn detailsStaff;
+    TableColumn deleteStaff;
     @FXML
     public ComboBox staffTypeSelectionCB;
     @FXML
@@ -68,8 +69,9 @@ public class StaffTableController implements Initializable {
         TableColumn capacity = new TableColumn("TEACHING CAPACITY");
         editStaff = new TableColumn("");
         detailsStaff = new TableColumn("");
+        deleteStaff = new TableColumn("");
         //Add columns to tableview
-        staffTable.getColumns().addAll(id, fName, lName, type, capacity, editStaff, detailsStaff);
+        staffTable.getColumns().addAll(id, fName, lName, type, capacity, detailsStaff, editStaff, deleteStaff);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -95,11 +97,13 @@ public class StaffTableController implements Initializable {
         capacity.setCellValueFactory(new PropertyValueFactory<Staff, Double>("staffCapacity"));
         editStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("editButton"));
         detailsStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("detailsButton"));
+        deleteStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("deleteButton"));
 
         setSearchField();
 
         setEditButtons();
         setDetailButtons();
+        setDeleteButtons();
 
     }
 
@@ -162,6 +166,7 @@ public class StaffTableController implements Initializable {
         staffTable.setItems(data);
         setEditButtons();
         setDetailButtons();
+        setDeleteButtons();
     }
 
     //Fetch Rows from Database and set Table
@@ -200,6 +205,24 @@ public class StaffTableController implements Initializable {
             }
         });
     }
+    
+     public void setDeleteButtons() {
+        // Edit Button
+        deleteStaff.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+        deleteStaff.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new StaffDeleteButtonCell();
+            }
+        });
+    }
 
     public void setDetailButtons() {
         detailsStaff.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
@@ -231,6 +254,7 @@ public class StaffTableController implements Initializable {
         filterField.setPromptText(filterField.getPromptText());
         setEditButtons();
         setDetailButtons();
+        setDeleteButtons();
     }
 
     public void handleInsertStaffBtn(ActionEvent event) throws IOException {

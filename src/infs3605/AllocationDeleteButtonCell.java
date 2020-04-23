@@ -37,13 +37,8 @@ public class AllocationDeleteButtonCell extends TableCell<Disposer.Record, Boole
     
     
      Button cellButton = new Button("", new ImageView(closeImage));
-      
      Database database = new Database();
-      
-    
-    
-    
-
+   
     AllocationDeleteButtonCell() {
 
         //Action when the button is pressed
