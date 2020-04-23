@@ -73,6 +73,7 @@ public class EditWeightingController {
     public void setData(int iWeightingId) {
         weightId = iWeightingId;
         // weightingId = iWeightingId;
+        updateMsg.setVisible(false);
 
         try {
             Database.openConnection();
