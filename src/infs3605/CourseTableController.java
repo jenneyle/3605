@@ -27,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -40,7 +42,12 @@ public class CourseTableController implements Initializable {
 
     @FXML
     public TableView courseTable;
+    TableColumn t1Col;
+    TableColumn t2Col;
+    TableColumn t3Col;
+    TableColumn tsCol;
     TableColumn editCourse;
+    
     @FXML
     public ComboBox courseSelectionCB;
     @FXML
@@ -54,7 +61,6 @@ public class CourseTableController implements Initializable {
     ObservableList<Course> data = FXCollections.observableArrayList();
     ObservableList<String> courses = FXCollections.observableArrayList();
     SortedList<Course> sortedData;
-
     /**
      * Initializes the controller class.
      */
@@ -64,10 +70,10 @@ public class CourseTableController implements Initializable {
         //Initialise the columns
         TableColumn idCol = new TableColumn("COURSE ID");
         TableColumn nameCol = new TableColumn("COURSE NAME");
-        TableColumn t1Col = new TableColumn("T1");
-        TableColumn t2Col = new TableColumn("T2");
-        TableColumn t3Col = new TableColumn("T3");
-        TableColumn tsCol = new TableColumn("Summer");
+        t1Col = new TableColumn("T1");
+        t2Col = new TableColumn("T2");
+        t3Col = new TableColumn("T3");
+        tsCol = new TableColumn("SU");
         editCourse = new TableColumn("");
         //Add columns to tableview
         courseTable.getColumns().addAll(idCol, nameCol, t1Col, t2Col, t3Col, tsCol, editCourse);
@@ -102,7 +108,7 @@ public class CourseTableController implements Initializable {
         courseTable.setItems(data);
         
         setSearchField();
-    }    
+    }
     
     //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
     public void setSearchField() {
@@ -173,8 +179,10 @@ public class CourseTableController implements Initializable {
                                                 + " FROM Courses"
                                                 );
             while (rs.next()) {
-                data.add(new Course(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+                data.add(new Course(rs.getString(1), rs.getString(2)
+                        , rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

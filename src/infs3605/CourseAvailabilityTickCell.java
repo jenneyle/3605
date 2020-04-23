@@ -37,5 +37,12 @@ public class CourseAvailabilityTickCell extends TableCell<Disposer.Record, Boole
         this.tickView = tickView;
     }
     
+    @Override
+    protected void updateItem(Boolean t, boolean empty) {
+        super.updateItem(t, empty);
+        if (!empty) {
+            setGraphic(tickView);
+        }
+    }
     
 }

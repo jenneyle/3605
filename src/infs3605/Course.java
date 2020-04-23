@@ -5,37 +5,57 @@
  */
 package infs3605;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
  * @author Rjian
  */
 public class Course {
+
     //Properties
     private StringProperty course_id;
     private StringProperty courseName;
-    private IntegerProperty t1Offer;
-    private IntegerProperty t2Offer;
-    private IntegerProperty t3Offer;
-    private IntegerProperty tsOffer;
+    private ImageView t1Offer;
+    private ImageView t2Offer;
+    private ImageView t3Offer;
+    private ImageView tsOffer;
     private Button editButton;
-    
+
     //Constructor
-    public Course(String course_id, String courseName, int t1Offer, int t2Offer, int t3Offer, int tsOffer) {    
+    public Course(String course_id, String courseName, int t1Offer, int t2Offer, int t3Offer, int tsOffer) {
         this.course_id = new SimpleStringProperty(course_id);
         this.courseName = new SimpleStringProperty(courseName);
-        this.t1Offer = new SimpleIntegerProperty(t1Offer);
-        this.t2Offer = new SimpleIntegerProperty(t2Offer);
-        this.t3Offer = new SimpleIntegerProperty(t3Offer);
-        this.tsOffer = new SimpleIntegerProperty(tsOffer);
+        this.t1Offer = isOffered(t1Offer);
+        this.t2Offer = isOffered(t2Offer);
+        this.t3Offer = isOffered(t3Offer);
+        this.tsOffer = isOffered(tsOffer);
         this.editButton = new Button("Edit");
     }
-    
+
+    public ImageView isOffered(int offer) {
+
+        //Create Tick Image View
+        ImageView tickView = new ImageView();
+        tickView.maxHeight(40);
+        tickView.maxWidth(20);
+        tickView.setFitWidth(20);
+        tickView.setFitHeight(20);
+        tickView.setPreserveRatio(true);
+
+        //Set Tick if offered
+        if (offer == 1) {
+            Image tickImg = new Image(
+                    this.getClass().getResourceAsStream("/resources/tick.png"));
+            tickView = new ImageView(tickImg);
+        }
+        return tickView;
+    }
+
     //Getters and Setters
     public String getCourse_id() {
         return course_id.get();
@@ -53,38 +73,6 @@ public class Course {
         this.courseName = new SimpleStringProperty(courseName);
     }
 
-    public int getT1Offer() {
-        return t1Offer.get();
-    }
-
-    public void setT1Offer(int t1Offer) {
-        this.t1Offer = new SimpleIntegerProperty(t1Offer);
-    }
-
-    public int getT2Offer() {
-        return t2Offer.get();
-    }
-
-    public void setT2Offer(int t2Offer) {
-        this.t2Offer = new SimpleIntegerProperty(t2Offer);
-    }
-
-    public int getT3Offer() {
-        return t3Offer.get();
-    }
-
-    public void setT3Offer(int t3Offer) {    
-        this.t3Offer = new SimpleIntegerProperty(t3Offer);
-    }
-    
-    public int getTsOffer() {
-        return tsOffer.get();
-    }
-
-    public void setTsOffer(int tsOffer) {    
-        this.tsOffer = new SimpleIntegerProperty(tsOffer);
-    }
-
     public Button getEditButton() {
         return editButton;
     }
@@ -92,7 +80,40 @@ public class Course {
     public void setEditButton(Button editButton) {
         this.editButton = editButton;
     }
-    
+
+    public ImageView getT1Offer() {
+        return t1Offer;
+    }
+
+    public void setT1Offer(ImageView t1Offer) {
+        this.t1Offer = t1Offer;
+    }
+
+    public ImageView getT2Offer() {
+        return t2Offer;
+    }
+
+    public void setT2Offer(ImageView t2Offer) {
+        this.t2Offer = t2Offer;
+    }
+
+    public ImageView getT3Offer() {
+        return t3Offer;
+    }
+
+    public void setT3Offer(ImageView t3Offer) {
+        this.t3Offer = t3Offer;
+    }
+
+    public ImageView getTsOffer() {
+        return tsOffer;
+    }
+
+    public void setTsOffer(ImageView tsOffer) {
+        this.tsOffer = tsOffer;
+    }
+
+    //To String
     @Override
     public String toString() {
         return course_id.get();
