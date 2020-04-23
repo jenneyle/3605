@@ -107,7 +107,7 @@ public class CourseInfoController implements Initializable {
                 }
             }
 //            
-            ResultSet a = conn.createStatement().executeQuery("SELECT repeat_lecture FROM Weighting");
+            ResultSet a = conn.createStatement().executeQuery("SELECT repeat_lecture FROM Weighting WHERE course_id = '" +courseID + "'" );
 //            ResultSet a = database.getResultSet("SELECT repeat_lecture FROM Weighting");
 //            while (a.next()) {
 //                w = new Weighting(a.getInt(1));

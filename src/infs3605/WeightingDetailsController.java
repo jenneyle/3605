@@ -62,7 +62,7 @@ public class WeightingDetailsController {
 
         try {
             Database.openConnection();
-            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*(marking_hrs/100)*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*marking_hrs*0.01*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
 
             courseCode.setText(rs.getString(2));
             term.setText(rs.getString(4));

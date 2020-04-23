@@ -31,7 +31,7 @@ public class Weighting {
     private IntegerProperty tutorial_hrs;
     private IntegerProperty lecture_hrs;
     private IntegerProperty consultation_hrs;
-    private IntegerProperty marking_hrs;
+    private DoubleProperty marking_hrs;
     private IntegerProperty tutorial_prep;
     private IntegerProperty lecture_prep;
     private IntegerProperty staff_development;
@@ -61,7 +61,7 @@ public class Weighting {
         this.editButton = new Button("Edit");
     }
 
-    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, int marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, int repeat_lecture) {
+    public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, double marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, int repeat_lecture) {
         this.weight_id = new SimpleIntegerProperty(weight_id);
         this.course_id = new SimpleStringProperty(course_id);
         this.year = new SimpleIntegerProperty(year);
@@ -71,7 +71,7 @@ public class Weighting {
         this.tutorial_hrs = new SimpleIntegerProperty(tutorial_hrs);
         this.lecture_hrs = new SimpleIntegerProperty(lecture_hrs);
         this.consultation_hrs = new SimpleIntegerProperty(consultation_hrs);
-        this.marking_hrs = new SimpleIntegerProperty(marking_hrs);
+        this.marking_hrs = new SimpleDoubleProperty(marking_hrs);
         this.tutorial_prep = new SimpleIntegerProperty(tutorial_prep);
         this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
         this.staff_development = new SimpleIntegerProperty(staff_development);
@@ -199,11 +199,11 @@ public class Weighting {
         this.consultation_hrs.set(consultation_hrs);
     }
 
-    public int getMarking_hrs() {
+    public double getMarking_hrs() {
         return marking_hrs.get();
     }
 
-    public void setMarking_hrs(int marking_hrs) {
+    public void setMarking_hrs(double marking_hrs) {
         this.marking_hrs.set(marking_hrs);
     }
 

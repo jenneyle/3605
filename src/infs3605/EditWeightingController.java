@@ -131,7 +131,7 @@ public class EditWeightingController {
         int iStaffDev = Integer.parseInt(staffDev.getText());
         int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
         String iDescription = description.getText();
-        
+
 //        if (repeatLectures.setSelected(true) {
 //                repeatLectures.getInt());
 //
@@ -139,6 +139,13 @@ public class EditWeightingController {
 //            if (rs.getInt(15) == 0) {
 //                repeatLectures.setSelected(false);
 //            }
+// if checkbox selected is true then put value 1 in database
+//        if (repeatLectures.getSelected(true)) {
+//            iRepeatLectures = 1;
+//
+//        } else {
+//            iRepeatLectures = 0;
+//        }
 
         Statement st = conn.createStatement();
         try {
