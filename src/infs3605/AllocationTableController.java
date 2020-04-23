@@ -96,9 +96,9 @@ public class AllocationTableController implements Initializable {
         TableColumn staffName = new TableColumn("     STAFF \nALLOCATED");
         TableColumn warning1 = new TableColumn("Warning");
         TableColumn warning2 = new TableColumn("Warning");
-        editAllocation = new TableColumn("");
-        deleteAllocation = new TableColumn("");
-        viewDetailsAllocation = new TableColumn("");
+        editAllocation = new TableColumn("EDIT");
+        deleteAllocation = new TableColumn("DELETE");
+        viewDetailsAllocation = new TableColumn("DETAILS");
 
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, weighting,
@@ -106,6 +106,7 @@ public class AllocationTableController implements Initializable {
                 staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
 
         warning2.setVisible(false);
+        warning1.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
             ResultSet yearRS = database.getResultSet("SELECT DISTINCT allocation_year FROM Allocation");

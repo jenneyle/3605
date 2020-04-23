@@ -61,8 +61,8 @@ public class WeightingTableController implements Initializable {
         TableColumn totalweighting = new TableColumn("    TOTAL\nWEIGHTING");
         TableColumn<Weighting, Integer> weightingRepeatLecture = new TableColumn("REPEATED\n LECTURE");
 
-        detailWeighting = new TableColumn("");
-        editWeighting = new TableColumn("");
+        detailWeighting = new TableColumn("DETAILS");
+        editWeighting = new TableColumn("EDIT");
 
         weightingTable.getColumns().addAll(weightingCourse, weightingYear, weightingTerm, weightingStudents, wfacetoface_hrs, wpd_hrs,
                  weightingRepeatLecture, totalweighting, detailWeighting, editWeighting);

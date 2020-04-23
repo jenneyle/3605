@@ -67,9 +67,9 @@ public class StaffTableController implements Initializable {
         TableColumn lName = new TableColumn("LAST NAME");
         TableColumn type = new TableColumn("STAFF TYPE");
         TableColumn capacity = new TableColumn("TEACHING CAPACITY");
-        editStaff = new TableColumn("");
-        detailsStaff = new TableColumn("");
-        deleteStaff = new TableColumn("");
+        editStaff = new TableColumn("EDIT");
+        detailsStaff = new TableColumn("DETAILS");
+        deleteStaff = new TableColumn("DELETE");
         //Add columns to tableview
         staffTable.getColumns().addAll(id, fName, lName, type, capacity, detailsStaff, editStaff, deleteStaff);
 
