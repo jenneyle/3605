@@ -16,8 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -57,7 +60,11 @@ public class EditWeightingController {
     @FXML
     TextField consultHrs;
     @FXML
-    Label udateMsg;
+    TextArea description;
+    @FXML
+    CheckBox repeatLectures;
+    @FXML
+    Label updateMsg;
     int weightId;
 
     int weightingId = 0;
@@ -83,8 +90,17 @@ public class EditWeightingController {
             lecturePrep.setText(Integer.toString(rs.getInt(13)));
             staffDev.setText(Integer.toString(rs.getInt(14)));
             totalWeighting.setText(Integer.toString(rs.getInt(6)));
-            //Add description, and repeat lecture.
+            description.setText(rs.getString(7));
 
+            if (rs.getInt(15) == 1) {
+                repeatLectures.setSelected(true);
+
+            }
+            if (rs.getInt(15) == 0) {
+                repeatLectures.setSelected(false);
+            }
+
+            //Add description, and repeat lecture.
         } catch (Exception e) {
             System.out.println("here");
             e.printStackTrace();
@@ -114,6 +130,15 @@ public class EditWeightingController {
         int iLecturePrep = Integer.parseInt(lecturePrep.getText());
         int iStaffDev = Integer.parseInt(staffDev.getText());
         int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
+        String iDescription = description.getText();
+        
+//        if (repeatLectures.setSelected(true) {
+//                repeatLectures.getInt());
+//
+//            }
+//            if (rs.getInt(15) == 0) {
+//                repeatLectures.setSelected(false);
+//            }
 
         Statement st = conn.createStatement();
         try {
@@ -126,11 +151,13 @@ public class EditWeightingController {
                     + "' ,  tutorial_prep = '" + iTutorialPrep
                     + "' ,  lecture_prep = '" + iLecturePrep
                     + "' ,  staff_development = '" + iStaffDev
+                    + "' ,  description = '" + iDescription
                     + "' WHERE weight_id = " + weightId);
             st.execute(updateDatabase);
             System.out.println("Submitted");
-//            updateMsg.setText("Successfully submitted");
-//            updateMsg.setVisible(true);
+            updateMsg.setText("Successfully submitted");
+            updateMsg.setTextFill(Color.web("#008000"));
+            updateMsg.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

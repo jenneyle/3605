@@ -53,6 +53,8 @@ public class WeightingDetailsController {
     Text totalFace;
     @FXML
     Text totalStaff;
+    @FXML
+    Text description;
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
@@ -60,11 +62,11 @@ public class WeightingDetailsController {
 
         try {
             Database.openConnection();
-            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*(marking_hrs/100)*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours' FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT weight_id, course_id, Year, Term, students_enrolled, tutorial_hrs, lecture_hrs, consultation_hrs, (students_enrolled*(marking_hrs/100)*0.75) as 'total_marking', tutorial_prep, lecture_prep, staff_development, weighting_term, repeat_lecture, (tutorial_hrs+lecture_hrs+consultation_hrs) as 'facetoface_hours', (tutorial_prep+lecture_prep+staff_development) as 'pd_hours', description FROM Weighting WHERE weight_id = '" + iWeightingId + "'");
 
             courseCode.setText(rs.getString(2));
-            term.setText("Term: " + rs.getString(4));
-            year.setText("Year: " + rs.getString(3));
+            term.setText(rs.getString(4));
+            year.setText(rs.getString(3));
             studentsEnrolled.setText("Students Enrolled: " + rs.getString(5));
             tutorialHrs.setText("Tutorial Hours: " + rs.getString(6));
             lectureHrs.setText("Lecture Hours: " + rs.getString(7));
@@ -76,6 +78,7 @@ public class WeightingDetailsController {
             totalWeighting.setText("Total Weighting: " + rs.getString(13));
             totalFace.setText("Total Face to Face Hours Per Week: " + rs.getInt(15));
             totalStaff.setText("Total Staff & Development Hours Per Week: " + rs.getInt(16));
+            description.setText(rs.getString(17));
 
             if (rs.getInt(14) == 1) {
                 repeatLectures.setText("Yes");
