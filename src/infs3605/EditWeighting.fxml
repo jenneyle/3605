@@ -62,7 +62,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="252.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Percentage" />
+      <Text layoutX="252.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Percentage (%)" />
       <Text layoutX="252.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation" />
       <Text layoutX="252.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation" />
       <Text layoutX="252.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" />

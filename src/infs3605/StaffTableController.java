@@ -67,11 +67,14 @@ public class StaffTableController implements Initializable {
         TableColumn lName = new TableColumn("LAST NAME");
         TableColumn type = new TableColumn("STAFF TYPE");
         TableColumn capacity = new TableColumn("TEACHING CAPACITY");
-        editStaff = new TableColumn("EDIT");
-        detailsStaff = new TableColumn("DETAILS");
-        deleteStaff = new TableColumn("DELETE");
+        TableColumn leftover = new TableColumn("LEFTOVER CAPACITY");
+        editStaff = new TableColumn("");
+        detailsStaff = new TableColumn("");
+        deleteStaff = new TableColumn("");
+
         //Add columns to tableview
-        staffTable.getColumns().addAll(id, fName, lName, type, capacity, detailsStaff, editStaff, deleteStaff);
+        staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover
+                , detailsStaff, editStaff, deleteStaff);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -95,6 +98,7 @@ public class StaffTableController implements Initializable {
         lName.setCellValueFactory(new PropertyValueFactory<Staff, String>("lastName"));
         type.setCellValueFactory(new PropertyValueFactory<Staff, String>("staffType"));
         capacity.setCellValueFactory(new PropertyValueFactory<Staff, Double>("staffCapacity"));
+        leftover.setCellValueFactory(new PropertyValueFactory<Staff, Double>("leftoverCapacity"));
         editStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("editButton"));
         detailsStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("detailsButton"));
         deleteStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("deleteButton"));
@@ -150,13 +154,22 @@ public class StaffTableController implements Initializable {
 
         //Get Complete Rows from Database
         try {
-            ResultSet rs = database.getResultSet("SELECT staff_id, Fname, Lname"
+            ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname"
                     + ", staff_type, staff_capacity"
-                    + " FROM Staff"
+                    + ", (staff_capacity - SUM(allocation_weight)) "
+                    + "FROM Staff s LEFT OUTER JOIN Allocation a "
+                    + "ON s.staff_id = a.staff_id "
+                    + "WHERE allocation_year = strftime('%Y', date('now')) "
+                    + "GROUP BY s.staff_id "
+                    + "UNION "
+                    + "SELECT staff_id, Fname, Lname, staff_type, staff_capacity"
+                    + ", '' AS Leftover FROM Staff"
                     + " WHERE staff_type = '" + staffTypeSelectionCB.getValue() + "'"
             );
             while (rs.next()) {
-                data.add(new Staff(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
+                data.add(new Staff(rs.getString(1), rs.getString(2)
+                        , rs.getString(3), rs.getString(4), rs.getDouble(5)
+                        , rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -173,12 +186,21 @@ public class StaffTableController implements Initializable {
     public void setAllTable() {
         //Get Complete Rows from Database
         try {
-            ResultSet rs = database.getResultSet("SELECT staff_id, Fname, Lname"
-                    + ", staff_type, staff_capacity "
-                    + "FROM Staff"
+            ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname"
+                    + ", staff_type, staff_capacity"
+                    + ", (staff_capacity - SUM(allocation_weight)) "
+                    + "FROM Staff s LEFT OUTER JOIN Allocation a "
+                    + "ON s.staff_id = a.staff_id "
+                    + "WHERE allocation_year = strftime('%Y', date('now')) "
+                    + "GROUP BY s.staff_id "
+                    + "UNION "
+                    + "SELECT staff_id, Fname, Lname, staff_type, staff_capacity"
+                    + ", '' AS Leftover FROM Staff"
             );
             while (rs.next()) {
-                data.add(new Staff(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
+                data.add(new Staff(rs.getString(1), rs.getString(2)
+                        , rs.getString(3), rs.getString(4), rs.getDouble(5)
+                        , rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

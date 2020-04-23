@@ -12,6 +12,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -35,7 +37,7 @@ public class Weighting {
     private IntegerProperty tutorial_prep;
     private IntegerProperty lecture_prep;
     private IntegerProperty staff_development;
-    private IntegerProperty repeat_lecture;
+    private ImageView repeat_lecture;
     private Button detailsButton;
     private Button editButton;
 
@@ -54,12 +56,32 @@ public class Weighting {
         this.pd_hours = new SimpleIntegerProperty(pd_hours);
         System.out.println(pd_hours);
         this.weighting_term = new SimpleDoubleProperty(weighting_term);
-        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+        this.repeat_lecture = getRepeatLecture(repeat_lecture);
    
         //this.editButton = new Button("Edit");
         this.detailsButton = new Button("Details");
         this.editButton = new Button("Edit");
     }
+    
+    public ImageView getRepeatLecture(int repeat) { 
+        //Create Tick Image View
+        ImageView tickView = new ImageView();
+        tickView.maxHeight(40);
+        tickView.maxWidth(20);
+        tickView.setFitWidth(20);
+        tickView.setFitHeight(20);
+        tickView.setPreserveRatio(true);
+
+        //Set Tick if offered
+        if (repeat == 1) {
+            Image tickImg = new Image(
+                    this.getClass().getResourceAsStream("/resources/tick.png"));
+            tickView = new ImageView(tickImg);
+        }
+        return tickView;
+    
+    }
+        
 
     public Weighting(int weight_id, String course_id, int year, String term, int students_enrolled, double weighting_term, int tutorial_hrs, int lecture_hrs, int consultation_hrs, double marking_hrs, int tutorial_prep, int lecture_prep, int staff_development, int repeat_lecture) {
         this.weight_id = new SimpleIntegerProperty(weight_id);
@@ -76,14 +98,14 @@ public class Weighting {
         this.lecture_prep = new SimpleIntegerProperty(lecture_prep);
         this.staff_development = new SimpleIntegerProperty(staff_development);
         
-        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+        this.repeat_lecture = getRepeatLecture(repeat_lecture);
 
         this.detailsButton = new Button("Details");
         this.editButton = new Button("Edit");
     }
 
     public Weighting(int repeat_lecture) {
-        this.repeat_lecture = new SimpleIntegerProperty(repeat_lecture);
+        this.repeat_lecture = getRepeatLecture(repeat_lecture);
     }
     
     
@@ -167,12 +189,12 @@ public class Weighting {
         this.weighting_term.set(weighting_term);
     }
 
-    public Integer getRepeatLecture() {
-        return repeat_lecture.get();
+    public ImageView getRepeat_lecture() {
+        return repeat_lecture;
     }
 
-    public void setRepeatLecture(int repeat_lecture) {
-        this.repeat_lecture.set(repeat_lecture);
+    public void setRepeat_lecture(int repeat_lecture) {
+        this.repeat_lecture = getRepeatLecture(repeat_lecture);
     }
 
     public int getTutorial_hrs() {
@@ -239,12 +261,5 @@ public class Weighting {
         this.editButton = updateButton;
     }
 
-    public int getRepeat_lecture() {
-        return repeat_lecture.get();
-    }
-
-    public void setRepeat_lecture(int repeat_lecture) {
-        this.repeat_lecture.set(repeat_lecture);
-    }
-
+    
 }

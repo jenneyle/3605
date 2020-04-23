@@ -25,17 +25,19 @@ public class Staff {
     private StringProperty lastName;
     private StringProperty staffType;
     private DoubleProperty staffCapacity;
+    private StringProperty leftoverCapacity;
     private Button editButton;
     private Button detailsButton;
     private Button deleteButton;
 
     //Constructor
-    public Staff(String staffId, String firstName, String lastName, String staffType, double staffCapacity) {
+    public Staff(String staffId, String firstName, String lastName, String staffType, double staffCapacity, String leftoverCapacity) {
         this.staffId = new SimpleStringProperty(staffId);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.staffType = new SimpleStringProperty(staffType);
         this.staffCapacity = new SimpleDoubleProperty(staffCapacity);
+        this.leftoverCapacity = new SimpleStringProperty(leftoverCapacity);
         this.editButton = new Button("Edit");
         this.detailsButton = new Button("Details");
         this.deleteButton = new Button("Delete");
@@ -97,6 +99,16 @@ public class Staff {
     public void setStaffCapacity(double staffCapacity) {
         this.staffCapacity = new SimpleDoubleProperty(staffCapacity);
     }
+
+    public String getLeftoverCapacity() {
+        return leftoverCapacity.get();
+    }
+
+    public void setLeftoverCapacity(String leftoverCapacity) {
+        this.leftoverCapacity = new SimpleStringProperty(leftoverCapacity);
+    }
+    
+    
 
     public Button getEditButton() {
         return editButton;
