@@ -72,7 +72,6 @@ public class EditWeightingController {
 
     public void setData(int iWeightingId) {
         weightId = iWeightingId;
-        // weightingId = iWeightingId;
         updateMsg.setVisible(false);
 
         try {
@@ -101,7 +100,6 @@ public class EditWeightingController {
                 repeatLectures.setSelected(false);
             }
 
-            //Add description, and repeat lecture.
         } catch (Exception e) {
             System.out.println("here");
             e.printStackTrace();
@@ -119,9 +117,7 @@ public class EditWeightingController {
 
     @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {
-//        String iCourseCode = courseCode.getText();
-//        String iTerm = term.getText();
-//        int iYear = Integer.parseInt(year.getText());
+
         int iStudentsEnrolled = Integer.parseInt(studentsEnrol.getText());
         int iTutorialHrs = Integer.parseInt(tutorialHrs.getText());
         int iLectureHrs = Integer.parseInt(lectureHrs.getText());
@@ -133,20 +129,6 @@ public class EditWeightingController {
         int iWeightingTotal = Integer.parseInt(totalWeighting.getText());
         String iDescription = description.getText();
 
-//        if (repeatLectures.setSelected(true) {
-//                repeatLectures.getInt());
-//
-//            }
-//            if (rs.getInt(15) == 0) {
-//                repeatLectures.setSelected(false);
-//            }
-// if checkbox selected is true then put value 1 in database
-//        if (repeatLectures.getSelected(true)) {
-//            iRepeatLectures = 1;
-//
-//        } else {
-//            iRepeatLectures = 0;
-//        }
 
         int iRepeatLectures = 0;
 
