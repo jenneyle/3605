@@ -153,6 +153,11 @@
             </Text>
             <Button fx:id="clearFilterBtn" layoutX="436.0" layoutY="123.0" mnemonicParsing="false" onAction="#clearFilters" stylesheets="@StyleSheet.css" text="Clear" />
             <Button fx:id="importbtn" layoutX="437.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleimport" text="Import From Excel" />
+            <ImageView fitHeight="59.0" fitWidth="68.0" layoutX="383.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/course.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
