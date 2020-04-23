@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +27,10 @@ import javafx.stage.Stage;
 public class StaffDetailButtonCell extends TableCell<Record, Boolean> {
 
     //TODO: Sophia to make the button with an image of a pencilnot text
-    Button cellButton = new Button("Details");
+  Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/detail.png"));
+
+    //Image newimg = pencilImage.
+    Button cellButton = new Button("", new ImageView(closeImage));
     Database database = new Database();
 
 //    AllocationDeleteButtonCell() {

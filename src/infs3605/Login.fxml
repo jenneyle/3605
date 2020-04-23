@@ -25,7 +25,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="5.0" layoutY="1.0" prefHeight="766.0" prefWidth="589.0" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
+            <AnchorPane layoutY="1.0" prefHeight="766.0" prefWidth="589.0" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
             <VBox layoutX="702.0" layoutY="444.0" prefHeight="189.0" prefWidth="223.0">
                <children>
                         <TextField fx:id="username" alignment="CENTER" maxHeight="46.0" maxWidth="210.0" prefHeight="35.0" prefWidth="180.0" promptText="Username" styleClass="textbox" stylesheets="@StyleSheet.css">

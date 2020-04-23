@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.ReportsController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="1.0" layoutY="-2.0" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css">
+         <children>
+            <Text layoutX="340.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+               <children>
+                  <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="74.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/LecticLogo.png" />
+                     </image>
+                  </ImageView>
+                  <HBox layoutY="251.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="62.0" prefWidth="238.0" text="  Course Weighting">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/percent.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="-4.0" layoutY="318.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="62.0" prefWidth="211.0" text="  View Courses">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/training.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="390.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="62.0" prefWidth="180.0" text="  View Staff">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/staff.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="allocateCourseButton1" layoutY="188.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="239.0" text="  Current Allocations">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/course.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="allocateCourseButton" layoutX="20.0" layoutY="80.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="222.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="210.0" text=" Allocate Courses">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/plus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="1.0" layoutY="538.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="62.0" prefWidth="163.0" text="  Logout">
+                           <graphic>
+                              <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/logout.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="1.0" layoutY="465.0" onMouseClicked="#handleReportsBtn" prefHeight="62.0" prefWidth="244.0" stylesheets="@StyleSheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="159.0" text="  Reports">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/excel.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="sideButton" />
+                        <String fx:value="sidebarColoured" />
+                     </styleClass>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="109.0" fitWidth="108.0" layoutX="359.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/import.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="109.0" fitWidth="108.0" layoutX="647.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/export.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
