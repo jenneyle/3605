@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -152,6 +155,8 @@ public class EditWeightingController {
                     + "' ,  repeat_lecture = '" + iRepeatLectures
                     + "' WHERE weight_id = " + weightId);
             st.execute(updateDatabase);
+            Notifications updatenotification=Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            updatenotification.showInformation();
             System.out.println("Submitted");
             updateMsg.setText("Successfully submitted");
             updateMsg.setTextFill(Color.web("#008000"));

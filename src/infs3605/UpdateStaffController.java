@@ -14,11 +14,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -87,7 +90,9 @@ public class UpdateStaffController {
             Statement st = conn.createStatement();
             String updateData = ("UPDATE Staff SET Fname = '" + iStaffFName + "', Lname = '" + iStaffLName + "', staff_type = '" + iStaffType + "', staff_capacity = " + iStaffCapacity + ", staff_email = '" + iStaffEmail + "' WHERE staff_id = '" + iStaffId + "'");
             st.execute(updateData);
-            System.out.println("insert success");
+            Notifications updatenotification=Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            updatenotification.showInformation();
+            //System.out.println("insert success");
             //reload page
             
         } catch (Exception e) {

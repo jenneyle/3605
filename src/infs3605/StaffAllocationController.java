@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -39,6 +40,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -214,16 +217,12 @@ public class StaffAllocationController implements Initializable {
         ConstraintsCheck rulecheck = new ConstraintsCheck();
 
         boolean exist = rulecheck.duplicateallocation(courseCode, staffID, year, term);
-        System.out.println(exist + "duplicate");
+        
         if (exist == true) {
-            success.setText("Row not inserted due to a duplicate Allocation!");
-            TimerTask task1 = new TimerTask() {
-                @Override
-                public void run() {
-                    Platform.runLater(() -> success.setText(""));
-                }
-            };
-            timer.schedule(task1, 2000);
+            
+            Notifications dunotification=Notifications.create().text("Row not inserted due to a duplicate Allocation!").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            dunotification.showWarning();
+            
         } else {
             rulecheck.check(courseCode, staffID, year, term, licCheck, weight);
             if (ConstraintsCheck.warning.size() == 0 || knowledgewarning == true) {
@@ -233,16 +232,8 @@ public class StaffAllocationController implements Initializable {
                             + " VALUES ('" + year + "','" + term + "','" + courseCode + "','" + staffID + "'," + licCheck + ",'" + notes + "'," + weight + ")");
                     st.execute(insertData);
                     knowledgewarning = false;
-                    success.setTextFill(Color.GREEN);
-                    success.setText("Allocation Success!");
-                    TimerTask task = new TimerTask() {
-                        @Override
-                        public void run() {
-                            Platform.runLater(() -> success.setText(""));
-                        }
-                    };
-                    timer.schedule(task, 2000);
-                    System.out.println("insert success");
+                    Notifications successnotification=Notifications.create().text("Allocation Success!").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+                    successnotification.showInformation();
                     clear();
                 } catch (Exception ex) {
                     ex.printStackTrace();

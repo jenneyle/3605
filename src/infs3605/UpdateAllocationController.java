@@ -15,12 +15,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 
 /**
@@ -138,7 +141,9 @@ public class UpdateAllocationController {
                     + iCourseCode + "', staff_id = '" + staffID + "', allocation_description = '" + iAllocationNotes + "', allocation_weight = "
                     + iWeighting + " WHERE allocation_id = " + allocationId);
             st.execute(updateData);
-            System.out.println("insert success");
+            Notifications updatenotification=Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
+            updatenotification.showInformation();
+            //System.out.println("insert success");
 
         } catch (Exception e) {
             e.printStackTrace();
