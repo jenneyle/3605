@@ -3,8 +3,10 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,17 +15,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Button fx:id="back" layoutX="60.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="27.0" prefWidth="58.0" stylesheets="@StyleSheet.css" text="Back" textFill="#414446" />
       <Label alignment="CENTER" layoutX="82.0" layoutY="35.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Allocation Information" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="276.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
+      <Button fx:id="submit" layoutX="297.0" layoutY="422.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
       <HBox layoutX="215.0" layoutY="90.0" prefHeight="30.0" prefWidth="112.0">
          <children>
             <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" visible="false" wrappingWidth="162.13671875">
@@ -41,14 +42,19 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <CheckBox mnemonicParsing="false" text="LIC?" />
             <Pane prefHeight="10.0" prefWidth="163.0" />
-            <ComboBox fx:id="year" prefWidth="150.0" />
-            <ComboBox fx:id="term" prefWidth="150.0" />
+            <ComboBox fx:id="year" prefWidth="150.0" promptText="Select a Year" />
+            <ComboBox fx:id="term" prefWidth="150.0" promptText="Select a Term" />
          </children>
       </VBox>
-      <TextField fx:id="courseCode" layoutX="60.0" layoutY="93.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="staffName" layoutX="60.0" layoutY="129.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="weighting" layoutX="60.0" layoutY="165.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="courseCode" layoutX="60.0" layoutY="93.0" prefHeight="25.0" prefWidth="179.0" promptText="Course Name" />
+      <TextField fx:id="staffName" layoutX="60.0" layoutY="129.0" prefHeight="25.0" prefWidth="179.0" promptText="Staff Name" />
+      <Text layoutX="60.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
+      <TextArea fx:id="allocationNotes" layoutX="60.0" layoutY="336.0" prefHeight="110.0" prefWidth="220.0" promptText="Add allocation notes here..." />
+      <TextField fx:id="weighting" layoutX="182.0" layoutY="285.0" prefHeight="25.0" prefWidth="57.0" />
+      <Text layoutX="60.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocated Weighting:" />
+      <Text fx:id="totalWeighting" layoutX="257.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/ Total Weighting" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />

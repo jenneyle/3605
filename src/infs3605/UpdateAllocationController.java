@@ -6,31 +6,21 @@
 package infs3605;
 
 import static infs3605.Database.conn;
-import static infs3605.StaffAllocationController.knowledgewarning;
+import java.awt.Checkbox;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 /**
@@ -41,12 +31,15 @@ import org.controlsfx.control.textfield.TextFields;
 public class UpdateAllocationController {
 
     @FXML
-    Button back;
-
+    TextArea allocationNotes;
+    @FXML
+    Checkbox lic;
     @FXML
     TextField courseCode;
     @FXML
     Text courseName;
+    @FXML
+    Text totalWeighting;
     @FXML
     Text staffId;
     @FXML
@@ -65,17 +58,30 @@ public class UpdateAllocationController {
     ObservableList<String> staffList = FXCollections.observableArrayList();
     ObservableList<Integer> yearList = FXCollections.observableArrayList();
     ObservableList<String> termList = FXCollections.observableArrayList("Term 1", "Term 2", "Term 3", "Summer Term");
-    
 
-    public void setData(int iAllocationId, String iCourseId, String iCourseName, String iStaffId, String iStaffName, int iYear, String iTerm, String iWeighting) {
-        allocationId = iAllocationId;
-        courseCode.setText(iCourseId);
-        courseName.setText(iCourseName);
-        staffId.setText(iStaffId);
-        staffName.setText(iStaffName);
-        year.setValue(iYear);
-        term.setValue(iTerm);
-        weighting.setText(iWeighting);
+    public void setData(int uAllocationId) {
+        try {
+            Database.openConnection();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT DISTINCT Allocation.allocation_id, Allocation.allocation_term, Allocation.allocation_year, Allocation.course_id, Allocation.staff_id, Courses.course_name, Staff.Fname, Staff.Lname, Allocation.allocation_weight, Allocation.lic, Allocation.allocation_description, Weighting.weighting_term FROM Staff JOIN Allocation ON Staff.staff_id = Allocation.staff_id JOIN Courses ON Courses.course_id = Allocation.course_id Join Weighting ON Weighting.course_id = Allocation.course_id WHERE allocation_id = " + uAllocationId);
+
+            allocationId = uAllocationId;
+            courseCode.setText(rs.getString("course_id"));
+            courseName.setText(rs.getString("course_name"));
+            staffId.setText(rs.getString("staff_id"));
+            staffName.setText(rs.getString(7) + " " + rs.getString(8));
+            year.setValue(rs.getString("allocation_year"));
+            term.setValue(rs.getString("allocation_term"));
+            weighting.setText(rs.getString("allocation_weight"));
+            allocationNotes.setText(rs.getString("allocation_description"));
+            totalWeighting.setText("/ " + rs.getString("weighting_term"));
+            if (rs.getInt("lic") == 1) {
+                //keep textbox ticked
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         setLists();
 
@@ -103,14 +109,8 @@ public class UpdateAllocationController {
             TextFields.bindAutoCompletion(staffName, staffList);
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
-    }
-
-    @FXML
-    public void handleBackButton(ActionEvent event) throws IOException {
-        Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
     }
 
     @FXML
@@ -118,32 +118,34 @@ public class UpdateAllocationController {
         String iCourseCode = courseCode.getText();
         String iTerm = (String) term.getValue();
         String iStaffName = staffName.getText();
+        String iAllocationNotes = allocationNotes.getText();
         iStaffName = iStaffName.substring(0, iStaffName.indexOf(" "));
-        int iYear = (int) year.getValue();
+//ISSUES
+        String iYearString = (String) year.getValue();
+        int iYear = Integer.parseInt(iYearString);
+        double iWeighting = Double.parseDouble(weighting.getText());
         String staffID = "";
 
         try {
             Database.openConnection();
             ResultSet rs = conn.createStatement().executeQuery("Select staff_id FROM Staff WHERE Fname = '" + iStaffName + "'");
             staffID = rs.getString(1);
-            
-            
-                Statement st = conn.createStatement();
-                String updateData = ("UPDATE ALLOCATION SET allocation_year = " + iYear + ", allocation_term = '" + iTerm + "', course_id = '"
-                        + iCourseCode + "', staff_id = '" + staffID + "' WHERE allocation_id = " + allocationId);
-                st.execute(updateData);
-                System.out.println("insert success");
+
+            Statement st = conn.createStatement();
+            String updateData = ("UPDATE ALLOCATION SET allocation_year = " + iYear + ", allocation_term = '" + iTerm + "', course_id = '"
+                    + iCourseCode + "', staff_id = '" + staffID + "', allocation_description = '" + iAllocationNotes + "', allocation_weight = "
+                    + iWeighting + " WHERE allocation_id = " + allocationId);
+            st.execute(updateData);
+            System.out.println("insert success");
 
         } catch (Exception e) {
-            System.out.println("SQL error");
+            e.printStackTrace();
         }
 
 //        ConstraintsCheck rulecheck = new ConstraintsCheck();
 //        rulecheck.check(iCourseCode, staffID, iYear, iTerm);
 //        ArrayList<String> warning = ConstraintsCheck.warning;
 //        if (warning.isEmpty() || knowledgewarning == true) {
-
-      
 //                knowledgewarning = false;
 ////                success.setText("Allocation Success!");
 //                TimerTask task = new TimerTask() {
@@ -154,10 +156,6 @@ public class UpdateAllocationController {
 //                };
 //                Timer timer = new Timer();
 //                timer.schedule(task, 5000);
-                
-
-            
-            
 //        } else {
 //            Parent root = FXMLLoader.load(getClass().getResource("Warning.fxml"));
 //            Scene scene = new Scene(root);
@@ -165,6 +163,5 @@ public class UpdateAllocationController {
 //            stage.setScene(scene);
 //            stage.show();
 //        }
-
     }
 }

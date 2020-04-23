@@ -100,8 +100,8 @@ public class AllocationTableController implements Initializable {
         viewDetailsAllocation = new TableColumn("");
 
         //Add columns to tableview
-        allocationTable.getColumns().addAll(year, term, courseId, weighting
-                , staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
+        allocationTable.getColumns().addAll(year, term, courseId, weighting,
+                 staffName, warning1, warning2, viewDetailsAllocation, editAllocation, deleteAllocation);
         warning1.setVisible(false);
         warning2.setVisible(false);
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
@@ -198,7 +198,7 @@ public class AllocationTableController implements Initializable {
 
             @Override
             public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new AllocationButtonCell();
+                return new AllocationEditButtonCell();
             }
 
         });
@@ -648,7 +648,7 @@ public class AllocationTableController implements Initializable {
 
     public void handleExportBtn(ActionEvent event) {
         try {
-            ResultSet rs = database.getResultSet("SELECT * FROM Allocation");
+            ResultSet rs = database.getResultSet("SELECT * FROM Allocation JOIN Staff ON Allocation.staff_id = Staff.staff_id");
 
             Workbook wb = new XSSFWorkbook();
             Sheet sheet = wb.createSheet("Current Allocations");
@@ -660,26 +660,33 @@ public class AllocationTableController implements Initializable {
 
             Row headerRow = sheet.createRow(0);
 
-            headerRow.createCell(1).setCellValue("Year");
-            headerRow.createCell(2).setCellValue("Term");
-            headerRow.createCell(3).setCellValue("Course Code");
-            headerRow.createCell(4).setCellValue("Staff ID");
+            headerRow.createCell(0).setCellValue("Year");
+            headerRow.createCell(1).setCellValue("Term");
+            headerRow.createCell(2).setCellValue("Course Code");
+            headerRow.createCell(3).setCellValue("Staff ID");
+            headerRow.createCell(4).setCellValue("LIC?");
+            headerRow.createCell(5).setCellValue("Allocation Weight");
+            headerRow.createCell(6).setCellValue("First Name");
+            headerRow.createCell(7).setCellValue("Last Name");
 
-//                XSSFFont font = wb.createFont();
-//                font.setBold(true);
-//                XSSFCellStyle style = header.getRowStyle();
-//                style.setFont(font);
-//               // header.getRowStyle().getFont().setBold(true);
+            XSSFFont font = (XSSFFont) wb.createFont();
+            font.setBold(true);
+            XSSFCellStyle style = (XSSFCellStyle) headerRow.getRowStyle();
+//            style.setFont(font);
+            //header.getRowStyle().getFont().setBold(true);
 //                
             int index = 1;
 
             while (rs.next()) {
                 Row row = sheet.createRow(index);
-                row.createCell(0).setCellValue(rs.getString(1));
-                row.createCell(1).setCellValue(rs.getString(2));
-                row.createCell(2).setCellValue(rs.getString(3));
-                row.createCell(3).setCellValue(rs.getString(4));
-                row.createCell(4).setCellValue(rs.getString(5));
+                row.createCell(0).setCellValue(rs.getString(2));
+                row.createCell(1).setCellValue(rs.getString(3));
+                row.createCell(2).setCellValue(rs.getString(4));
+                row.createCell(3).setCellValue(rs.getString(5));
+                row.createCell(4).setCellValue(rs.getString(7));
+                row.createCell(5).setCellValue(rs.getString(8));
+                row.createCell(6).setCellValue(rs.getString(10));
+                row.createCell(7).setCellValue(rs.getString(11));
 
                 index++;
             }
@@ -714,9 +721,10 @@ public class AllocationTableController implements Initializable {
         setDeleteButtons();
         setDetailsButtons();
     }
-    public void handleimport(ActionEvent event){
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        FileChooser fileChooser =new FileChooser();
+
+    public void handleimport(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(stage);
         try {
             Importing_excel_allocationtable.reading_excel(selectedFile);
