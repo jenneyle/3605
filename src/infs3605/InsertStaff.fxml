@@ -22,14 +22,35 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+      <VBox layoutX="344.0" layoutY="142.0" prefHeight="296.0" prefWidth="262.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="74.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="insertStaffFname" prefHeight="27.0" prefWidth="179.0" promptText="Enter First Name" />
+            <VBox prefHeight="27.0" prefWidth="213.0" />
+            <TextField fx:id="insertStaffLname" prefHeight="27.0" prefWidth="179.0" promptText="Enter Last Name" />
+            <VBox prefHeight="27.0" prefWidth="213.0" />
+            <TextField fx:id="insertStaffZid" prefHeight="27.0" prefWidth="179.0" promptText="Enter ziD" />
+            <VBox prefHeight="27.0" prefWidth="213.0" />
+            <TextField fx:id="insertStaffEmail" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
+            <VBox prefHeight="27.0" prefWidth="213.0" />
+            <TextField fx:id="insertStaffCapacity" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Standard Course Capcaity" />
+            <VBox prefHeight="27.0" prefWidth="213.0" />
+            <ComboBox fx:id="insertStaffType" prefHeight="27.0" prefWidth="260.0" promptText="Select Staff Type" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="727.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/photo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="743.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload Staff Image" />
+      <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="73.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
-            <HBox layoutY="251.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="248.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="62.0" prefWidth="238.0" text="  Course Weighting">
                      <graphic>
@@ -48,7 +69,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="-4.0" layoutY="318.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-4.0" layoutY="319.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="62.0" prefWidth="211.0" text="  View Courses">
                      <graphic>
@@ -67,7 +88,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutY="390.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="390.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="62.0" prefWidth="180.0" text="  View Staff">
                      <graphic>
@@ -86,7 +107,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="188.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="178.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="59.0" prefWidth="239.0" text="  Current Allocations">
                      <graphic>
@@ -121,7 +142,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="1.0" layoutY="538.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="534.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="238.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="62.0" prefWidth="163.0" text="  Logout">
                      <graphic>
@@ -140,7 +161,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="1.0" layoutY="465.0" onMouseClicked="#handleReportsBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-1.0" layoutY="461.0" onMouseClicked="#handleReportsBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="59.0" prefWidth="159.0" text="  Reports">
                      <graphic>
@@ -161,26 +182,5 @@
             </HBox>
          </children>
       </AnchorPane>
-      <VBox layoutX="344.0" layoutY="142.0" prefHeight="296.0" prefWidth="239.0">
-         <children>
-            <TextField fx:id="insertStaffFname" prefHeight="27.0" prefWidth="179.0" promptText="Enter First Name" />
-            <VBox prefHeight="27.0" prefWidth="213.0" />
-            <TextField fx:id="insertStaffLname" prefHeight="27.0" prefWidth="179.0" promptText="Enter Last Name" />
-            <VBox prefHeight="27.0" prefWidth="213.0" />
-            <TextField fx:id="insertStaffZid" prefHeight="27.0" prefWidth="179.0" promptText="Enter ziD" />
-            <VBox prefHeight="27.0" prefWidth="213.0" />
-            <TextField fx:id="insertStaffEmail" prefHeight="27.0" prefWidth="179.0" promptText="Enter email" />
-            <VBox prefHeight="27.0" prefWidth="213.0" />
-            <TextField fx:id="insertStaffCapacity" prefHeight="27.0" prefWidth="179.0" promptText="Enter Staff Capacity Hours" />
-            <VBox prefHeight="27.0" prefWidth="213.0" />
-            <ComboBox fx:id="insertStaffType" prefHeight="27.0" prefWidth="239.0" promptText="Select Staff Type" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
-         </children>
-      </VBox>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="727.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/photo.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="743.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload Staff Image" />
    </children>
 </AnchorPane>
