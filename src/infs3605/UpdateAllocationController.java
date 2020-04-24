@@ -161,6 +161,7 @@ public class UpdateAllocationController {
             st.execute(updateData);
             Notifications updatenotification=Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
             updatenotification.showInformation();
+            
             //System.out.println("insert success");
 
         } catch (Exception e) {
