@@ -75,9 +75,9 @@ public class StaffTableController implements Initializable {
         //Add columns to tableview
         staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover
                 , detailsStaff, editStaff, deleteStaff);
-        data.removeAll();
+        data.removeAll(data);
         sortedData = new SortedList<>(data);
-      //  sortedData.removeAll();
+        sortedData.removeAll(sortedData);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -116,9 +116,10 @@ public class StaffTableController implements Initializable {
 
     //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
     public void setSearchField() {
-        data.removeAll();
+        System.out.println("This is the set Search Field - sorted List");
+        data.removeAll(data);
         sortedData = new SortedList<>(data);
-        sortedData.removeAll();
+        sortedData.removeAll(sortedData);
         //1.Set Search Field
         setAllTable();
         FilteredList<Staff> filteredData = new FilteredList<>(data, p -> true);
@@ -192,6 +193,7 @@ public class StaffTableController implements Initializable {
 
     //Fetch Rows from Database and set Table
     public void setAllTable() {
+        System.out.println("This is the set Table - data List");
         //Get Complete Rows from Database
         data.removeAll();
         sortedData.removeAll();
@@ -264,7 +266,9 @@ public class StaffTableController implements Initializable {
     }
 
     public void clearFilters(ActionEvent event) {
-        data.removeAll();
+        data.removeAll(data);
+        sortedData = new SortedList<>(data);
+        sortedData.removeAll(sortedData);
         staffTypeSelectionCB.setValue(staffTypeSelectionCB.getPromptText());
 
         setAllTable();
