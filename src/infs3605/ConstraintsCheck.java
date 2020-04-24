@@ -23,7 +23,7 @@ public class ConstraintsCheck {
     public static ArrayList<String> countterm = new ArrayList<String>();
     static double currentweight;
     static double newweight;
-    static int staff_capacity;
+    static double staff_capacity;
     static String staff_name;
     static boolean casual_staff;
     static String licname;
@@ -32,6 +32,9 @@ public class ConstraintsCheck {
     public void check(String courseid, String staffid, int year, String term, int liccheck,double weight) {
         cleandata();
         getdatabasevalue(courseid, staffid, year,term);
+        System.out.println(currentweight);
+        System.out.println(weight);
+        System.out.println(staff_capacity);
         if ((currentweight+ weight) > staff_capacity){ 
             warning.add(staff_name + " is taking on too many standard courses in this year");
             
@@ -117,18 +120,18 @@ public class ConstraintsCheck {
         return exist;
     }
     public void getdatabasevalue(String courseid, String staffid, int year, String term){
-        String searchQuery = "select allocation_weight, allocation_term from Allocation where staff_id='"+staffid+"';";
-        System.out.println(searchQuery);
+        String searchQuery = "select allocation_weight, allocation_term from Allocation where staff_id='"+staffid+"' and allocation_year="+year+";";
+        //System.out.println(searchQuery);
         String searchStaff="Select * from Staff where staff_id='"+staffid+"';";
-        String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"'";
+        String casualQuery="select * from Allocation where staff_id='"+staffid+"'and allocation_term='"+term+"' and allocation_year="+year+";";
         String licQuery="select lic,Fname,Lname from Allocation \n"
                         +"join Staff on Staff.staff_id=Allocation.staff_id \n"
                         + "where allocation_term='"+term+"' and allocation_year= "+year+" and course_id= '"+courseid+"' and lic=1;";
-        //System.out.println(searchQuery);
+        System.out.println(searchQuery);
         try {
             ResultSet rs=database.getResultSet(searchStaff);
             while(rs.next()){
-                staff_capacity=rs.getInt("staff_capacity");
+                staff_capacity=rs.getDouble("staff_capacity");
                 staff_type=rs.getString("staff_type");
                 staff_name=rs.getString("fname")+" "+rs.getString("lname");
             }

@@ -95,7 +95,7 @@ public class AllocationDetailsController {
                 
             }
             year.setText(rs.getString(4));
-            notes.setText("Notes: " + rs.getString(5));
+            notes.setText(rs.getString(5));
             weighting.setText(rs.getString(10));
             if(rs.getInt(6)==1){
                 lic.setText("Yes");
