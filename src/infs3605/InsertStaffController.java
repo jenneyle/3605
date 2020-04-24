@@ -78,7 +78,7 @@ public class InsertStaffController implements Initializable {
 //        ObservableList<Integer> staffCapacityList = FXCollections.observableArrayList(3, 6);
 //        insertStaffCapacity.setItems(staffCapacityList);
         String insertCapacity = insertStaffCapacity.getText();
-        double capacity = Integer.valueOf(insertCapacity);
+        double capacity = Double.valueOf(insertCapacity);
 //        Integer capacity = insertStaffCapacity.getValue();
         String insertFname = insertStaffFname.getText();
         String insertLname = insertStaffLname.getText();
