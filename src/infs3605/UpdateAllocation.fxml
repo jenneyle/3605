@@ -18,7 +18,7 @@
         <URL value="@StyleSheet.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" layoutX="132.0" layoutY="26.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Edit Allocations" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="132.0" layoutY="26.0" prefHeight="35.0" prefWidth="236.0" styleClass="page-title" stylesheets="@StyleSheet.css" text="Edit Allocation" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font></Label>
