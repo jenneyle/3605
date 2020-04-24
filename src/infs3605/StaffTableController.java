@@ -106,6 +106,17 @@ public class StaffTableController implements Initializable {
         detailsStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("detailsButton"));
         deleteStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("deleteButton"));
 
+        //resize collumns
+        fName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
+        lName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
+        type.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.375));
+        capacity.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        leftover.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        editStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        detailsStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        deleteStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        
+        
         setSearchField();
 
         setEditButtons();

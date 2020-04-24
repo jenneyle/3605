@@ -11,19 +11,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingTableController">
    <children>
-      <TableView fx:id="weightingTable" layoutX="303.0" layoutY="149.0" prefHeight="572.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
+      <TableView fx:id="weightingTable" layoutX="310.0" layoutY="178.0" prefHeight="513.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
          <styleClass>
             <String fx:value="table-column" />
             <String fx:value="table-row-cell" />
             <String fx:value="leftBackground" />
-
-<!--         </styleClass></TableView>-->
-
-
          </styleClass>
-         </TableView>
+      </TableView>
 
       <Text layoutX="304.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Weighting">
          <font>
