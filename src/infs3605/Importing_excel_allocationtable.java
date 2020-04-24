@@ -108,9 +108,9 @@ public class Importing_excel_allocationtable {
             }
 
         }
-        String conclusion = "Successfully import " + successrow + " out of " + (current_row-1) + " records from excel";
+        String conclusion = "Successfully imported " + successrow + " out of " + (current_row-1) + " records from excel";
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Import");
+        alert.setTitle("Import Complete");
         alert.setHeaderText(null);
         alert.setContentText(conclusion);
         alert.showAndWait();

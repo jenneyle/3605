@@ -59,7 +59,7 @@ public class StaffDetailsController {
             staffCapacity.setText(rs.getString(5));
             email.setText(rs.getString(6));
 
-            rs = conn.createStatement().executeQuery(("SELECT SUM(allocation_weight) "
+            rs = conn.createStatement().executeQuery(("SELECT (s.staff_capacity - SUM(allocation_weight)) "
                     + "FROM Staff s LEFT OUTER JOIN Allocation a "
                     + "ON s.staff_id = a.staff_id "
                     + "WHERE allocation_year = strftime('%Y', date('now')) "
@@ -68,10 +68,11 @@ public class StaffDetailsController {
             magicTxt.setText(rs.getString(1));
             System.out.println(magicTxt.getText());
             if (magicTxt.getText().equals("")) {
-                staffCapacity.setText("0 / " + staffCapacity.getText());
+                staffCapacity.setText(staffCapacity.getText() +" / " + staffCapacity.getText());
             } else {
                 staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
             }
+            magicTxt.setVisible(false);
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
 //            } else {
