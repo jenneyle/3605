@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationDetailsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationDetailsController">
 
     <stylesheets>
         <URL value="@StyleSheet.css" />
@@ -30,7 +31,7 @@
       </ImageView>
 
 
-      <VBox layoutX="48.0" layoutY="101.0" prefHeight="152.0" prefWidth="288.0">
+      <VBox layoutX="48.0" layoutY="65.0" prefHeight="228.0" prefWidth="358.0">
 
          <children>
             <Text fx:id="courseCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" wrappingWidth="277.13671875">
@@ -38,49 +39,74 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="277.13671875">
+            <VBox prefHeight="15.0" prefWidth="288.0" />
+            <Text fx:id="courseName" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" wrappingWidth="365.13671875">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <HBox prefHeight="30.0" prefWidth="214.0">
+            <VBox prefHeight="15.0" prefWidth="288.0" />
+            <VBox prefHeight="22.0" prefWidth="288.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:  " wrappingWidth="87.7568359375">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="staffName" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name" wrappingWidth="109.13671875">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LIC" wrappingWidth="56.13671875">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="lic" strokeType="OUTSIDE" strokeWidth="0.0" text="LIC" wrappingWidth="85.13671875">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
+                  <HBox prefHeight="24.0" prefWidth="288.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:  " wrappingWidth="87.7568359375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="staffName" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name" wrappingWidth="249.13671875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="26.0" prefWidth="214.0">
+            </VBox>
+            <VBox prefHeight="26.0" prefWidth="186.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="zID:  " wrappingWidth="88.12890625">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="96.13671875">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
+                  <HBox prefHeight="26.0" prefWidth="214.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="zID:  " wrappingWidth="88.12890625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" wrappingWidth="96.13671875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="15.0" prefWidth="288.0">
+               <children>
+                  <HBox prefHeight="16.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LIC:" wrappingWidth="56.13671875">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <HBox prefHeight="18.0" prefWidth="32.0" />
+                        <Text fx:id="lic" strokeType="OUTSIDE" strokeWidth="0.0" text="LIC" wrappingWidth="98.13671875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
             <HBox prefHeight="27.0" prefWidth="101.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Year: " wrappingWidth="87.6103515625">
@@ -94,6 +120,9 @@
                      </font>
                   </Text>
                </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="27.0" prefWidth="101.0">
                <children>
@@ -108,29 +137,36 @@
                      </font>
                   </Text>
                </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="27.0" prefWidth="101.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting: " wrappingWidth="90.1748046875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting: " wrappingWidth="88.1748046875">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="weighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting" wrappingWidth="92.13671875">
+                  <Text fx:id="weighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting" wrappingWidth="102.13671875">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
                </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" wrappingWidth="59.13671875">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
+            <VBox prefHeight="10.0" prefWidth="288.0" />
          </children>
       </VBox>
-      <TextArea fx:id="notes" editable="false" layoutX="48.0" layoutY="269.0" prefHeight="69.0" prefWidth="336.0" />
+      <TextArea fx:id="notes" editable="false" layoutX="48.0" layoutY="312.0" prefHeight="69.0" prefWidth="336.0" />
+      <Text layoutX="48.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" wrappingWidth="88.1748046875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
 
    </children>
    <styleClass>
