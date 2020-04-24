@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -23,7 +24,7 @@
       <ComboBox fx:id="yearComboBox" layoutX="333.0" layoutY="237.0" onAction="#handleyear" prefWidth="150.0" promptText="Year" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
       <ComboBox fx:id="termComboBox" layoutX="332.0" layoutY="279.0" onMouseClicked="#handleterm" prefWidth="150.0" promptText="Term" styleClass="leftBackground" stylesheets="@StyleSheet.css" />
       <Label fx:id="success" layoutX="615.0" layoutY="572.0" prefHeight="17.0" prefWidth="316.0" textFill="#c00d0d" />
-      <CheckBox fx:id="licCheckBox" layoutX="688.0" layoutY="149.0" mnemonicParsing="false" text="LIC" />
+      <CheckBox fx:id="licCheckBox" layoutX="675.0" layoutY="149.0" mnemonicParsing="false" text="LIC" />
       <TextArea fx:id="allocationNotes" layoutX="334.0" layoutY="433.0" prefHeight="129.0" prefWidth="595.0" stylesheets="@StyleSheet.css" />
       <Text layoutX="336.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
       <Text layoutX="332.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocate Staff To Course">
@@ -31,18 +32,18 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="allocation_weight" layoutX="333.0" layoutY="322.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="51.0" />
-      <Label fx:id="available_weight" layoutX="392.0" layoutY="327.0" text="available weight" />
-      <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
+      <TextField fx:id="allocation_weight" layoutX="333.0" layoutY="330.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="51.0" />
+      <Label fx:id="available_weight" layoutX="392.0" layoutY="335.0" text="available weight" />
+      <AnchorPane layoutX="1.0" prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="73.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/LecticLogo.png" />
                </image>
             </ImageView>
-            <HBox layoutY="248.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="248.0" onMouseClicked="#handleWeightingBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="238.0" text="  Course Weighting">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="238.0" text="   Course Weighting">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -59,11 +60,11 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="-4.0" layoutY="319.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="244.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-1.0" layoutY="319.0" onMouseClicked="#handleCourseBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="211.0" text="  View Courses">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="186.0" text="  Course List">
                      <graphic>
-                        <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="47.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/training.png" />
                            </image>
@@ -78,9 +79,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutY="390.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="390.0" onMouseClicked="#handleStaffBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="180.0" text="  View Staff">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="168.0" text="   Staff List">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -97,9 +98,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton1" layoutY="178.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton1" layoutY="178.0" onMouseClicked="#handleCurrentAlloBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="239.0" text="  Current Allocations">
+                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="239.0" text="   Current Allocations">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -116,7 +117,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="allocateCourseButton" layoutX="20.0" layoutY="80.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="222.0" styleClass="roundedButton" stylesheets="@StyleSheet.css">
+            <HBox fx:id="allocateCourseButton" layoutX="20.0" layoutY="80.0" onMouseClicked="#handleAllocateBtn" prefHeight="68.0" prefWidth="222.0" stylesheets="@StyleSheet.css">
                <children>
                   <Label alignment="CENTER" prefHeight="38.0" prefWidth="210.0" text=" Allocate Courses">
                      <graphic>
@@ -131,10 +132,14 @@
                      </font>
                   </Label>
                </children>
+               <styleClass>
+                  <String fx:value="roundedButton" />
+                  <String fx:value="sidebarColouredRound" />
+               </styleClass>
             </HBox>
-            <HBox layoutY="534.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="238.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutY="534.0" onMouseClicked="#handleLogoutBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="163.0" text="  Logout">
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="163.0" text="   Logout">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -151,9 +156,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="-1.0" layoutY="461.0" onMouseClicked="#handleReportsBtn" prefHeight="62.0" prefWidth="239.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
+            <HBox layoutX="-1.0" layoutY="461.0" onMouseClicked="#handleReportsBtn" prefHeight="62.0" prefWidth="246.0" styleClass="sideButton" stylesheets="@StyleSheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="159.0" text="  Reports">
+                  <Label alignment="CENTER" prefHeight="59.0" prefWidth="159.0" text="   Reports">
                      <graphic>
                         <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>

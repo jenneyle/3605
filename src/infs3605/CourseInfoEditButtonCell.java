@@ -54,6 +54,7 @@ public class CourseInfoEditButtonCell extends TableCell<Disposer.Record, Boolean
                     controller2.start(courseID);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                          stage.setTitle("Edit Course Details");
                     stage.show();
                 } catch (IOException io) {
                     io.printStackTrace();

@@ -81,7 +81,7 @@ public class AllocationEditButtonCell extends TableCell<Record, Boolean> {
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Allocation Info Page");
+                stage.setTitle("Edit Allocation");
                 stage.setScene(new Scene(p));
                 stage.show();
             }

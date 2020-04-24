@@ -53,8 +53,8 @@ public class InsertStaffController implements Initializable {
     private TextField insertStaffZid;
     @FXML
     private TextField insertStaffEmail;
-    @FXML
-    private Label updateMsg;
+//    @FXML
+//    private Label updateMsg;
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
@@ -67,7 +67,7 @@ public class InsertStaffController implements Initializable {
         ObservableList<String> staffTypeList = FXCollections.observableArrayList("Full-time Teaching", "Full-time Research", "Full-time Teaching/Research", "Casual Teaching");
         insertStaffType.setItems(staffTypeList);
 
-        updateMsg.setVisible(false);
+//        updateMsg.setVisible(false);
     }
 
     public void handleInsertBtn(ActionEvent event) throws IOException, SQLException {
@@ -94,9 +94,9 @@ public class InsertStaffController implements Initializable {
             Notifications insertnotification=Notifications.create().text("New Staff Added").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
             insertnotification.showInformation();
             System.out.println("Submitted");
-            updateMsg.setText("Successfully submitted");
-            updateMsg.setTextFill(Color.web("#008000"));
-            updateMsg.setVisible(true);
+//            updateMsg.setText("Successfully submitted");
+//            updateMsg.setTextFill(Color.web("#008000"));
+//            updateMsg.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

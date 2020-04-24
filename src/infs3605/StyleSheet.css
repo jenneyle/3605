@@ -92,6 +92,14 @@ and open the template in the editor.
 .roundedButton:hover {
     -fx-background-color: #B4EBF7; 
 }
+
+.sidebarColouredRound{
+    -fx-background-color:#B4EBF7;  
+    -fx-background-radius: 20 20 20 20;
+    /*#c0cdd6*/
+}
+
+
 .borderButton{
 
     -fx-border-color: #c0cdd6;

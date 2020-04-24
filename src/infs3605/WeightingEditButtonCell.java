@@ -52,7 +52,7 @@ public class WeightingEditButtonCell extends TableCell<Disposer.Record, Boolean>
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Weighting Edit Page");
+                stage.setTitle("Edit Course Weighting");
                 stage.setScene(new Scene(p));
                 stage.show();
             }

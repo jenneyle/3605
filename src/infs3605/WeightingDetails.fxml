@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingDetailsController">
+<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.WeightingDetailsController">
    <stylesheets>
       <URL value="@StyleSheet.css" />
    </stylesheets>
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextArea fx:id="description" editable="false" layoutX="46.0" layoutY="444.0" prefHeight="95.0" prefWidth="401.0" />
+      <TextArea fx:id="description" editable="false" layoutX="46.0" layoutY="444.0" prefHeight="95.0" prefWidth="419.0" />
       <GridPane layoutX="46.0" layoutY="120.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.6666259765625" minWidth="10.0" prefWidth="158.6666259765625" />
@@ -56,10 +56,10 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Face to Face Hours" GridPane.rowIndex="5">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Consultation Hours:" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Hours:" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Hours:" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Face to Face Hours:" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Text>
@@ -89,10 +89,10 @@
                </GridPane.margin></Text>
             <Text fx:id="staffDev" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="28.025634765625" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text fx:id="tutorialPrep" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="27.13671875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation Hours" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation Hours" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Staff Development Hours" GridPane.rowIndex="4">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Development Hours:" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial Preparation Hours:" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture Preparation Hours:" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Staff Development Hours:" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Text>
@@ -121,9 +121,9 @@
                </font></Text>
          </children>
       </HBox>
-      <HBox alignment="TOP_RIGHT" layoutX="263.0" layoutY="319.0" prefHeight="26.0" prefWidth="153.0">
+      <HBox alignment="TOP_RIGHT" layoutX="263.0" layoutY="323.0" prefHeight="35.0" prefWidth="201.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting:  " textAlignment="RIGHT" wrappingWidth="129.908203125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Weighting:  " wrappingWidth="176.908203125">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -149,8 +149,8 @@
             </Text>
             <Text fx:id="markingHrs" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.374990820884705" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text fx:id="marking_percent" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="45.4193115234375" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Hours" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Marking Percentage" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marking Hours:" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Marking Percentage:" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

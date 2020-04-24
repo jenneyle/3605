@@ -95,7 +95,7 @@ Image closeImage = new Image(this.getClass().getResourceAsStream("/resources/det
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Allocation Details Page");
+                stage.setTitle("Allocation Details");
                 stage.setScene(new Scene(p));
                 stage.show();
             }

@@ -101,7 +101,7 @@ public class StaffButtonCell extends TableCell<Record, Boolean> {
 
                 Parent p = fxmlLoader.getRoot();
                 Stage stage = new Stage();
-                stage.setTitle("Allocation Info Page");
+                stage.setTitle("Edit Staff Details");
                 stage.setScene(new Scene(p));
                 stage.show();
             }

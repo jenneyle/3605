@@ -50,6 +50,7 @@ public class WeightingDetailButtonCell extends TableCell<Record, Boolean> {
                     WeightingDetailsController weightingDetailsController = loader.getController();
                     weightingDetailsController.setData(currentRow.getWeight_id());
                     Stage stage = new Stage();
+                     stage.setTitle("Course Weighting Details");
                     stage.setScene(new Scene(root));
                     stage.show();
                 } catch (IOException io) {

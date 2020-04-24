@@ -61,8 +61,7 @@ public class EditWeightingController {
     TextArea description;
     @FXML
     CheckBox repeatLectures;
-    @FXML
-    Label updateMsg;
+    
     int weightId;
 
     int weightingId = 0;
@@ -70,7 +69,7 @@ public class EditWeightingController {
 
     public void setData(int iWeightingId) {
         weightId = iWeightingId;
-        updateMsg.setVisible(false);
+       // updateMsg.setVisible(false);
 
         try {
             Database.openConnection();
@@ -155,9 +154,7 @@ public class EditWeightingController {
             Notifications updatenotification = Notifications.create().text("Update Success").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
             updatenotification.showInformation();
             System.out.println("Submitted");
-            updateMsg.setText("Successfully submitted");
-            updateMsg.setTextFill(Color.web("#008000"));
-            updateMsg.setVisible(true);
+           
             //Stage stage = (Stage) back.getScene().getWindow();
             //stage.close();
         } catch (Exception ex) {

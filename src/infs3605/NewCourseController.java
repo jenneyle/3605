@@ -85,13 +85,13 @@ public class NewCourseController implements Initializable {
     TextField staffDev;
     @FXML
     TextField overallWeighting;
-
-    @FXML
-    private Label updateMsg;
+//
+//    @FXML
+//    private Label updateMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        updateMsg.setVisible(false);
+//        updateMsg.setVisible(false);
 
     }
 
@@ -190,9 +190,9 @@ public class NewCourseController implements Initializable {
             st.execute(insertData);
             Notifications insertnotification=Notifications.create().text("New Course Added").hideAfter(Duration.seconds(2)).position(Pos.CENTER);
             insertnotification.showInformation();
-            updateMsg.setText("Successfully submitted");
-            updateMsg.setTextFill(Color.web("#008000"));
-            updateMsg.setVisible(true);
+//            updateMsg.setText("Successfully submitted");
+//            updateMsg.setTextFill(Color.web("#008000"));
+//            updateMsg.setVisible(true);
 
         } catch (Exception ex) {
             ex.printStackTrace();

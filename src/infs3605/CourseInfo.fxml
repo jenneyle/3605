@@ -20,7 +20,7 @@
         <URL value="@StyleSheet.css" />
     </stylesheets>
     <children>
-        <Label alignment="CENTER" layoutX="131.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="titleHeading" stylesheets="@StyleSheet.css" text="Course Information" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="131.0" layoutY="14.0" prefHeight="35.0" prefWidth="236.0" styleClass="titleHeading" stylesheets="@StyleSheet.css" text="Course Details" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>
@@ -86,7 +86,7 @@
             </font>
         </Text>
         <TextArea fx:id="allocationNotes" editable="false" layoutX="34.0" layoutY="383.0" prefHeight="124.0" prefWidth="402.0" wrapText="true" />
-        <Text fx:id="courseDesc" layoutX="39.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="401.99999636411667">
+        <Text fx:id="courseDesc" layoutX="37.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Text" wrappingWidth="401.99999636411667">
             <font>
                 <Font name="System Italic" size="12.0" />
             </font>
