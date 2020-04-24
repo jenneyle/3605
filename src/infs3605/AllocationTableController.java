@@ -96,9 +96,9 @@ public class AllocationTableController implements Initializable {
         TableColumn staffName = new TableColumn("     STAFF \nALLOCATED");
         TableColumn warning1 = new TableColumn("Warning");
         TableColumn warning2 = new TableColumn("Warning");
-        editAllocation = new TableColumn("EDIT");
-        deleteAllocation = new TableColumn("DELETE");
-        viewDetailsAllocation = new TableColumn("DETAILS");
+        editAllocation = new TableColumn("");
+        deleteAllocation = new TableColumn("");
+        viewDetailsAllocation = new TableColumn("");
 
         //Add columns to tableview
         allocationTable.getColumns().addAll(year, term, courseId, weighting,

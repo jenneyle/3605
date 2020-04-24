@@ -98,9 +98,9 @@ public class AllocationDetailsController {
             notes.setText("Notes: " + rs.getString(5));
             weighting.setText(rs.getString(10));
             if(rs.getInt(6)==1){
-                lic.setText("LIC: Yes");
+                lic.setText("Yes");
             } else {
-                lic.setText("LIC: No");
+                lic.setText("No");
             }
             
             
