@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -60,7 +61,7 @@ public class AllocationDetailsController {
     @FXML
     Text lic;
     @FXML
-    Text notes;
+    TextArea notes;
     @FXML
     Text weighting;      
 
@@ -82,7 +83,17 @@ public class AllocationDetailsController {
 
             courseCode.setText(rs.getString(1));
             staffId.setText(rs.getString(2));
-            term.setText(rs.getString(3));
+            if (rs.getString(3).equals("Summer Term")){
+                term.setText("SU");
+            } else if (rs.getString(3).equals("Term 1")){
+                term.setText("T1");
+            } else if (rs.getString(3).equals("Term 2")){
+                term.setText("T2");
+            } else if (rs.getString(3).equals("Term 3")){
+                term.setText("T3");
+            } else {
+                
+            }
             year.setText(rs.getString(4));
             notes.setText("Notes: " + rs.getString(5));
             weighting.setText(rs.getString(10));
