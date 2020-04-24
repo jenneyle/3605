@@ -72,6 +72,7 @@ public class StaffDetailsController {
             } else {
                 staffCapacity.setText(magicTxt.getText() + " / " + staffCapacity.getText());
             }
+            magicTxt.setVisible(false);
 //            if(rs.getInt(6)==1){
 //                lic.setText("LIC: Yes");
 //            } else {

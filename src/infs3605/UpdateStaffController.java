@@ -84,7 +84,7 @@ public class UpdateStaffController {
         String iStaffLName = staffLName.getText();
         String iStaffEmail = staffEmail.getText();
         String iStaffType = (String) staffType.getValue();
-        int iStaffCapacity = Integer.parseInt(staffCapacity.getText());        
+        double iStaffCapacity = Double.parseDouble(staffCapacity.getText());        
         
         try {
             Statement st = conn.createStatement();

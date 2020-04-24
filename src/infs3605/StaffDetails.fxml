@@ -38,6 +38,9 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
                   </Text>
                </children>
             </VBox>
