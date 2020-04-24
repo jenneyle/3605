@@ -75,9 +75,9 @@ public class StaffTableController implements Initializable {
         //Add columns to tableview
         staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover
                 , detailsStaff, editStaff, deleteStaff);
-        data.removeAll();
+        data.removeAll(data);
         sortedData = new SortedList<>(data);
-      //  sortedData.removeAll();
+        sortedData.removeAll(sortedData);
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -106,6 +106,17 @@ public class StaffTableController implements Initializable {
         detailsStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("detailsButton"));
         deleteStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("deleteButton"));
 
+        //resize collumns
+        fName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
+        lName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
+        type.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.375));
+        capacity.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        leftover.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        editStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        detailsStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        deleteStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        
+        
         setSearchField();
 
         setEditButtons();
@@ -116,9 +127,10 @@ public class StaffTableController implements Initializable {
 
     //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
     public void setSearchField() {
-        data.removeAll();
+        System.out.println("This is the set Search Field - sorted List");
+        data.removeAll(data);
         sortedData = new SortedList<>(data);
-        sortedData.removeAll();
+        sortedData.removeAll(sortedData);
         //1.Set Search Field
         setAllTable();
         FilteredList<Staff> filteredData = new FilteredList<>(data, p -> true);
@@ -192,6 +204,7 @@ public class StaffTableController implements Initializable {
 
     //Fetch Rows from Database and set Table
     public void setAllTable() {
+        System.out.println("This is the set Table - data List");
         //Get Complete Rows from Database
         data.removeAll();
         sortedData.removeAll();
@@ -264,7 +277,9 @@ public class StaffTableController implements Initializable {
     }
 
     public void clearFilters(ActionEvent event) {
-        data.removeAll();
+        data.removeAll(data);
+        sortedData = new SortedList<>(data);
+        sortedData.removeAll(sortedData);
         staffTypeSelectionCB.setValue(staffTypeSelectionCB.getPromptText());
 
         setAllTable();

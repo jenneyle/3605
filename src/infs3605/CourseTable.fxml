@@ -14,18 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="rightBackground" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.CourseTableController">
     <children>
       <ComboBox fx:id="courseSelectionCB" layoutX="298.0" layoutY="131.0" onAction="#selectCourseType" prefHeight="27.0" prefWidth="132.0" promptText="Course" styleClass="leftBackground" />
       <TextField fx:id="filterField" alignment="TOP_RIGHT" layoutX="445.0" layoutY="131.0" promptText="Search courses" styleClass="table-column" />
       <Button layoutX="858.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleNewCourseBtn" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Add New Course" />
-      <TableView fx:id="courseTable" layoutX="298.0" layoutY="181.0" prefHeight="508.0" prefWidth="682.0" stylesheets="@StyleSheet.css">
-         <styleClass>
-            <String fx:value="table-column" />
-            <String fx:value="table-row-cell" />
-            <String fx:value="leftBackground" />
-         </styleClass>
-      </TableView>
       <Text layoutX="297.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course List">
          <font>
             <Font size="36.0" />
@@ -37,6 +30,13 @@
          </image>
       </ImageView>
       <Button fx:id="clearFilterBtn" layoutX="624.0" layoutY="131.0" mnemonicParsing="false" onAction="#clearFilters" styleClass="leftBackground" stylesheets="@StyleSheet.css" text="Clear" />
+      <TableView fx:id="courseTable" layoutX="302.0" layoutY="184.0" prefHeight="513.0" prefWidth="673.0" stylesheets="@StyleSheet.css">
+         <styleClass>
+            <String fx:value="table-column" />
+            <String fx:value="table-row-cell" />
+            <String fx:value="leftBackground" />
+         </styleClass>
+      </TableView>
       <AnchorPane prefHeight="770.0" prefWidth="262.0" styleClass="leftBackground" stylesheets="@StyleSheet.css">
          <children>
             <ImageView fitHeight="90.0" fitWidth="147.0" layoutX="73.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
