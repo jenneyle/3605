@@ -52,7 +52,7 @@ public class StaffTableController implements Initializable {
     Database database = new Database();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
 
-   static ObservableList<Staff> data = FXCollections.observableArrayList();
+    static ObservableList<Staff> data = FXCollections.observableArrayList();
     SortedList<Staff> sortedData;
     ObservableList<String> types = FXCollections.observableArrayList();
 
@@ -73,8 +73,8 @@ public class StaffTableController implements Initializable {
         deleteStaff = new TableColumn("");
 
         //Add columns to tableview
-        staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover
-                , detailsStaff, editStaff, deleteStaff);
+        staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover,
+                detailsStaff, editStaff, deleteStaff);
         data.removeAll(data);
         sortedData = new SortedList<>(data);
         sortedData.removeAll(sortedData);
@@ -93,7 +93,6 @@ public class StaffTableController implements Initializable {
         staffTypeSelectionCB.setItems(types);
 
         //setAllTable();
-
         //Based on Staff.class, populate the cells of the table
         id.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("staffId"));
         id.setVisible(false);
@@ -115,8 +114,7 @@ public class StaffTableController implements Initializable {
         editStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
         detailsStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
         deleteStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
-        
-        
+
         setSearchField();
 
         setEditButtons();
@@ -164,7 +162,6 @@ public class StaffTableController implements Initializable {
         sortedData.comparatorProperty().bind(staffTable.comparatorProperty());
         // 5. Add sorted (and filtered) data to the table.
         staffTable.setItems(sortedData);
-       
 
     }
 
@@ -176,20 +173,28 @@ public class StaffTableController implements Initializable {
         try {
             ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname"
                     + ", staff_type, staff_capacity"
-                    + ", (staff_capacity - SUM(allocation_weight)) "
-                    + "FROM Staff s LEFT OUTER JOIN Allocation a "
-                    + "ON s.staff_id = a.staff_id "
-                    + "WHERE allocation_year = strftime('%Y', date('now')) "
-                    + "GROUP BY s.staff_id "
-                    + "UNION "
-                    + "SELECT staff_id, Fname, Lname, staff_type, staff_capacity"
-                    + ", '' AS Leftover FROM Staff"
+                    + ", (staff_capacity - SUM(allocation_weight)) AS 'Leftover'"
+                    + " FROM Staff s JOIN Allocation a ON s.staff_id = a.staff_id"
+                    + " WHERE allocation_year = strftime('%Y', date('now')) "
+                    + " AND staff_type = '" + staffTypeSelectionCB.getValue() + "'"
+                    + " GROUP BY s.staff_id"
+                    + " UNION"
+                    + " SELECT staff_id, Fname, Lname, staff_type, staff_capacity"
+                    + ", '' AS Leftover"
+                    + " FROM Staff"
+                    + " WHERE staff_type = '" + staffTypeSelectionCB.getValue() + "'"
+                    + " EXCEPT"
+                    + " SELECT c.staff_id, Fname, Lname, staff_type, staff_capacity"
+                    + ", '' AS Leftover"
+                    + " FROM Allocation c"
+                    + " JOIN Staff b"
+                    + " ON c.staff_id = b.staff_id"
                     + " WHERE staff_type = '" + staffTypeSelectionCB.getValue() + "'"
             );
             while (rs.next()) {
-                data.add(new Staff(rs.getString(1), rs.getString(2)
-                        , rs.getString(3), rs.getString(4), rs.getDouble(5)
-                        , rs.getString(6)));
+                data.add(new Staff(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -211,16 +216,15 @@ public class StaffTableController implements Initializable {
         try {
             ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname, staff_type, staff_capacity, (staff_capacity - SUM(allocation_weight)) AS 'Leftover' FROM Staff s LEFT OUTER JOIN Allocation a ON s.staff_id = a.staff_id WHERE allocation_year = strftime('%Y', date('now')) GROUP BY s.staff_id UNION SELECT staff_id, Fname, Lname, staff_type, staff_capacity, '' AS Leftover FROM Staff EXCEPT SELECT c.staff_id, Fname, Lname, staff_type, staff_capacity, '' AS Leftover FROM Allocation c JOIN Staff b ON c.staff_id = b.staff_id");
             while (rs.next()) {
-                data.add(new Staff(rs.getString(1), rs.getString(2)
-                        , rs.getString(3), rs.getString(4), rs.getDouble(5)
-                        , rs.getString(6)));
+                data.add(new Staff(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-       // setSearchField();
-
+        // setSearchField();
     }
 
     public void setEditButtons() {
@@ -240,8 +244,8 @@ public class StaffTableController implements Initializable {
             }
         });
     }
-    
-     public void setDeleteButtons() {
+
+    public void setDeleteButtons() {
         // Edit Button
         deleteStaff.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, ObservableValue<Boolean>>() {
             @Override
@@ -330,10 +334,10 @@ public class StaffTableController implements Initializable {
     public void handleLogoutBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Login.fxml");
     }
-     @FXML
+
+    @FXML
     public void handleReportsBtn(MouseEvent event) throws IOException {
         pageSwitcher.switcher(event, "Reports.fxml");
-    
-    
+
     }
 }
