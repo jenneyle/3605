@@ -63,8 +63,8 @@ public class StaffTableController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Initialise the columns
         TableColumn id = new TableColumn("STAFF ID");
-        TableColumn fName = new TableColumn("FIRST NAME");
-        TableColumn lName = new TableColumn("LAST NAME");
+        TableColumn fName = new TableColumn("FIRST \nNAME");
+        TableColumn lName = new TableColumn("LAST \nNAME");
         TableColumn type = new TableColumn("STAFF TYPE");
         TableColumn capacity = new TableColumn("TEACHING \nCAPACITY");
         TableColumn leftover = new TableColumn("LEFTOVER \nCAPACITY");
@@ -107,11 +107,11 @@ public class StaffTableController implements Initializable {
         deleteStaff.setCellValueFactory(new PropertyValueFactory<Staff, String>("deleteButton"));
 
         //resize collumns
-        fName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
-        lName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.115));
-        type.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.375));
-        capacity.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
-        leftover.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
+        fName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.105));
+        lName.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.105));
+        type.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.345));
+        capacity.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.1));
+        leftover.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.1));
         editStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
         detailsStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
         deleteStaff.prefWidthProperty().bind(staffTable.widthProperty().multiply(0.075));
