@@ -87,7 +87,7 @@ public class WeightingDetailsController {
             totalFace.setText(rs.getString(15));
             totalStaff.setText(rs.getString(16));
             description.setText(rs.getString(17));
-            marking_percent.setText(rs.getString(18) + "%");
+            marking_percent.setText(" " + rs.getString(18));
 
             if (rs.getInt(14) == 1) {
                 repeatLectures.setText("Yes");
