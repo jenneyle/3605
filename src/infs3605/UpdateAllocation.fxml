@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
+<AnchorPane id="AnchorPane" prefHeight="504.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.UpdateAllocationController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -22,8 +22,8 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Button fx:id="submit" layoutX="369.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
-      <VBox layoutX="253.0" layoutY="103.0" prefHeight="47.0" prefWidth="220.0">
+      <Button fx:id="submit" layoutX="370.0" layoutY="441.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="27.0" prefWidth="71.0" stylesheets="@StyleSheet.css" text="Submit" textFill="#414446" />
+      <VBox layoutX="253.0" layoutY="182.0" prefHeight="47.0" prefWidth="220.0">
          <children>
             <Text fx:id="staffId" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID" visible="false" wrappingWidth="127.13671875">
                <font>
@@ -33,14 +33,19 @@
             <CheckBox fx:id="lic" mnemonicParsing="false" prefHeight="24.0" prefWidth="75.0" text="LIC?" />
          </children>
       </VBox>
-      <TextField fx:id="courseCode" layoutX="52.0" layoutY="84.0" prefHeight="27.0" prefWidth="389.0" promptText="Course Code" />
-      <TextField fx:id="staffName" layoutX="52.0" layoutY="125.0" prefHeight="25.0" prefWidth="179.0" promptText="Staff Name" />
-      <Text layoutX="50.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes:" />
-      <TextArea fx:id="allocationNotes" layoutX="50.0" layoutY="278.0" prefHeight="110.0" prefWidth="389.0" promptText="Add Allocation Notes Here..." />
-      <TextField fx:id="weighting" layoutX="51.0" layoutY="207.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="81.0" promptText="Weighting" />
-      <Text fx:id="totalWeighting" layoutX="140.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/ Total Weighting" />
-      <ComboBox fx:id="year" layoutX="50.0" layoutY="167.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Year" />
-      <ComboBox fx:id="term" layoutX="202.0" layoutY="167.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Term" />
+      <TextField fx:id="courseCode" layoutX="52.0" layoutY="94.0" prefHeight="27.0" prefWidth="389.0" promptText="Course Code" />
+      <TextField fx:id="staffName" layoutX="52.0" layoutY="204.0" prefHeight="25.0" prefWidth="179.0" promptText="Staff Name" />
+      <Text layoutX="52.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocation Notes" />
+      <TextArea fx:id="allocationNotes" layoutX="52.0" layoutY="314.0" prefHeight="110.0" prefWidth="389.0" promptText="Add Allocation Notes Here..." />
+      <TextField fx:id="weighting" layoutX="53.0" layoutY="255.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="102.0" promptText="Weighting" />
+      <Text fx:id="totalWeighting" layoutX="159.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/ Total Weighting" />
+      <ComboBox fx:id="year" layoutX="53.0" layoutY="148.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Year" />
+      <ComboBox fx:id="term" layoutX="205.0" layoutY="148.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Term" />
+      <Text layoutX="52.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" />
+      <Text layoutX="53.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
+      <Text layoutX="205.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term" />
+      <Text layoutX="54.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocated Staff Name" />
+      <Text layoutX="54.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allocated Weight" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
