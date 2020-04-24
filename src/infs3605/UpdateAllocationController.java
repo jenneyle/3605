@@ -133,6 +133,24 @@ public class UpdateAllocationController {
             Logger.getLogger(StaffAllocationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void handleterm(MouseEvent event) {
+        System.out.println("This is the Term Combobox of StaffAllocation");
+        String scourseCode = courseCode.getText().substring(0,8);
+        String syear = year.getValue();
+        String av_term = "select term from weighting where course_id='" + scourseCode + "'"
+                + " and year='" + syear +"'";
+        ObservableList<String> termList = FXCollections.observableArrayList();
+        try {
+            ResultSet rs = database.getResultSet(av_term);
+            while (rs.next()) {
+                //available_weight.setText(Double.toString(rs.getDouble(1)));
+                termList.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffAllocationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        term.setItems(termList);
+    }
 
     @FXML
     public void handleSubmitButton(ActionEvent event) throws IOException, SQLException {

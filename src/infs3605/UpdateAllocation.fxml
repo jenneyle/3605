@@ -40,7 +40,7 @@
       <TextField fx:id="weighting" layoutX="53.0" layoutY="262.0" onMouseClicked="#handleAllocation_weight" prefHeight="27.0" prefWidth="105.0" promptText="Weighting" />
       <Text fx:id="totalWeighting" layoutX="164.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/ Total Weighting" />
       <ComboBox fx:id="year" layoutX="53.0" layoutY="148.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Year" />
-      <ComboBox fx:id="term" layoutX="205.0" layoutY="148.0" prefHeight="27.0" prefWidth="139.0" promptText="Select Term" />
+      <ComboBox fx:id="term" layoutX="205.0" layoutY="148.0" onMouseClicked="#handleterm" prefHeight="27.0" prefWidth="139.0" promptText="Select Term" />
       <Text layoutX="52.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code" />
       <Text layoutX="53.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
       <Text layoutX="205.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Term" />
