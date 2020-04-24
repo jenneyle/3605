@@ -75,6 +75,9 @@ public class StaffTableController implements Initializable {
         //Add columns to tableview
         staffTable.getColumns().addAll(id, fName, lName, type, capacity, leftover
                 , detailsStaff, editStaff, deleteStaff);
+        data.removeAll();
+        sortedData = new SortedList<>(data);
+      //  sortedData.removeAll();
 
         //Get Complete Rows from Database for ComboBoxes - years, terms, courses
         try {
@@ -89,7 +92,7 @@ public class StaffTableController implements Initializable {
         //Populate Combo Box
         staffTypeSelectionCB.setItems(types);
 
-        setAllTable();
+        //setAllTable();
 
         //Based on Staff.class, populate the cells of the table
         id.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("staffId"));
@@ -113,7 +116,11 @@ public class StaffTableController implements Initializable {
 
     //https://stackoverflow.com/questions/44317837/create-search-textfield-field-to-search-in-a-javafx-tableview
     public void setSearchField() {
+        data.removeAll();
+        sortedData = new SortedList<>(data);
+        sortedData.removeAll();
         //1.Set Search Field
+        setAllTable();
         FilteredList<Staff> filteredData = new FilteredList<>(data, p -> true);
         // 2. Set the filter Predicate whenever the filter changes.
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -145,6 +152,7 @@ public class StaffTableController implements Initializable {
         sortedData.comparatorProperty().bind(staffTable.comparatorProperty());
         // 5. Add sorted (and filtered) data to the table.
         staffTable.setItems(sortedData);
+       
 
     }
 
@@ -185,18 +193,10 @@ public class StaffTableController implements Initializable {
     //Fetch Rows from Database and set Table
     public void setAllTable() {
         //Get Complete Rows from Database
+        data.removeAll();
+        sortedData.removeAll();
         try {
-            ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname"
-                    + ", staff_type, staff_capacity"
-                    + ", (staff_capacity - SUM(allocation_weight)) "
-                    + "FROM Staff s LEFT OUTER JOIN Allocation a "
-                    + "ON s.staff_id = a.staff_id "
-                    + "WHERE allocation_year = strftime('%Y', date('now')) "
-                    + "GROUP BY s.staff_id "
-                    + "UNION "
-                    + "SELECT staff_id, Fname, Lname, staff_type, staff_capacity"
-                    + ", '' AS Leftover FROM Staff"
-            );
+            ResultSet rs = database.getResultSet("SELECT s.staff_id, Fname, Lname, staff_type, staff_capacity, (staff_capacity - SUM(allocation_weight)) AS 'Leftover' FROM Staff s LEFT OUTER JOIN Allocation a ON s.staff_id = a.staff_id WHERE allocation_year = strftime('%Y', date('now')) GROUP BY s.staff_id UNION SELECT staff_id, Fname, Lname, staff_type, staff_capacity, '' AS Leftover FROM Staff EXCEPT SELECT c.staff_id, Fname, Lname, staff_type, staff_capacity, '' AS Leftover FROM Allocation c JOIN Staff b ON c.staff_id = b.staff_id");
             while (rs.next()) {
                 data.add(new Staff(rs.getString(1), rs.getString(2)
                         , rs.getString(3), rs.getString(4), rs.getDouble(5)
@@ -206,7 +206,7 @@ public class StaffTableController implements Initializable {
             ex.printStackTrace();
         }
 
-        setSearchField();
+       // setSearchField();
 
     }
 
