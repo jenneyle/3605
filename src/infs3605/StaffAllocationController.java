@@ -167,7 +167,7 @@ public class StaffAllocationController implements Initializable {
         try {
             ResultSet rs = database.getResultSet(av_term);
             while (rs.next()) {
-                available_weight.setText(Double.toString(rs.getDouble(1)));
+                //available_weight.setText(Double.toString(rs.getDouble(1)));
                 termList.add(rs.getString(1));
             }
         } catch (SQLException ex) {
