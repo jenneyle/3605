@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationDetailsController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infs3605.AllocationDetailsController">
     <stylesheets>
         <URL value="@StyleSheet.css" />
     </stylesheets>
@@ -39,11 +40,6 @@
             <Image url="@../resources/course.png" />
          </image>
       </ImageView>
-      <Text fx:id="notes" layoutX="50.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes" wrappingWidth="59.13671875">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
       <VBox layoutX="48.0" layoutY="115.0" prefHeight="152.0" prefWidth="288.0">
          <children>
             <HBox prefHeight="30.0" prefWidth="214.0">
@@ -121,8 +117,14 @@
                   </Text>
                </children>
             </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes" wrappingWidth="59.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children>
       </VBox>
+      <TextArea fx:id="notes" editable="false" layoutX="48.0" layoutY="267.0" prefHeight="69.0" prefWidth="288.0" />
    </children>
    <styleClass>
       <String fx:value="mainFxmlClass" />
